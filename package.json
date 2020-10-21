@@ -1,0 +1,34 @@
+{
+  "name": "ppms",
+  "version": "1.0.0",
+  "description": "Campus Placement Prediction & Management System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/27px/placement-prediction-and-management-system.git"
+  },
+  "keywords": [
+    "Campus",
+    "Placement",
+    "Prediction",
+    "Management",
+    "System",
+    "Recruitment",
+    "Job",
+    "Internship"
+  ],
+  "author": "G-12",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/27px/placement-prediction-and-management-system/issues"
+  },
+  "homepage": "https://github.com/27px/placement-prediction-and-management-system#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}
