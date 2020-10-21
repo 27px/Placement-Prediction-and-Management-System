@@ -1,5 +1,6 @@
 # Campus Placement Prediction &amp; Management System
-Predicts whether a Student gets Placed in Campus Placement using Python
+Predicts whether a Student gets Placed in Campus Placement using Python,
+
 Uses Node.js, MongoDB, Python
 
 # Installing Dependencies and packages of Node.js
