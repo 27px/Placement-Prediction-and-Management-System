@@ -12,11 +12,20 @@ var app=express();
 app.set("views","./views");
 app.set("view engine","ejs");
 
-app.use("*/images",express.static(path.join(__dirname,"static","images")));
-app.use("*/style",express.static(path.join(__dirname,"static","style")));
-app.use("*/script",express.static(path.join(__dirname,"static","script")));
+// app.use("static",express.static(__dirname+"/static"));
 
-app.use(favicon(path.join(__dirname,'static','images','favicon.ico')));
+// app.use("/images",express.static(path.join(__dirname,"static","images")));
+
+// app.use("/style",express.static(path.join(__dirname,"static","style")));
+// app.use("/style/home",express.static(path.join(__dirname,"static","style","home")));
+// app.use("/script",express.static(path.join(__dirname,"static","script")));
+// app.use("/script/home",express.static(path.join(__dirname,"static","script","home")));
+// app.use("/plugins/chart.js",express.static(path.join(__dirname,"static","plugins","chart.js")));
+
+// app.use(favicon(path.join(__dirname,'static','images','favicon.ico')));
+
+
+app.use("/static",express.static(path.join(__dirname,"static")));
 
 app.use("/",route);
 
