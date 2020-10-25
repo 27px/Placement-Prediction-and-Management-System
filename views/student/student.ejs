@@ -2,17 +2,17 @@
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <meta name="theme-color" content="#2196F3">
-    <link rel="preload" href="../static/style/home/style.css" as="style">
-    <link rel="preload" href="../static/style/home/dash.css" as="style">
-    <link rel="preload" href="../static/script/home/data.js" as="script">
-    <link rel="preload" href="../static/script/home/script.js" as="script">
-    <link rel="stylesheet" href="../static/style/home/style.css">
-    <link rel="stylesheet" href="../static/style/home/dash.css">
-    <script src="../static/script/home/data.js"></script>
-    <script src="../static/script/home/script.js"></script>
+    <link rel="preload" href="../static/style/dashboard/style.css" as="style">
+    <link rel="preload" href="../static/style/dashboard/dash.css" as="style">
+    <link rel="preload" href="../static/script/dashboard/data.js" as="script">
+    <link rel="preload" href="../static/script/dashboard/script.js" as="script">
+    <link rel="stylesheet" href="../static/style/dashboard/style.css">
+    <link rel="stylesheet" href="../static/style/dashboard/dash.css">
+    <script src="../static/script/dashboard/data.js"></script>
+    <script src="../static/script/dashboard/script.js"></script>
     <title>Dashboard</title>
   </head>
-  <body onresize="resizeSearch();" class="">
+  <body onload="loadCharts();" onresize="resizeSearch();" class="">
     <div class="nav" id="topbar">
       <div class="menu" id="menu" tabindex="0" onclick="toggleMenu();">
         <div class="wrapper">
@@ -75,7 +75,7 @@
             <div class="item normal"></div>
             <div class="item wide profile">
               <div class="picwrapper">
-                <img class="pic" src="../static/images/student/dashboard/sample.jpg">
+                <img class="pic" src="../static/images/dashboard/dashboard/sample.jpg">
                 <div class="overlay" onclick="alert('in development');console.log('edit profile pic in development')">
                   <div class="editwrapper">
                     <div class="icon"></div>
