@@ -56,21 +56,20 @@
 	</g>
 </g>
 <g>
-	<g>
-		<defs>
-			<rect id="SVGID_9_" width="512" height="512"/>
-		</defs>
-		<clipPath id="SVGID_10_">
-			<use xlink:href="#SVGID_9_"  style="overflow:visible;"/>
-		</clipPath>
-		<path class="st4" d="M448,402.8l-149.9,86.6c-23.1,13.4-61,13.4-84.1,0L64,402.8c-23.1-13.3-42-46.1-42-72.8v12.6
-			c0,26.7,18.9,59.5,42.1,72.8L214,502c23.1,13.4,61,13.4,84.1,0L448,415.4c23.1-13.4,42.1-46.1,42.1-72.8V330
-			C490.1,356.7,471.1,389.5,448,402.8z"/>
-	</g>
+<g>
+	<defs>
+		<rect id="SVGID_9_" width="512" height="512"/>
+	</defs>
+	<clipPath id="SVGID_10_">
+		<use xlink:href="#SVGID_9_"  style="overflow:visible;"/>
+	</clipPath>
+	<path class="st4" d="M448,402.8l-149.9,86.6c-23.1,13.4-61,13.4-84.1,0L64,402.8c-23.1-13.3-42-46.1-42-72.8v12.6
+		c0,26.7,18.9,59.5,42.1,72.8L214,502c23.1,13.4,61,13.4,84.1,0L448,415.4c23.1-13.4,42.1-46.1,42.1-72.8V330
+		C490.1,356.7,471.1,389.5,448,402.8z"/>
+</g>
 </g>
 <g>
 	<g>
-
 			<image style="overflow:visible;opacity:0.8;" width="406" height="283" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZYAAAEbCAYAAAD51qKQAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
 	GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAWCxJREFUeNrsnQtz20jPrEFKsmxn
 	837//29uNr5JIk9tlXkWgbsBDEVJHHmmiiXHcRyJl3mmGxhApI022mijjTbaaKONNtpoY62ja59/
@@ -473,7 +472,7 @@
 		</image>
 	</g>
 </g>
-		<g>
+<g>
 	<g>
 		<g>
 			<path class="st5" d="M134.7,277.4c-1.1,6.5-1.6,11.5-1.6,15c0,17.6,2.7,30.7,8.2,39.4c-10.9,8.2-22.2,12.2-34,12.2
