@@ -15,6 +15,8 @@
   width:100%;
   height:100%;
   position:relative;
+  z-index:50;
+  box-shadow:0px 0px 10px 1px #000000;
 }
 .background
 {
@@ -140,6 +142,7 @@
   padding:0px 3px;
   font-size:20px;
   line-height:28px;
+  min-height:30px;
   color:#444;
   letter-spacing:2px;
   word-spacing:8px;
@@ -403,5 +406,176 @@ a.menu
   nav a .icon svg
   {
     stroke-width:1;
+  }
+}
+@media (min-width:1100px)
+{
+  .description .icon
+  {
+    margin-bottom:60px;
+  }
+}
+.box
+{
+  position:relative;
+  width:100%;
+  height:100%;
+  background-color:#FFFFFF;
+  z-index:10;
+}
+#box1
+{
+  background:url("../../images/home/box1.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+.flex-list
+{
+  display:flex;
+  flex-direction:column;
+  padding:15px 0px;
+  font-family:var(--font-sub-title);
+  box-shadow:0px 0px 10px 1px #000000;
+}
+.flex-list .flex-item
+{
+  margin:20px 30px;
+  padding:20px;
+  height:auto;
+  display:flex;
+  flex-direction:row;
+}
+.flex-list .flex-item:nth-child(odd)
+{
+  flex-flow:row;
+}
+.flex-list .flex-item:nth-child(even)
+{
+  flex-flow:row-reverse;
+}
+.flex-list .flex-item .image
+{
+  width:60vmin;
+  height:60vmin;
+  margin:10px;
+  flex-shrink:0;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  position:relative;
+  clip-path:circle(20% at 50% 50%);
+  transition:clip-path 0.3s ease-in;
+  animation:move 10s ease-in-out infinite alternate;
+}
+.flex-list .flex-item .image::after
+{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:url("../../images/home/overlay.png");
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+.flex-list .animated-box .image
+{
+  clip-path:circle(100% at 50% 50%) !important;
+}
+.flex-list .flex-item .desc
+{
+  margin:10px 40px;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.flex-list .flex-item .desc .title
+{
+  font-size:30px;
+  font-weight:900;
+  margin-bottom:15px;
+}
+.flex-list .flex-item .desc .sub-title
+{
+  text-align:justify;
+  font-size:18px;
+  line-height:33px;
+}
+.sub-title sup
+{
+  font-size:18px;
+  line-height:15px;
+}
+.sub-title a
+{
+  color:#606060;
+}
+.sub-title a:hover
+{
+  color:#2196F3;
+  text-decoration:none;
+}
+.flex-list .flex-item:nth-child(1) .image
+{
+  background-image:url("../../images/home/ml.jpg");
+}
+.flex-list .flex-item:nth-child(2) .image
+{
+  background-image:url("../../images/home/resource-sharing.jpg");
+}
+.flex-list .flex-item:nth-child(3) .image
+{
+  background-image:url("../../images/home/statistics.jpg");
+}
+.flex-list .flex-item:nth-child(4) .image
+{
+  background-image:url("../../images/home/jobs.png");
+}
+.flex-list .flex-item:nth-child(5) .image
+{
+  background-image:url("../../images/home/projects.jpg");
+}
+@keyframes move
+{
+  0%
+  {
+    background-position:0% 0%;
+  }
+  100%
+  {
+    background-position:100% 0%;
+  }
+}
+@media (max-width:900px)
+{
+  .flex-list .flex-item
+  {
+    flex-direction:column;
+    margin:10px 15px;
+    padding:10px;
+    align-items:center;
+  }
+  .flex-list .flex-item .image
+  {
+    width:82vmin;
+    height:82vmin;
+    margin:0;
+  }
+  .flex-list .flex-item .desc
+  {
+    margin:30px 0px;
+  }
+  .flex-list .flex-item .desc .sub-title
+  {
+    font-size:16px;
+  }
+  .flex-list .flex-item:nth-child(odd),.flex-list .flex-item:nth-child(even)
+  {
+    flex-flow:column;
   }
 }
