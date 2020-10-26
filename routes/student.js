@@ -16,7 +16,7 @@ student.get("/settings",(req,res)=>{
   res.render("student/settings");
 });
 
-//Profile of currently logged in Student
+//Profile
 student.get("/profile",(req,res)=>{
   res.render("student/profile");
 });

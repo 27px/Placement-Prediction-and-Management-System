@@ -20,6 +20,12 @@ route.get("/login",(req,res)=>{
   res.render("login");
 });
 
+//Logout
+route.get("/logout",(req,res)=>{
+  //logout code
+  res.redirect("home");
+});
+
 //New Account
 route.get("/register",(req,res)=>{
   res.render("register");
@@ -58,6 +64,22 @@ route.get("/statistics",(req,res)=>{
 //placement cell members
 route.get("/team",(req,res)=>{
   res.render("placement-cell-members");
+});
+
+//Profile
+route.get("/profile",(req,res)=>{
+
+  //Important
+  var user="student";//Hardcoded - change when db is implemented
+
+  if(user!="administrator")
+  {
+    res.render(`${user}/profile`);
+  }
+  else
+  {
+    res.redirect("/404");
+  }
 });
 
 //Student Route

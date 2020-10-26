@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../static/style/home/style.css">
+    <script type="module" type="text/javascript" src="../static/script/home/script.js"></script>
   </head>
   <body class="main">
     <div class="hero">
-      <%- include("partials/nav.ejs"); %><!--Navigation Bar-->
+      <!--Navigation Bar Start-->
+        <%- include("partials/nav.ejs",{
+          loggedin:true,
+          username:"27px",
+          usertype:"student"
+        }); %>
+      <!--Navigation Bar End-->
       <object class="background" data="../static/images/home/hero.svg" type="text/xml+svg"></object>
       <div class="description">
         <div class="icon"></div>
         <div class="title">Placement Prediction & Management System</div>
-        <div class="sub-title">
-          <div class="lines">Campus Placement Management System</div>
-          <div class="lines">Skill Recommendation</div>
-          <div class="lines">Placement Prediction</div>
-        </div>
+        <div class="sub-title"id="lines"></div>
       </div>
     </div>
     <div class="page">
