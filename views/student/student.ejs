@@ -1,6 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="theme-color" content="#2196F3">
     <link rel="preload" href="../static/style/dashboard/style.css" as="style">
     <link rel="preload" href="../static/style/dashboard/dash.css" as="style">
@@ -22,7 +24,7 @@
         </div>
       </div>
       <div class="searchcontainer" id="searchcontainer">
-        <input class="Search" placeholder="Search" spellcheck="false" oninput="searchItem(event,this);" onclick="searchItem(null,this);"><!--There's another one in the side bar-->
+        <input class="search" placeholder="Search" spellcheck="false" oninput="searchItem(event,this);" onclick="searchItem(null,this);"><!--There's another one in the side bar-->
       </div>
       <div class="app">
         <div class="icon"></div>
@@ -102,7 +104,7 @@
         <div class="seperator" id="seperator" onclick="hideMenu();" style="display: none;"></div>
         <div class="side" id="side">
           <div class="searchcontainer" id="searchcontainermin">
-            <input class="Search" placeholder="Search" spellcheck="false" oninput="searchItem(event,this);" onclick="searchItem(null,this);"><!--There's another one in the nav bar-->
+            <input class="search" placeholder="Search" spellcheck="false" oninput="searchItem(event,this);" onclick="searchItem(null,this);"><!--There's another one in the nav bar-->
           </div>
           <div class="option" onclick="openTab('tabs/dashboard.txt');">
             <div class="icon"></div>

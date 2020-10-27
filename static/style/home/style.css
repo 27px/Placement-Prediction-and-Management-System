@@ -425,11 +425,15 @@ a.menu
 }
 #box1
 {
+  height:50%;
   background:url("../../images/home/box1.jpg");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
   background-attachment:fixed;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-evenly;
 }
 .flex-list
 {
@@ -438,6 +442,8 @@ a.menu
   padding:15px 0px;
   font-family:var(--font-sub-title);
   box-shadow:0px 0px 10px 1px #000000;
+  position:relative;
+  z-index:25;
 }
 .flex-list .flex-item
 {
@@ -503,8 +509,8 @@ a.menu
 .flex-list .flex-item .desc .sub-title
 {
   text-align:justify;
-  font-size:18px;
-  line-height:33px;
+  font-size:20px;
+  line-height:40px;
 }
 .sub-title sup
 {
@@ -522,7 +528,7 @@ a.menu
 }
 .flex-list .flex-item:nth-child(1) .image
 {
-  background-image:url("../../images/home/ml.jpg");
+  background-image:url("../../images/home/placement-prediction.png");
 }
 .flex-list .flex-item:nth-child(2) .image
 {
@@ -534,11 +540,11 @@ a.menu
 }
 .flex-list .flex-item:nth-child(4) .image
 {
-  background-image:url("../../images/home/jobs.png");
+  background-image:url("../../images/home/campus-placement.jpg");
 }
 .flex-list .flex-item:nth-child(5) .image
 {
-  background-image:url("../../images/home/projects.jpg");
+  background-image:url("../../images/home/more-opportunities.jpg");
 }
 @keyframes move
 {
@@ -578,4 +584,32 @@ a.menu
   {
     flex-flow:column;
   }
+}
+#box1 .quote
+{
+  color:#FFF;
+  font-family:var(--font-sub-title);
+  font-weight:900;
+  letter-spacing:0.6vmin;
+  font-size:calc(3vmin + 2vmax);
+  text-shadow:0px 0px 10px #000000;
+  text-align:center;
+  padding:0px 10px;
+}
+#box1 a
+{
+  color:#000;
+  text-decoration:none;
+  border:1px solid #000;
+  padding:10px 20px;
+  margin:0px auto;
+  font-family:var(--font-monospace);
+  font-size:20px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 5px 0px #000000;
+  transition:background-color 0.3s;
+}
+#box1 a:hover
+{
+  background:var(--teal);
 }

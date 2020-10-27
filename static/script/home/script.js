@@ -1,9 +1,11 @@
 import TypeIt from "../../plugins/typeit.js/typeit.min.js";
+
 var body;
+var _=id=>document.getELementById(id);
 window.onload=()=>{
   body=document.body;
   // typeit: subtitle
-  var content=[
+  var lines=[
     "Campus Placement Management System",
     "Skill Recommendation",
     "Placement Prediction",
@@ -12,12 +14,27 @@ window.onload=()=>{
     "Video Resources, E-Books, Tutorials",
     "Practice MCQ Questions"
   ];
-  const instance=new TypeIt("#lines",{loop:true});
-  for(const str of content)
+  const l=new TypeIt("#lines",{loop:true});
+  for(const line of lines)
   {
-    instance.type(str).pause(1000).delete(0-str.length);
+    l.type(line).pause(1000).delete(0-line.length);
   }
-  instance.go();
+  l.go();
+  // tupeit: box1
+  var quotes=[
+    "The future depends on what you do today.",
+    "You get what you work for not what you wish for.",
+    "You don't have to see the whole staircase, just take the first step.",
+    "There are no secret to Success. It is the result of preperation, Hard Work and Learning from Failure.",
+    "The only way to do great work, is to love what you do.",
+    "Choose a job that you love, and you will never have to work a day in your life."
+  ];
+  const q=new TypeIt("#quote",{loop:true});
+  for(const quote of quotes)
+  {
+    q.type(quote).pause(1000).delete(0-quote.length);
+  }
+  q.go();
   scrolled();
 };
 window.onscroll=function(){

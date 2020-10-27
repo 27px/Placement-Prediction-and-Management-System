@@ -2,12 +2,12 @@
 {
   font-family:"Roboto";
   src:url("../fonts/Roboto.eot"); /* IE9 Compat Modes */
-  src:url("../fonts/Roboto.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  src:url("../fonts/Roboto.woff2") format("woff2"), /* Modern Browsers */
+  url("../fonts/Roboto.woff") format("woff"), /* Modern Browsers */
     url("../fonts/Roboto.otf") format("opentype"), /* Open Type Font */
     url("../fonts/Roboto.svg") format("svg"), /* Legacy iOS */
     url("../fonts/Roboto.ttf") format("truetype"), /* Safari, Android, iOS */
-    url("../fonts/Roboto.woff") format("woff"), /* Modern Browsers */
-    url("../fonts/Roboto.woff2") format("woff2"); /* Modern Browsers */
+    url("../fonts/Roboto.eot?#iefix") format("embedded-opentype"); /* IE6-IE8 */
   font-weight:normal;
   font-style:normal;
 }
@@ -15,12 +15,12 @@
 {
   font-family:"Lemon";
   src:url("../fonts/Lemon.eot"); /* IE9 Compat Modes */
-  src:url("../fonts/Lemon.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  src:url("../fonts/Lemon.woff2") format("woff2"), /* Modern Browsers */
+    url("../fonts/Lemon.woff") format("woff"), /* Modern Browsers */
     url("../fonts/Lemon.otf") format("opentype"), /* Open Type Font */
     url("../fonts/Lemon.svg") format("svg"), /* Legacy iOS */
     url("../fonts/Lemon.ttf") format("truetype"), /* Safari, Android, iOS */
-    url("../fonts/Lemon.woff") format("woff"), /* Modern Browsers */
-    url("../fonts/Lemon.woff2") format("woff2"); /* Modern Browsers */
+    url("../fonts/Lemon.eot?#iefix") format("embedded-opentype"); /* IE6-IE8 */
   font-weight:normal;
   font-style:normal;
 }
@@ -28,12 +28,12 @@
 {
   font-family:"Consolas";
   src:url("../fonts/Consolas.eot"); /* IE9 Compat Modes */
-  src:url("../fonts/Consolas.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  src:url("../fonts/Consolas.woff2") format("woff2"), /* Modern Browsers */
+    url("../fonts/Consolas.woff") format("woff"), /* Modern Browsers */
     url("../fonts/Consolas.otf") format("opentype"), /* Open Type Font */
     url("../fonts/Consolas.svg") format("svg"), /* Legacy iOS */
     url("../fonts/Consolas.ttf") format("truetype"), /* Safari, Android, iOS */
-    url("../fonts/Consolas.woff") format("woff"), /* Modern Browsers */
-    url("../fonts/Consolas.woff2") format("woff2"); /* Modern Browsers */
+    url("../fonts/Consolas.eot?#iefix") format("embedded-opentype"); /* IE6-IE8 */
   font-weight:normal;
   font-style:normal;
 }
