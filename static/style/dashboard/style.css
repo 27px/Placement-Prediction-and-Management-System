@@ -182,9 +182,9 @@
   color:#FFFFFF;
   border-radius:2px;
 }
-#searchcontainermin .searchresultcontainer/*width issue*/
+#searchcontainermin .searchresultcontainer
 {
-  width:calc(100% - 33.5px);
+  width:calc(100% - (2 * var(--side-gap)))!important;
   background:#FFFFFF;
   color:var(--primary9);
 }
@@ -213,6 +213,10 @@
   width:auto;
   height:var(--nav-height);
 }
+.nav .app:hover
+{
+  cursor:pointer;
+}
 .nav .app *
 {
   vertical-align:middle;
@@ -220,8 +224,8 @@
 }
 .nav .app .icon
 {
-  width:var(--nav-height);
-  height:var(--nav-height);
+  width:calc(var(--nav-height) * 0.9);
+  height:calc(var(--nav-height) * 0.9);
   background-image:url("../../images/favicon.svg");
   background-size:85%;
   background-position:center;
@@ -271,10 +275,6 @@
   {
     --nav-height:45px;
   }
-  .nav .app .wrapper
-  {
-    display:none;
-  }
 }
 .nav .menu
 {
@@ -306,7 +306,7 @@
   grid-template-rows:repeat(3,2px);
   grid-gap:calc(var(--nav-height) / 6);
 }
-.showmenu .nav .menu .wrapper
+.show-menu .nav .menu .wrapper
 {
   transform:translate(15%);
 }
@@ -321,16 +321,16 @@
   opacity:1;
   transition:transform 0.5s,opacity 0.2s,border-radius 0.8s,background-color 0.4s;
 }
-.showmenu .nav .menu .wrapper .box:nth-child(1)
+.show-menu .nav .menu .wrapper .box:nth-child(1)
 {
   transform:rotate(45deg);
   border-radius:50px;
 }
-.showmenu .nav .menu .wrapper .box:nth-child(2)
+.show-menu .nav .menu .wrapper .box:nth-child(2)
 {
   opacity:0;
 }
-.showmenu .nav .menu .wrapper .box:nth-child(3)
+.show-menu .nav .menu .wrapper .box:nth-child(3)
 {
   transform:rotate(-45deg);
   border-radius:50px;
@@ -426,11 +426,11 @@
 {
   background-color:rgba(255,255,255,0.6);
 }
-.showMenu .contents .body
+.show-menu .contents .body
 {
   width:calc(100% - var(--menu-width));
 }
-.showMenu .contents .side
+.show-menu .contents .side
 {
   width:var(--menu-width);
   transform:translateX(0%);
@@ -438,7 +438,7 @@
 }
 @media (max-width:950px)/*tablet*/
 {
-  .showMenu .contents .body
+  .show-menu .contents .body
   {
     width:100% !important;
   }
@@ -453,7 +453,7 @@
     background-color:rgba(0,0,0,0);
     transition:background-color var(--transition-timing);
   }
-  .showMenu .contents .seperator
+  .show-menu .contents .seperator
   {
     display:block;
     top:0;
@@ -469,7 +469,7 @@
     --grid-gap:12px;
     --scroll:5px;
   }
-  .showMenu .contents .side
+  .show-menu .contents .side
   {
     box-shadow:none;
     border-left:0px solid transparent;
@@ -489,6 +489,7 @@
   height:80px;
   background-color:rgba(255,255,255,0.2);
   transition:background-color 0.2s;
+  text-decoration:none;
   /* border-radius:0px 15px 0px 15px; */
   overflow:hidden;
 }
@@ -497,8 +498,16 @@
   background-color:rgba(255,255,255,0.3);
   cursor:pointer;
 }
-.showmenu .contents .side .option::after,
-.showmenu .contents .side .option::before
+.contents .side .option:hover .icon svg
+{
+  stroke:#000000;
+}
+.contents .side .option:hover .wrapper .title,.contents .side .option:hover .wrapper .subtitle
+{
+  color:#000000;
+}
+.show-menu .contents .side .option::after,
+.show-menu .contents .side .option::before
 {
   content:"";
   position:absolute;
@@ -545,10 +554,18 @@
 {
   width:80px;
   height:80px;
-  background-image:url("../../images/student/dashboard/default-white.svg");
-  background-size:60%;
-  background-position:center;
-  background-repeat:no-repeat;
+  position:relative;
+}
+.side .option .icon svg
+{
+  width:50px;
+  height:50px;
+  position:relative;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  stroke:#FFFFFF;
+  transition:stroke 0.3s;
 }
 .side .option .wrapper
 {
@@ -565,11 +582,13 @@
   letter-spacing:1px;
   font-size:20px;
   text-transform:capitalize;
+  transition:color 0.3s;
 }
 .side .option .wrapper .subtitle
 {
   color:rgba(255,255,255,0.8);
   font-size:14px;
+  transition:color 0.3s;
 }
 @media (max-width:250px)
 {
@@ -706,6 +725,10 @@
   {
     grid-area:span 2 / span 1;
   }
+  .app .wrapper .title .version,.app .wrapper .subtitle
+  {
+    display:none;
+  }
 }
 @media (max-width:600px)
 {
@@ -720,7 +743,7 @@
 }
 @media (max-width:1200px)  and (min-width:950px)/*Desktop-Tablet  :  Menu on*/
 {
-  .showMenu .layout
+  .show-menu .layout
   {
     grid-template-columns:repeat(2,1fr);
   }

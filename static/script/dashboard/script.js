@@ -27,16 +27,16 @@ function toggleMenu()
 {
   _("seperator").style.display="block";
   _("side").scrollTop=0;
-  document.body.classList.toggle("showMenu");
+  document.body.classList.toggle("show-menu");
   setTimeout(function(){
-    if(!document.body.classList.contains("showMenu"))
+    if(!document.body.classList.contains("show-menu"))
     _("seperator").style.display="none";
   },800);
   resetSearch();
 }
 function hideMenu()
 {
-  document.body.classList.remove("showMenu");
+  document.body.classList.remove("show-menu");
   setTimeout(function(){
     _("seperator").style.display="none";
   },800);

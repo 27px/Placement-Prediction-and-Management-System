@@ -1,0 +1,12 @@
+{
+  "student/dashboard":{
+    "searchresultcontainer":"set max height",
+    "searchresultcontainer":"scrollbar",
+    "searchresultcontainer":"add data and link",
+    "sidebar":"set titles and url",
+    "sidebar":"add icons"
+  },
+  "/home":{
+    "main":"add contents"
+  }
+}
