@@ -1,3 +1,9 @@
+<%
+  if(!version)
+  {
+    version="0.0.0";
+  }
+%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -31,7 +37,7 @@
         <div class="wrapper">
           <div class="title">
             <div class="name">PPMS</div>
-            <div class="version">1.0.0</div>
+            <div class="version"><%=version%></div>
           </div>
           <div class="subtitle">Campus Placement Prediction &amp; Management System</div>
         </div>

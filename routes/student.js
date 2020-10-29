@@ -1,3 +1,4 @@
+const {version}=require("../package.json");
 const express=require("express");
 const student=express.Router();
 
@@ -8,7 +9,9 @@ student.get("/",(req,res)=>{
 
 //Student Dashboard
 student.get("/dashboard",(req,res)=>{
-  res.render("student/student");
+  res.render("student/student",{
+    version
+  });
 });
 
 //Student Settings
