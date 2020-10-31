@@ -1,7 +1,13 @@
 <%
+  //app version
   if(!version)
   {
     version="0.0.0";
+  }
+  //open tab
+  if(!tab)
+  {
+    tab="main";
   }
 %>
 <!DOCTYPE html>
@@ -20,7 +26,7 @@
     <script src="../static/script/dashboard/script.js"></script>
     <title>Dashboard</title>
   </head>
-  <body onload="loadCharts();" onresize="resizeSearch();" class="">
+  <body onresize="resizeSearch();">
     <div class="nav" id="topbar">
       <div class="menu" id="menu" tabindex="0" onclick="toggleMenu();">
         <div class="wrapper">
@@ -46,75 +52,17 @@
     <div class="container">
       <div class="options" id="options"></div>
       <div class="contents">
-        <div class="body" id="body">
-          <div class="layout dashboard">
-            <!-- If the number of items are multiples of both 2 and 3 the better -->
-            <div class="item wide horizontallist">
-              <div class="card"></div>
-              <div class="card"></div>
-              <div class="card"></div>
-              <div class="card"></div>
-              <div class="card"></div>
-              <div class="card"></div>
-            </div>
-            <div class="item tall">
-              <canvas id="graph3"></canvas>
-            </div>
-            <div class="item normal">
-              <canvas id="graph"></canvas>
-            </div>
-            <div class="item normal special">
-              <div class="fullwrapper">
-                <div class="titlewrapper">
-                  <div class="iconic">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                  </div>
-                  <div class="title">Campus Placement Prediction</div>
-                </div>
-                <div class="contents">
-                  <div class="content">Check whether you get placed or not.</div>
-                  <div class="content">Only you can see the results.</div>
-                </div>
-              </div>
-            </div>
-            <div class="item huge">
-              <canvas id="graph2"></canvas>
-            </div>
-            <div class="item normal"></div>
-            <div class="item normal"></div>
-            <div class="item normal"></div>
-            <div class="item wide profile">
-              <div class="picwrapper">
-                <img class="pic" src="../../static/images/student/dashboard/sample.jpg">
-                <div class="overlay" onclick="alert('in development');console.log('edit profile pic in development')">
-                  <div class="editwrapper">
-                    <div class="icon"></div>
-                    <div class="title">Edit</div>
-                  </div>
-                </div>
-              </div>
-              <div class="details">
-                <div class="wrapper">
-                  <div class="name">Annie Machbeth</div>
-                  <div class="userid">ann47</div>
-                  <div class="email">anniemachbeth@gmail.com</div>
-                  <div class="phone">+91 9894956738</div>
-                  <div class="bio">Artist, Intrested in Painting, Photography</div>
-                </div>
-              </div>
-              <div class="edit" onclick="alert('in development');console.log('edit profile in development')"></div>
-            </div>
-            <div class="item normal"></div>
-            <div class="item normal"></div>
-            <div class="item normal special"></div>
-          </div>
+        <div class="body" id="body" openTab="<%=tab%>">
+          <!-- Contents will be dynamically loaded -->
+          <div class="loading"></div>
+          <!-- If the number of items are multiples of both 2 and 3 the better -->
         </div>
         <div class="seperator" id="seperator" onclick="hideMenu();" style="display: none;"></div>
         <div class="side" id="side">
           <div class="searchcontainer" id="searchcontainermin">
             <input class="search" placeholder="Search" spellcheck="false" oninput="searchItem(event,this);" onclick="searchItem(null,this);"><!--There's another one in the nav bar-->
           </div>
-          <a class="option" href="/home">
+          <div class="option" loadtab="main">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </div>
@@ -122,8 +70,8 @@
               <div class="title">Home</div>
               <div class="subtitle">Main Home page</div>
             </div>
-          </a>
-          <a class="option" href="/profile">
+          </div>
+          <div class="option" loadtab="profile">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </div>
@@ -131,8 +79,8 @@
               <div class="title">Profile</div>
               <div class="subtitle">Your profile</div>
             </div>
-          </a>
-          <a class="option" href="/option1">
+          </div>
+          <div class="option" loadtab="option1">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
@@ -140,8 +88,8 @@
               <div class="title">Option 1</div>
               <div class="subtitle">options</div>
             </div>
-          </a>
-          <a class="option" href="/option2">
+          </div>
+          <div class="option" loadtab="option2">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
@@ -149,8 +97,8 @@
               <div class="title">Option 2</div>
               <div class="subtitle">options</div>
             </div>
-          </a>
-          <a class="option" href="/option3">
+          </div>
+          <div class="option" loadtab="option3">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
@@ -158,8 +106,8 @@
               <div class="title">Option 3</div>
               <div class="subtitle">option</div>
             </div>
-          </a>
-          <a class="option" href="/option4">
+          </div>
+          <div class="option" loadtab="option4">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
@@ -167,8 +115,8 @@
               <div class="title">Option 4</div>
               <div class="subtitle">options</div>
             </div>
-          </a>
-          <a class="option" href="/option5">
+          </div>
+          <div class="option" loadtab="option5">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
@@ -176,8 +124,8 @@
               <div class="title">Option 5</div>
               <div class="subtitle">options</div>
             </div>
-          </a>
-          <a class="option" href="/option6">
+          </div>
+          <div class="option" loadtab="option6">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
@@ -185,8 +133,8 @@
               <div class="title">Option 6</div>
               <div class="subtitle">options</div>
             </div>
-          </a>
-          <a class="option" href="/option6">
+          </div>
+          <div class="option" loadtab="option6">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
@@ -194,7 +142,7 @@
               <div class="title">Settings</div>
               <div class="subtitle">settings</div>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>

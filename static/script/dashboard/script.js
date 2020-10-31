@@ -1,3 +1,4 @@
+var body;
 function _(id)
 {
   return document.getElementById(id);
@@ -22,6 +23,55 @@ function ce(e,c="",id="",content="")
     el.innerHTML=content;
   }
   return el;
+}
+function load(tab,callback)
+{
+  var container=_("body");
+  fetch(`/student/dashboard/${tab}`,{
+    method:"POST"
+  }).then(response=>{
+    if(response.status===200)
+    {
+      response.text().then(data=>{
+        container.innerHTML=data;
+      }).then(callback);
+    }
+    else
+    {
+      loadingError();
+    }
+  }).catch(err=>{
+    console.error(err);
+    loadingError();
+  });
+}
+window.onload=()=>{
+  body=document.body;
+  var tab="main";
+  var open=_("body").getAttribute("openTab");
+  if(open!="")
+  {
+    tab=open;
+  }
+  var callback=void(0);
+  if(tab=="main")
+  {
+    callback=loadCharts;
+  }
+  load(tab,callback);
+  Array.from(document.querySelectorAll(".option")).forEach(option=>{
+    option.addEventListener("click",openTab);
+  });
+};
+function openTab(event)
+{
+  var tab=event.currentTarget.getAttribute("loadtab");
+  var callback=void(0);
+  if(tab=="main")
+  {
+    callback=loadCharts;
+  }
+  load(tab,callback);
 }
 function toggleMenu()
 {

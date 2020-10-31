@@ -35,15 +35,16 @@ window.onload=()=>{
     q.type(quote).pause(1000).delete(0-quote.length);
   }
   q.go();
-  //Descriptions
-  Array.from(document.querySelectorAll(".type-desc")).forEach(title=>{
+  // Descriptions (THis is too slow)
+  Array.from(document.querySelectorAll(".type-title")).forEach(title=>{
     new TypeIt(title,{
       loop:false,
-      speed:5,
+      speed:50,
       waitUntilVisible:true,
       cursor:false
     }).go();
   });
+
   //Initial scroll position
   scrolled();
 };

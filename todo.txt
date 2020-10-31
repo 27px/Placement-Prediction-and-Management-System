@@ -4,7 +4,9 @@
     "searchresultcontainer":"scrollbar",
     "searchresultcontainer":"add data and link",
     "sidebar":"set titles and url",
-    "sidebar":"add icons"
+    "sidebar":"add icons",
+    "option":"add click listener",
+    "ui error":"tab mode open menu"
   },
   "/home":{
     "main":"add contents"

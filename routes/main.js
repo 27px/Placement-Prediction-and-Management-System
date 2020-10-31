@@ -74,7 +74,7 @@ route.get("/profile",(req,res)=>{
 
   if(user!="administrator")
   {
-    res.render(`${user}/profile`);
+    res.redirect(`${user}/dashboard?tab=profile`);
   }
   else
   {
@@ -96,6 +96,7 @@ route.use("/administrator",administrator);
 
 //Not Found
 route.get("/404",function(req,res){
+  res.status(404);
   res.render("404");
 });
 
