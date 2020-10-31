@@ -8,5 +8,21 @@
   },
   "/home":{
     "main":"add contents"
+  },
+  "ui":{
+    "designs-to-add":[
+      "http://localhost/Root/Workarea/My%20Collection/Card/",
+      "http://localhost/Root/Workarea/My%20Collection/Circular%20Progress/circular_progress.html",
+      "http://localhost/Root/Workarea/My%20Collection/Dashboard-Design/",
+      "http://localhost/Root/Workarea/My%20Collection/Loader/2.html",
+      "http://localhost/Root/Workarea/My%20Collection/timeline/index.html",
+      "http://localhost/Root/Workarea/My%20Collection/Video%20Background/index.html",
+      "http://localhost/Root/Workarea/My%20Collection/Layout/index.html"
+    ],
+    "builtin-api":[
+      "intersection-observer",
+      "speech-synthesis",
+      "geo-location"
+    ]
   }
 }

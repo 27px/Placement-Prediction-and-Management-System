@@ -35,6 +35,16 @@ window.onload=()=>{
     q.type(quote).pause(1000).delete(0-quote.length);
   }
   q.go();
+  //Descriptions
+  Array.from(document.querySelectorAll(".type-desc")).forEach(title=>{
+    new TypeIt(title,{
+      loop:false,
+      speed:5,
+      waitUntilVisible:true,
+      cursor:false
+    }).go();
+  });
+  //Initial scroll position
   scrolled();
 };
 window.onscroll=function(){
