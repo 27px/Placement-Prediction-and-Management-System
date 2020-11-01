@@ -17,6 +17,7 @@
   position:relative;
   z-index:50;
   box-shadow:0px 0px 10px 1px #000000;
+  background:#FFFFFF;
 }
 .background
 {
@@ -293,6 +294,7 @@ a.menu
   display:flex;
   flex-direction:column;
   justify-content:space-evenly;
+  z-index:100;
 }
 .flex-list
 {
@@ -303,6 +305,7 @@ a.menu
   box-shadow:0px 0px 10px 1px #000000;
   position:relative;
   z-index:25;
+  background:#FFFFFF;
 }
 .flex-list .flex-item
 {
@@ -491,6 +494,7 @@ a.menu
 {
   object-fit:cover;
   z-index:2;
+  position:fixed;
 }
 .video-bg .video-overlay
 {
@@ -762,6 +766,14 @@ a.menu
 {
   font-size:16px;
   letter-spacing:1px;
+}
+.feature-display .feature .icon svg
+{
+  transition:transform 0.3s;
+}
+.feature-display .feature:hover .icon svg
+{
+  transform:scale(1.5,1.5);
 }
 @media (max-width:1100px)
 {

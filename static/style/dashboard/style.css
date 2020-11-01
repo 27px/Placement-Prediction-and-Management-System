@@ -172,6 +172,7 @@
 }
 .searchresultcontainer .item
 {
+  display:block;
   width:100%;
   padding:5px 8px;
   box-sizing:border-box;
@@ -181,6 +182,7 @@
   text-transform:capitalize;
   color:#FFFFFF;
   border-radius:2px;
+  text-decoration:none;
 }
 #searchcontainermin .searchresultcontainer
 {

@@ -1,11 +1,13 @@
-require("dotenv").config();
+const config=require("./config/config.json");
 const express=require("express");
 const path=require("path");
 const favicon=require("serve-favicon");
 const route=require("./routes/main");
+const DB_CONNECTION_URL=require("./config/db.js");
+const mongoose=require("mongoose");
 
-const PORT=process.env.PORT;
-const HOST=process.env.HOST;
+const PORT=config.SERVER.PORT;
+const HOST=config.SERVER.HOST;
 
 var app=express();
 

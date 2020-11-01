@@ -275,14 +275,10 @@ function searchItem(event,box)
   var min=searchItems["option"].min;
   var v=box.value.toLowerCase();
   var sc=_("searchcontainer").getBoundingClientRect();
-  var res;
-  if(_('searchresultcontainer')==null)
+  var res=_("searchresultcontainer");
+  if(res==null)
   {
     res=ce("div","searchresultcontainer","searchresultcontainer");
-  }
-  else
-  {
-    res=_("searchresultcontainer");
   }
   if(isMinScreen())
   {
@@ -363,11 +359,8 @@ function runSearch(rx,res,v,high)
     }
     if(rx.test(k))
     {
-      let it=ce("div","item","",k);
-      it.setAttribute("url",item["url"]);
-      it.addEventListener("click",function(){
-        window.location=this.getAttribute("url");
-      });
+      let it=ce("a","item","",k);
+      it.setAttribute("href",item["url"]);
       res.appendChild(it);
       count++;
     }
