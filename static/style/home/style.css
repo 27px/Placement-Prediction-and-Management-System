@@ -364,6 +364,7 @@ a.menu
   font-size:30px;
   font-weight:900;
   margin-bottom:15px;
+  color:#1976D2;
 }
 .flex-list .flex-item .desc .sub-title
 {
@@ -709,7 +710,7 @@ a.menu
   flex-direction:column;
   height:auto;
   padding-bottom:20px;
-  background:#2196F3;
+  background:#1976D2;
 }
 .feature-display .desc
 {
@@ -734,7 +735,7 @@ a.menu
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:20px;
+  padding:40px 30px;
   font-family:var(--font-sub-title);
   border-radius:10px;
   margin:0px 20px;

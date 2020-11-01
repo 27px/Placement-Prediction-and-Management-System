@@ -758,8 +758,7 @@
 {
   .show-menu .layout
   {
-    width:calc(100% - var(--menu-width));
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,minmax(200px,1fr));
   }
 }
 .fade

@@ -4,13 +4,11 @@
     "searchresultcontainer":"set max height",
     "searchresultcontainer":"scrollbar",
     "searchresultcontainer":"add data and link",
-    "sidebar":"set titles and url",
-    "sidebar":"add icons",
+    "sidebar":"set titles, icons and url",
     "option":"add click listener",
-    "ui error":"tab mode open menu"
   },
   "/home":{
-    "main":"add contents"
+    "scrollbar":"customize"
   },
   "ui":{
     "designs-to-add":[
