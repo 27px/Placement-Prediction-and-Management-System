@@ -65,6 +65,7 @@ window.onload=()=>{
 };
 function openTab(event)
 {
+  hideMenu();
   var tab=event.currentTarget.getAttribute("loadtab");
   var callback=void(0);
   if(tab=="main")

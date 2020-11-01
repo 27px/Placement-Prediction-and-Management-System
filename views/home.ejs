@@ -1,3 +1,9 @@
+<%
+  if(!color)
+  {
+    var color="#000000";
+  }
+%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="main">
   <head>
@@ -72,5 +78,51 @@
         </div>
       </div>
     </div>
+    <div class="box video-bg">
+      <video muted autoplay loop poster="../static/videos/home-box.png">
+        <source src="../static/videos/home-box.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay"></div>
+      <div class="video-desc">
+        <div class="video-wrapper">
+          <div class="video-title">Campus Placement</div>
+          <div class="video-sub-title">Get your dream job.</div>
+        </div>
+      </div>
+    </div>
+    <div class="box top-priority feature-display">
+      <div class="desc">More</div>
+      <div class="features">
+        <a href="/statistics" class="feature">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="<%-color%>" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <div class="title">Statistics</div>
+          <div class="sub-title">View previous Placement Statistics.</div>
+        </a>
+        <a href="/gallery" class="feature">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="<%-color%>" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          </div>
+          <div class="title">Gallery</div>
+          <div class="sub-title">View Pictures of previous events.</div>
+        </a>
+        <a href="/team" class="feature">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="<%-color%>" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <div class="title">Team</div>
+          <div class="sub-title">View Campus Placment Members</div>
+        </a>
+        <a href="/about" class="feature">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="<%-color%>" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          </div>
+          <div class="title">Developers</div>
+          <div class="sub-title">View site Developers</div>
+        </a>
+      </div>
+    </div>
+    <div class="footer top-priority">Developed by Group-12 ( Anisha, Glorina, Rahul )</div>
   </body>
 </html>
