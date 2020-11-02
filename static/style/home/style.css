@@ -174,6 +174,10 @@ body::-webkit-scrollbar-thumb:hover
   {
     margin:0px 15px !important;
   }
+  .flex-item .sub-title
+  {
+    margin:0px 0px!important;
+  }
 }
 @media (max-width:400px) and (orientation:portrait)
 {
@@ -195,6 +199,10 @@ body::-webkit-scrollbar-thumb:hover
 }
 @media (max-width:300px)
 {
+  .flex-item
+  {
+    margin:10px 2.5px!important;
+  }
   .description .sub-title
   {
     font-size:15px;
@@ -228,10 +236,10 @@ body::-webkit-scrollbar-thumb:hover
   text-align:center;
   background:#212121;
   color:#2196F3;
-  font-size:20px;
+  font-size:16px;
   font-family:var(--font-sub-title);
   letter-spacing:2px;
-  word-spacing:8px;
+  word-spacing:5px;
 }
 #box1
 {
@@ -343,7 +351,7 @@ body::-webkit-scrollbar-thumb:hover
 }
 .flex-list .flex-item:nth-child(1) .image
 {
-  background-image:url("../../images/home/placement-prediction.png");
+  background-image:url("../../images/home/placement-prediction.jpg");
 }
 .flex-list .flex-item:nth-child(2) .image
 {
@@ -398,6 +406,8 @@ body::-webkit-scrollbar-thumb:hover
   .flex-list .flex-item .desc .sub-title
   {
     font-size:16px;
+    margin:10px 20px;
+    line-height:50px!important;
   }
   .flex-list .flex-item:nth-child(odd),.flex-list .flex-item:nth-child(even)
   {
@@ -498,6 +508,14 @@ body::-webkit-scrollbar-thumb:hover
   .flex-item .desc
   {
     margin:10px 5px!important;
+  }
+}
+@media (max-width:900px) and (min-width:400px)
+{
+  .flex-list .flex-item .desc .sub-title
+  {
+    font-size:20px;
+    line-height:40px!important;
   }
 }
 @media (min-width:1100px)
@@ -630,5 +648,43 @@ body::-webkit-scrollbar-thumb:hover
   {
     padding:20px 10px;
     margin:0px 10px;
+  }
+}
+@media (min-width:1150px)
+{
+  nav a::before,nav a::after
+  {
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#000000;
+  }
+  nav a::before
+  {
+    bottom:0;
+    left:0;
+    transform:translateY(100%);
+  }
+  nav a::after
+  {
+    top:0;
+    right:0;
+    transform:translateY(-100%);
+  }
+  nav a:hover::before,nav a:hover::after
+  {
+    animation:high-light 0.5s ease-in-out 0s forwards;
+  }
+  @keyframes high-light
+  {
+    0%
+    {
+      width:0%;
+    }
+    100%
+    {
+      width:100%;
+    }
   }
 }

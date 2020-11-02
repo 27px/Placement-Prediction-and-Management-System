@@ -60,7 +60,10 @@
   --breakpoint-md:768px;
   --breakpoint-lg:992px;
   --breakpoint-xl:1200px;
+
   --font-sub-title:"Roboto","Times New Roman",serif;
   --font-title:"Lemon","Arial Black","Arial",sans-serif;
   --font-monospace:"Consolas","Courier New","SFMono-Regular","Menlo","Monaco","Liberation Mono",monospace;
+
+  --nav-height:50px;
 }

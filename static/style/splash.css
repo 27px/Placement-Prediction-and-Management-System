@@ -1,0 +1,67 @@
+.splash
+{
+  --splash:calc(5vmin + 4vmax + 20px);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:1000;
+  background:#FFFFFF;
+  background-image: repeating-radial-gradient(circle at center center, transparent 0px, transparent 2px,rgba(33,150,243, 0.25098039215686274) 2px, rgba(33,150,243, 0.25098039215686274) 3px,transparent 3px, transparent 5px,rgba(33,150,243, 0.25098039215686274) 5px, rgba(33,150,243, 0.25098039215686274) 7px),repeating-radial-gradient(circle at center center, rgb(255,255,255) 0px, rgb(255,255,255) 9px,rgb(255,255,255) 9px, rgb(255,255,255) 21px,rgb(255,255,255) 21px, rgb(255,255,255) 31px,rgb(255,255,255) 31px, rgb(255,255,255) 40px); background-size: 20px 20px;
+  background-position:0% 0%;
+  animation:flow 20s linear infinite normal;
+}
+.splash .icon
+{
+  display:inline-block;
+  width:calc(var(--splash) * 2);
+  height:calc(var(--splash) * 2);
+  background-image:url("../images/favicon.svg");
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  position:absolute;
+  top:var(--splash);
+  left:calc(50% - var(--splash));
+  animation:floater 3s ease-in-out 0s infinite alternate;
+}
+.splash .loading
+{
+  display:inline-block;
+  width:var(--splash);
+  height:var(--splash);
+  background-image:url("../images/loading.gif");
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  position:absolute;
+  bottom:var(--splash);
+  left:calc(50% - (var(--splash) / 2));
+}
+@keyframes floater
+{
+  0%
+  {
+    transform:translate(0px,0px);
+  }
+  65%
+  {
+    transform:translate(0px,15px);
+  }
+  100%
+  {
+    transform:translate(0px,0px);
+  }
+}
+@keyframes flow
+{
+  0%
+  {
+    background-position:0% 0%;
+  }
+  100%
+  {
+    background-position:-100% 0%;
+  }
+}

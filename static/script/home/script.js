@@ -4,6 +4,15 @@ var body;
 var _=id=>document.getELementById(id);
 window.onload=()=>{
   body=document.body;
+
+  //Unnecessary delay for loading animation
+  var delay=3000;//seconds
+  setTimeout(()=>{
+    Array.from(document.querySelectorAll(".splash")).forEach(splash=>{
+      splash.parentNode.removeChild(splash);
+    });
+  },delay);
+
   // typeit: subtitle
   var lines=[
     "Campus Placement Management System",
