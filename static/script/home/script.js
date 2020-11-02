@@ -56,8 +56,9 @@ window.onscroll=function(){
 };
 function scrolled()
 {
+  const H=body.clientHeight;
   var list=document.querySelectorAll(".animated");
-  var s=body.scrollTop;
+  var i=0;
   for(var x of list)
   {
     var c=x.getBoundingClientRect();
@@ -67,9 +68,8 @@ function scrolled()
     }
     else
     {
-      var v=c.y-(1*c.height);
-      var f=c.y+(0.6*c.height);
-      if(v<0 && f>0)
+      const top=c.y,height=c.height;
+      if((top+(0.6*height))<H && top>(-0.4*height))
       {
         x.parentNode.classList.add("animated-box");
       }

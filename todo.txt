@@ -8,9 +8,6 @@
     "option":"add click listener",
     "sitemap":"in search field, load from server"
   },
-  "/home":{
-    "min screen z-index":"nav under image"
-  },
   "ui":{
     "designs-to-add":[
       "http://localhost/Root/Workarea/My%20Collection/Card/",
@@ -27,6 +24,9 @@
       "geo-location"
     ]
   },
+  "before-production":[
+    "sitemap":"in search field, load from server"
+  ],
   "production":[
     "minify all client-side css and js and svg"
   ]
