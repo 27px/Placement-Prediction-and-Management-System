@@ -9,7 +9,7 @@
     "sitemap":"in search field, load from server"
   },
   "/home":{
-    "scrollbar":"customize"
+    "min screen z-index":"nav under image"
   },
   "ui":{
     "designs-to-add":[

@@ -1,0 +1,233 @@
+@import "default-values.css";
+nav
+{
+  position:relative;
+  display:flex;
+  flex-direction:row;
+  z-index:5;
+  padding:0px 5px;
+  transition:transform 0.8s;
+  z-index:300!important;
+}
+nav .left
+{
+  width:50%;
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-start;
+}
+nav .right
+{
+  width:50%;
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-end;
+}
+a.nav-item
+{
+  color:#000;
+  text-decoration:none;
+  font-family:var(--font-monospace);
+  margin:15px 5px;
+  padding:5px 12px;
+  font-size:18px;
+  letter-spacing:1px;
+  font-weight:900;
+  display:inline-flex;
+  flex-direction:row;
+  align-items:center;
+  position:relative;
+}
+a.nav-item .icon
+{
+  display:inline-block;
+  width:25px;
+  height:25px;
+  margin-right:6px;
+  position:relative;
+}
+a.nav-item .icon svg
+{
+  width:100%;
+  height:100%;
+}
+/* a:hover .icon svg
+{
+  stroke:#08F;
+} */
+a.nav-item .title
+{
+  display:inline-block;
+}
+a.menu
+{
+  display:none;
+}
+@media (max-width:1150px)
+{
+  a.menu
+  {
+    display:inline-flex;
+    vertical-align:middle;
+    justify-content:center;
+    align-items:center;
+    margin:8px 5px;
+  }
+  .top-bar
+  {
+    width:100%;
+    height:50px;
+    box-shadow:0px 0px 10px 1px #000000;
+    z-index:500;
+    position:fixed;
+    top:0;
+    left:0;
+    background-image: linear-gradient(328deg, rgba(29, 29, 29, 0.05) 0%, rgba(29, 29, 29, 0.05) 25%,rgba(226, 226, 226, 0.05) 25%, rgba(226, 226, 226, 0.05) 50%,rgba(21, 21, 21, 0.05) 50%, rgba(21, 21, 21, 0.05) 75%,rgba(216, 216, 216, 0.05) 75%, rgba(216, 216, 216, 0.05) 100%),linear-gradient(172deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 25%,rgba(108, 108, 108, 0.05) 25%, rgba(108, 108, 108, 0.05) 50%,rgba(21, 21, 21, 0.05) 50%, rgba(21, 21, 21, 0.05) 75%,rgba(236, 236, 236, 0.05) 75%, rgba(236, 236, 236, 0.05) 100%),linear-gradient(207deg, rgba(153, 153, 153, 0.05) 0%, rgba(153, 153, 153, 0.05) 25%,rgba(83, 83, 83, 0.05) 25%, rgba(83, 83, 83, 0.05) 50%,rgba(5, 5, 5, 0.05) 50%, rgba(5, 5, 5, 0.05) 75%,rgba(82, 82, 82, 0.05) 75%, rgba(82, 82, 82, 0.05) 100%),linear-gradient(297deg, rgba(26, 26, 26, 0.05) 0%, rgba(26, 26, 26, 0.05) 25%,rgba(223, 223, 223, 0.05) 25%, rgba(223, 223, 223, 0.05) 50%,rgba(232, 232, 232, 0.05) 50%, rgba(232, 232, 232, 0.05) 75%,rgba(153, 153, 153, 0.05) 75%, rgba(153, 153, 153, 0.05) 100%),linear-gradient(204deg, rgba(120, 120, 120, 0.05) 0%, rgba(120, 120, 120, 0.05) 25%,rgba(191, 191, 191, 0.05) 25%, rgba(191, 191, 191, 0.05) 50%,rgba(246, 246, 246, 0.05) 50%, rgba(246, 246, 246, 0.05) 75%,rgba(123, 123, 123, 0.05) 75%, rgba(123, 123, 123, 0.05) 100%),linear-gradient(90deg, rgb(32,234,255),rgb(37,116,255));
+  }
+  nav:not(.nav-bar-active)
+  {
+    transform:translateY(-100%);
+  }
+  nav
+  {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(1,1fr);
+    grid-gap:2.5vmin;
+    padding:2.5vmin !important;
+    position:fixed;
+    width:calc(100% - 5vmin);
+    height:calc((100% - 5vmin) - 50px);
+    top:50px;
+    left:0;
+    z-index:300;
+    background:#FFF;
+  }
+  nav .left,nav .right
+  {
+    width:100%;
+    height:100%;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(2,1fr);
+    grid-gap:2.5vmin;
+  }
+  nav a
+  {
+    margin:0px !important;
+    padding:0px !important;
+    justify-content:center;
+    display:flex;
+    flex-direction:column !important;
+    border-radius:10px;
+    transition:background-color 0.8s,color 0.3s,transform 0.3s ease-in-out 0.2s;
+    transform:scale(1,1);
+    background-color:#212121;
+    /* background-image: repeating-radial-gradient(circle at center center, transparent 0px, transparent 11px,rgba(255,255,255,0.04) 11px, rgba(255,255,255,0.04) 19px,transparent 19px, transparent 29px,rgba(255,255,255,0.04) 29px, rgba(255,255,255,0.04) 33px),repeating-radial-gradient(circle at center center, rgb(0,0,0) 0px, rgb(0,0,0) 5px,rgb(0,0,0) 5px, rgb(0,0,0) 17px,rgb(0,0,0) 17px, rgb(0,0,0) 30px,rgb(0,0,0) 30px, rgb(0,0,0) 43px,rgb(0,0,0) 43px, rgb(0,0,0) 45px,rgb(0,0,0) 45px, rgb(0,0,0) 47px); background-size: 53px 53px; */
+
+    /* background-image: repeating-radial-gradient(circle at center center, transparent 0px, transparent 11px,rgba(255,255,255,0.04) 11px, rgba(255,255,255,0.04) 19px,transparent 19px, transparent 29px,rgba(255,255,255,0.04) 29px, rgba(255,255,255,0.04) 33px),repeating-radial-gradient(circle at center center, rgb(24,24,24) 0px, rgb(24,24,24) 5px,rgb(24,24,24) 5px, rgb(24,24,24) 17px,rgb(24,24,24) 17px, rgb(24,24,24) 30px,rgb(24,24,24) 30px, rgb(24,24,24) 43px,rgb(24,24,24) 43px, rgb(24,24,24) 45px,rgb(24,24,24) 45px, rgb(24,24,24) 47px); background-size: 53px 53px; */
+
+    background-image: repeating-radial-gradient(circle at center center, transparent 0px, transparent 11px,rgba(255,255,255, 0.0196078431372549) 11px, rgba(255,255,255, 0.0196078431372549) 19px,transparent 19px, transparent 29px,rgba(255,255,255, 0.0196078431372549) 29px, rgba(255,255,255, 0.0196078431372549) 33px),repeating-radial-gradient(circle at center center, rgb(24,24,24) 0px, rgb(24,24,24) 5px,rgb(24,24,24) 5px, rgb(24,24,24) 17px,rgb(24,24,24) 17px, rgb(24,24,24) 30px,rgb(24,24,24) 30px, rgb(24,24,24) 43px,rgb(24,24,24) 43px, rgb(24,24,24) 45px,rgb(24,24,24) 45px, rgb(24,24,24) 47px); background-size: 53px 53px;
+
+  }
+  nav a .icon svg
+  {
+    stroke:#FFFFFF;
+    stroke-width:0.5;
+  }
+  nav a .text
+  {
+    color:#FFFFFF;
+  }
+  nav:not(.nav-bar-active) a
+  {
+    transform:scale(0.7,0.7);
+  }
+  nav a .icon
+  {
+    width:100%!important;
+    height:15vmin!important;
+    padding:0px 0px !important;
+    margin:0px 0px 20px 0px !important;
+    transition:stroke 0.3s;
+  }
+  nav a:hover
+  {
+    background:#E8E8E8;
+    background-image:radial-gradient(circle at center center, rgba(217, 217, 217,0.05) 0%, rgba(217, 217, 217,0.05) 15%,rgba(197, 197, 197,0.05) 15%, rgba(197, 197, 197,0.05) 34%,rgba(178, 178, 178,0.05) 34%, rgba(178, 178, 178,0.05) 51%,rgba(237, 237, 237,0.05) 51%, rgba(237, 237, 237,0.05) 75%,rgba(138, 138, 138,0.05) 75%, rgba(138, 138, 138,0.05) 89%,rgba(158, 158, 158,0.05) 89%, rgba(158, 158, 158,0.05) 100%),radial-gradient(circle at center center, rgb(255,255,255) 0%, rgb(255,255,255) 6%,rgb(255,255,255) 6%, rgb(255,255,255) 12%,rgb(255,255,255) 12%, rgb(255,255,255) 31%,rgb(255,255,255) 31%, rgb(255,255,255) 92%,rgb(255,255,255) 92%, rgb(255,255,255) 97%,rgb(255,255,255) 97%, rgb(255,255,255) 100%); background-size: 42px 42px;
+  }
+  nav a:hover .icon svg
+  {
+    stroke:#000000;
+    stroke-width:1;
+  }
+  nav a:hover .text
+  {
+    color:#000000;
+  }
+}
+@media (max-width:1150px) and (orientation:landscape)
+{
+  nav
+  {
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(1,1fr);
+  }
+}
+@media (max-width:1150px) and (orientation:portrait)
+{
+  nav
+  {
+    grid-template-columns:repeat(1,1fr);
+    grid-template-rows:repeat(2,1fr);
+  }
+}
+@media (max-width:500px)
+{
+  nav a .text
+  {
+    font-size:15px;
+  }
+  nav a .icon svg
+  {
+    stroke-width:1;
+  }
+}
+@media (min-width:1150px)
+{
+  nav a::before,nav a::after
+  {
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#000000;
+  }
+  nav a::before
+  {
+    bottom:0;
+    left:0;
+    transform:translateY(100%);
+  }
+  nav a::after
+  {
+    top:0;
+    right:0;
+    transform:translateY(-100%);
+  }
+  nav a:hover::before,nav a:hover::after
+  {
+    animation:high-light 0.5s ease-in-out 0s forwards;
+  }
+  @keyframes high-light
+  {
+    0%
+    {
+      width:0%;
+    }
+    100%
+    {
+      width:100%;
+    }
+  }
+}
