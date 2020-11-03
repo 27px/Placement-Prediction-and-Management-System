@@ -1,10 +1,16 @@
 {
-  "student/dashboard":{
+  "login-signup":[
+    "responsiveness"
+    "validation",
+    "database",
+    "clear every form data on page shift"
+  ],
+  "student/dashboard":[
     "searchresultcontainer":"set max height",
     "searchresultcontainer":"scrollbar",
     "searchresultcontainer":"add data and link",
     "sidebar":"set titles, icons and url",
-  },
+  ],
   "ui":{
     "designs-to-add":[
       "http://localhost/Root/Workarea/My%20Collection/Card/",
@@ -22,6 +28,11 @@
     ]
   },
   "production":[
-    "minify all client-side css and js and svg"
+    "minify all client-side css and js and svg",
+    "prefetch all static files",
+    "set theme color for chrome in android"
+  ],
+  "nav":[
+    "make white bg gradient darker to see"
   ]
 }

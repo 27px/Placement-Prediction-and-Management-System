@@ -1,14 +1,16 @@
 import TypeIt from "../../plugins/typeit.js/typeit.min.js";
 
 var body;
-var _=id=>document.getELementById(id);
+var _=key=>document.querySelector(key);
+var $=key=>document.querySelectorAll(key);
+
 window.onload=()=>{
   body=document.body;
 
   //Unnecessary delay for loading animation
   var delay=3000;//seconds
   setTimeout(()=>{
-    Array.from(document.querySelectorAll(".splash")).forEach(splash=>{
+    Array.from($(".splash")).forEach(splash=>{
       splash.parentNode.removeChild(splash);
     });
   },delay);
@@ -45,7 +47,7 @@ window.onload=()=>{
   }
   q.go();
   // Descriptions (THis is too slow)
-  Array.from(document.querySelectorAll(".type-title")).forEach(title=>{
+  Array.from($(".type-title")).forEach(title=>{
     new TypeIt(title,{
       loop:false,
       speed:50,
@@ -66,7 +68,7 @@ window.onscroll=function(){
 function scrolled()
 {
   const H=body.clientHeight;
-  var list=document.querySelectorAll(".animated");
+  var list=$(".animated");
   var i=0;
   for(var x of list)
   {

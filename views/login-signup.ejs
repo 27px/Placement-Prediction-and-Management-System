@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/nav.css">
+    <link rel="stylesheet" href="../static/style/login/style.css">
+    <link rel="stylesheet" href="../static/style/default-values.css">
+    <script type="text/javascript" src="../static/script/login/script.js"></script>
+    <title>Login</title>
+  </head>
+  <body>
+    <%- include("partials/nav",{
+      loggedin:false
+    }); %>
+    <div class="bg"></div>
+    <div class="container">
+
+      <div class="wrapper login-wrapper <%=login%>" id="login">
+        <div class="login">
+          <div class="image">
+            <div class="title-wrapper">
+              <div class="title">Welcome Back</div>
+            </div>
+            <div class="title-wrapper">
+              <div class="sub-title">Don't have an account ?</div>
+              <div class="other-button" tabindex=0 onclick="animateNext(event,'login-to-next',`login-wrapper`,`register-wrapper`);">Register</div>
+            </div>
+          </div>
+          <form action="/login" method="post" class="login-form">
+            <div class="title">Login</div>
+            <div class="row">
+              <label class="label" for="login-email">User ID</label>
+              <input type="text" id="login-email" name="login-email" autocomplete="text" spellcheck="false">
+            </div>
+            <div class="row">
+              <label class="label" for="login-password">Password</label>
+              <div class="password">
+                <input type="password" id="login-password" name="login-password" autocomplete="text" spellcheck="false">
+                <div class="togglePassword" toggleTarget="login-password" tabindex=0 id="login-eye">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </div>
+              </div>
+            </div>
+            <div class="row row-flex">
+              <div class="row-wrapper">
+                <input type="checkbox" id="login-remember" name="login-remember">
+                <label class="label" for="login-remember">Remember Me</label>
+              </div>
+              <a href="/reset/password">Forgot Password</a>
+            </div>
+            <div class="row button-center">
+              <button type="reset" class="clear" resetTarget="login-password" buttonTarget="login-eye">Clear</button>
+              <button type="button" name="login">Login</button>
+            </div>
+          </form>
+          <div class="to-next login-to-next"></div>
+        </div>
+      </div>
+
+      <div class="wrapper register-wrapper <%=register%>" id="register">
+        <div class="register">
+          <div class="image">
+            <div class="title-wrapper">
+              <div class="title">Welcome</div>
+            </div>
+            <div class="title-wrapper">
+              <div class="sub-title">Already have an account ?</div>
+              <div class="other-button" tabindex=0 onclick="animateNext(event,'register-to-next',`register-wrapper`,`login-wrapper`);">Login</div>
+            </div>
+          </div>
+          <form action="/register" method="post" class="register-form">
+            <div class="title">Sign Up</div>
+            <div class="row">
+              <label class="label" for="register-email">User ID</label>
+              <input type="text" id="register-email" name="register-email" autocomplete="text" spellcheck="false">
+            </div>
+            <div class="row">
+              <label class="label" for="register-password">Password</label>
+              <div class="password">
+                <input type="password" id="register-password" name="register-password" autocomplete="text" spellcheck="false">
+                <div class="togglePassword" toggleTarget="register-password" tabindex=0 id="register-eye">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <label class="label" for="register-confirm-password">Confirm Password</label>
+              <div class="password">
+                <input type="password" id="register-confirm-password" name="register-confirm-password" autocomplete="text" spellcheck="false">
+                <div class="togglePassword" toggleTarget="register-confirm-password" tabindex=0 id="register-confirm-eye">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </div>
+              </div>
+            </div>
+            <div class="row button-center">
+              <button type="reset" class="clear" resetTarget="register-password;register-confirm-password" buttonTarget="register-eye;register-confirm-eye">Clear</button>
+              <button type="button" name="register">Sign Up</button>
+            </div>
+          </form>
+          <div class="to-next register-to-next"></div>
+        </div>
+      </div>
+
+
+    </div>
+  </body>
+</html>

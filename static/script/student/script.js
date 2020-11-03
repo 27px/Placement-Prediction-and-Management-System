@@ -1,12 +1,7 @@
 var body;
-function _(id)
-{
-  return document.getElementById(id);
-}
-function pf(x)
-{
-  return parseFloat(x);
-}
+const _=id=>document.querySelector(id);
+const $=key=>document.querySelectorAll(key);
+const pf=x=>parseFloat(x);
 function ce(e,c="",id="",content="")
 {
   var el=document.createElement(e);
@@ -26,7 +21,7 @@ function ce(e,c="",id="",content="")
 }
 function load(tab,callback)
 {
-  var container=_("body");
+  var container=_("#body");
   fetch(`/student/dashboard/${tab}`,{
     method:"POST"
   }).then(response=>{
@@ -48,7 +43,7 @@ function load(tab,callback)
 window.onload=()=>{
   body=document.body;
   var tab="main";
-  var open=_("body").getAttribute("openTab");
+  var open=_("#body").getAttribute("openTab");
   if(open!="")
   {
     tab=open;
@@ -59,7 +54,7 @@ window.onload=()=>{
     callback=loadCharts;
   }
   load(tab,callback);
-  Array.from(document.querySelectorAll(".option")).forEach(option=>{
+  Array.from($(".option")).forEach(option=>{
     option.addEventListener("click",openTab);
   });
 };
@@ -76,12 +71,12 @@ function openTab(event)
 }
 function toggleMenu()
 {
-  _("seperator").style.display="block";
-  _("side").scrollTop=0;
+  _("#seperator").style.display="block";
+  _("#side").scrollTop=0;
   document.body.classList.toggle("show-menu");
   setTimeout(function(){
     if(!document.body.classList.contains("show-menu"))
-    _("seperator").style.display="none";
+    _("#seperator").style.display="none";
   },800);
   resetSearch();
 }
@@ -89,7 +84,7 @@ function hideMenu()
 {
   document.body.classList.remove("show-menu");
   setTimeout(function(){
-    _("seperator").style.display="none";
+    _("#seperator").style.display="none";
   },800);
 }
 function loadCharts()
@@ -239,13 +234,13 @@ function loadCharts()
     }]
   };
   function applyEffect(){
-    var ctx = document.getElementById('graph').getContext('2d');
+    var ctx = _('#graph').getContext('2d');
     window.myDoughnut = new Chart(ctx, config);
 
-    var xctx = document.getElementById('graph2').getContext('2d');
+    var xctx = _('#graph2').getContext('2d');
     window.myLine = new Chart(xctx, xconfig);
 
-    var zctx = document.getElementById('graph3').getContext('2d');
+    var zctx = _('#graph3').getContext('2d');
     window.myBar = new Chart(zctx, {
       type: 'bar',
       data: barChartData,
@@ -266,7 +261,7 @@ function loadCharts()
 }
 function loadingError()
 {
-  var b=_("body");
+  var b=_("#body");
   b.innerHTML="";
   b.appendChild(ce("div","error"));
 }
@@ -274,15 +269,15 @@ function searchItem(event,box)
 {
   var min=1;//minimum number of characters required to start search
   var v=box.value.toLowerCase();
-  var sc=_("searchcontainer").getBoundingClientRect();
-  var res=_("searchresultcontainer");
+  var sc=_("#searchcontainer").getBoundingClientRect();
+  var res=_("#searchresultcontainer");
   if(res==null)
   {
     res=ce("div","searchresultcontainer","searchresultcontainer");
   }
   if(isMinScreen())
   {
-    _("searchcontainermin").appendChild(res);
+    _("#searchcontainermin").appendChild(res);
   }
   else
   {
@@ -294,8 +289,8 @@ function searchItem(event,box)
     res.innerHTML="";
     if(isMinScreen())
     {
-      var ptop=pf(getComputedStyle(_('side'))['paddingTop']);
-      var scmin=getComputedStyle(_('searchcontainermin'));
+      var ptop=pf(getComputedStyle(_('#side'))['paddingTop']);
+      var scmin=getComputedStyle(_('#searchcontainermin'));
       x=ptop+"px";
       y=(ptop+pf(scmin['height']))+"px";
     }
@@ -336,11 +331,11 @@ function isMinScreen()
 function resizeSearch()
 {
   resetSearch(0);
-  var i=_("searchcontainer").children[0],o=_("searchcontainermin").children[0];
+  var i=_("#searchcontainer").children[0],o=_("#searchcontainermin").children[0];
   if(isMinScreen())
   {
-    i=_("searchcontainermin").children[0];
-    o=_("searchcontainer").children[0];
+    i=_("#searchcontainermin").children[0];
+    o=_("#searchcontainer").children[0];
   }
   if(i.value=="")
   {
@@ -353,7 +348,7 @@ function resizeSearch()
 }
 async function runSearch(rx,res,v,high,callback)
 {
-  const userType=document.querySelector("#searchcontainer").getAttribute("usertype");
+  const userType=_("#searchcontainer").getAttribute("usertype");
   var count=0,s;
   // type attribute is used to refresh cache
   // it has no effect on results returned

@@ -29,7 +29,7 @@ a.nav-item
   text-decoration:none;
   font-family:var(--font-monospace);
   margin:15px 5px;
-  padding:5px 12px;
+  padding:10px 15px;
   font-size:18px;
   letter-spacing:1px;
   font-weight:900;
@@ -68,6 +68,7 @@ a.menu
     justify-content:center;
     align-items:center;
     margin:8px 5px;
+    padding:5px 12px;
   }
   .top-bar
   {

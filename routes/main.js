@@ -18,18 +18,24 @@ route.get("/home",(req,res)=>{
 
 //Login
 route.get("/login",(req,res)=>{
-  res.render("login");
+  res.render("login-signup",{
+    login:"visible",
+    register:"hidden"
+  });// hide register
+});
+
+//New Account
+route.get("/register",(req,res)=>{
+  res.render("login-signup",{
+    login:"hidden",
+    register:"visible"
+  });//hide login
 });
 
 //Logout
 route.get("/logout",(req,res)=>{
   //logout code
   res.redirect("home");
-});
-
-//New Account
-route.get("/register",(req,res)=>{
-  res.render("register");
 });
 
 //Reset Password
