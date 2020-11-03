@@ -272,7 +272,7 @@ function loadingError()
 }
 function searchItem(event,box)
 {
-  var min=searchItems["option"].min;
+  var min=1;//minimum number of characters required to start search
   var v=box.value.toLowerCase();
   var sc=_("searchcontainer").getBoundingClientRect();
   var res=_("searchresultcontainer");
@@ -290,7 +290,7 @@ function searchItem(event,box)
   }
   if(v.length>=min)
   {
-    var rx=new RegExp("^"+v.toLowerCase()),x,y;
+    var rx=new RegExp("^"+(v.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))),x,y;
     res.innerHTML="";
     if(isMinScreen())
     {
@@ -307,18 +307,21 @@ function searchItem(event,box)
     }
     res.style.left=x;
     res.style.top=y;
-    var count=runSearch(rx,res,v,0);
-    if(count<1 && v.length>=min)
-    {
-      rx=new RegExp(v.toLowerCase());
-      count=runSearch(rx,res,v,1);
-    }
-    if(count<1)
-    {
-      // res.parentNode.removeChild(res);
-      res.innerHTML="";
-      res.appendChild(ce("div","item noresult","","No results"));
-    }
+    res.appendChild(ce("div","search-loading"));
+    runSearch(rx,res,v,0,count=>{
+      if(count<1 && v.length>=min)
+      {
+        res.appendChild(ce("div","search-loading"));
+        rx=new RegExp(v.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+        runSearch(rx,res,v,1,count=>{
+          if(count<1)
+          {
+            res.innerHTML="";
+            res.appendChild(ce("div","item noresult","","No results"));
+          }
+        });
+      }
+    });
   }
   else
   {
@@ -348,22 +351,40 @@ function resizeSearch()
     searchItem(null,i);
   },0);
 }
-function runSearch(rx,res,v,high)
+async function runSearch(rx,res,v,high,callback)
 {
-  var count=0;
-  searchItems["items"].forEach((item, i) => {
-    let k=item["key"].toLowerCase();
-    if(high==1)
-    {
-      k=k.replace(v,"<span class='high'>"+v+"</span>");
-    }
-    if(rx.test(k))
-    {
-      let it=ce("a","item","",k);
-      it.setAttribute("href",item["url"]);
-      res.appendChild(it);
-      count++;
-    }
+  const userType=document.querySelector("#searchcontainer").getAttribute("usertype");
+  var count=0,s;
+  // type attribute is used to refresh cache
+  // it has no effect on results returned
+  // user type is validated from session storage
+  await fetch(`/data/sitemap?type=${userType}`,{
+    cache:"force-cache"
+  }).then(response=>{
+    response.json().then(searchItems=>{
+      res.innerHTML="";
+      searchItems.forEach(page=>{
+        let k=page["key"].toLowerCase();
+        if(high==1)
+        {
+          k=k.replace(v,"<span class='high'>"+v+"</span>");
+        }
+        if(rx.test(k))
+        {
+          let it=ce("a","item","",k);
+          it.setAttribute("href",page["url"]);
+          res.appendChild(it);
+          count++;
+        }
+      });
+      callback(count);
+    }).catch(err=>{
+      console.error(err.message);
+      count=0;
+    });
+  }).catch(err=>{
+    console.error(err.message);
+    count=0;
   });
   return count;
 }

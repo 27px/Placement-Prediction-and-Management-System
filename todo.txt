@@ -1,12 +1,9 @@
 {
   "student/dashboard":{
-    "data.js":"move to server",
     "searchresultcontainer":"set max height",
     "searchresultcontainer":"scrollbar",
     "searchresultcontainer":"add data and link",
     "sidebar":"set titles, icons and url",
-    "option":"add click listener",
-    "sitemap":"in search field, load from server"
   },
   "ui":{
     "designs-to-add":[
@@ -24,9 +21,6 @@
       "geo-location"
     ]
   },
-  "before-production":[
-    "sitemap":"in search field, load from server"
-  ],
   "production":[
     "minify all client-side css and js and svg"
   ]

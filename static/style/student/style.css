@@ -778,3 +778,28 @@
     opacity:0;
   }
 }
+.search-loading
+{
+  position:relative;
+  width:50px;
+  height:50px;
+  margin:15px auto;
+  border-top:5px solid rgba(255,255,255,0.8);
+  border-bottom:5px solid transparent;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  box-sizing:border-box;
+  border-radius:50px;
+  animation:load 0.8s linear infinite normal;
+}
+@keyframes load
+{
+  0%
+  {
+    transform:rotate(0deg);
+  }
+  100%
+  {
+    transform:rotate(360deg);
+  }
+}

@@ -4,6 +4,7 @@ const student=require("./student");
 const coordinator=require("./coordinator");
 const recruiter=require("./recruiter");
 const administrator=require("./administrator");
+const data=require("./data");
 
 //Main Root
 route.get("/",(req,res)=>{
@@ -93,6 +94,9 @@ route.use("/recruiter",recruiter);
 
 //Administrator Route
 route.use("/administrator",administrator);
+
+//Get non html data for displaying
+route.use("/data",data);
 
 //Not Found
 route.get("/404",function(req,res){

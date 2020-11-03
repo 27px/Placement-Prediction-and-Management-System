@@ -2,6 +2,8 @@ const {version}=require("../package.json");
 const express=require("express");
 const studentTabs=require("./student-tabs");
 const student=express.Router();
+const User=require("../functions/user.js");
+const user=new User();
 
 //Route Student
 student.get("/",(req,res)=>{
@@ -12,7 +14,8 @@ student.get("/",(req,res)=>{
 student.get("/dashboard",(req,res)=>{
   res.render("student/dashboard",{
     tab:req.query.tab,
-    version
+    version,
+    usertype:user.type
   });
 });
 

@@ -9,6 +9,10 @@
   {
     tab="main";
   }
+  if(!usertype)
+  {
+    usertype="guest";
+  }
 %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -16,14 +20,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="theme-color" content="#2196F3">
-    <link rel="preload" href="../static/style/student-dashboard/style.css" as="style">
-    <link rel="preload" href="../static/style/student-dashboard/dash.css" as="style">
-    <link rel="preload" href="../static/script/student-dashboard/data.js" as="script">
-    <link rel="preload" href="../static/script/student-dashboard/script.js" as="script">
-    <link rel="stylesheet" href="../static/style/student-dashboard/style.css">
-    <link rel="stylesheet" href="../static/style/student-dashboard/dash.css">
-    <script src="../static/script/student-dashboard/data.js"></script>
-    <script src="../static/script/student-dashboard/script.js"></script>
+    <link rel="preload" href="../static/style/student/style.css" as="style">
+    <link rel="preload" href="../static/style/student/dash.css" as="style">
+    <link rel="preload" href="../static/script/student/script.js" as="script">
+    <link rel="stylesheet" href="../static/style/student/style.css">
+    <link rel="stylesheet" href="../static/style/student/dash.css">
+    <script src="../static/script/student/script.js"></script>
     <title>Dashboard</title>
   </head>
   <body onresize="resizeSearch();">
@@ -35,7 +37,7 @@
           <div class="box"></div>
         </div>
       </div>
-      <div class="searchcontainer" id="searchcontainer">
+      <div class="searchcontainer" id="searchcontainer" usertype="<%=usertype%>">
         <input class="search" placeholder="Search" spellcheck="false" oninput="searchItem(event,this);" onclick="searchItem(null,this);"><!--There's another one in the side bar-->
       </div>
       <div class="app" onclick="window.location='/home';">
