@@ -32,6 +32,30 @@ route.get("/register",(req,res)=>{
   });//hide login
 });
 
+//process Login
+route.post("/login",(req,res)=>{
+  console.log(req.body);
+  var user="student";//change
+  var data={
+    type:"error",
+    message:"Invalid Credentials",
+    redirect:`${user}/dashboard`
+  };//proccess
+  res.json(data);
+});
+
+//process registration
+route.post("/register",(req,res)=>{
+
+  var user="student";//change
+  var data={
+    type:"error",
+    message:"Invalid Credentials",
+    redirect:`${user}/dashboard`
+  };//proccess
+  res.json(data);
+});
+
 //Logout
 route.get("/logout",(req,res)=>{
   //logout code

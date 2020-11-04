@@ -16,14 +16,12 @@ window.onload=()=>{
     _('#nav-bar').classList.remove('nav-bar-active');
     animateNext(event,'login-to-next',`login-wrapper`,`register-wrapper`);
   });
-
   loginEmail=_("#login-email");
   loginPassword=_("#login-password");
   loginRemember=_("#login-remember");
   registerEmail=_("#register-email");
   registerPassword=_("#register-password");
   registerConfirmPassword=_("#register-confirm-password");
-
   Array.from($(".togglePassword")).forEach(tbutton=>{
     tbutton.addEventListener("click",function(){
       const button=event.currentTarget;
@@ -57,6 +55,10 @@ function resetPasswordInput(event)
 }
 function animateNext(event,id,wrapperclass,otherwrapperclass)
 {
+  var title=otherwrapperclass.split("-")[0].split("");
+  title[0]=title[0].toUpperCase();
+  title=title.join("");
+  document.title=title;
   const target=_(`.${id}`);
   const wrapper=_(`.${wrapperclass}`);
   const otherwrapper=_(`.${otherwrapperclass}`);
@@ -81,4 +83,74 @@ function animateNext(event,id,wrapperclass,otherwrapperclass)
       target.style.clipPath=`circle(0% at ${x}px ${y}px)`;
     }
   },1);
+}
+function resetMessage(box)
+{
+  box.innerHTML="";
+  box.classList.remove("error");
+  box.classList.remove("warning");
+}
+function setMessage(form,message,input,type)
+{
+  const box=_(`#${form}-${input}-message`);
+  resetMessage(box);
+  box.innerHTML=message;
+  box.classList.add(type);
+}
+function validataLogin()
+{
+  const u=loginEmail;
+  const p=loginPassword;
+  const r=loginRemember;
+  if(u.value=="")
+  {
+    setMessage("login","Enter User Id !","email","error");
+    u.focus();
+    return;
+  }
+  else
+  {
+    resetMessage(_("#login-email-message"));
+  }
+  if(p.value=="")
+  {
+    setMessage("login","Enter Password !","password","error");
+    p.focus();
+    return;
+  }
+  else
+  {
+    resetMessage(_("#login-password-message"));
+  }
+  var formData={
+    email:u.value,
+    password:p.value,
+    remember:r.checked
+  };
+  fetch("/login",{
+    method:"POST",
+    cache:"no-cache",
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify(formData),
+    credentials:"include"
+  }).then(response=>{
+    response.json().then(data=>{
+      if(data.type=="success")
+      {
+        window.location=data.redirect;
+      }
+      else
+      {
+        setMessage("login",data.message,"email","error");
+      }
+    }).catch(error=>{
+      console.error(error.message);
+      setMessage("login","Server sent invalid response","email","error");
+    });
+  }).catch(error=>{
+    console.error(error.message);
+    setMessage("login","Unknown Error","email","error");
+  });
 }
