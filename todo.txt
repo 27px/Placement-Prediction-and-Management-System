@@ -1,7 +1,8 @@
 {
   "login-signup":[
     "validation",
-    "database"
+    "connect database",
+    "handle login and register in server"
   ],
   "student/dashboard":[
     "searchresultcontainer":"set max height",
