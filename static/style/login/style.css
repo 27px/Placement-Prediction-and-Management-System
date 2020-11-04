@@ -78,6 +78,21 @@ body
   box-shadow:0px 0px 15px 0px rgba(0,0,0,0.5),
              0px 0px 5px 1px rgba(0,0,0,0.5);
 }
+.login
+{
+  display:flex;
+  flex-direction:row;
+}
+.register
+{
+  display:flex;
+  flex-direction:row-reverse;
+}
+.login::-webkit-scrollbar,
+.register::-webkit-scrollbar
+{
+  width:0px;
+}
 .login,
 .register
 {
@@ -89,8 +104,6 @@ body
 {
   width:calc(100% - var(--form-width));
   height:100%;
-  position:absolute;
-  top:0;
   background:transparent;
   z-index:10;
   display:flex;
@@ -103,14 +116,6 @@ body
   font-weight:900;
   color:#FFFFFF;
   letter-spacing:2px;
-}
-.register .image
-{
-  right:0;
-}
-.login .image
-{
-  left:0;
 }
 .login .image::before,
 .register .image::before
@@ -134,24 +139,12 @@ body
 {
   width:var(--form-width);
   height:100%;
-  position:absolute;
-  top:0;
-  right:0;
   box-shadow:0px 0px 10px 1px #000000;
   background:#FFFFFF;
   padding:15px 35px;
   box-sizing:border-box;
   z-index:15;
 }
-.login .login-form
-{
-  right:0;
-}
-.register .register-form
-{
-  left:0;
-}
-
 .visible .login-form,
 .visible .register-form
 {
@@ -168,7 +161,6 @@ body
     transform:translateY(0%);
   }
 }
-
 .login .login-form .title,
 .register .register-form .title
 {
@@ -459,5 +451,40 @@ label:hover,input[type=checkbox]:hover
   .login .login-form,.register .register-form
   {
     padding:15px 10px;
+  }
+}
+@media (max-width:550px)
+{
+  :root
+  {
+    --form-width:100%;
+    --wrapper-width:350px;
+  }
+  .image
+  {
+    width:100% !important;
+  }
+  .login,.register
+  {
+    flex-direction:column;
+    overflow-y:auto;
+  }
+  .image .title
+  {
+    font-size:30px;
+    margin-bottom:80px;
+    margin-top:40px;
+  }
+  .other-button
+  {
+    margin-bottom:40px;
+  }
+}
+@media (max-width:400px)
+{
+  :root
+  {
+    --form-width:100%;
+    --wrapper-width:300px;
   }
 }

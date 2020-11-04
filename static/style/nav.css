@@ -6,7 +6,7 @@ nav
   flex-direction:row;
   z-index:5;
   padding:0px 5px;
-  transition:transform 0.8s;
+  transition:transform 0.8s,opacity 0.3s;
   z-index:300!important;
 }
 nav .left
@@ -84,6 +84,7 @@ a.menu
   nav:not(.nav-bar-active)
   {
     transform:translateY(-100%);
+    opacity:0;
   }
   nav
   {
