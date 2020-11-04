@@ -178,7 +178,7 @@ body
   border-bottom:3px solid #000000;
   border-left:3px solid transparent;
   border-right:3px solid transparent;
-  animation:roll 2s linear infinite normal;
+  animation:roll 8s linear infinite normal;
 }
 .image .icon::after
 {
@@ -188,7 +188,7 @@ body
   border-bottom:3px solid transparent;
   border-left:3px solid #000000;
   border-right:3px solid #000000;
-  animation:roll 1.5s linear infinite reverse;
+  animation:roll 15s linear infinite normal;
 }
 @keyframes roll
 {

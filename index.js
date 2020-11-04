@@ -3,8 +3,7 @@ const express=require("express");
 const path=require("path");
 const favicon=require("serve-favicon");
 const route=require("./routes/main");
-const DB_CONNECTION_URL=require("./config/db.js");
-const mongoose=require("mongoose");
+const chalk=require("chalk");
 
 const PORT=config.SERVER.PORT;
 const HOST=config.SERVER.HOST;
@@ -24,5 +23,5 @@ app.use("/static",express.static(path.join(__dirname,"static")));
 app.use("/",route);
 
 app.listen(PORT,()=>{
-  console.log(`Started server ${HOST} on port : ${PORT}`);
+  console.log(chalk.green.inverse(` Started server ${HOST} on port ${PORT} `));
 });

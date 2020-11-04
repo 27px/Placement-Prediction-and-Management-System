@@ -4,7 +4,7 @@ const student=require("./student");
 const coordinator=require("./coordinator");
 const recruiter=require("./recruiter");
 const administrator=require("./administrator");
-const data=require("./data");
+const data=require("./data");// statistics, sitemap and other data
 
 //Main Root
 route.get("/",(req,res)=>{
