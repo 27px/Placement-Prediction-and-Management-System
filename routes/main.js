@@ -37,7 +37,7 @@ route.post("/login",(req,res)=>{
   console.log(req.body);
   var user="student";//change
   var data={
-    type:"error",
+    success:false,
     message:"Invalid Credentials",
     redirect:`${user}/dashboard`
   };//proccess
@@ -47,9 +47,10 @@ route.post("/login",(req,res)=>{
 //process registration
 route.post("/register",(req,res)=>{
 
+  console.log(req.body);
   var user="student";//change
   var data={
-    type:"error",
+    success:true,
     message:"Invalid Credentials",
     redirect:`${user}/dashboard`
   };//proccess

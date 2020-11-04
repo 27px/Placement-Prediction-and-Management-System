@@ -530,6 +530,10 @@ label:hover,input[type=checkbox]:hover
   justify-content:space-around;
   align-self:center;
 }
+input[type="password"]
+{
+  padding-right:35px !important;
+}
 @media (max-width:800px)
 {
   .image .title
@@ -598,6 +602,10 @@ label:hover,input[type=checkbox]:hover
   {
     --form-width:100%;
     --wrapper-width:300px;
+  }
+  .wrapper .row button
+  {
+    padding:8px 15px!important;
   }
 }
 @media (max-width:320px)

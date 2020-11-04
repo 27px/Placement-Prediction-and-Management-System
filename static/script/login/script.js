@@ -16,6 +16,8 @@ window.onload=()=>{
     _('#nav-bar').classList.remove('nav-bar-active');
     animateNext(event,'login-to-next',`login-wrapper`,`register-wrapper`);
   });
+  _("#login-button").addEventListener("click",login);
+  _("#register-button").addEventListener("click",register);
   loginEmail=_("#login-email");
   loginPassword=_("#login-password");
   loginRemember=_("#login-remember");
@@ -97,7 +99,7 @@ function setMessage(form,message,input,type)
   box.innerHTML=message;
   box.classList.add(type);
 }
-function validataLogin()
+function login()
 {
   const u=loginEmail;
   const p=loginPassword;
@@ -137,7 +139,7 @@ function validataLogin()
     credentials:"include"
   }).then(response=>{
     response.json().then(data=>{
-      if(data.type=="success")
+      if(data.success===true)
       {
         window.location=data.redirect;
       }
@@ -152,5 +154,101 @@ function validataLogin()
   }).catch(error=>{
     console.error(error.message);
     setMessage("login","Unknown Error","email","error");
+  });
+}
+function register()
+{
+  const u=registerEmail;
+  const p=registerPassword;
+  const c=registerConfirmPassword;
+  if(u.value=="")
+  {
+    setMessage("register","Enter User Id !","email","error");
+    u.focus();
+    return;
+  }
+  else
+  {
+    resetMessage(_("#register-email-message"));
+  }
+  if(!validateEmail(u.value))
+  {
+    setMessage("register","Invalid Email","email","error");
+    u.focus();
+    return;
+  }
+  else
+  {
+    resetMessage(_("#register-email-message"));
+  }
+  if(p.value=="")
+  {
+    setMessage("register","Enter Password !","password","error");
+    p.focus();
+    return;
+  }
+  else
+  {
+    resetMessage(_("#register-password-message"));
+  }
+  if(p.value.length<8 || p.value.length>20)
+  {
+    setMessage("register","length between 8 and 20","password","error");
+    p.focus();
+    return;
+  }
+  else
+  {
+    resetMessage(_("#register-password-message"));
+  }
+  if(c.value=="")
+  {
+    setMessage("register","Confirm Password !","confirm-password","error");
+    c.focus();
+    return;
+  }
+  else
+  {
+    resetMessage(_("#register-confirm-password-message"));
+  }
+  if(p.value!=c.value)
+  {
+    setMessage("register","Enter same password","confirm-password","warning");
+    p.focus();
+    return;
+  }
+  else
+  {
+    resetMessage(_("#register-confirm-password-message"));
+  }
+  var formData={
+    email:u.value,
+    password:p.value
+  };
+  fetch("/register",{
+    method:"POST",
+    cache:"no-cache",
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify(formData),
+    credentials:"include"
+  }).then(response=>{
+    response.json().then(data=>{
+      if(data.success===true)
+      {
+        window.location=data.redirect;
+      }
+      else
+      {
+        setMessage("register",data.message,"email","error");
+      }
+    }).catch(error=>{
+      console.error(error.message);
+      setMessage("register","Server sent invalid response","email","error");
+    });
+  }).catch(error=>{
+    console.error(error.message);
+    setMessage("register","Unknown Error","email","error");
   });
 }
