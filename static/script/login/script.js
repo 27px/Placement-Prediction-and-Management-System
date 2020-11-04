@@ -67,6 +67,9 @@ function animateNext(event,id,wrapperclass,otherwrapperclass)
     if(p>155)
     {
       clearTimeout(t);
+      Array.from($(".clear")).forEach(clear=>{
+        clear.click();
+      });
       otherwrapper.classList.remove("hidden");
       otherwrapper.classList.add("visible");
       wrapper.classList.remove("visible");

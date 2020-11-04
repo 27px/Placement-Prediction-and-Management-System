@@ -120,12 +120,7 @@ a.menu
     transition:background-color 0.8s,color 0.3s,transform 0.3s ease-in-out 0.2s;
     transform:scale(1,1);
     background-color:#212121;
-    /* background-image: repeating-radial-gradient(circle at center center, transparent 0px, transparent 11px,rgba(255,255,255,0.04) 11px, rgba(255,255,255,0.04) 19px,transparent 19px, transparent 29px,rgba(255,255,255,0.04) 29px, rgba(255,255,255,0.04) 33px),repeating-radial-gradient(circle at center center, rgb(0,0,0) 0px, rgb(0,0,0) 5px,rgb(0,0,0) 5px, rgb(0,0,0) 17px,rgb(0,0,0) 17px, rgb(0,0,0) 30px,rgb(0,0,0) 30px, rgb(0,0,0) 43px,rgb(0,0,0) 43px, rgb(0,0,0) 45px,rgb(0,0,0) 45px, rgb(0,0,0) 47px); background-size: 53px 53px; */
-
-    /* background-image: repeating-radial-gradient(circle at center center, transparent 0px, transparent 11px,rgba(255,255,255,0.04) 11px, rgba(255,255,255,0.04) 19px,transparent 19px, transparent 29px,rgba(255,255,255,0.04) 29px, rgba(255,255,255,0.04) 33px),repeating-radial-gradient(circle at center center, rgb(24,24,24) 0px, rgb(24,24,24) 5px,rgb(24,24,24) 5px, rgb(24,24,24) 17px,rgb(24,24,24) 17px, rgb(24,24,24) 30px,rgb(24,24,24) 30px, rgb(24,24,24) 43px,rgb(24,24,24) 43px, rgb(24,24,24) 45px,rgb(24,24,24) 45px, rgb(24,24,24) 47px); background-size: 53px 53px; */
-
     background-image: repeating-radial-gradient(circle at center center, transparent 0px, transparent 11px,rgba(255,255,255, 0.0196078431372549) 11px, rgba(255,255,255, 0.0196078431372549) 19px,transparent 19px, transparent 29px,rgba(255,255,255, 0.0196078431372549) 29px, rgba(255,255,255, 0.0196078431372549) 33px),repeating-radial-gradient(circle at center center, rgb(24,24,24) 0px, rgb(24,24,24) 5px,rgb(24,24,24) 5px, rgb(24,24,24) 17px,rgb(24,24,24) 17px, rgb(24,24,24) 30px,rgb(24,24,24) 30px, rgb(24,24,24) 43px,rgb(24,24,24) 43px, rgb(24,24,24) 45px,rgb(24,24,24) 45px, rgb(24,24,24) 47px); background-size: 53px 53px;
-
   }
   nav a .icon svg
   {
@@ -151,7 +146,9 @@ a.menu
   nav a:hover
   {
     background:#E8E8E8;
-    background-image:radial-gradient(circle at center center, rgba(217, 217, 217,0.05) 0%, rgba(217, 217, 217,0.05) 15%,rgba(197, 197, 197,0.05) 15%, rgba(197, 197, 197,0.05) 34%,rgba(178, 178, 178,0.05) 34%, rgba(178, 178, 178,0.05) 51%,rgba(237, 237, 237,0.05) 51%, rgba(237, 237, 237,0.05) 75%,rgba(138, 138, 138,0.05) 75%, rgba(138, 138, 138,0.05) 89%,rgba(158, 158, 158,0.05) 89%, rgba(158, 158, 158,0.05) 100%),radial-gradient(circle at center center, rgb(255,255,255) 0%, rgb(255,255,255) 6%,rgb(255,255,255) 6%, rgb(255,255,255) 12%,rgb(255,255,255) 12%, rgb(255,255,255) 31%,rgb(255,255,255) 31%, rgb(255,255,255) 92%,rgb(255,255,255) 92%, rgb(255,255,255) 97%,rgb(255,255,255) 97%, rgb(255,255,255) 100%); background-size: 42px 42px;
+    /* background-image:radial-gradient(circle at center center, rgba(217, 217, 217,0.05) 0%, rgba(217, 217, 217,0.05) 15%,rgba(197, 197, 197,0.05) 15%, rgba(197, 197, 197,0.05) 34%,rgba(178, 178, 178,0.05) 34%, rgba(178, 178, 178,0.05) 51%,rgba(237, 237, 237,0.05) 51%, rgba(237, 237, 237,0.05) 75%,rgba(138, 138, 138,0.05) 75%, rgba(138, 138, 138,0.05) 89%,rgba(158, 158, 158,0.05) 89%, rgba(158, 158, 158,0.05) 100%),radial-gradient(circle at center center, rgb(255,255,255) 0%, rgb(255,255,255) 6%,rgb(255,255,255) 6%, rgb(255,255,255) 12%,rgb(255,255,255) 12%, rgb(255,255,255) 31%,rgb(255,255,255) 31%, rgb(255,255,255) 92%,rgb(255,255,255) 92%, rgb(255,255,255) 97%,rgb(255,255,255) 97%, rgb(255,255,255) 100%); background-size: 42px 42px; */
+
+    background-image: radial-gradient(circle at center center, rgba(217,217,217, 0.25098039215686274) 0%, rgba(217,217,217, 0.25098039215686274) 15%,rgba(197,197,197, 0.03137254901960784) 15%, rgba(197,197,197, 0.03137254901960784) 34%,rgba(178,178,178, 0.15) 34%, rgba(178,178,178, 0.15) 51%,rgba(237,237,237, 0.050980392156862744) 51%, rgba(237,237,237, 0.050980392156862744) 75%,rgba(138,138,138, 0.06) 75%, rgba(138,138,138, 0.06) 89%,rgba(158,158,158, 0.16) 89%, rgba(158,158,158, 0.16) 100%),radial-gradient(circle at center center, rgb(255,255,255) 0%, rgb(255,255,255) 6%,rgb(255,255,255) 6%, rgb(255,255,255) 12%,rgb(255,255,255) 12%, rgb(255,255,255) 31%,rgb(255,255,255) 31%, rgb(255,255,255) 92%,rgb(255,255,255) 92%, rgb(255,255,255) 97%,rgb(255,255,255) 97%, rgb(255,255,255) 100%); background-size: 42px 42px;
   }
   nav a:hover .icon svg
   {
