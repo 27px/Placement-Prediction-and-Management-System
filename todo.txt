@@ -27,10 +27,11 @@
       "geo-location"
     ]
   },
-  "production":[
+  "before-production":[
     "minify all client-side css and js and svg",
     "prefetch all static files",
-    "set theme color for chrome in android"
+    "set theme color for chrome in android",
+    "remove unused css in default-values.css"
   ],
   "nav":[
     "make white bg gradient darker to see"
