@@ -6,12 +6,7 @@
     "other pages"
   ],
   "login-signup":[
-    "validation",
-    "connect database",
-    "handle login and register in server",
-    "clear messages on clear()",
-    "add loadin animation on submit button click",
-    "scroll to error message position in mobiles (use focus of that element)"
+    "add loadin animation on submit button click"
   ],
   "student/dashboard":[
     "searchresultcontainer":"set max height",

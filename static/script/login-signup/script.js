@@ -42,10 +42,10 @@ window.onload=()=>{
     });
   });
   Array.from($(".clear")).forEach(clear=>{
-    clear.addEventListener("click",resetPasswordInput);
+    clear.addEventListener("click",resetPasswordAndMessages);
   });
 };
-function resetPasswordInput(event)
+function resetPasswordAndMessages(event)
 {
   const button=event.currentTarget;
   button.getAttribute("buttonTarget").split(";").forEach(x=>{
@@ -54,6 +54,7 @@ function resetPasswordInput(event)
   button.getAttribute("resetTarget").split(";").forEach(x=>{
     _(`#${x}`).type="password";
   });
+  Array.from($(".message")).forEach(resetMessage);
 }
 function animateNext(event,id,wrapperclass,otherwrapperclass)
 {
@@ -91,6 +92,8 @@ function resetMessage(box)
   box.innerHTML="";
   box.classList.remove("error");
   box.classList.remove("warning");
+  // box.classList.remove("info");
+  // box.classList.remove("success");
 }
 function setMessage(element,form,message,input,type)
 {
