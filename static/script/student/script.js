@@ -22,6 +22,9 @@ function ce(e,c="",id="",content="")
 function load(tab,callback)
 {
   var container=_("#body");
+  container.innerHTML="";
+  container.appendChild(ce("div","loading"));
+
   fetch(`/student/dashboard/${tab}`,{
     method:"POST"
   }).then(response=>{
