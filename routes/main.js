@@ -26,17 +26,23 @@ route.get("/home",(req,res)=>{
 
 //Login
 route.get("/login",(req,res)=>{
+  const user=new User(req.session);
   res.render("login-signup",{
     login:"visible",
-    register:"hidden"
+    register:"hidden",
+    loggedin:user.isLoggedIn,
+    type:user.type
   });// hide register
 });
 
 //New Account
 route.get("/register",(req,res)=>{
+  const user=new User(req.session);
   res.render("login-signup",{
     login:"hidden",
-    register:"visible"
+    register:"visible",
+    loggedin:user.isLoggedIn,
+    type:user.type
   });//hide login
 });
 
@@ -183,7 +189,8 @@ route.post("/register",(req,res)=>{
 
 //Logout
 route.get("/logout",(req,res)=>{
-  //logout code
+  req.session.destroy();
+  //todo clear cookies
   res.redirect("home");
 });
 

@@ -29,8 +29,9 @@
 
   </head>
   <body>
-    <%- include("partials/nav",{
-      loggedin:false
+    <%- include("partials/nav.ejs",{
+      loggedin,
+      type
     }); %>
     <div class="bg"></div>
     <div class="container">

@@ -134,6 +134,7 @@ function login()
   {
     resetMessage(_("#login-password-message"));
   }
+  b.classList.add("progress");
   var formData={
     email:u,
     password:p,
