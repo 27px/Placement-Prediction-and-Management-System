@@ -2,7 +2,8 @@
   "login-signup":[
     "validation",
     "connect database",
-    "handle login and register in server"
+    "handle login and register in server",
+    "clear messages on clear()"
   ],
   "student/dashboard":[
     "searchresultcontainer":"set max height",

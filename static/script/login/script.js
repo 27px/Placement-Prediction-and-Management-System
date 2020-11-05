@@ -135,7 +135,9 @@ function login()
     headers:{
       'Content-Type':'application/json'
     },
-    body:JSON.stringify(formData),
+    body:JSON.stringify({
+      raw:btoa(JSON.stringify(formData))
+    }),
     credentials:"include"
   }).then(response=>{
     response.json().then(data=>{
@@ -145,6 +147,10 @@ function login()
       }
       else
       {
+        if(data.devlog)
+        {
+          console.info(data.devlog);
+        }
         setMessage("login",data.message,"email","error");
       }
     }).catch(error=>{
@@ -231,7 +237,9 @@ function register()
     headers:{
       'Content-Type':'application/json'
     },
-    body:JSON.stringify(formData),
+    body:JSON.stringify({
+      raw:btoa(JSON.stringify(formData))
+    }),
     credentials:"include"
   }).then(response=>{
     response.json().then(data=>{
@@ -241,6 +249,10 @@ function register()
       }
       else
       {
+        if(data.devlog)
+        {
+          console.info(data.devlog);
+        }
         setMessage("register",data.message,"email","error");
       }
     }).catch(error=>{

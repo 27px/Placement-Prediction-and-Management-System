@@ -34,26 +34,83 @@ route.get("/register",(req,res)=>{
 
 //process Login
 route.post("/login",(req,res)=>{
-  console.log(req.body);
   var user="student";//change
-  var data={
-    success:false,
-    message:"Invalid Credentials",
-    redirect:`${user}/dashboard`
-  };//proccess
+  var parseError=false;
+  var data={};//response data
+  var userCreadentials;
+  try
+  {
+    userCredentials=Buffer.from(req.body.raw,"base64").toString("binary");
+    userCredentials=JSON.parse(userCredentials);
+  }
+  catch(error)
+  {
+    parseError=true;
+    data.success=false;
+    data.message="Invalid request";
+    data.devlog=error.message;
+  }
+  if(!parseError)//else part of try catch
+  {
+    console.log(userCredentials);
+    const {password,email,remember}=userCredentials;
+    console.log(email,password,remember);
+
+    //db
+
+    //databse processing
+    data.success=false;//hardcoded
+    if(data.success)
+    {
+      data.redirect=`${user}/dashboard`;//hardcoded
+    }
+    else
+    {
+      data.message="Invalid Credentials";//hardcoded
+    }
+  }
   res.json(data);
 });
 
 //process registration
 route.post("/register",(req,res)=>{
 
-  console.log(req.body);
+
   var user="student";//change
-  var data={
-    success:true,
-    message:"Invalid Credentials",
-    redirect:`${user}/dashboard`
-  };//proccess
+  var parseError=false;
+  var data={};//response data
+  var userCreadentials;
+  try
+  {
+    userCredentials=Buffer.from(req.body.raw,"base64").toString("binary");
+    userCredentials=JSON.parse(userCredentials);
+  }
+  catch(error)
+  {
+    parseError=true;
+    data.success=false;
+    data.message="Invalid request";
+    data.devlog=error.message;
+  }
+  if(!parseError)//else part of try catch
+  {
+    console.log(userCredentials);
+    const {password,email}=userCredentials;
+    console.log(email,password);
+
+    //db processing
+
+    //databse processing
+    data.success=false;//hardcoded
+    if(data.success)
+    {
+      data.redirect=`${user}/dashboard`;//hardcoded
+    }
+    else
+    {
+      data.message="Invalid Credentials";//hardcoded
+    }
+  }
   res.json(data);
 });
 
