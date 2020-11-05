@@ -12,11 +12,25 @@ student.get("/",(req,res)=>{
 
 //Student Dashboard
 student.get("/dashboard",(req,res)=>{
-  res.render("student/dashboard",{
-    tab:req.query.tab,
-    version,
-    usertype:user.type
-  });
+  //use user class for checking login
+  console.log(req.session.user,req.session.type);
+  //student or coordinator
+  if(req.session.user!==undefined && ( req.session.type==="student" || req.session.type==="coordinator" ))
+  {
+    res.render("student/dashboard",{
+      tab:req.query.tab,
+      version,
+      usertype:user.type
+    });
+  }
+  else if(req.session.user!==undefined && req.session.type!==undefined)//other users
+  {
+    res.redirect("/404");
+  }
+  else
+  {
+    res.redirect("/login");
+  }
 });
 
 //Profile of others or current user

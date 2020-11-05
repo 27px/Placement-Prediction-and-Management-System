@@ -5,6 +5,10 @@ const coordinator=require("./coordinator");
 const recruiter=require("./recruiter");
 const administrator=require("./administrator");
 const data=require("./data");// statistics, sitemap and other data
+const MongoClient=require("mongodb").MongoClient;
+const DB_CONNECTION_URL=require("../config/db.js");
+const config=require("../config/config.json");
+const chalk=require("chalk");
 
 //Main Root
 route.get("/",(req,res)=>{
@@ -43,33 +47,61 @@ route.post("/login",(req,res)=>{
     userCredentials=Buffer.from(req.body.raw,"base64").toString("binary");
     userCredentials=JSON.parse(userCredentials);
   }
-  catch(error)
+  catch(error)//Parse Error
   {
     parseError=true;
     data.success=false;
     data.message="Invalid request";
     data.devlog=error.message;
+    res.json(data);
   }
-  if(!parseError)//else part of try catch
+  if(!parseError)//else part of try catch (no parse error)
   {
-    console.log(userCredentials);
-    const {password,email,remember}=userCredentials;
-    console.log(email,password,remember);
+    // console.log(userCredentials);
+    var {password,email,remember}=userCredentials;
+    password=Buffer.from(password).toString("base64");
+    // console.log(email,password,remember);
 
-    //db
-
-    //databse processing
-    data.success=false;//hardcoded
-    if(data.success)
-    {
-      data.redirect=`${user}/dashboard`;//hardcoded
-    }
-    else
-    {
-      data.message="Invalid Credentials";//hardcoded
-    }
+    MongoClient.connect(DB_CONNECTION_URL,{
+      useUnifiedTopology:true
+    }).then(mongo=>{
+      const db=mongo.db(config.DB_SERVER.DB_DATABASE);
+      db.collection("user_data")
+      .findOne({
+        email,
+        password
+      })
+      .then(result=>{
+        if(result!==null)
+        {
+          req.session.user=email;
+          req.session.type=result.type;
+          data.success=true;
+          data.redirect=`/${result.type}/dashboard`;
+          // res.json(data);
+        }
+        else
+        {
+          data.success=false;
+          data.message="Invalid credentials";
+          // res.json(data);
+        }
+      }).catch(err=>{
+        data.success=false;
+        data.message="Invalid data";
+        data.devlog=error.message;
+        // res.json(data);
+      }).finally(()=>{
+        mongo.close();
+        res.json(data);
+      });
+    }).catch(error=>{
+      data.success=false;
+      data.message="Connection Error";
+      data.devlog=error.message;
+      res.json(data);
+    });
   }
-  res.json(data);
 });
 
 //process registration
@@ -94,9 +126,9 @@ route.post("/register",(req,res)=>{
   }
   if(!parseError)//else part of try catch
   {
-    console.log(userCredentials);
-    const {password,email}=userCredentials;
-    console.log(email,password);
+    // console.log(userCredentials);
+    var {password,email}=userCredentials;
+    // console.log(email,password);
 
     //db processing
 
