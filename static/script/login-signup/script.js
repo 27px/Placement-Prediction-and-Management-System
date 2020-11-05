@@ -92,32 +92,31 @@ function resetMessage(box)
   box.classList.remove("error");
   box.classList.remove("warning");
 }
-function setMessage(form,message,input,type)
+function setMessage(element,form,message,input,type)
 {
   const box=_(`#${form}-${input}-message`);
   resetMessage(box);
   box.innerHTML=message;
   box.classList.add(type);
+  element.focus();
 }
 function login()
 {
-  const u=loginEmail;
-  const p=loginPassword;
-  const r=loginRemember;
-  if(u.value=="")
+  const u=loginEmail.value;
+  const p=loginPassword.value;
+  const r=loginRemember.checked;
+  if(u=="")
   {
-    setMessage("login","Enter User Id !","email","error");
-    u.focus();
+    setMessage(loginEmail,"login","Enter User Id !","email","error");
     return;
   }
   else
   {
     resetMessage(_("#login-email-message"));
   }
-  if(p.value=="")
+  if(p=="")
   {
-    setMessage("login","Enter Password !","password","error");
-    p.focus();
+    setMessage(loginPassword,"login","Enter Password !","password","error");
     return;
   }
   else
@@ -125,9 +124,9 @@ function login()
     resetMessage(_("#login-password-message"));
   }
   var formData={
-    email:u.value,
-    password:p.value,
-    remember:r.checked
+    email:u,
+    password:p,
+    remember:r
   };
   fetch("/login",{
     method:"POST",
@@ -151,76 +150,70 @@ function login()
         {
           console.info(data.devlog);
         }
-        setMessage("login",data.message,"email","error");
+        setMessage(loginEmail,"login",data.message,"email","error");
       }
     }).catch(error=>{
       console.error(error.message);
-      setMessage("login","Server sent invalid response","email","error");
+      setMessage(loginEmail,"login","Server sent invalid response","email","error");
     });
   }).catch(error=>{
     console.error(error.message);
-    setMessage("login","Server not responding","email","error");
+    setMessage(loginEmail,"login","Server not responding","email","error");
   });
 }
 function register()
 {
-  const u=registerEmail;
-  const p=registerPassword;
-  const c=registerConfirmPassword;
-  if(u.value=="")
+  const u=registerEmail.value;
+  const p=registerPassword.value;
+  const c=registerConfirmPassword.value;
+  if(u=="")
   {
-    setMessage("register","Enter User Id !","email","error");
-    u.focus();
+    setMessage(registerEmail,"register","Enter User Id !","email","error");
     return;
   }
   else
   {
     resetMessage(_("#register-email-message"));
   }
-  if(!validateEmail(u.value))
+  if(!validateEmail(u))
   {
-    setMessage("register","Invalid Email","email","error");
-    u.focus();
+    setMessage(registerEmail,"register","Invalid Email","email","error");
     return;
   }
   else
   {
     resetMessage(_("#register-email-message"));
   }
-  if(p.value=="")
+  if(p=="")
   {
-    setMessage("register","Enter Password !","password","error");
-    p.focus();
+    setMessage(registerPassword,"register","Enter Password !","password","error");
     return;
   }
   else
   {
     resetMessage(_("#register-password-message"));
   }
-  if(p.value.length<8 || p.value.length>20)
+  if(p.length<8 || p.length>20)
   {
-    setMessage("register","length between 8 and 20","password","error");
-    p.focus();
+    setMessage(registerPassword,"register","length between 8 and 20","password","error");
     return;
   }
   else
   {
     resetMessage(_("#register-password-message"));
   }
-  if(c.value=="")
+  if(c=="")
   {
-    setMessage("register","Confirm Password !","confirm-password","error");
-    c.focus();
+    setMessage(registerConfirmPassword,"register","Confirm Password !","confirm-password","error");
     return;
   }
   else
   {
     resetMessage(_("#register-confirm-password-message"));
   }
-  if(p.value!=c.value)
+  if(p!=c)
   {
-    setMessage("register","Enter same password","confirm-password","warning");
-    p.focus();
+    setMessage(registerConfirmPassword,"register","Enter same password","confirm-password","warning");
     return;
   }
   else
@@ -228,8 +221,8 @@ function register()
     resetMessage(_("#register-confirm-password-message"));
   }
   var formData={
-    email:u.value,
-    password:p.value
+    email:u,
+    password:p
   };
   fetch("/register",{
     method:"POST",
@@ -253,14 +246,14 @@ function register()
         {
           console.info(data.devlog);
         }
-        setMessage("register",data.message,"email","error");
+        setMessage(registerEmail,"register",data.message,"email","error");
       }
     }).catch(error=>{
       console.error(error.message);
-      setMessage("register","Server sent invalid response","email","error");
+      setMessage(registerEmail,"register","Server sent invalid response","email","error");
     });
   }).catch(error=>{
     console.error(error.message);
-    setMessage("register","Server not responding","email","error");
+    setMessage(registerEmail,"register","Server not responding","email","error");
   });
 }

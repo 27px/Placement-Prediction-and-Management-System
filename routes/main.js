@@ -8,7 +8,6 @@ const data=require("./data");// statistics, sitemap and other data
 const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
 const config=require("../config/config.json");
-const chalk=require("chalk");
 
 //Main Root
 route.get("/",(req,res)=>{
@@ -120,15 +119,13 @@ route.post("/register",(req,res)=>{
   }
   if(!parseError)//else part of try catch
   {
-    // console.log(userCredentials);
     var {password,email}=userCredentials;
-    console.log(email,password);
-
+    password=Buffer.from(password).toString("base64");
     MongoClient.connect(DB_CONNECTION_URL,{
       useUnifiedTopology:true
     }).then(mongo=>{
       const db=mongo.db(config.DB_SERVER.DB_DATABASE);
-      //Check if user already exists
+      //Checks if user already exists
       db.collection("user_data")
       .findOne({
         email
@@ -136,23 +133,30 @@ route.post("/register",(req,res)=>{
       .then(result=>{
         if(result===null)
         {
-          console.log(chalk.blue.inverse("New"));
-
-          data.success=false;//temp disabled redirect
-          data.message="<span class='message success'>New</span>";
-          // insert
-
-
-          // res.json(data);
-
-          // .finally(()=>{
-          //   mongo.close();
-          //   res.json(data);
-          // });
+          db.collection("user_data")
+          .insertOne({
+            email,
+            password,
+            type:"student"
+          },(err,retval)=>{
+            if(err!==null)
+            {
+              data.success=false;
+              data.message="Create failed";
+              data.devlog=err.message;
+              res.json(data);
+            }
+            else
+            {
+              data.success=true;
+              data.redirect="/login";//send to login after create account
+              res.json(data);
+            }
+            mongo.close();
+          });
         }
         else
         {
-          console.log(chalk.blue.inverse("already exists"));
           data.success=false;
           data.message="E-Mail Id exists";
           res.json(data);
@@ -160,7 +164,7 @@ route.post("/register",(req,res)=>{
       }).catch(err=>{
         data.success=false;
         data.message="Unknown Error";
-        data.devlog=error.message;
+        data.devlog=err.message;
         res.json(data);
       });
     }).catch(error=>{

@@ -10,7 +10,8 @@
     "connect database",
     "handle login and register in server",
     "clear messages on clear()",
-    "add loadin animation on submit button click"
+    "add loadin animation on submit button click",
+    "scroll to error message position in mobiles (use focus of that element)"
   ],
   "student/dashboard":[
     "searchresultcontainer":"set max height",
@@ -35,6 +36,8 @@
     ]
   },
   "before-production":[
+    "remove chalk/unused imports (not uninstall)",
+    "uninstall unused packages",
     "minify all client-side css and js and svg",
     "prefetch all static files",
     "set theme color for chrome in android",

@@ -89,7 +89,8 @@ body
   flex-direction:row-reverse;
 }
 .login::-webkit-scrollbar,
-.register::-webkit-scrollbar
+.register::-webkit-scrollbar,
+.wrapper::-webkit-scrollbar
 {
   width:0px;
 }
@@ -114,6 +115,7 @@ body
   box-sizing:border-box;
   font-family:var(--font-sub-title);
   color:#FFFFFF;
+  overflow:visible!important;
 }
 .login .image::before,
 .register .image::before
@@ -639,5 +641,12 @@ input[type="password"]
     overflow-y:auto;
     position:relative;
     height:500px;
+  }
+}
+@media (max-width:600px),(max-height:450px)
+{
+  .wrapper
+  {
+    border-radius:0px !important;
   }
 }
