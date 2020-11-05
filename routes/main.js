@@ -8,6 +8,7 @@ const data=require("./data");// statistics, sitemap and other data
 const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
 const config=require("../config/config.json");
+const User=require("../functions/user.js");
 
 //Main Root
 route.get("/",(req,res)=>{
@@ -16,7 +17,11 @@ route.get("/",(req,res)=>{
 
 //Main Home
 route.get("/home",(req,res)=>{
-  res.render("home");
+  const user=new User(req.session);
+  res.render("home",{
+    loggedin:user.isLoggedIn,
+    type:user.type
+  });
 });
 
 //Login

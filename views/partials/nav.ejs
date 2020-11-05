@@ -1,8 +1,7 @@
 <!--
   color: icon stroke color
   loggedin: loggedin or not
-  username: loggedin username
-  usertype: type of user
+  type: type of user
 -->
 <%
   if(!color)
@@ -24,7 +23,7 @@
       if(loggedin)
       {
         %>
-          <a class="nav-item" id="nav-dashboard" href="/<%=usertype%>/dashboard">
+          <a class="nav-item" id="nav-dashboard" href="/<%=type%>/dashboard">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="<%-color%>" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
             </div>
@@ -87,7 +86,7 @@
             <div class="text">Logout</div>
           </a>
           <%
-            if(usertype!="administrator")
+            if(type!="admin")
             {
               %>
                 <a class="nav-item" id="nav-profile" href="/profile"><!--Profile-->

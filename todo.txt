@@ -3,7 +3,10 @@
     "nav bar",
     "user class",
     "dashboards",
-    "other pages"
+    "other pages",
+    
+    "remember me cookies",
+    "logout"
   ],
   "student/dashboard":[
     "searchresultcontainer":"set max height",
