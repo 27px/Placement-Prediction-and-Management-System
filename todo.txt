@@ -5,14 +5,19 @@
     "dashboards",
     "other pages"
   ],
-  "login-signup":[
-    "add loadin animation on submit button click"
-  ],
   "student/dashboard":[
     "searchresultcontainer":"set max height",
     "searchresultcontainer":"scrollbar",
     "searchresultcontainer":"add data and link",
     "sidebar":"set titles, icons and url",
+  ],
+  "before-production":[
+    "remove chalk/unused imports (not uninstall)",
+    "uninstall unused packages",
+    "minify all client-side css and js and svg",
+    "prefetch all static files",
+    "set theme color for chrome in android",
+    "remove unused css in default-values.css"
   ],
   "ui":{
     "designs-to-add":[
@@ -29,13 +34,5 @@
       "speech-synthesis",
       "geo-location"
     ]
-  },
-  "before-production":[
-    "remove chalk/unused imports (not uninstall)",
-    "uninstall unused packages",
-    "minify all client-side css and js and svg",
-    "prefetch all static files",
-    "set theme color for chrome in android",
-    "remove unused css in default-values.css"
-  ]
+  }
 }

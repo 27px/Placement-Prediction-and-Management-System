@@ -388,6 +388,7 @@ button[type="button"]
   color:#FFFFFF;
   transition:background-color 0.3s;
   font-weight:400;
+  position:relative;
 }
 button[type="reset"]
 {
@@ -649,4 +650,9 @@ input[type="password"]
   {
     border-radius:0px !important;
   }
+}
+button.progress
+{
+  color:#000000!important;
+  background:#FFFFFF!important;
 }

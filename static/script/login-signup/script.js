@@ -55,6 +55,9 @@ function resetPasswordAndMessages(event)
     _(`#${x}`).type="password";
   });
   Array.from($(".message")).forEach(resetMessage);
+  Array.from($("button[type='button']")).forEach(button=>{
+    button.classList.remove("progress");
+  });
 }
 function animateNext(event,id,wrapperclass,otherwrapperclass)
 {
@@ -105,6 +108,11 @@ function setMessage(element,form,message,input,type)
 }
 function login()
 {
+  const b=_("#login-button");
+  if(b.classList.contains("progress"))
+  {
+    return;
+  }
   const u=loginEmail.value;
   const p=loginPassword.value;
   const r=loginRemember.checked;
@@ -162,10 +170,17 @@ function login()
   }).catch(error=>{
     console.error(error.message);
     setMessage(loginEmail,"login","Server not responding","email","error");
+  }).finally(()=>{
+    b.classList.remove("progress");
   });
 }
 function register()
 {
+  const b=_("#register-button");
+  if(b.classList.contains("progress"))
+  {
+    return;
+  }
   const u=registerEmail.value;
   const p=registerPassword.value;
   const c=registerConfirmPassword.value;
@@ -223,6 +238,7 @@ function register()
   {
     resetMessage(_("#register-confirm-password-message"));
   }
+  b.classList.add("progress");
   var formData={
     email:u,
     password:p
@@ -258,5 +274,7 @@ function register()
   }).catch(error=>{
     console.error(error.message);
     setMessage(registerEmail,"register","Server not responding","email","error");
+  }).finally(()=>{
+    b.classList.remove("progress");
   });
 }
