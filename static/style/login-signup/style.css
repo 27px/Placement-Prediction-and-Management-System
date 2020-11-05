@@ -284,6 +284,11 @@ input[type="checkbox"]
   font-size:18px;
   font-family:var(--font-monospace);
 }
+input::selection
+{
+  background:#212121;
+  color:#FFFFFF;
+}
 .login .login-form .row input:focus,
 .register .register-form .row input:focus
 {

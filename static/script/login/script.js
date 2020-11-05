@@ -159,7 +159,7 @@ function login()
     });
   }).catch(error=>{
     console.error(error.message);
-    setMessage("login","Unknown Error","email","error");
+    setMessage("login","Server not responding","email","error");
   });
 }
 function register()
@@ -261,6 +261,6 @@ function register()
     });
   }).catch(error=>{
     console.error(error.message);
-    setMessage("register","Unknown Error","email","error");
+    setMessage("register","Server not responding","email","error");
   });
 }

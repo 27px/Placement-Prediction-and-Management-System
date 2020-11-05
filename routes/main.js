@@ -38,7 +38,6 @@ route.get("/register",(req,res)=>{
 
 //process Login
 route.post("/login",(req,res)=>{
-  var user="student";//change
   var parseError=false;
   var data={};//response data
   var userCreadentials;
@@ -57,10 +56,8 @@ route.post("/login",(req,res)=>{
   }
   if(!parseError)//else part of try catch (no parse error)
   {
-    // console.log(userCredentials);
     var {password,email,remember}=userCredentials;
     password=Buffer.from(password).toString("base64");
-    // console.log(email,password,remember);
 
     MongoClient.connect(DB_CONNECTION_URL,{
       useUnifiedTopology:true
@@ -106,9 +103,6 @@ route.post("/login",(req,res)=>{
 
 //process registration
 route.post("/register",(req,res)=>{
-
-
-  var user="student";//change
   var parseError=false;
   var data={};//response data
   var userCreadentials;
@@ -128,22 +122,54 @@ route.post("/register",(req,res)=>{
   {
     // console.log(userCredentials);
     var {password,email}=userCredentials;
-    // console.log(email,password);
+    console.log(email,password);
 
-    //db processing
+    MongoClient.connect(DB_CONNECTION_URL,{
+      useUnifiedTopology:true
+    }).then(mongo=>{
+      const db=mongo.db(config.DB_SERVER.DB_DATABASE);
+      //Check if user already exists
+      db.collection("user_data")
+      .findOne({
+        email
+      })
+      .then(result=>{
+        if(result===null)
+        {
+          console.log(chalk.blue.inverse("New"));
 
-    //databse processing
-    data.success=false;//hardcoded
-    if(data.success)
-    {
-      data.redirect=`${user}/dashboard`;//hardcoded
-    }
-    else
-    {
-      data.message="Invalid Credentials";//hardcoded
-    }
+          data.success=false;//temp disabled redirect
+          data.message="<span class='message success'>New</span>";
+          // insert
+
+
+          // res.json(data);
+
+          // .finally(()=>{
+          //   mongo.close();
+          //   res.json(data);
+          // });
+        }
+        else
+        {
+          console.log(chalk.blue.inverse("already exists"));
+          data.success=false;
+          data.message="E-Mail Id exists";
+          res.json(data);
+        }
+      }).catch(err=>{
+        data.success=false;
+        data.message="Unknown Error";
+        data.devlog=error.message;
+        res.json(data);
+      });
+    }).catch(error=>{
+      data.success=false;
+      data.message="Connection Error";
+      data.devlog=error.message;
+      res.json(data);
+    });
   }
-  res.json(data);
 });
 
 //Logout
