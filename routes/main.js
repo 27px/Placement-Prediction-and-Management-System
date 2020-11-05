@@ -1,5 +1,6 @@
 const express=require("express");
 const route=express.Router();
+const cookieParser=require("cookie-parser");
 const student=require("./student");
 const coordinator=require("./coordinator");
 const recruiter=require("./recruiter");
@@ -9,6 +10,10 @@ const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
 const config=require("../config/config.json");
 const User=require("../functions/user.js");
+const fs=require("fs");
+const path=require("path");
+
+route.use(cookieParser());
 
 //Main Root
 route.get("/",(req,res)=>{
@@ -23,6 +28,22 @@ route.get("/home",(req,res)=>{
     type:user.type
   });
 });
+
+
+
+// route.get("/test",(req,res)=>{
+//
+//   //get cookie
+//   console.log(req.cookies);
+//
+//   //setCookie
+//   res.cookie('user','rahulr0047@gmail.com',{
+//     secure:false
+//   });
+//
+//   res.end("200");
+// });
+
 
 //Login
 route.get("/login",(req,res)=>{
@@ -211,7 +232,21 @@ route.get("/contact",(req,res)=>{
 
 //Gallery
 route.get("/gallery",(req,res)=>{
-  res.render("gallery");
+  const dir=path.join(__dirname,"../data/gallery");
+  fs.readdir(dir,(err,files)=>{
+    if(!err)
+    {
+      res.render("gallery",{
+        files
+      });
+    }
+    else
+    {
+      res.render("gallery",{
+        files:[]
+      });
+    }
+  });
 });
 
 //Resources

@@ -1,10 +1,13 @@
 {
+  "important":[
+    "remove cookie test from main.js"
+  ],
   "login session":[
     "nav bar",
     "user class",
     "dashboards",
     "other pages",
-    
+
     "remember me cookies",
     "logout"
   ],
