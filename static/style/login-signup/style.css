@@ -369,7 +369,8 @@ input::selection
 .register .register-form .row button
 {
   font-size:18px;
-  padding:8px 30px;
+  padding:8px 20px;
+  width:130px;
   margin:0px auto;
   border-radius:50px;
   letter-spacing:1px;
@@ -653,6 +654,34 @@ input[type="password"]
 }
 button.progress
 {
-  color:#000000!important;
-  background:#FFFFFF!important;
+  color:#FFFFFF!important;
+  background:#000000!important;
+  text-align:left;
+}
+button.progress::after
+{
+  width:15px;
+  height:15px;
+  content:"";
+  position:absolute;
+  top:50%;
+  right:0;
+  border-top:3px solid #FFFFFF;
+  border-left:3px solid transparent;
+  border-right:3px solid transparent;
+  border-bottom:3px solid transparent;
+  border-radius:50px;
+  transform:translate(-25%,-50%);
+  animation:pro 0.3s linear infinite normal;
+}
+@keyframes pro
+{
+  0%
+  {
+    transform:translate(-25%,-50%) rotate(0deg);
+  }
+  100%
+  {
+    transform:translate(-25%,-50%) rotate(360deg);
+  }
 }
