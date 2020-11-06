@@ -233,17 +233,22 @@ route.get("/contact",(req,res)=>{
 //Gallery
 route.get("/gallery",(req,res)=>{
   const dir=path.join(__dirname,"../data/gallery");
+  const user=new User(req.session);
   fs.readdir(dir,(err,files)=>{
     if(!err)
     {
       res.render("gallery",{
-        files
+        files,
+        loggedin:user.isLoggedIn,
+        type:user.type
       });
     }
     else
     {
       res.render("gallery",{
-        files:[]
+        files:[],
+        loggedin:user.isLoggedIn,
+        type:user.type
       });
     }
   });

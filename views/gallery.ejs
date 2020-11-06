@@ -3,61 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/gallery/style.css">
+    <link rel="stylesheet" href="../static/style/nav.css">
+    <script type="text/javascript" src="../static/script/gallery/script.js"></script>
     <title>Gallery</title>
-
-
-
-    <style>
-      :root,body
-      {
-        width:100%;
-        height:auto;
-        padding:0;
-        margin:0;
-      }
-      body
-      {
-        padding:10px;
-        overflow-x:hidden;
-        height:100vh;
-      }
-      .container
-      {
-        width:calc(100% - 20px);
-        height:calc(100% - 20px);
-        display:grid;
-        grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-        grid-template-rows:repeat(auto-fill,1fr);
-        grid-gap:10px;
-        box-sizing:border-box;
-      }
-      .image
-      {
-        position:relative;
-        background-color:#212121;
-        display:inline-block;
-        width:100%;
-        height:100%;
-        box-sizing:border-box;
-        background-position:center;
-        background-repeat:no-repeat;
-        background-size:cover;
-      }
-    </style>
-
-
-
-
   </head>
   <body>
+    <%- include("./partials/nav",{
+      loggedin,
+      type
+    }); %>
     <div class="container">
-      <%
-        files.forEach(image=>{
-          %>
-            <div class="image" style="background-image:url('/pictures/<%=image%>');" title="<%=image%>"></div>
-          <%
-        });
-      %>
+      <div class="wrapper">
+        <%
+          files.forEach((image,i)=>{
+            name=image.split(".").slice(0,-1).join(".");
+            %>
+              <div class="image" id="image-<%-i%>" style="background-image:url('/pictures/<%=image%>');" showtitle="<%=name%>"></div>
+            <%
+          });
+        %>
+      </div>
     </div>
   </body>
 </html>
