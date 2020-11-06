@@ -616,12 +616,22 @@ input[type="password"]
   {
     padding:8px 15px!important;
   }
+  .login .login-form .row button,
+  .register .register-form .row button
+  {
+    width:110px;
+  }
 }
 @media (max-width:320px)
 {
   :root
   {
     --wrapper-width:250px;
+  }
+  .login .login-form .row button,
+  .register .register-form .row button
+  {
+    width:90px;
   }
 }
 @media (max-width:280px)

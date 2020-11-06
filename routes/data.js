@@ -4,7 +4,7 @@ const User=require("../functions/user.js");
 
 // sitemap
 data.get("/sitemap",(req,res)=>{
-  const user=new User();
+  const user=new User(req.session);
   const code=user.code;
   var siteMap=[
     {
@@ -145,7 +145,7 @@ data.get("/sitemap",(req,res)=>{
   //testing delay
   setTimeout(function(){
     res.json(siteMap);
-  },3000);
+  },30000);
 });
 
 // This is data/statistics

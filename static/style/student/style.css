@@ -158,6 +158,8 @@
 {
   width:200px;
   height:auto;
+  max-height:130px;
+  overflow-y:auto;
   background:var(--primary8);
   position:fixed;
   top:0;
@@ -169,6 +171,21 @@
   border-bottom-left-radius:5px;
   border-bottom-right-radius:5px;
   box-shadow:0px 15px 25px 1px rgba(0,0,0,0.5);
+}
+.searchresultcontainer::-webkit-scrollbar
+{
+  width:6px;
+  height:6px;
+  background:rgba(0,0,0,0.2);
+}
+.searchresultcontainer::-webkit-scrollbar-thumb
+{
+  background-color:var(--primary3);
+  transition:background-color 0.3s;
+}
+.searchresultcontainer::-webkit-scrollbar-thumb:hover
+{
+  background-color:var(--primary5);
 }
 .searchresultcontainer .item
 {
