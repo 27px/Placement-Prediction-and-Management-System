@@ -2,6 +2,9 @@
   "important":[
     "remove cookie test from main.js"
   ],
+  "gallery":[
+    "handle file upload on post : /gallery"
+  ],
   "login session":[
     "nav bar",
     "user class",

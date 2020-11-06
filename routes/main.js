@@ -254,6 +254,11 @@ route.get("/gallery",(req,res)=>{
   });
 });
 
+//Gallery Image Upload
+route.post("/gallery",(req,res)=>{
+  res.end(`{"devlog":"In development"}`);
+});
+
 //Resources
 route.get("/resources",(req,res)=>{
   res.render("resources");

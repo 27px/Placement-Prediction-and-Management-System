@@ -16,6 +16,18 @@
     <div class="container">
       <div class="wrapper">
         <%
+          <!-- if(type=="admin" || type=="coordinator") -->
+          {
+            %>
+              <div class="uploader" onclick="upload();">
+                <div class="main">+</div>
+                <div class="desc">Upload</div>
+              </div>
+              <form method="post" action"/gallery" enctype="multipart/form-data">
+                <input type="file" id="up" name="imgallerry" accept="image/*" onchange="testUpload(event);">
+              </form>
+            <%
+          }
           files.forEach((image,i)=>{
             name=image.split(".").slice(0,-1).join(".");
             %>
