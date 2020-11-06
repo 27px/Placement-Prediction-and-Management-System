@@ -107,7 +107,7 @@ body
 }
 .preview
 {
-  width:calc(100% - (var(--gap) * 1.75));
+  width:100%;
   height:calc(100% - var(--nav-height) - 20px);
   padding:0px var(--gap) var(--gap) var(--gap);
   position:fixed;
