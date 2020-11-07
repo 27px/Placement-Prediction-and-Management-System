@@ -34,6 +34,14 @@
               <div class="image" id="image-<%-i%>" style="background-image:url('/pictures/<%=image%>');" showtitle="<%=name%>"></div>
             <%
           });
+          if(files.length<1)
+          {
+            %>
+              <div class="empty">
+                <div class="desc">No Images</div>
+              </div>
+            <%
+          }
         %>
       </div>
     </div>
