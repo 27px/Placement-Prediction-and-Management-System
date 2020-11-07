@@ -10,27 +10,53 @@ student.get("/",(req,res)=>{
 });
 
 //Student Dashboard
-student.get("/dashboard",(req,res)=>{
-  const user=new User(req.session);
-  //use user class for checking login
-  // console.log(req.session.user,req.session.type);
-  //student or coordinator
-  if(req.session.user!==undefined && ( req.session.type==="student" || req.session.type==="coordinator" ))
-  {
-    res.render("student/dashboard",{
-      tab:req.query.tab,
-      version,
-      usertype:user.type
-    });
-  }
-  else if(req.session.user!==undefined && req.session.type!==undefined)//other users
-  {
-    res.redirect("/404");
-  }
-  else
-  {
-    res.redirect("/login");
-  }
+student.get("/dashboard",async(req,res)=>{
+  const user=new User(req);
+  var isLoggedIn,type;
+  await user.initialize().then(data=>{
+    isLoggedIn=data.isLoggedIn;
+    type=data.type;
+  }).catch(error=>{
+    isLoggedIn=false;
+    type="guest";
+  }).finally(()=>{
+    if(isLoggedIn===true && ["student","coordinator"].includes(type))//student or coordinator
+    {
+      res.render("student/dashboard",{
+        tab:req.query.tab,
+        version,
+        usertype:type
+      });
+    }
+    else if(isLoggedIn===true)//other users
+    {
+      res.redirect("/404");
+    }
+    else
+    {
+      res.redirect("/login");
+    }
+  });
+
+
+  // const user=new User(req);
+  // //student or coordinator
+  // if(req.session.user!==undefined && ( req.session.type==="student" || req.session.type==="coordinator" ))
+  // {
+  //   res.render("student/dashboard",{
+  //     tab:req.query.tab,
+  //     version,
+  //     usertype:user.type
+  //   });
+  // }
+  // else if(req.session.user!==undefined && req.session.type!==undefined)//other users
+  // {
+  //   res.redirect("/404");
+  // }
+  // else
+  // {
+  //   res.redirect("/login");
+  // }
 });
 
 //Profile of others or current user

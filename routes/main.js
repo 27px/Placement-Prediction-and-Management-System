@@ -10,8 +10,9 @@ const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
 const config=require("../config/config.json");
 const User=require("../functions/user.js");
-const fs=require("fs");
+const fs=require("fs");//for gallery
 const path=require("path");
+const chalk=require("chalk");
 
 route.use(cookieParser());
 
@@ -21,50 +22,57 @@ route.get("/",(req,res)=>{
 });
 
 //Main Home
-route.get("/home",(req,res)=>{
-  const user=new User(req.session);
-  res.render("home",{
-    loggedin:user.isLoggedIn,
-    type:user.type
+route.get("/home",async(req,res)=>{
+  const user=new User(req);
+  var isLoggedIn,type;
+  await user.initialize().then(data=>{
+    isLoggedIn=data.isLoggedIn,
+    type=data.type
+  }).catch(error=>{
+    isLoggedIn=false,
+    type="guest"
+  }).finally(()=>{
+    res.render("home",{
+      isLoggedIn,
+      type
+    });
   });
 });
 
-
-
-// route.get("/test",(req,res)=>{
-//
-//   //get cookie
-//   console.log(req.cookies);
-//
-//   //setCookie
-//   res.cookie('user','rahulr0047@gmail.com',{
-//     secure:false
-//   });
-//
-//   res.end("200");
-// });
-
-
 //Login
-route.get("/login",(req,res)=>{
-  const user=new User(req.session);
-  res.render("login-signup",{
+route.get("/login",async(req,res)=>{
+  const user=new User(req);
+  var state={
     login:"visible",
-    register:"hidden",
-    loggedin:user.isLoggedIn,
-    type:user.type
-  });// hide register
+    register:"hidden"
+  };
+  await user.initialize().then(data=>{
+    state.isLoggedIn=data.isLoggedIn;
+    state.type=data.type;
+  }).catch(error=>{
+    state.isLoggedIn=false;
+    state.type="guest";
+  }).finally(()=>{
+    res.render("login-signup",state);
+  });
 });
 
 //New Account
-route.get("/register",(req,res)=>{
-  const user=new User(req.session);
-  res.render("login-signup",{
+route.get("/register",async(req,res)=>{
+  const user=new User(req);
+  var state={
     login:"hidden",
-    register:"visible",
-    loggedin:user.isLoggedIn,
-    type:user.type
-  });//hide login
+    register:"visible"
+  };
+  await user.initialize().then(data=>{
+    state.isLoggedIn=data.isLoggedIn;
+    state.type=data.type;
+  }).catch(error=>{
+    state.isLoggedIn=false;
+    state.type="guest";
+  }).finally(()=>{
+    res.render("login-signup",state);
+  });
 });
 
 //process Login
@@ -89,7 +97,6 @@ route.post("/login",(req,res)=>{
   {
     var {password,email,remember}=userCredentials;
     password=Buffer.from(password).toString("base64");
-
     MongoClient.connect(DB_CONNECTION_URL,{
       useUnifiedTopology:true
     }).then(mongo=>{
@@ -106,18 +113,35 @@ route.post("/login",(req,res)=>{
           req.session.type=result.type;
           data.success=true;
           data.redirect=`/${result.type}/dashboard`;
-          // res.json(data);
+          if(remember===true)
+          {
+            var key=config.COOKIE.KEY;
+            var value={
+              u:email,
+              p:password
+            };
+            value=JSON.stringify(value);
+            value=Buffer.from(value).toString("base64");
+            console.log(value);
+            var option={
+              maxAge:31*24*60*60*1000
+            };
+            res.cookie(key,value,option);//set cookie
+          }
+          else
+          {
+            res.cookie(key,"",{maxAge:0});//delete cookie
+          }
         }
         else
         {
           data.success=false;
           data.message="Invalid credentials";
-          // res.json(data);
         }
       }).catch(err=>{
         data.success=false;
         data.message="Invalid data";
-        data.devlog=error.message;
+        data.devlog=err.message;
         // res.json(data);
       }).finally(()=>{
         mongo.close();
@@ -211,7 +235,7 @@ route.post("/register",(req,res)=>{
 //Logout
 route.get("/logout",(req,res)=>{
   req.session.destroy();
-  //todo clear cookies
+  res.cookie(config.COOKIE.KEY,"",{maxAge:0});
   res.redirect("home");
 });
 
@@ -231,26 +255,28 @@ route.get("/contact",(req,res)=>{
 });
 
 //Gallery
-route.get("/gallery",(req,res)=>{
+route.get("/gallery",async(req,res)=>{
   const dir=path.join(__dirname,"../data/gallery");
-  const user=new User(req.session);
-  fs.readdir(dir,(err,files)=>{
-    if(!err)
-    {
+  var isLoggedIn,type;
+  const user=new User(req);
+  await user.initialize().then(data=>{
+    isLoggedIn=data.isLoggedIn;
+    type=data.type;
+  }).catch(error=>{
+    isLoggedIn=false;
+    type="guest";
+  }).finally(()=>{
+    fs.readdir(dir,(err,files)=>{
+      if(err)
+      {
+        files=[];
+      }
       res.render("gallery",{
         files,
-        loggedin:user.isLoggedIn,
-        type:user.type
+        isLoggedIn,
+        type
       });
-    }
-    else
-    {
-      res.render("gallery",{
-        files:[],
-        loggedin:user.isLoggedIn,
-        type:user.type
-      });
-    }
+    });
   });
 });
 

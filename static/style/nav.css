@@ -191,8 +191,19 @@ a.menu svg
   {
     font-size:15px;
   }
-  nav a .icon svg
+  nav a .icon
   {
-    /* stroke-width:1; */
+    margin: 0px 0px 10px 0px !important;
+  }
+}
+@media (max-width:350px)
+{
+  nav a .text
+  {
+    font-size:10px;
+  }
+  nav a .icon
+  {
+    margin: 0px 0px 5px 0px !important;
   }
 }

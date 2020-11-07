@@ -1,6 +1,6 @@
 <!--
   color: icon stroke color
-  loggedin: loggedin or not
+  isLoggedIn: logged in or not
   type: type of user
 -->
 <%
@@ -20,7 +20,7 @@
 <nav class="nav-bar" id="nav-bar">
   <div class="left">
     <%
-      if(loggedin)
+      if(isLoggedIn)
       {
         %>
           <a class="nav-item" id="nav-dashboard" href="/<%=type%>/dashboard">
@@ -76,7 +76,7 @@
       <div class="text">Contact Us</div>
     </a>
     <%
-      if(loggedin)
+      if(isLoggedIn)
       {
         %>
           <a class="nav-item" id="nav-logout" href="/logout">

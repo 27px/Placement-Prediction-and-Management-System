@@ -12,5 +12,8 @@
   },
   "SESSION":{
     "SECRET":"N0D3~D@3M0N"
+  },
+  "COOKIE":{
+    "KEY":"dXNlci1jcmVkZW50aWFscw"
   }
 }

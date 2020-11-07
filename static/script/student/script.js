@@ -357,6 +357,7 @@ async function runSearch(rx,res,v,high,callback)
   // it has no effect on results returned
   // user type is validated from session storage
   await fetch(`/data/sitemap?type=${userType}`,{
+    // cache:"no-store"
     cache:"force-cache"
   }).then(response=>{
     response.json().then(searchItems=>{
