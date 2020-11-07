@@ -22,7 +22,10 @@
       "http://localhost/Root/Workarea/My%20Collection/Loader/2.html",
       "http://localhost/Root/Workarea/My%20Collection/timeline/index.html",
       "http://localhost/Root/Workarea/My%20Collection/Video%20Background/index.html",
-      "http://localhost/Root/Workarea/My%20Collection/Layout/index.html"
+      "http://localhost/Root/Workarea/My%20Collection/Layout/index.html",
+      "https://www.w3schools.com/howto/howto_css_flip_box.asp",
+      "https://www.w3schools.com/howto/howto_js_scrolldrawing.asp",
+      "https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable"
     ],
     "builtin-api":[
       "intersection-observer",
