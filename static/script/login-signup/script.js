@@ -6,16 +6,24 @@ const $=key=>document.querySelectorAll(key);
 const validateEmail=email=>/\S+@\S+\.\S+/.test(email);
 window.onload=()=>{
   body=document.body;
-  _("#nav-login").addEventListener("click",function(){
-    event.preventDefault();
-    _('#nav-bar').classList.remove('nav-bar-active');
-    animateNext(event,'register-to-next',`register-wrapper`,`login-wrapper`);
-  });
-  _("#nav-signup").addEventListener("click",function(){
-    event.preventDefault();
-    _('#nav-bar').classList.remove('nav-bar-active');
-    animateNext(event,'login-to-next',`login-wrapper`,`register-wrapper`);
-  });
+  var loginNavButton=_("#nav-login");
+  if(loginNavButton!==null)
+  {
+    loginNavButton.addEventListener("click",function(){
+      event.preventDefault();
+      _('#nav-bar').classList.remove('nav-bar-active');
+      animateNext(event,'register-to-next',`register-wrapper`,`login-wrapper`);
+    });
+  }
+  var SignupNavButton=_("#nav-signup");
+  if(SignupNavButton!==null)
+  {
+    _("#nav-signup").addEventListener("click",function(){
+      event.preventDefault();
+      _('#nav-bar').classList.remove('nav-bar-active');
+      animateNext(event,'login-to-next',`login-wrapper`,`register-wrapper`);
+    });
+  }
   _("#login-button").addEventListener("click",login);
   _("#register-button").addEventListener("click",register);
   loginEmail=_("#login-email");
@@ -277,5 +285,10 @@ function register()
     setMessage(registerEmail,"register","Server not responding","email","error");
   }).finally(()=>{
     b.classList.remove("progress");
+  });
+}
+const closePopup=()=>{
+  Array.from($(".popup")).forEach(pop=>{
+    pop.parentNode.removeChild(pop);
   });
 }

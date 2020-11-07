@@ -234,9 +234,14 @@ route.post("/register",(req,res)=>{
 
 //Logout
 route.get("/logout",(req,res)=>{
+  var redirect="home";
+  if(req.query.to!==undefined)
+  {
+    redirect=req.query.to;
+  }
   req.session.destroy();
   res.cookie(config.COOKIE.KEY,"",{maxAge:0});
-  res.redirect("home");
+  res.redirect(redirect);
 });
 
 //Reset Password

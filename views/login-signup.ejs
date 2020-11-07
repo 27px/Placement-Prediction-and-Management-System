@@ -134,5 +134,21 @@
       </div>
 
     </div>
+    <%
+      if(isLoggedIn==true)
+      {
+        %>
+          <div class="overlay popup"></div>
+          <div class="alreadyLoggedIn popup">
+            <div class="pop-message">Already Logged in</div>
+            <div class="buttons">
+              <a href="/<%=type%>/dashboard" class="dashboard">Dashboard</a>
+              <a href="javascript:void(0);" class="coninue" onclick="closePopup();">Continue</a>
+              <a href="/logout?to=<%=title.toLowerCase();%>" class="logout">Logout</a>
+            </div>
+          </div>
+        <%
+      }
+    %>
   </body>
 </html>

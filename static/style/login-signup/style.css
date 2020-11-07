@@ -539,7 +539,7 @@ label:hover,input[type=checkbox]:hover
   justify-content:space-around;
   align-self:center;
 }
-input[type="password"]
+.password input,input[type="password"]
 {
   padding-right:35px !important;
 }
@@ -677,12 +677,12 @@ button.progress::after
   top:50%;
   right:0;
   border-top:3px solid #FFFFFF;
-  border-left:3px solid transparent;
-  border-right:3px solid transparent;
-  border-bottom:3px solid transparent;
+  border-left:3px solid rgba(255,255,255,0.2);
+  border-right:3px solid rgba(255,255,255,0.2);
+  border-bottom:3px solid #FFFFFF;
   border-radius:50px;
   transform:translate(-25%,-50%);
-  animation:pro 0.3s linear infinite normal;
+  animation:pro 0.6s linear infinite normal;
 }
 @keyframes pro
 {
@@ -693,5 +693,116 @@ button.progress::after
   100%
   {
     transform:translate(-25%,-50%) rotate(360deg);
+  }
+}
+.overlay
+{
+  position:fixed;
+  top:0;
+  left:0;
+  background:rgba(255,255,255,0.8);
+  width:100%;
+  height:100%;
+}
+.alreadyLoggedIn
+{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  min-width:80vmin;
+  min-height:25vmin;
+  background-color:#212121;
+  background-image:linear-gradient(66deg, transparent 0%, transparent 24%,rgba(195, 195, 195,0.04) 24%, rgba(195, 195, 195,0.04) 80%,transparent 80%, transparent 100%),linear-gradient(153deg, transparent 0%, transparent 29%,rgba(195, 195, 195,0.04) 29%, rgba(195, 195, 195,0.04) 45%,transparent 45%, transparent 100%),linear-gradient(199deg, transparent 0%, transparent 32%,rgba(195, 195, 195,0.04) 32%, rgba(195, 195, 195,0.04) 59%,transparent 59%, transparent 100%),linear-gradient(277deg, transparent 0%, transparent 56%,rgba(195, 195, 195,0.04) 56%, rgba(195, 195, 195,0.04) 57%,transparent 57%, transparent 100%),linear-gradient(90deg, rgb(33,33,33),rgb(33,33,33));
+  border-radius:20px;
+  box-shadow:0px 0px 15px 5px #00000040,0px 0px 10px 5px #00000040;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-evenly;
+}
+.alreadyLoggedIn .pop-message,
+.alreadyLoggedIn a
+{
+  color:#FFFFFF;
+  font-family:var(--font-sub-title);
+  letter-spacing:1px;
+}
+.alreadyLoggedIn .buttons
+{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-evenly;
+}
+.alreadyLoggedIn .pop-message
+{
+  text-align:center;
+  font-size:30px;
+}
+.alreadyLoggedIn a
+{
+  text-decoration:none;
+  padding:10px 15px;
+  border:2px solid #FFFFFF;
+  background:transparent;
+  transition:background-color 0.3s,color 0.3s;
+  border-radius:5px;
+  width:100px;
+  text-align:center;
+}
+.alreadyLoggedIn a:hover
+{
+  background-color:#FFFFFF;
+  color:#000000;
+  border-color:#000000;
+}
+@media (max-width:600px)
+{
+  .alreadyLoggedIn .pop-message
+  {
+    font-size:20px;
+  }
+  .alreadyLoggedIn a
+  {
+    width:80px;
+  }
+}
+@media (max-width:500px)
+{
+  .alreadyLoggedIn
+  {
+    min-height:70vmin;
+    justify-content:space-between;
+    padding:20px;
+  }
+  .alreadyLoggedIn .pop-message
+  {
+    font-size:20px;
+    margin-bottom:20px;
+  }
+  .alreadyLoggedIn .buttons
+  {
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-evenly;
+  }
+  .alreadyLoggedIn .buttons *
+  {
+    margin:10px 0px;
+    min-width:55%;
+  }
+}
+@media (max-width:300px)
+{
+  .alreadyLoggedIn
+  {
+    min-width:100%;
+    min-height:100vmin;
+    border-radius:0px;
+  }
+  .alreadyLoggedIn .buttons *
+  {
+    margin:15px 0px;
   }
 }
