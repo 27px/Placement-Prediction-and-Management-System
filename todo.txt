@@ -1,21 +1,9 @@
 {
-  "important":[
-    "remove cookie test from main.js"
-  ],
   "gallery":[
     "handle file upload on post : /gallery"
   ],
-  "login session":[
-    "nav bar",
-    "user class",
-    "dashboards",
-    "other pages",
-
-    "remember me cookies",
-    "logout"
-  ],
   "student/dashboard":[
-    "searchresultcontainer":"add data and link",
+    "searchresultcontainer":"add data and link",//in the data.js file
     "sidebar":"set titles, icons and url",
   ],
   "before-production":[
