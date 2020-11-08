@@ -10,35 +10,25 @@
     <script src="../../static/script/recruiter/script.js"></script>
 
   </head>
-  <body class="bluetheme" onload="selectThisOption(_('nav1'),_('nav').children);">
-    <div class="main hiddenmenu" id="main">
+  <body class="bluetheme" onload="selectThisOption(_('#nav1'),_('#nav').children);">
+    <div class="main" id="main">
       <div class="top">
-        <div class="menubar">
-          <div class="menu square left icon" id="menu" tabindex="1" onclick="toggleMenu(_('main').classList);">
-            <div class="menuwrapper">
-              <div class="box b1"></div>
-              <div class="box b2"></div>
-              <div class="box b3"></div>
-            </div>
-          </div>
-          <div class="title">Menu</div>
-        </div>
         <div class="titlebar">
           <div class="titleleft">
             <div class="icon"></div>
-            <div class="title">Project Name</div>
+            <div class="title">Placement Prediction & Management System</div>
           </div>
           <div class="titleright">
             <div class="title">username@gmail.com</div>
           </div>
         </div>
         <div class="nav" id="nav">
-          <div id="nav1" class="nav-option nav-option-active" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/main">Dashboard</div>
-          <div class="nav-option" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option1">Option 1</div>
-          <div class="nav-option" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option2">Option 2</div>
-          <div class="nav-option" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option3">Option 3</div>
-          <div class="nav-option" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option4">Option 4</div>
-          <div class="nav-option" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option5">Option 5</div>
+          <div id="nav1" class="nav-option nav-option-active" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/main">Dashboard</div>
+          <div class="nav-option" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option1">Option 1</div>
+          <div class="nav-option" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option2">Option 2</div>
+          <div class="nav-option" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option3">Option 3</div>
+          <div class="nav-option" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option4">Option 4</div>
+          <div class="nav-option" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option5">Option 5</div>
         </div>
       </div>
       <div class="bottom" id="maincontainer">

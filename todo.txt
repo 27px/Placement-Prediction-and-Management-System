@@ -1,5 +1,13 @@
 {
-  "":[
+  "coordinator/dashboard":[
+    "images",
+    "tabs",
+    "ajax to fetch",
+    "js old code to new",
+    "css re design layouts",
+    "css responsiveness"
+  ],
+  "db":[
     "Use Indexing in search (index $text $search)"
   ],
   "gallery":{
