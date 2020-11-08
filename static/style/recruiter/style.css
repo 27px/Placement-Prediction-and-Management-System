@@ -43,7 +43,7 @@ body,.main
   /* background-color:var(--primary8); */
   display:grid;
   grid-template-rows:minmax(max-content,30px) 1fr;
-  background-image:repeating-linear-gradient(135deg, rgba(47, 47, 47, 0.08) 0px, rgba(47, 47, 47, 0.08) 45px,rgba(50, 50, 50, 0.08) 45px, rgba(50, 50, 50, 0.08) 86px,rgba(18, 18, 18, 0.08) 86px, rgba(18, 18, 18, 0.08) 123px,rgba(249, 249, 249, 0.08) 123px, rgba(249, 249, 249, 0.08) 141px,rgba(64, 64, 64, 0.08) 141px, rgba(64, 64, 64, 0.08) 185px,rgba(242, 242, 242, 0.08) 185px, rgba(242, 242, 242, 0.08) 196px,rgba(199, 199, 199, 0.08) 196px, rgba(199, 199, 199, 0.08) 236px),repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 48px,rgba(119, 119, 119, 0.08) 48px, rgba(119, 119, 119, 0.08) 79px,rgba(81, 81, 81, 0.08) 79px, rgba(81, 81, 81, 0.08) 110px,rgba(203, 203, 203, 0.08) 110px, rgba(203, 203, 203, 0.08) 145px,rgba(35, 35, 35, 0.08) 145px, rgba(35, 35, 35, 0.08) 184px,rgba(96, 96, 96, 0.08) 184px, rgba(96, 96, 96, 0.08) 232px,rgba(194, 194, 194, 0.08) 232px, rgba(194, 194, 194, 0.08) 267px),linear-gradient(90deg,#282828,#282828);
+  background-image:repeating-linear-gradient(135deg, rgba(47, 47, 47, 0.08) 0px, rgba(47, 47, 47, 0.08) 45px,rgba(50, 50, 50, 0.08) 45px, rgba(50, 50, 50, 0.08) 86px,rgba(18, 18, 18, 0.08) 86px, rgba(18, 18, 18, 0.08) 123px,rgba(249, 249, 249, 0.08) 123px, rgba(249, 249, 249, 0.08) 141px,rgba(64, 64, 64, 0.08) 141px, rgba(64, 64, 64, 0.08) 185px,rgba(242, 242, 242, 0.08) 185px, rgba(242, 242, 242, 0.08) 196px,rgba(199, 199, 199, 0.08) 196px, rgba(199, 199, 199, 0.08) 236px),repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 48px,rgba(119, 119, 119, 0.08) 48px, rgba(119, 119, 119, 0.08) 79px,rgba(81, 81, 81, 0.08) 79px, rgba(81, 81, 81, 0.08) 110px,rgba(203, 203, 203, 0.08) 110px, rgba(203, 203, 203, 0.08) 145px,rgba(35, 35, 35, 0.08) 145px, rgba(35, 35, 35, 0.08) 184px,rgba(96, 96, 96, 0.08) 184px, rgba(96, 96, 96, 0.08) 232px,rgba(194, 194, 194, 0.08) 232px, rgba(194, 194, 194, 0.08) 267px),linear-gradient(90deg,#151515,#151515);
 }
 .top .titlebar
 {
@@ -327,15 +327,15 @@ body,.main
 {
   width:8px;
   height:8px;
-  background-color:var(--primary2);
+  background-color:var(--primary0);
 }
 .notifycontainer::-webkit-scrollbar:hover
 {
-  background-color:var(--primary3);
+  background-color:var(--primary1);
 }
 .notifycontainer::-webkit-scrollbar-thumb
 {
-  background-color:var(--primary5);
+  background-color:var(--primary8);
 }
 .notifycontainer::-webkit-scrollbar-thumb:hover
 {
@@ -441,7 +441,7 @@ body,.main
 }
 .notification .desc
 {
-  color:var(--primary1);
+  color:var(--primary3);
   font-family:var(--font-sub-title);
   font-weight:300;
   font-size:15px;
