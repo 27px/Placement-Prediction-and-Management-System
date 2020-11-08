@@ -1,6 +1,19 @@
-const _=id=>document.querySelector(id);
-function selectThisOption(a,x)
+const _=selector=>document.querySelector(selector);
+const $=selector=>document.querySelectorAll(selector);
+window.onload=(event)=>{
+  //fake event
+  selectThisOption({
+    currentTarget:_(".nav-option")
+    //selects only first element
+  });
+  Array.from($(".nav-option")).forEach(nav=>{
+    nav.addEventListener("click",selectThisOption);
+  });
+};
+function selectThisOption(event)
 {
+  var a=event.currentTarget;
+  var x=a.parentNode.children;
   var n=x.length,i=0;
   for(i=0;i<n;i++)
   {
@@ -10,7 +23,7 @@ function selectThisOption(a,x)
   document.title=a.innerHTML;
   var c=_("#maincontainer");
   c.innerHTML="<div class='loader'></div>";
-  fetch(a.getAttribute("toURL"),{
+  fetch(`/recruiter/dashboard/dashboard-tabs/${a.getAttribute("toURL")}`,{
     method:"POST",
     cahce:"no-store"
   }).then(response=>{
@@ -25,7 +38,7 @@ function selectThisOption(a,x)
       throw new Error(`Status Error : ${response.status}`);
     }
   }).catch(error=>{
-    console.warn(error.message);
     c.innerHTML="<div class='loadererror'></div>";
+    console.warn(error.message);
   });
 }

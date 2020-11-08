@@ -8,9 +8,8 @@
 
     <link rel="stylesheet" type="text/css" href="../../static/style/recruiter/style.css">
     <script src="../../static/script/recruiter/script.js"></script>
-
   </head>
-  <body onload="selectThisOption(_('#nav1'),_('#nav').children);">
+  <body>
     <div class="main" id="main">
       <div class="top">
         <div class="titlebar">
@@ -23,12 +22,15 @@
           </div>
         </div>
         <div class="nav" id="nav">
-          <div id="nav1" class="nav-option nav-option-active" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/main">Dashboard</div>
-          <div class="nav-option" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option1">Option 1</div>
-          <div class="nav-option" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option2">Option 2</div>
-          <div class="nav-option" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option3">Option 3</div>
-          <div class="nav-option" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option4">Option 4</div>
-          <div class="nav-option" tabindex="0" onclick="selectThisOption(this,this.parentNode.children);" toURL="/recruiter/dashboard/dashboard-tabs/option5">Option 5</div>
+          <!-- Rest of the URL is in the Script -->
+          <div class="nav-option nav-option-active" toURL="main">Dashboard</div>
+          <div class="nav-option" toURL="option1">Option 1</div>
+          <div class="nav-option" toURL="option2">Option 2</div>
+          <div class="nav-option" toURL="option3">Option 3</div>
+          <div class="nav-option" toURL="option4">Option 4</div>
+          <div class="nav-option" toURL="option5">Option 5</div>
+          <div class="nav-option" toURL="option4">Option 6</div>
+          <div class="nav-option" toURL="option5">Option 7</div>
         </div>
       </div>
       <div class="bottom" id="maincontainer">
