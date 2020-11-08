@@ -1,5 +1,6 @@
 const express=require("express");
 const recruiter=express.Router();
+const recruiterTabs=require("./recruiter-tabs.js");
 
 //Route Recruiter
 recruiter.get("/",(req,res)=>{
@@ -10,6 +11,10 @@ recruiter.get("/",(req,res)=>{
 recruiter.get("/dashboard",(req,res)=>{
   res.render("recruiter/dashboard");
 });
+
+//Dashboard Tabs
+recruiter.use("/dashboard/dashboard-tabs",recruiterTabs);
+
 
 //View company details
 recruiter.get("/details",(req,res)=>{

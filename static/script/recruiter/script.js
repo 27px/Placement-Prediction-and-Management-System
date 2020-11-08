@@ -52,7 +52,7 @@ function selectThisOption(a,x)
     x[i].classList.remove("nav-option-active");
   }
   a.classList.add("nav-option-active");
-  _("doctitle").innerHTML=a.innerHTML;
+  document.title=a.innerHTML;
   var c=_("maincontainer");
   c.innerHTML="<div class='loader' style='background-image:url(images/loader.gif);'></div>";
   var m=_("menu").classList;
