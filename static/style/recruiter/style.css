@@ -366,7 +366,7 @@ body,.main
 {
   margin-bottom:5px;
 }
-.notification:hover
+.rounded:hover,.notification:hover
 {
   border-color:var(--dark-gray);
 }
@@ -407,6 +407,7 @@ body,.main
 {
   border-radius:8px;
   box-sizing:border-box;
+  transition:border-color 0.5s;
 }
 .icon-list,.listcontainer
 {
@@ -439,6 +440,7 @@ body,.main
   margin-bottom:15px;
   display:inline-block;
   box-sizing:border-box;
+  text-decoration:none!important;
 }
 .icon-list .icon-wrapper .icon
 {
@@ -466,6 +468,7 @@ body,.main
 {
   width:100%;
   padding-top:5px;
+  text-decoration:none!important;
 }
 .icon-list .icon-wrapper .title
 {
@@ -488,7 +491,7 @@ body,.main
   display:inline-block;
   margin:10px;
 }
-.wbg
+.white-light
 {
   background-color:#fdfdfd;
   border:2px solid var(--light-gray);
@@ -549,7 +552,7 @@ body,.main
   grid-template-rows:30% 30% 30%;
   grid-gap:5%;
 }
-.bgcol
+.bg-highlighted
 {
   transition:background-color 0.5s;
   border:2px solid var(--primary9);
@@ -558,7 +561,7 @@ body,.main
   background-size:100%;
   transition:background-size 1s;
 }
-.bgcol:hover
+.bg-highlighted:hover
 {
   background-size:150%;
 }

@@ -1,11 +1,11 @@
 {
   "coordinator/dashboard":[
-    "images",
+    "images and icons",
     "tabs",
-    "ajax to fetch",
-    "js old code to new",
-    "css re design layouts",
-    "css responsiveness"
+    "content",
+    "email pass from ejs",
+    "dynamic notifications",
+    "no notification messsage"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"
