@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2196F3" id="doctheme">
+
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="script/script.js"></script>
+
+  </head>
+  <body class="bluetheme" onload="selectThisOption(_('nav1'),_('nav').children);">
+    dfjkbsdkvsdfsdf
+    <div class="main hiddenmenu" id="main">
+      <div class="top">
+        <div class="menubar">
+          <div class="menu square left icon" id="menu" tabindex="1" onclick="toggleMenu(_('main').classList);">
+            <div class="menuwrapper">
+              <div class="box b1"></div>
+              <div class="box b2"></div>
+              <div class="box b3"></div>
+            </div>
+          </div>
+          <div class="title">Menu</div>
+        </div>
+        <div class="titlebar">
+          <div class="titleleft">
+            <div class="icon"></div>
+            <div class="title">Project Name</div>
+          </div>
+          <div class="titleright">
+            <div class="title">username@gmail.com</div>
+          </div>
+        </div>
+        <div class="nav" id="nav">
+          <div id="nav1" class="nav-option nav-option-active" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="source/getDashboard.php">Dashboard</div>
+          <div class="nav-option" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="source/getOption1.php">Option 1</div>
+          <div class="nav-option" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="source/getOption2.php">Option 2</div>
+          <div class="nav-option" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="source/getOption3.php">Option 3</div>
+          <div class="nav-option" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="source/getOption4.php">Option 4</div>
+          <div class="nav-option" tabindex="0" onkeydown="keyOption(this,event)" onclick="selectThisOption(this,this.parentNode.children);" toURL="source/getOption5.php">Option 5</div>
+        </div>
+      </div>
+      <div class="bottom" id="maincontainer">
+
+      </div>
+    </div>
+  </body>
+</html>

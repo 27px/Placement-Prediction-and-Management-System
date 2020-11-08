@@ -1,11 +1,14 @@
 {
-  "gallery":[
-    "handle file upload on post : /gallery"
+  "":[
+    "Use Indexing in search (index $text $search)"
   ],
-  "student/dashboard":[
+  "gallery":{
+    "handle file upload on post : /gallery"
+  },
+  "student/dashboard":{
     "searchresultcontainer":"add data and link",//in the data.js file
     "sidebar":"set titles, icons and url",
-  ],
+  },
   "before-production":[
     "remove chalk/unused imports (not uninstall)",
     "uninstall unused packages (if any)",

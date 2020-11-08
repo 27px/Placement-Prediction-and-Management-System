@@ -8,7 +8,7 @@ recruiter.get("/",(req,res)=>{
 
 //Recruiter Home
 recruiter.get("/dashboard",(req,res)=>{
-  res.render("recruiter/recruiter");
+  res.render("recruiter/dashboard");
 });
 
 //View company details
