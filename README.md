@@ -7,9 +7,9 @@ Uses Node.js, MongoDB, Python
 
 # Installing Dependencies and packages of Node.js
 
-npm install             // install node modules
+// one time installation
 
-mkdir data              // create data folder ( note: data folder is ignored in git )
+npm run initialize      // install app (installs packages, creates data folders required)
 
 # Starting
 
