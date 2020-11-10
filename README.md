@@ -1,11 +1,11 @@
 # In Development !!!
 
-# Campus Placement Prediction &amp; Management System
+## Campus Placement Prediction &amp; Management System
 Predicts whether a Student gets Placed in Campus Placement using Python,
 
 > Uses Node.js, MongoDB, Python
 
-# Installing App
+#### Installing App
 
 > one time installation
 
@@ -13,10 +13,10 @@ Predicts whether a Student gets Placed in Campus Placement using Python,
 
 > installs app (installs packages, creates data folders required)
 
-# Starting
+#### Starting
 
 `npm run start`
 
-# Running in developer mode
+#### Running in developer mode
 
 `npm run dev`
