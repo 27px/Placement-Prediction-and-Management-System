@@ -23,14 +23,14 @@ window.onload=()=>{
   document.body.addEventListener("keydown",hkey);
 };
 const slideshow=event=>{
-  var image=event.currentTarget;
+  Array.from($(".preview")).forEach(pre=>{
+    pre.parentNode.removeChild(pre);
+  });
+  const image=event.currentTarget;
   const title=image.getAttribute("showtitle");
   const url=image.style.backgroundImage;
   const code=image.id.replace("image-","");
   const preview=createImage(title,url,code);
-  Array.from($(".preview")).forEach(pre=>{
-    pre.parentNode.removeChild(pre);
-  });
   const previewContainer=_(".container");
   previewContainer.appendChild(preview);
   setArrows();
