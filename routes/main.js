@@ -367,7 +367,7 @@ route.get("/404",function(req,res){
 //All other routes
 route.get("*",function(req,res){
   //logs requested path
-  console.log(req.originalUrl);
+  console.log(`404 : ${req.originalUrl}`);
   res.redirect("/404");
 });
 
