@@ -522,9 +522,6 @@ label:hover,input[type=checkbox]:hover
   background:#FFFFFF;
   z-index:20;
   clip-path:circle(0% at calc(50% - 200px) 100%);
-}
-.to-next
-{
   background-color:#2196F3;
   background-image:url("../../images/login/classroom.jpg");
   background-position:center;

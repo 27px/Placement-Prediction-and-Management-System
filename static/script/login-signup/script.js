@@ -80,23 +80,36 @@ function animateNext(event,id,wrapperclass,otherwrapperclass)
   target.setAttribute("clip",0);
   const x=event.clientX-w.x;
   const y=event.clientY-w.y;
-  const t=setInterval(function(){
-    const p=0.25+parseFloat(target.getAttribute("clip"));
-    target.setAttribute("clip",p);
-    target.style.clipPath=`circle(${p}% at ${x}px ${y}px)`;
-    if(p>155)
-    {
-      clearInterval(t);
-      Array.from($(".clear")).forEach(clear=>{
-        clear.click();
-      });
-      otherwrapper.classList.remove("hidden");
-      otherwrapper.classList.add("visible");
-      wrapper.classList.remove("visible");
-      wrapper.classList.add("hidden");
-      target.style.clipPath=`circle(0% at ${x}px ${y}px)`;
-    }
-  },1);
+  target.setAttribute("clip-x",x);
+  target.setAttribute("clip-y",y);
+  requestAnimationFrame(()=>{
+    animateNextFrame(target,wrapper,otherwrapper);
+  });
+}
+function animateNextFrame(target,wrapper,otherwrapper)
+{
+  const p=0.5+parseFloat(target.getAttribute("clip"));
+  const x=target.getAttribute("clip-x");
+  const y=target.getAttribute("clip-y");
+  target.setAttribute("clip",p);
+  target.style.clipPath=`circle(${p}% at ${x}px ${y}px)`;
+  if(p>155)
+  {
+    Array.from($(".clear")).forEach(clear=>{
+      clear.click();
+    });
+    otherwrapper.classList.remove("hidden");
+    otherwrapper.classList.add("visible");
+    wrapper.classList.remove("visible");
+    wrapper.classList.add("hidden");
+    target.style.clipPath=`circle(0% at ${x}px ${y}px)`;
+  }
+  else
+  {
+    requestAnimationFrame(()=>{
+      animateNextFrame(target,wrapper,otherwrapper);
+    });
+  }
 }
 function resetMessage(box)
 {
