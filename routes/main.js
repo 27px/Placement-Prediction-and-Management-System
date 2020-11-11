@@ -75,6 +75,29 @@ route.get("/register",async(req,res)=>{
   });
 });
 
+//New Account
+route.get("/register/profile",async(req,res)=>{
+  const user=new User(req);
+  var err=false;
+  await user.initialize().then(data=>{
+    data.isLoggedIn;
+    data.type;
+  }).catch(error=>{
+    console.log(error.message);
+    err=true;
+    req.session.destroy();//clear current session when an error occurs and redirect to login
+  }).finally(()=>{
+    if(!err)
+    {
+      res.render("/student/complete-profile");
+    }
+    else
+    {
+      res.redirect("/login");
+    }
+  });
+});
+
 //process Login
 route.post("/login",(req,res)=>{
   var parseError=false;
@@ -122,7 +145,6 @@ route.post("/login",(req,res)=>{
             };
             value=JSON.stringify(value);
             value=Buffer.from(value).toString("base64");
-            console.log(value);
             var option={
               maxAge:31*24*60*60*1000
             };

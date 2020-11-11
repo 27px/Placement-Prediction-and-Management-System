@@ -18,11 +18,12 @@
     "sidebar":"set titles, icons and url",
   },
   "before-production":[
+    "check if all pages have title"
     "remove chalk/unused imports (not uninstall)",
     "uninstall unused packages (if any)",
     "minify all client-side css and js and svg",
     "prefetch all static files",
-    "set theme color for chrome in android",
+    "set theme color for chrome in android (meta theme)",
     "remove unused css in default-values.css"
   ],
   "ui":{

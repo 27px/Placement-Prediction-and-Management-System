@@ -59,8 +59,40 @@ student.get("/dashboard",async(req,res)=>{
   // }
 });
 
+student.get("/profile/new",async(req,res)=>{
+  const user=new User(req);
+  var isLoggedIn=false;
+  await user.initialize().then(async(data)=>{
+    isLoggedIn=data.isLoggedIn && (data.type=="coordinator" || data.type=="student");
+    if(isLoggedIn)//loggedin
+    {
+      var data=await user.getUserData(data.user);
+      isLoggedIn=data.success;
+      if(isLoggedIn)//returned data successfully
+      {
+        var profile=data.result.data;
+        console.log(profile);
+      }
+    }
+  }).catch(error=>{
+    isLoggedIn=false;
+  }).finally(()=>{
+    if(!isLoggedIn)
+    {
+      // req.session.destroy(); // no need to destroy session because there is no redirect in login page if already logged in. Instear shows a popup message
+      res.redirect("/login");
+    }
+    else
+    {
+      res.render("student/complete-profile",{
+        title:"Complete Profile"
+      });
+    }
+  });
+});
+
 //Profile of others or current user
-student.get("/profile/:id",(req,res)=>{
+student.get("/profile/view/:id",(req,res)=>{
   var userID=req.params.id;
   res.render("student/view-profile",{
     user:userID

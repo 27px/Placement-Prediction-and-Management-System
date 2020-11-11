@@ -86,7 +86,7 @@ function animateNext(event,id,wrapperclass,otherwrapperclass)
     target.style.clipPath=`circle(${p}% at ${x}px ${y}px)`;
     if(p>155)
     {
-      clearTimeout(t);
+      clearInterval(t);
       Array.from($(".clear")).forEach(clear=>{
         clear.click();
       });

@@ -1,6 +1,8 @@
 // Important (for Refference)
 // Accessing User Class in Route
+
 // route.get("/test",async(req,res)=>{
+//
 //   const user=new User(req);
 //   await user.initialize().then(data=>{
 //     console.log("success");
@@ -12,7 +14,9 @@
 //     console.log("after");
 //     res.end("OK");
 //   });
+//
 // });
+
 const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
 const config=require("../config/config.json");
@@ -116,6 +120,41 @@ class User
       data.success=false;
       data.message="Connection Error";
       data.devlog=error.message;
+    });
+    return data;
+  }
+  async getUserData(email)
+  {
+    var data={};
+    await MongoClient.connect(DB_CONNECTION_URL,{
+      useUnifiedTopology:true
+    }).then(async mongo=>{
+      const db=mongo.db(config.DB_SERVER.DB_DATABASE);
+      await db.collection("user_data")
+      .findOne({
+        email
+      })
+      .then(result=>{
+        if(result!==null)
+        {
+          data.success=true;
+          data.result=result;
+          delete data.result.password;
+        }
+        else
+        {
+          data.success=false;
+          data.message="not Found";
+        }
+      }).catch(err=>{
+        data.success=false;
+        data.message=err.message;
+      }).finally(()=>{
+        mongo.close();
+      });
+    }).catch(error=>{
+      data.success=false;
+      data.message=error.message;
     });
     return data;
   }
