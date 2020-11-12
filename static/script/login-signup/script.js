@@ -80,8 +80,8 @@ function animateNext(event,id,wrapperclass,otherwrapperclass)
   target.setAttribute("clip",0);
   const x=event.clientX-w.x;
   const y=event.clientY-w.y;
-  target.setAttribute("clip-x",x);
-  target.setAttribute("clip-y",y);
+  target.setAttribute("clip-x",parseInt(x));
+  target.setAttribute("clip-y",parseInt(y));
   requestAnimationFrame(()=>{
     animateNextFrame(target,wrapper,otherwrapper);
   });

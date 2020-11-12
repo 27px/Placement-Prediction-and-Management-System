@@ -70,7 +70,8 @@ student.get("/profile/new",async(req,res)=>{
       isLoggedIn=data.success;
       if(isLoggedIn)//returned data successfully
       {
-        var profile=data.result.data;
+        // console.log(data);
+        var profile=data.result.data;//undefined if profile is incomplete
         console.log(profile);
       }
     }
