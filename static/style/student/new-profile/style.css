@@ -284,3 +284,9 @@ video.bg
   background:#4CAF50;
   outline:none;
 }
+.info .secondtimer
+{
+  width:100px;
+  height:100px;
+  margin-bottom:20px;
+}

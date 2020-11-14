@@ -7,6 +7,9 @@
     "dynamic notifications",
     "no notification messsage"
   ],
+  "login-signup":[
+    when nav button to same page (login/register) is clicked, no animation but after a while clears input.
+  ],
   "db":[
     "Use Indexing in search (index $text $search)"
   ],
