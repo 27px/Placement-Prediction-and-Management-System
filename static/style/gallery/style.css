@@ -26,10 +26,10 @@ body
 .container
 {
   width:calc(100% - (var(--gap) * 2));
-  height:calc(100% - (var(--nav-height) * 2) + 5px);
+  height:calc(100% - (var(--nav-height) * 1.5));
   padding:0px var(--gap) var(--gap) var(--gap);
   position:absolute;
-  top:calc(var(--nav-height) + var(--gap) + 5px);
+  top:var(--nav-height);
   left:0;
   overflow:auto;
   margin:10px 0px;

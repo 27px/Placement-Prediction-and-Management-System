@@ -8,6 +8,7 @@ nav
   padding:0px 5px;
   transition:transform 0.8s,opacity 0.3s;
   z-index:300!important;
+  user-select:none;
 }
 nav .left
 {
@@ -66,6 +67,10 @@ a.menu svg
 }
 @media (max-width:1150px)
 {
+  :root
+  {
+    --nav-height:50px;
+  }
   a.menu
   {
     display:inline-flex;
@@ -79,6 +84,7 @@ a.menu svg
   {
     width:100%;
     height:var(--nav-height);
+    height:50px;
     box-shadow:0px 0px 10px 1px #000000;
     z-index:500;
     position:fixed;
