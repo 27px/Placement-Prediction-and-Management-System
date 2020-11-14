@@ -75,29 +75,6 @@ route.get("/register",async(req,res)=>{
   });
 });
 
-//New Account
-route.get("/register/profile",async(req,res)=>{
-  const user=new User(req);
-  var err=false;
-  await user.initialize().then(data=>{
-    data.isLoggedIn;
-    data.type;
-  }).catch(error=>{
-    console.log(error.message);
-    err=true;
-    req.session.destroy();//clear current session when an error occurs and redirect to login
-  }).finally(()=>{
-    if(!err)
-    {
-      res.render("/student/complete-profile");
-    }
-    else
-    {
-      res.redirect("/login");
-    }
-  });
-});
-
 //process Login
 route.post("/login",(req,res)=>{
   var parseError=false;
@@ -135,7 +112,15 @@ route.post("/login",(req,res)=>{
           req.session.user=email;
           req.session.type=result.type;
           data.success=true;
-          data.redirect=`/${result.type}/dashboard`;
+          console.log(result);
+          if(result.data==undefined && (result.type=="student" || result.type=="coordinator"))
+          {
+            data.redirect='student/profile/new';//If (student/coordinator) profile not complete
+          }
+          else
+          {
+            data.redirect=`/${result.type}/dashboard`;
+          }
           if(remember===true)
           {
             var key=config.COOKIE.KEY;
@@ -227,7 +212,7 @@ route.post("/register",(req,res)=>{
             else
             {
               data.success=true;
-              data.redirect="/login";//send to login after create account
+              data.redirect="student/profile/new";//send to complete profile page after creating account
               res.json(data);
             }
             mongo.close();

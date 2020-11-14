@@ -62,15 +62,17 @@ student.get("/dashboard",async(req,res)=>{
 student.get("/profile/new",async(req,res)=>{
   const user=new User(req);
   var isLoggedIn=false;
+  var type="guest";
   await user.initialize().then(async(data)=>{
     isLoggedIn=data.isLoggedIn && (data.type=="coordinator" || data.type=="student");
     if(isLoggedIn)//loggedin
     {
       var data=await user.getUserData(data.user);
       isLoggedIn=data.success;
+      type=data.type;
       if(isLoggedIn)//returned data successfully
       {
-        // console.log(data);
+        console.log(data);
         var profile=data.result.data;//undefined if profile is incomplete
         console.log(profile);
       }
@@ -86,7 +88,9 @@ student.get("/profile/new",async(req,res)=>{
     else
     {
       res.render("student/complete-profile",{
-        title:"Complete Profile"
+        title:"Complete Profile",
+        isLoggedIn,
+        type
       });
     }
   });

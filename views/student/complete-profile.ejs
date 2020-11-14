@@ -3,8 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title><%=title%></title>
+    <link rel="stylesheet" href="../../static/style/student/new-profile/style.css">
+    <link rel="stylesheet" href="../../static/style/nav.css">
   </head>
   <body>
-    Hello
+    <video muted autoplay loop poster="../../static/videos/student-new.png" class="bg">
+      <source src="../../static/videos/student-new.mp4" type="video/mp4">
+    </video>
+    <!--Navigation Bar Start-->
+      <%- include("../partials/nav.ejs",{
+        isLoggedIn,
+        type,
+        color:"#FFFFFF"
+      }); %>
+    <!--Navigation Bar End-->
   </body>
 </html>
