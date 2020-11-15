@@ -52,32 +52,34 @@
             <a class="a-box" id="box-1"></a>
             <div class="fit">
               <div class="info">
-                <div class="timers">
-                  <svg class="timer minute-timer" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#29B6F6;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#0D47A1;stop-opacity:1" />
-                      </linearGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="45" fill="url(#grad)" stroke="rgba(26,35,126,0.5)" stroke-weight="1"/>
-                    <path id="svg_minute_path" fill="none" stroke-linecap="round" stroke-width="8" stroke="#FFFFFF" stroke-dasharray="0,220" d="M50 15 a 35 35 0 0 1 0 70 a 35 35 0 0 1 0 -70"/>
-                    <text id="svg_minute_text" x="50" y="50" text-anchor="middle" font-family="Roboto,sans-serif" dy="7" font-size="21" fill="#FFFFFF"><%-timeout%> m</text>
-                  </svg>
-                  <svg class="timer second-timer" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#29B6F6;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#0D47A1;stop-opacity:1" />
-                      </linearGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="45" fill="url(#grad)" stroke="rgba(26,35,126,0.5)" stroke-weight="1"/>
-                    <path id="svg_second_path" fill="none" stroke-linecap="round" stroke-width="8" stroke="#FFFFFF" stroke-dasharray="0,220" d="M50 15 a 35 35 0 0 1 0 70 a 35 35 0 0 1 0 -70"/>
-                    <text id="svg_second_text" x="50" y="50" text-anchor="middle" font-family="Roboto,sans-serif" dy="7" font-size="21" fill="#FFFFFF">0 s</text>
-                  </svg>
+                <div class="cen">
+                  <div class="timers">
+                    <svg class="timer minute-timer" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style="stop-color:#29B6F6;stop-opacity:1" />
+                          <stop offset="100%" style="stop-color:#0D47A1;stop-opacity:1" />
+                        </linearGradient>
+                      </defs>
+                      <circle cx="50" cy="50" r="45" fill="url(#grad)" stroke="rgba(26,35,126,0.5)" stroke-weight="1"/>
+                      <path id="svg_minute_path" fill="none" stroke-linecap="round" stroke-width="8" stroke="#FFFFFF" stroke-dasharray="0,220" d="M50 15 a 35 35 0 0 1 0 70 a 35 35 0 0 1 0 -70"/>
+                      <text id="svg_minute_text" x="50" y="50" text-anchor="middle" font-family="Roboto,sans-serif" dy="7" font-size="21" fill="#FFFFFF"><%-timeout%> m</text>
+                    </svg>
+                    <svg class="timer second-timer" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style="stop-color:#29B6F6;stop-opacity:1" />
+                          <stop offset="100%" style="stop-color:#0D47A1;stop-opacity:1" />
+                        </linearGradient>
+                      </defs>
+                      <circle cx="50" cy="50" r="45" fill="url(#grad)" stroke="rgba(26,35,126,0.5)" stroke-weight="1"/>
+                      <path id="svg_second_path" fill="none" stroke-linecap="round" stroke-width="8" stroke="#FFFFFF" stroke-dasharray="0,220" d="M50 15 a 35 35 0 0 1 0 70 a 35 35 0 0 1 0 -70"/>
+                      <text id="svg_second_text" x="50" y="50" text-anchor="middle" font-family="Roboto,sans-serif" dy="7" font-size="21" fill="#FFFFFF">0 s</text>
+                    </svg>
+                  </div>
+                  <div class="text">An OTP have been sent to your E-Mail ID. Check your E-Mail and enter the OTP to verify that the E-Mail ID you have entered is valid and belongs to you.</div>
+                  <button type="button" class="b-yellow resend">Resend</button>
                 </div>
-                <div class="text">An OTP have been sent to your E-Mail ID. Check your E-Mail and enter the OTP to verify that the E-Mail ID you have entered is valid and belongs to you.</div>
-                <button type="button" class="b-yellow resend">Resend</button>
               </div>
               <div class="tab" id="first-tab">
                 <div class="row">
@@ -108,7 +110,9 @@
             <a class="a-box" id="box-2"></a>
             <div class="fit">
               <div class="info">
-                <div class="text">Second one</div>
+                <div class="cen">
+                  <div class="text">Second one</div>
+                </div>
               </div>
               <div class="tab">
                 Form Elements will appear here
@@ -120,7 +124,9 @@
             <a class="a-box" id="box-3"></a>
             <div class="fit">
               <div class="info">
-                <div class="text">Third one.</div>
+                <div class="cen">
+                  <div class="text">Third one</div>
+                </div>
               </div>
               <div class="tab">
                 Form Elements will appear here

@@ -15,6 +15,14 @@
   --top-size:80px;
   user-select:none;
 }
+body
+{
+  background-image:url("../../../videos/student-new.png");
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
 .hidden
 {
   display:none;
@@ -90,7 +98,7 @@ video.bg
   border-radius:10px;
   overflow:hidden;
   box-shadow:0px 0px 15px 0px rgba(0,0,0,0.5),
-             0px 0px 5px 1px rgba(0,0,0,0.5);
+             0px 0px 5px 1px rgba(0,0,0,0.8);
   overflow:hidden;
 }
 .wrapper .top
@@ -246,13 +254,32 @@ video.bg
   padding:35px 0px;
   box-sizing:border-box;
 }
+.main .box .fit .info::-webkit-scrollbar
+{
+  width:10px;
+  height:10px;
+  background:rgba(0,0,0,0.3);
+}
+.main .box .fit .info::-webkit-scrollbar-thumb
+{
+  background:rgba(255,255,255,0.5);
+}
+.main .box .fit .info::-webkit-scrollbar-thumb:hover
+{
+  background:rgba(255,255,255,1);
+}
+.main .box .fit .info .cen
+{
+  width:100%;
+  padding:0px 70px;
+  box-sizing:border-box;
+  text-align:center;
+}
 .main .box .fit .info .text
 {
   padding:5px;
   box-sizing:border-box;
-  width:30vw;
-  min-width:300px;
-  max-width:100%;
+  width:100%;
   text-align:justify;
   color:#FFF;
   font-family:var(--font-monospace);
@@ -274,12 +301,15 @@ video.bg
 {
   display:flex;
   flex-direction:row;
+  justify-content:center;
+  margin-bottom:20px;
+  flex-wrap:wrap;
 }
 .info .timer
 {
   width:100px;
   height:100px;
-  margin-bottom:20px;
+  flex-shrink:0;
 }
 #svg_second_path,#svg_minute_path
 {
@@ -405,4 +435,58 @@ button:hover
 .m-info
 {
   color:#2196F3;
+}
+@media (max-width:900px)
+{
+  .main .box .fit .info .cen
+  {
+    padding:0px 5vmin;
+  }
+}
+@media (max-width:700px)
+{
+  .main .box .fit .info .cen
+  {
+    padding:0px 3vmin;
+  }
+}
+@media (max-width:600px)
+{
+  .main .box .fit
+  {
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows:1fr 1fr;
+    overflow-y:auto;
+    overflow-x:hidden;
+  }
+  .main .box .fit>*
+  {
+    height:fit-content;
+    min-height:300px;
+    width:100%;
+    flex-shrink:1;
+    box-sizing:border-box;
+    max-width:86vw;
+  }
+  .main .box .fit .text
+  {
+    font-size:16px!important;
+    line-height:16px;
+  }
+}
+@media (max-width:370px)
+{
+  .tab .otp-container
+  {
+    flex-wrap:wrap;
+  }
+  .tab .otp-container *
+  {
+    margin:5px!important;
+  }
+  .row button
+  {
+    margin-bottom:20px;
+  }
 }

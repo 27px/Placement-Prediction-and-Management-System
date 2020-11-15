@@ -15,7 +15,8 @@
     "form",
     "file-upload",
     "button-nav scrollbar ?",
-    "responsiveness"
+    "responsiveness",
+    "send mail is commented"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"
