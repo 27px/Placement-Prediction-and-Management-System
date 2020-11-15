@@ -104,6 +104,7 @@ video.bg
   overflow-y:hidden;
   overflow-x:auto;
   z-index:10;
+  scroll-behavior:smooth;
 }
 .wrapper .top::-webkit-scrollbar
 {
@@ -114,13 +115,11 @@ video.bg
 {
   width:fit-content;
   min-width:100%;
-  height:3px;
+  height:100%;
   position:relative;
   top:50%;
   left:0;
   transform:translateY(-50%);
-  overflow-y:visible;
-  overflow-x:visible;
 }
 .wrapper .top .progress .pro
 {
@@ -239,14 +238,18 @@ video.bg
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
   background:rgba(0,0,0,0.5);
+  overflow-y:auto;
+  padding:35px 0px;
+  box-sizing:border-box;
 }
 .main .box .fit .info .text
 {
   padding:5px;
   box-sizing:border-box;
   width:30vw;
+  min-width:300px;
+  max-width:100%;
   text-align:justify;
   color:#FFF;
   font-family:var(--font-monospace);
@@ -284,9 +287,18 @@ video.bg
   background:#4CAF50;
   outline:none;
 }
-.info .secondtimer
+.info .timers
+{
+  display:flex;
+  flex-direction:row;
+}
+.info .timer
 {
   width:100px;
   height:100px;
   margin-bottom:20px;
+}
+#svg_second_path,#svg_minute_path
+{
+  transition:stroke-dasharray linear 1s;
 }

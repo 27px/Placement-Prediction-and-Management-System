@@ -15,5 +15,14 @@
   },
   "COOKIE":{
     "KEY":"dXNlci1jcmVkZW50aWFscw"
+  },
+  "MAIL":{
+    "AUTHENTICATION":{
+      "service":"gmail",
+      "auth":{
+        "user":"virtualappstore@gmail.com",
+        "pass":"$@{#07142128"
+      }
+    }
   }
 }

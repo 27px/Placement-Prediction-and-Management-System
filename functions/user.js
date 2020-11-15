@@ -67,7 +67,7 @@ class User
         {
           this.isLoggedIn=false;
           this.type="guest";
-          this.user="Guest";
+          this.user="guest";
         }
         delete this.session;//porperty of this object
         delete this.cookies;//porperty of this object
@@ -80,7 +80,7 @@ class User
     {
       this.isLoggedIn=false;
       this.type="guest";
-      this.user="Guest";
+      this.user="guest";
       delete this.session;//porperty of this object
       delete this.cookies;//porperty of this object
       return this;
