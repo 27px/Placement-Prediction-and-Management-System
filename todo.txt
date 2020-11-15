@@ -12,10 +12,11 @@
     "in login, after fetch returns and if there is a redirect show animation (mail and db delay)"
   ],
   "complete-profile":[
-    "timer",
     "form",
-    "resend",
-    "navigate throug boxes"
+    "file-upload",
+    "button-nav scrollbar ?",
+    "responsiveness"
+    "otp:set verified status"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"
