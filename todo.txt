@@ -16,7 +16,6 @@
     "file-upload",
     "button-nav scrollbar ?",
     "responsiveness"
-    "otp:set verified status"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"

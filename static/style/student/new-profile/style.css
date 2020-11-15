@@ -15,6 +15,10 @@
   --top-size:80px;
   user-select:none;
 }
+.hidden
+{
+  display:none;
+}
 video.bg
 {
   width:100%;

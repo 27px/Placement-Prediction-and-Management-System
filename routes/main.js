@@ -112,7 +112,7 @@ route.post("/login",(req,res)=>{
           req.session.user=email;
           req.session.type=result.type;
           data.success=true;
-          console.log(result);
+          // console.log(result);
           if(result.data==undefined && (result.type=="student" || result.type=="coordinator"))
           {
             data.redirect='student/profile/new';//If (student/coordinator) profile not complete

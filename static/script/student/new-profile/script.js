@@ -33,6 +33,7 @@ window.onload=()=>{
     anchor.addEventListener("click",nextPage);
   });
   _(".resend").addEventListener("click",function(){
+    window.location.hash="";
     window.location.reload();
   });
   Array.from(_(".otp-container").children).forEach(text=>{
@@ -159,7 +160,7 @@ function startChanges()
           <div class="title">OTP Expired</div>
         </div>
         <div class="row">
-          <button type="button" class="b-blue" onclick="window.location.reload();">Resend</button>
+          <button type="button" class="b-blue" onclick="window.location.hash="";window.location.reload();">Resend</button>
         </div>
         `;
       }
@@ -189,4 +190,15 @@ function resetMessage(m)
   m.classList.remove("m-info");
   m.classList.remove("m-warning");
   m.classList.remove("m-error");
+}
+function alreadyVerified()
+{
+  setProgress("minute",0,60," m");
+  setProgress("second",0,60," s");
+  clearInterval(1);
+  _("#first-tab").innerHTML=`
+  <div class="row">
+    <div class="title">OTP Verified</div>
+  </div>
+  `;
 }
