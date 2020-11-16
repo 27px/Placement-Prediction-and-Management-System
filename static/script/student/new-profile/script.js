@@ -12,11 +12,49 @@ function setProgress(clock,progress,total,unit)
 }
 function nextPage(event)
 {
-  var x=event.currentTarget.classList;
-  if((!x.contains("active-box") || x.contains("no-visit")))
+  const hash=window.location.hash;
+  var no=false;
+  if(hash!="")
   {
-    event.preventDefault();
-    return false;
+    var next=_(`${hash}-next`);
+    if(next!=null)
+    {
+      var from=parseInt(hash.split("-")[1]);
+      var to=parseInt(event.currentTarget.href.split("#")[1].split("-")[1]);
+      if(from>=to)
+      {
+        no=true;
+      }
+      // if active navigate without validation and to any active box
+      else if(_(".pro").children[to-1].classList.contains("active-box"))
+      {
+        // return;
+        no=true;
+      }
+      else
+      {
+        event.preventDefault();
+        next.click();
+        return;
+      }
+    }
+    else
+    {
+      no=true;
+    }
+  }
+  else
+  {
+    no=true;
+  }
+  if(no)
+  {
+    var x=event.currentTarget.classList;
+    if((!x.contains("active-box") || x.contains("no-visit")))
+    {
+      event.preventDefault();
+      return false;
+    }
   }
 }
 window.onload=()=>{
@@ -304,5 +342,51 @@ function toThirdPage()
     resetMessage(msg);
     _(".pro").children[1].classList.add("active-box");
     window.location.hash="#box-3";
+  }
+}
+function toFourthPage()
+{
+  var msg="#message-box-3",phone=_("#phone").value,gender=$("[name='gender']:checked"),dob=_("#dob").value;
+  if(phone=="")
+  {
+    resetMessage(msg);
+    setMessage(msg,"Enter phone number","error");
+    return;
+  }
+  else if(phone.length<10)
+  {
+    resetMessage(msg);
+    setMessage(msg,"Phone number too short","error");
+    return;
+  }
+  else if(phone.length>10)
+  {
+    resetMessage(msg);
+    setMessage(msg,"Phone number too long","error");
+    return;
+  }
+  else if(!/^[0-9]*$/.test(phone))
+  {
+    resetMessage(msg);
+    setMessage(msg,"Invalid Phone Number","error");
+    return;
+  }
+  else if(gender.length<1)
+  {
+    resetMessage(msg);
+    setMessage(msg,"Select gender","error");
+    return;
+  }
+  else if(dob=="")
+  {
+    resetMessage(msg);
+    setMessage(msg,"Invalid Date","error");
+    return;
+  }
+  else
+  {
+    resetMessage(msg);
+    _(".pro").children[2].classList.add("active-box");
+    window.location.hash="#box-4";
   }
 }

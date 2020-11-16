@@ -330,8 +330,12 @@ video.bg
 .tab .row
 {
   width:100%;
-  box-sizing:border-box;
   padding:0px 20px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:space-evenly;
 }
 .tab .row,.tab .otp-container
 {
@@ -499,6 +503,12 @@ button:hover
   .main .box .fit .tab
   {
     min-height:400px;
+    padding:20px 15px 20px 5px!important;
+  }
+  .main .box .fit .tab .row
+  {
+    padding:0px 5px;
+    max-width:300px;
   }
 }
 @media (max-height:500px)
@@ -530,6 +540,14 @@ button:hover
   {
     margin-bottom:20px;
   }
+  .cen .image
+  {
+    width:70vw!important;
+    height:70vw!important;
+    border-radius:70vw!important;
+    max-width:150px;
+    max-height:150px;
+  }
 }
 .cen .image
 {
@@ -550,8 +568,8 @@ button:hover
 }
 .cen .image .preview svg
 {
-  width:80%;
-  height:80%;
+  width:60%;
+  height:60%;
   position:absolute;
   top:50%;
   left:50%;
@@ -567,7 +585,23 @@ button:hover
   object-fit:contain;
   object-position:center;
 }
-.row input[type="text"],textarea
+.gray
+{
+  filter:grayscale(1);
+}
+.row label
+{
+
+  font-size:16px;
+  padding:5px 10px;
+  box-sizing:border-box;
+  letter-spacing:1px;
+  font-family:var(--font-monospace);
+}
+.row input[type="text"],
+.row input[type="number"],
+.row input[type="date"],
+.row textarea
 {
   width:100%;
   background:transparent;
