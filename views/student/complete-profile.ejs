@@ -44,7 +44,7 @@
             </div>
           </div>
         </div>
-        <form class="main" method="POST" action="">
+        <form class="main" method="POST" action="" enctype="multipart/form-data">
           <%
             var hide=verified?" hidden":"";
           %>
@@ -85,7 +85,7 @@
                 <div class="row">
                   <div class="title">Verify Account</div>
                 </div>
-                <div class="row otp-container">
+                <div class="otp-container">
                   <%
                     for(let i=0;i<6;i++)
                     {
@@ -95,14 +95,11 @@
                     }
                   %>
                 </div>
-                <div class="message message-otp"></div>
+                <div class="message message-box-1"></div>
                 <div class="row">
                   <button type="button" class="b-red" onclick="clearOtpText();">Clear</button>
                   <button type="button" class="b-blue" id="verify-otp">Verify</button>
                 </div>
-                <!-- <div class="row">
-                  <a href="#box-2">Next</a>
-                </div> -->
               </div>
             </div>
           </div>
@@ -111,12 +108,38 @@
             <div class="fit">
               <div class="info">
                 <div class="cen">
-                  <div class="text">Second one</div>
+                  <div class="image">
+                    <div class="preview">
+                      <svg id="alt-profile-pic" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                      <img class="real-preview" onclick="selectProfilePic();"></img>
+                    </div>
+                  </div>
+                  <div class="text">Set up your profile by adding basic details. Note: These details will be visible publically</div>
                 </div>
               </div>
               <div class="tab">
-                Form Elements will appear here
-                <a href="#box-3">Next</a>
+                <div class="row">
+                  <div class="title">Profile</div>
+                </div>
+                <div class="row">
+                  <input type="text" name="name" placeholder="Name" id="name">
+                </div>
+                <div class="row">
+                  <textarea name="bio" placeholder="About you" maxlength="200" id="bio"></textarea>
+                </div>
+                <div class="row">
+                  <input type="file" name="profilepic" accept="image/*" id="profilepic" onchange="selectedProfilePic(this);">
+                  <div class="file" id="view-profilepic">
+                    <div class="desc">Profile Picture</div>
+                    <div class="button" onclick="selectProfilePic();">Select</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="message" id="message-box-2"></div>
+                </div>
+                <div class="row">
+                  <button type="button" class="b-green" onclick="toThirdPage();">Next</button>
+                </div>
               </div>
             </div>
           </div>

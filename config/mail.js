@@ -1,4 +1,4 @@
-const user_config=require("../data/config/user_config.json");
+const user_config=require("../user_config/user_config.json");
 var mail_credentials={
   "service":user_config.MAIL.SERVICE,
   "auth":{

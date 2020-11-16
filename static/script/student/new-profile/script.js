@@ -59,17 +59,17 @@ window.onload=()=>{
     otp=parseInt(otp);
     if(isNaN(otp))
     {
-      setMessage(".message-otp","Invalid OTP","error");
+      setMessage(".message-box-1","Invalid OTP","error");
       return;
     }
     if(otp.toString().length<6)
     {
-      setMessage(".message-otp","Invalid OTP","error");
+      setMessage(".message-box-1","Invalid OTP","error");
       return;
     }
     else
     {
-      setMessage(".message-otp","Loading . . .","info");
+      setMessage(".message-box-1","Loading . . .","info");
     }
     fetch("./new/verify-otp",{
       method:"POST",
@@ -83,7 +83,7 @@ window.onload=()=>{
     .then(data=>{
       if(!data.success)
       {
-        setMessage(".message-otp",data.message,"error");
+        setMessage(".message-box-1",data.message,"error");
         if(data.devlog!=undefined)
         {
           console.error(data.devlog);
@@ -91,7 +91,7 @@ window.onload=()=>{
       }
       else
       {
-        setMessage(".message-otp",data.message,"success");
+        setMessage(".message-box-1",data.message,"success");
         clearOtpText();
         _(".pro").children[0].classList.add("active-box");
         _(".pro").children[0].classList.add("no-visit");//only for otp
@@ -100,7 +100,7 @@ window.onload=()=>{
     })
     .catch(err=>{
       console.log(err.message);
-      setMessage(".message-otp","Unknown error","error");
+      setMessage(".message-box-1","Unknown error","error");
     });
   });
   _("#otp-1").focus();
@@ -179,12 +179,13 @@ function clearOtpText()
 function setMessage(selector,message,type)
 {
   var m=_(selector);
-  resetMessage(m);
+  resetMessage(selector);
   m.innerHTML=message;
   m.classList.add("m-"+type);
 }
-function resetMessage(m)
+function resetMessage(selector)
 {
+  var m=_(selector);
   m.innerHTML="";
   m.classList.remove("m-success");
   m.classList.remove("m-info");
@@ -201,4 +202,107 @@ function alreadyVerified()
     <div class="title">OTP Verified</div>
   </div>
   `;
+}
+function selectProfilePic()
+{
+  _("#profilepic").click();
+}
+function selectedProfilePic(element)
+{
+  var file=element.files[0];
+  var preview=_(".real-preview");
+  var alt=_("#alt-profile-pic");
+  if(file!=undefined)
+  {
+    if(file.type.split("/")[0]!="image")
+    {
+      preview.src="";
+      alt.classList.remove("hidden");
+      setMessage("#message-box-2","Invalid Image","error");
+      _("#view-profilepic").classList.remove("file-selected");
+      _("#view-profilepic").classList.add("file-select-error");
+      return;
+    }
+    try
+    {
+      var reader=new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload=()=>{
+        preview.src=reader.result;
+        alt.classList.add("hidden");
+        _("#view-profilepic").classList.remove("file-select-error");
+        _("#view-profilepic").classList.add("file-selected");
+      };
+      reader.onerror=()=>{
+        throw reader.error;
+      };
+    }
+    catch(error){
+      console.warn(error);
+      preview.src="";
+      alt.classList.remove("hidden");
+      setMessage("#message-box-2","No preview Available","warning");
+      _("#view-profilepic").classList.remove("file-selected");
+      _("#view-profilepic").classList.add("file-select-error");
+    }
+  }
+  else
+  {
+    preview.src="";
+    alt.classList.remove("hidden");
+    _("#view-profilepic").classList.remove("file-selected");
+    _("#view-profilepic").classList.add("file-select-error");
+  }
+}
+function toThirdPage()
+{
+  var msg="#message-box-2",name=_("#name").value,bio=_("#bio").value,pic=_("#profilepic").files[0];
+  if(name=="")
+  {
+    resetMessage(msg);
+    setMessage(msg,"Enter your Name","error");
+    return;
+  }
+  else if(name.length<3)
+  {
+    resetMessage(msg);
+    setMessage(msg,"Name too short","error");
+    return;
+  }
+  else if(!/^[a-zA-Z ]*$/.test(name))
+  {
+    resetMessage(msg);
+    setMessage(msg,"Symbols and numbers not allowed in name","error");
+    return;
+  }
+  else if(bio=="")
+  {
+    resetMessage(msg);
+    setMessage(msg,"Enter Bio","error");
+    return;
+  }
+  else if(bio.length<10)
+  {
+    resetMessage(msg);
+    setMessage(msg,"Bio too short","error");
+    return;
+  }
+  else if(pic==undefined)
+  {
+    resetMessage(msg);
+    setMessage(msg,"Select Profile Picture","error");
+    return;
+  }
+  else if(pic.type.split("/")[0]!="image")
+  {
+    resetMessage(msg);
+    setMessage(msg,"Invalid Picture","error");
+    return;
+  }
+  else
+  {
+    resetMessage(msg);
+    _(".pro").children[1].classList.add("active-box");
+    window.location.hash="#box-3";
+  }
 }

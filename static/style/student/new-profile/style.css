@@ -254,16 +254,19 @@ video.bg
   padding:35px 0px;
   box-sizing:border-box;
 }
+.main .box .fit::-webkit-scrollbar,
 .main .box .fit .info::-webkit-scrollbar
 {
   width:10px;
   height:10px;
   background:rgba(0,0,0,0.3);
 }
+.main .box .fit::-webkit-scrollbar-thumb,
 .main .box .fit .info::-webkit-scrollbar-thumb
 {
   background:rgba(255,255,255,0.5);
 }
+.main .box .fit::-webkit-scrollbar-thumb:hover,
 .main .box .fit .info::-webkit-scrollbar-thumb:hover
 {
   background:rgba(255,255,255,1);
@@ -325,6 +328,12 @@ video.bg
   box-sizing:border-box;
 }
 .tab .row
+{
+  width:100%;
+  box-sizing:border-box;
+  padding:0px 20px;
+}
+.tab .row,.tab .otp-container
 {
   text-align:center;
 }
@@ -390,21 +399,37 @@ button:hover
   border-radius:5px;
   transition:background-color 0.3s;
 }
+.b-green
+{
+  background:linear-gradient(135deg,#81C784,#388E3C);
+}
 .b-green:hover
 {
-  background:#4CAF50;
+  background:linear-gradient(135deg,#43A047,#1B5E20);
+}
+.b-red
+{
+  background:linear-gradient(135deg,#e57373,#d32f2f);
 }
 .b-red:hover
 {
-  background:#E91E63;
+  background:linear-gradient(135deg,#ef5350,#b71c1c);
 }
-.b-blue:hover
+.b-yellow
 {
-  background:#2196F3;
+  background:linear-gradient(135deg,#FFEE58,#F9A825);
 }
 .b-yellow:hover
 {
-  background:#FFEB3B;
+  background:linear-gradient(135deg,#FFEB3B,#F57F17);
+}
+.b-blue
+{
+  background:linear-gradient(135deg,#42A5F5,#1976D2);
+}
+.b-blue:hover
+{
+  background:linear-gradient(135deg,#2196F3,#1565C0);
 }
 .message
 {
@@ -415,9 +440,6 @@ button:hover
   width:100%;
   text-align:right;
   box-sizing:border-box;
-}
-.message-otp
-{
   text-align:center;
 }
 .m-success
@@ -459,20 +481,39 @@ button:hover
     grid-template-rows:1fr 1fr;
     overflow-y:auto;
     overflow-x:hidden;
+    width:90vw!important;
   }
   .main .box .fit>*
   {
     height:fit-content;
     min-height:300px;
-    width:100%;
     flex-shrink:1;
     box-sizing:border-box;
-    max-width:86vw;
+    width:90vw!important;
   }
   .main .box .fit .text
   {
     font-size:16px!important;
     line-height:16px;
+  }
+  .main .box .fit .tab
+  {
+    min-height:400px;
+  }
+}
+@media (max-height:500px)
+{
+  .main .box .fit
+  {
+    overflow-y:auto;
+  }
+  .main .box .fit .tab
+  {
+    min-height:400px;
+  }
+  .main .box .fit .info
+  {
+    overflow-y:visible;
   }
 }
 @media (max-width:370px)
@@ -489,4 +530,115 @@ button:hover
   {
     margin-bottom:20px;
   }
+}
+.cen .image
+{
+  background:linear-gradient(135deg,#FFFFFF,#FFFFFF,#D0D0D0,#C0C0C0);
+  width:150px;
+  height:150px;
+  margin:20px auto;
+  border-radius:150px;
+  overflow:hidden;
+  box-shadow:0px 0px 10px 1px #000000;
+  box-sizing:border-box;
+}
+.cen .image .preview
+{
+  width:100%;
+  height:100%;
+  position:relative;
+}
+.cen .image .preview svg
+{
+  width:80%;
+  height:80%;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:1;
+}
+.real-preview
+{
+  width:100%;
+  height:100%;
+  z-index:10;
+  position:relative;
+  object-fit:contain;
+  object-position:center;
+}
+.row input[type="text"],textarea
+{
+  width:100%;
+  background:transparent;
+  border:2px solid transparent;
+  border-bottom:2px solid #404040;
+  font-size:16px;
+  padding:5px 10px;
+  box-sizing:border-box;
+  letter-spacing:1px;
+  font-family:var(--font-monospace);
+}
+.row input[type="file"]
+{
+  display:none;
+}
+.row .file
+{
+  width:100%;
+  font-size:16px;
+  padding:5px 10px;
+  box-sizing:border-box;
+  letter-spacing:1px;
+  font-family:var(--font-monospace);
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+}
+.row .file .button
+{
+  background:linear-gradient(135deg,#42A5F5,#1976D2);
+  padding:5px 10px;
+  border-radius:5px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.row .file .button:hover
+{
+  background:linear-gradient(135deg,#2196F3,#1565C0);
+}
+.row .file .desc
+{
+  padding:5px 10px;
+}
+.row input[type="text"]:focus,textarea:focus
+{
+  border:2px solid #000000;
+  outline:0px solid #FFFFFF;
+}
+.row input::selection,.row textarea::selection
+{
+  color:#FFFFFF;
+  background:#000000;
+}
+.row textarea
+{
+  height:50px;
+  resize:vertical;
+  max-height:100px;
+  min-height:33px;
+}
+.file-selected .desc::after
+{
+  content:"\2714";
+  color:#4CAF50;
+  padding-left:5px;
+}
+.file-select-error .desc::after
+{
+  content:"\2716";
+  color:#E91E63;
+  padding-left:5px;
 }

@@ -16,7 +16,8 @@
     "file-upload",
     "button-nav scrollbar ?",
     "responsiveness",
-    "send mail is commented"
+    "send mail is commented ??",
+    "auto scroll on complete nav-tab",
   ],
   "db":[
     "Use Indexing in search (index $text $search)"
