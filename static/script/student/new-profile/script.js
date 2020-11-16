@@ -14,50 +14,87 @@ function nextPage(event)
 {
   const hash=window.location.hash;
   var no=false;
-  if(hash!="")
-  {
-    var next=_(`${hash}-next`);
-    if(next!=null)
-    {
-      var from=parseInt(hash.split("-")[1]);
-      var to=parseInt(event.currentTarget.href.split("#")[1].split("-")[1]);
-      if(from>=to)
-      {
-        no=true;
-      }
-      // if active navigate without validation and to any active box
-      else if(_(".pro").children[to-1].classList.contains("active-box"))
-      {
-        // return;
-        no=true;
-      }
-      else
-      {
-        event.preventDefault();
-        next.click();
-        return;
-      }
-    }
-    else
-    {
-      no=true;
-    }
-  }
-  else
-  {
-    no=true;
-  }
-  if(no)
+  var from=pi(hash.split("-")[1]);
+  var to=pi(event.currentTarget.href.split("#")[1].split("-")[1]);
+  if(isXthPageValid(from))
   {
     var x=event.currentTarget.classList;
     if((!x.contains("active-box") || x.contains("no-visit")))
     {
       event.preventDefault();
+      var min=Math.min(16,to+1);
+      for(let i=1;i<min;i++)
+      {
+        if(i==to || !isXthPageValid(i))
+        {
+          window.location.hash=`box-${i}`;
+          return;
+        }
+      }
       return false;
     }
+    else
+    {
+      window.location.hash=`box-${to}`;
+    }
   }
+  else
+  {
+    event.preventDefault();
+    return false;
+  }
+  // if(hash!="")
+  // {
+  //   var next=_(`${hash}-next`);
+  //   if(next!=null)
+  //   {
+  //     var from=pi(hash.split("-")[1]);
+  //     var to=pi(event.currentTarget.href.split("#")[1].split("-")[1]);
+  //     if(from>=to)
+  //     {
+  //       no=true;
+  //     }
+  //     if active navigate without validation and to any active box
+  //     else if(_(".pro").children[to-1].classList.contains("active-box"))
+  //     {
+  //       // return;
+  //       no=true;
+  //     }
+  //     else
+  //     {
+  //       event.preventDefault();
+  //       next.click();
+  //       return;
+  //     }
+  //   }
+  //   else
+  //   {
+  //     no=true;
+  //   }
+  // }
+  // else
+  // {
+  //   no=true;
+  // }
+  // if(no)
+  // {
+  //   var x=event.currentTarget.classList;
+  //   if((!x.contains("active-box") || x.contains("no-visit")))
+  //   {
+  //     event.preventDefault();
+  //     return false;
+  //   }
+  // }
 }
 window.onload=()=>{
+  document.body.addEventListener("keydown",event=>{
+    if(event.keyCode===9)
+    {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    }
+  });
   //global variables
   minute=_("#svg_minute_text");
   second=_("#svg_second_text");
@@ -94,7 +131,7 @@ window.onload=()=>{
     Array.from(_(".otp-container").children).forEach(input=>{
       otp+=input.value;
     });
-    otp=parseInt(otp);
+    otp=pi(otp);
     if(isNaN(otp))
     {
       setMessage(".message-box-1","Invalid OTP","error");
@@ -137,7 +174,7 @@ window.onload=()=>{
       }
     })
     .catch(err=>{
-      console.log(err.message);
+      console.error(err.message);
       setMessage(".message-box-1","Unknown error","error");
     });
   });
@@ -154,7 +191,7 @@ function acceptNumberOnly(event)
   }
   else
   {
-    var next=_(`#otp-${parseInt(this.id.replace("otp-",""))+1}`);
+    var next=_(`#otp-${pi(this.id.replace("otp-",""))+1}`);
     if(next!=null)
     {
       next.focus();
@@ -218,8 +255,10 @@ function setMessage(selector,message,type)
 {
   var m=_(selector);
   resetMessage(selector);
-  m.innerHTML=message;
-  m.classList.add("m-"+type);
+  setTimeout(function(){
+    m.innerHTML=message;
+    m.classList.add("m-"+type);
+  },0);
 }
 function resetMessage(selector)
 {
@@ -292,101 +331,181 @@ function selectedProfilePic(element)
     _("#view-profilepic").classList.add("file-select-error");
   }
 }
-function toThirdPage()
+function isXthPageValid(num=1)
+{
+  var result=false;
+  if(num==1)//OTP
+  {
+    if(!_(".pro").children[0].classList.contains("active-box"))
+    {
+      result=false;
+    }
+    result=true;
+  }
+  else if(num==2)
+  {
+    result=isSecondPageValid();
+  }
+  else if(num==3)
+  {
+    result=isThirdPageValid();
+  }
+  else if(num==4)
+  {
+    result=isFourthPageValid();
+  }
+  else if(num==5)
+  {
+    result=isFifthPageValid();
+  }
+  else if(num==6)
+  {
+    result=isSixthPageValid();
+  }
+  else if(num==7)
+  {
+    result=isSeventhPageValid();
+  }
+  else if(num==8)
+  {
+    result=isEighthPageValid();
+  }
+  else if(num==9)
+  {
+    result=isNinethPageValid();
+  }
+  else if(num==10)
+  {
+    result=isTenthPageValid();
+  }
+  else if(num==11)
+  {
+    result=isEleventhPageValid();
+  }
+  else if(num==12)
+  {
+    result=isTwelvethPageValid();
+  }
+  else if(num==13)
+  {
+    result=isThirteenthPageValid();
+  }
+  else if(num==14)
+  {
+    result=isFourteenthPageValid();
+  }
+  else if(num==15)
+  {
+    result=isFifteenthPageValid();
+  }
+  if(result)
+  {
+    _(`.pro`).children[num-1].classList.add("active-box");
+  }
+  else
+  {
+    _(`.pro`).children[num-1].classList.remove("active-box");
+  }
+  return result;
+}
+function isSecondPageValid()
 {
   var msg="#message-box-2",name=_("#name").value,bio=_("#bio").value,pic=_("#profilepic").files[0];
   if(name=="")
   {
-    resetMessage(msg);
     setMessage(msg,"Enter your Name","error");
-    return;
+    return false;
   }
   else if(name.length<3)
   {
-    resetMessage(msg);
     setMessage(msg,"Name too short","error");
-    return;
+    return false;
   }
   else if(!/^[a-zA-Z ]*$/.test(name))
   {
-    resetMessage(msg);
     setMessage(msg,"Symbols and numbers not allowed in name","error");
-    return;
+    return false;
   }
   else if(bio=="")
   {
-    resetMessage(msg);
     setMessage(msg,"Enter Bio","error");
-    return;
+    return false;
   }
   else if(bio.length<10)
   {
-    resetMessage(msg);
     setMessage(msg,"Bio too short","error");
-    return;
+    return false;
   }
   else if(pic==undefined)
   {
-    resetMessage(msg);
     setMessage(msg,"Select Profile Picture","error");
-    return;
+    return false;
   }
   else if(pic.type.split("/")[0]!="image")
   {
-    resetMessage(msg);
     setMessage(msg,"Invalid Picture","error");
-    return;
+    return false;
   }
-  else
-  {
-    resetMessage(msg);
-    _(".pro").children[1].classList.add("active-box");
-    window.location.hash="#box-3";
-  }
+  return true;
 }
-function toFourthPage()
+function toThirdPage()
+{
+  if(!isSecondPageValid())
+  {
+    return false;
+  }
+  resetMessage("#message-box-2");
+  _(".pro").children[1].classList.add("active-box");
+  window.location.hash="#box-3";
+  return true;
+}
+function isThirdPageValid()
 {
   var msg="#message-box-3",phone=_("#phone").value,gender=$("[name='gender']:checked"),dob=_("#dob").value;
   if(phone=="")
   {
-    resetMessage(msg);
     setMessage(msg,"Enter phone number","error");
-    return;
+    return false;
   }
   else if(phone.length<10)
   {
-    resetMessage(msg);
     setMessage(msg,"Phone number too short","error");
-    return;
+    return false;
   }
   else if(phone.length>10)
   {
-    resetMessage(msg);
     setMessage(msg,"Phone number too long","error");
-    return;
+    return false;
   }
   else if(!/^[0-9]*$/.test(phone))
   {
-    resetMessage(msg);
     setMessage(msg,"Invalid Phone Number","error");
-    return;
+    return false;
   }
   else if(gender.length<1)
   {
-    resetMessage(msg);
     setMessage(msg,"Select gender","error");
-    return;
+    return false;
   }
   else if(dob=="")
   {
-    resetMessage(msg);
     setMessage(msg,"Invalid Date","error");
-    return;
+    return false;
   }
-  else
+  return true;
+}
+function toFourthPage()
+{
+  if(!isThirdPageValid())
   {
-    resetMessage(msg);
-    _(".pro").children[2].classList.add("active-box");
-    window.location.hash="#box-4";
+    return false;
   }
+  resetMessage("#message-box-3");
+  _(".pro").children[2].classList.add("active-box");
+  window.location.hash="#box-4";
+  return true;
+}
+function isFourthPageValid()
+{
+  //
 }

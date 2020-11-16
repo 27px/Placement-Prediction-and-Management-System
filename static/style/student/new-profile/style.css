@@ -462,6 +462,25 @@ button:hover
 {
   color:#2196F3;
 }
+.m-error
+{
+  animation:show 0.3s linear 1 normal;
+}
+@keyframes show
+{
+  0%
+  {
+    transform:scale(1);
+  }
+  50%
+  {
+    transform:scale(2);
+  }
+  100%
+  {
+    transform:scale(1);
+  }
+}
 @media (max-width:900px)
 {
   .main .box .fit .info .cen
