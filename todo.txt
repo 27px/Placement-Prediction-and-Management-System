@@ -13,11 +13,13 @@
   ],
   "complete-profile":[
     "form",
-    "file-upload",
-    "button-nav scrollbar ?",
+    "file-upload, post",
     "responsiveness",
     "send mail is commented ??",
-    "auto scroll on complete nav-tab",
+    "dummy course data in page-5 use database",
+    "add validation in page-6 details",
+    "add rest of the pages",
+    "add file size validation"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"

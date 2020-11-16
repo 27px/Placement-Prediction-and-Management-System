@@ -103,6 +103,7 @@
               </div>
             </div>
           </div>
+
           <div class="box">
             <a class="a-box" id="box-2"></a>
             <div class="fit">
@@ -122,7 +123,7 @@
                   <div class="title">Profile</div>
                 </div>
                 <div class="row">
-                  <input type="text" name="name" placeholder="Name" id="name">
+                  <input type="text" name="name" placeholder="Name" id="name" autocomplete="off">
                 </div>
                 <div class="row">
                   <textarea name="bio" placeholder="About you" maxlength="200" id="bio"></textarea>
@@ -143,6 +144,7 @@
               </div>
             </div>
           </div>
+
           <div class="box">
             <a class="a-box" id="box-3"></a>
             <div class="fit">
@@ -178,6 +180,7 @@
                   </div>
                 </div>
                 <div class="row">
+                  <label for="dob" class="label-max">Date of Birth</label>
                   <input type="date" name="dob" id="dob">
                 </div>
                 <div class="row">
@@ -197,30 +200,138 @@
                 <div class="cen">
                   <div class="image">
                     <div class="preview">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                     </div>
                   </div>
-                  <div class="text">Complete Profile by adding some basic details for contact.</div>
+                  <div class="text">Complete Profile by adding some details of current College details.</div>
                 </div>
               </div>
               <div class="tab">
                 <div class="row">
-                  <div class="title">Personal</div>
+                  <div class="title">Admission</div>
                 </div>
                 <div class="row">
-                  <input type="text" name="sdsdfsdf" placeholder="Phone Number" id="sdsdfsdf" maxlength="10">
+                  <input type="text" name="admnumber" placeholder="Admission Number" id="admnumber">
                 </div>
                 <div class="row">
-                  <input type="text" name="sdsdfsdf" placeholder="Phone Number" id="sdsdfsdf" maxlength="10">
+                  <select name="admtype" id="admtype" onchange="this.blur();">
+                    <option disabled selected value> -- Admission Type -- </option>
+                    <option value="regular">Regular</option>
+                    <option value="part time">Part Time</option>
+                    <option value="lateral">Lateral</option>
+                    <option value="transfered">Transferred</option>
+                  </select>
                 </div>
                 <div class="row">
-                  <input type="text" name="sdsdfsdf" placeholder="Phone Number" id="sdsdfsdf" maxlength="10">
+                  <input type="number" name="admyear" placeholder="Admission Year" id="admyear">
+                </div>
+                <div class="row">
+                  <input type="file" name="idcard" accept="image/*,.pdf" id="idcard" onchange="selectedImageOrPdf(this,'view-idcard',4);">
+                  <div class="file" id="view-idcard">
+                    <div class="desc">ID Card</div>
+                    <div class="button" onclick="selectIdCard();" tabindex="1">Select</div>
+                  </div>
                 </div>
                 <div class="row">
                   <div class="message" id="message-box-4"></div>
                 </div>
                 <div class="row">
                   <button type="button" class="b-green" onclick="toFifthPage();" id="box-4-next">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <a class="a-box" id="box-5"></a>
+            <div class="fit">
+              <div class="info">
+                <div class="cen">
+                  <div class="image">
+                    <div class="preview">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                  </div>
+                  <div class="text">Complete Profile by adding some details of current College details.</div>
+                </div>
+              </div>
+              <div class="tab">
+                <div class="row">
+                  <div class="title">Course</div>
+                </div>
+                <div class="row">
+                  <select name="course" id="course" onchange="this.blur();">
+                    <option disabled selected value> -- (Dummy) Current Course -- </option>
+                    <option value="dummy">dummy COURSE 1</option>
+                  </select>
+                </div>
+                <div class="row">
+                  <select name="semester" id="semester" onchange="this.blur();">
+                    <option disabled selected value> -- (Dumy)Current Semester -- </option>
+                    <option value="dummy">dummy COURSE 2</option>
+                  </select>
+                </div>
+                <div class="row">
+                  <label for="passout" class="label-max">Passout month & year</label>
+                  <input type="month" name="passout" id="passout">
+                </div>
+                <div class="row">
+                  <div class="message" id="message-box-5"></div>
+                </div>
+                <div class="row">
+                  <button type="button" class="b-green" onclick="toSixthPage();" id="box-5-next">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <a class="a-box" id="box-6"></a>
+            <div class="fit">
+              <div class="info">
+                <div class="cen">
+                  <div class="image">
+                    <div class="preview">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    </div>
+                  </div>
+                  <div class="text">Complete Profile by adding SSLC details.</div>
+                </div>
+              </div>
+              <div class="tab">
+                <div class="row">
+                  <div class="title">SSLC</div>
+                </div>
+                <div class="row">
+                  <select name="sslcboard" id="sslcboard" onchange="this.blur();">
+                    <option disabled selected value> -- Select Board -- </option>
+                    <option value="dummy" value="state">State</option>
+                    <option value="dummy" value="cbse">CBSE</option>
+                    <option value="dummy" value="icse">ICSE</option>
+                  </select>
+                </div>
+                <div class="row">
+                  <input type="text" name="sslcschool" id="sslcschool" placeholder="School">
+                </div>
+                <div class="row">
+                  <input type="number" name="sslcpercent" id="sslcpercent" placeholder="Percentage">
+                </div>
+                <div class="row">
+                  <label for="sslcpassdate" class="label-max">Passout Date</label>
+                  <input type="month" name="sslcpassdate" id="sslcpassdate">
+                </div>
+                <div class="row">
+                  <input type="file" name="sslccertificate" accept="image/*,.pdf" id="sslccertificate" onchange="selectedImageOrPdf(this,'view-sslccertificate',6);">
+                  <div class="file" id="view-sslccertificate">
+                    <div class="desc">Certificate</div>
+                    <div class="button" onclick="selectSslcCertificate();" tabindex="1">Select</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="message" id="message-box-6"></div>
+                </div>
+                <div class="row">
+                  <button type="button" class="b-green" onclick="toSeventhPage();" id="box-6-next">Next</button>
                 </div>
               </div>
             </div>

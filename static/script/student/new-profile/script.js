@@ -1,7 +1,16 @@
+const scrollDelay=1000;//important don't change // waits for next page to scroll into view to show next inline navigation
+var scrollnumber=3;
 const _=s=>document.querySelector(s);
 const $=s=>document.querySelectorAll(s);
 const pi=s=>parseInt(s);
 var minute,second;
+function scrollToNav(n)
+{
+  n=Math.min(n+scrollnumber,14);//15 elements (14 max index) scroll atleast 1 elements (scrollnumber)
+  setTimeout(function(){
+    _(".pro").children[n].scrollIntoView();
+  },scrollDelay);
+}
 function setProgress(clock,progress,total,unit)
 {
   var dash=220;//SVG dash array
@@ -10,11 +19,35 @@ function setProgress(clock,progress,total,unit)
   _('#svg_'+clock+'_path').setAttribute("stroke-dasharray",cur+","+(dash-cur));
   _('#svg_'+clock+'_text').innerHTML=progress+unit;
 }
+function setScrollNumber()
+{
+  if(document.body.clientWidth<500)
+  {
+    scrollnumber=0;
+  }
+  else if(document.body.clientWidth<800)
+  {
+    scrollnumber=2;
+  }
+  else if(document.body.clientWidth<800)
+  {
+    scrollnumber=3;
+  }
+}
 function nextPage(event)
 {
   const hash=window.location.hash;
   var no=false;
   var from=pi(hash.split("-")[1]);
+  if(from==1)
+  {
+    if(!_(".pro").classList.contains("no-visit"))
+    {
+      event.preventDefault();
+      setMessage(".message-box-1","Verify OTP before moving to next.","info");
+      return;
+    }
+  }
   var to=pi(event.currentTarget.href.split("#")[1].split("-")[1]);
   if(isXthPageValid(from))
   {
@@ -43,50 +76,9 @@ function nextPage(event)
     event.preventDefault();
     return false;
   }
-  // if(hash!="")
-  // {
-  //   var next=_(`${hash}-next`);
-  //   if(next!=null)
-  //   {
-  //     var from=pi(hash.split("-")[1]);
-  //     var to=pi(event.currentTarget.href.split("#")[1].split("-")[1]);
-  //     if(from>=to)
-  //     {
-  //       no=true;
-  //     }
-  //     if active navigate without validation and to any active box
-  //     else if(_(".pro").children[to-1].classList.contains("active-box"))
-  //     {
-  //       // return;
-  //       no=true;
-  //     }
-  //     else
-  //     {
-  //       event.preventDefault();
-  //       next.click();
-  //       return;
-  //     }
-  //   }
-  //   else
-  //   {
-  //     no=true;
-  //   }
-  // }
-  // else
-  // {
-  //   no=true;
-  // }
-  // if(no)
-  // {
-  //   var x=event.currentTarget.classList;
-  //   if((!x.contains("active-box") || x.contains("no-visit")))
-  //   {
-  //     event.preventDefault();
-  //     return false;
-  //   }
-  // }
 }
 window.onload=()=>{
+  setScrollNumber();
   document.body.addEventListener("keydown",event=>{
     if(event.keyCode===9)
     {
@@ -181,7 +173,7 @@ window.onload=()=>{
   _("#otp-1").focus();
 };
 window.onresize=()=>{
-  // window.re
+  setScrollNumber()
 };
 function acceptNumberOnly(event)
 {
@@ -284,11 +276,20 @@ function selectProfilePic()
 {
   _("#profilepic").click();
 }
+function selectIdCard()
+{
+  _("#idcard").click();
+}
+function selectSslcCertificate()
+{
+  _("#sslccertificate").click();
+}
 function selectedProfilePic(element)
 {
   var file=element.files[0];
   var preview=_(".real-preview");
   var alt=_("#alt-profile-pic");
+  var profilepic=_("#view-profilepic");
   if(file!=undefined)
   {
     if(file.type.split("/")[0]!="image")
@@ -296,8 +297,8 @@ function selectedProfilePic(element)
       preview.src="";
       alt.classList.remove("hidden");
       setMessage("#message-box-2","Invalid Image","error");
-      _("#view-profilepic").classList.remove("file-selected");
-      _("#view-profilepic").classList.add("file-select-error");
+      profilepic.classList.remove("file-selected");
+      profilepic.classList.add("file-select-error");
       return;
     }
     try
@@ -307,8 +308,8 @@ function selectedProfilePic(element)
       reader.onload=()=>{
         preview.src=reader.result;
         alt.classList.add("hidden");
-        _("#view-profilepic").classList.remove("file-select-error");
-        _("#view-profilepic").classList.add("file-selected");
+        profilepic.classList.remove("file-select-error");
+        profilepic.classList.add("file-selected");
       };
       reader.onerror=()=>{
         throw reader.error;
@@ -319,17 +320,45 @@ function selectedProfilePic(element)
       preview.src="";
       alt.classList.remove("hidden");
       setMessage("#message-box-2","No preview Available","warning");
-      _("#view-profilepic").classList.remove("file-selected");
-      _("#view-profilepic").classList.add("file-select-error");
+      profilepic.classList.remove("file-selected");
+      profilepic.classList.add("file-select-error");
     }
   }
   else
   {
     preview.src="";
     alt.classList.remove("hidden");
-    _("#view-profilepic").classList.remove("file-selected");
-    _("#view-profilepic").classList.add("file-select-error");
+    profilepic.classList.remove("file-selected");
+    profilepic.classList.add("file-select-error");
   }
+}
+function selectedImageOrPdf(element,id,m)
+{
+  var file=element.files[0];
+  var x=_(`#${id}`);
+  if(file!=undefined)
+  {
+    if(!(file.type.split("/")[0]=="image" || file.type=="application/pdf"))
+    {
+      setMessage(`#message-box-${m}`,"Invalid File Type","error");
+      x.classList.remove("file-selected");
+      x.classList.add("file-select-error");
+      return false;
+    }
+    else
+    {
+      x.classList.remove("file-select-error");
+      x.classList.add("file-selected");
+      return true;
+    }
+  }
+  else
+  {
+    x.classList.remove("file-selected");
+    x.classList.add("file-select-error");
+    return false;
+  }
+  return false;
 }
 function isXthPageValid(num=1)
 {
@@ -457,6 +486,7 @@ function toThirdPage()
   resetMessage("#message-box-2");
   _(".pro").children[1].classList.add("active-box");
   window.location.hash="#box-3";
+  scrollToNav(2);
   return true;
 }
 function isThirdPageValid()
@@ -503,9 +533,99 @@ function toFourthPage()
   resetMessage("#message-box-3");
   _(".pro").children[2].classList.add("active-box");
   window.location.hash="#box-4";
+  scrollToNav(3);
   return true;
 }
 function isFourthPageValid()
 {
-  //
+  var msg="#message-box-4",admnumber=_("#admnumber").value,admtype=_("#admtype"),admyear_raw=_("#admyear").value,idcard=_("#idcard");
+  var admyear=pi(admyear_raw);
+  admtype=admtype.options[admtype.selectedIndex].value;
+  if(admnumber=="")
+  {
+    setMessage(msg,"Enter Admission Number","error");
+    return false;
+  }
+  else if(admnumber.length<4)
+  {
+    setMessage(msg,"Admission Number too short","error");
+    return false;
+  }
+  else if(admnumber.length>15)
+  {
+    setMessage(msg,"Admission Number too long","error");
+    return false;
+  }
+  else if(!/^[a-zA-Z0-9\-_]*$/.test(admnumber))
+  {
+    setMessage(msg,"Invalid Admission Number","error");
+    return false;
+  }
+  else if(admtype=="")
+  {
+    setMessage(msg,"Select Admission Type","error");
+    return false;
+  }
+  else if(admyear_raw=="")
+  {
+    setMessage(msg,"Select Admission Year","error");
+    return false;
+  }
+  else if(isNaN(admyear) || admyear>(new Date().getFullYear()) || admyear<((new Date().getFullYear())-10))
+  {
+    setMessage(msg,"Invalid Admission Year","error");
+    return false;
+  }
+  else if(idcard.files.length<1)
+  {
+    setMessage(msg,"Select ID Card","error");
+    return false;
+  }
+  return true;
+}
+function toFifthPage()
+{
+  if(!isFourthPageValid())
+  {
+    return false;
+  }
+  resetMessage("#message-box-4");
+  _(".pro").children[3].classList.add("active-box");
+  window.location.hash="#box-5";
+  scrollToNav(4);
+  return true;
+}
+function isFifthPageValid()
+{
+  var msg="#message-box-5",course=_("#course"),semester=_("#semester"),passout=_("#passout").value;
+  course=course.options[course.selectedIndex].value;
+  semester=semester.options[semester.selectedIndex].value;
+  if(course=="")
+  {
+    setMessage(msg,"Select Course","error");
+    return false;
+  }
+  else if(semester=="")
+  {
+    setMessage(msg,"Select Semester","error");
+    return false;
+  }
+  else if(passout=="")
+  {
+    setMessage(msg,"Select passout month and year","error");
+    return false;
+  }
+  return true;
+}
+function toSixthPage()
+{
+  if(!isFifthPageValid())
+  {
+    return false;
+  }
+  resetMessage("#message-box-5");
+  _(".pro").children[4].classList.add("active-box");
+  window.location.hash="#box-6";
+  scrollToNav(5);
+  return true;
 }

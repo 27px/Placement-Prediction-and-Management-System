@@ -388,6 +388,7 @@ button
 {
   padding:5px 20px;
   font-family:var(--font-sub-title);
+  letter-spacing:1px;
   font-weight:900;
   font-size:16px;
   margin:0px 10px;
@@ -449,21 +450,21 @@ button:hover
 .m-success
 {
   color:#4CAF50;
+  animation:show 0.3s linear 1 normal;
 }
 .m-error
 {
   color:#f44336;
+  animation:show 0.3s linear 1 normal;
 }
 .m-warning
 {
   color:#E65100;
+  animation:show 0.3s linear 1 normal;
 }
 .m-info
 {
   color:#2196F3;
-}
-.m-error
-{
   animation:show 0.3s linear 1 normal;
 }
 @keyframes show
@@ -608,24 +609,50 @@ button:hover
 {
   filter:grayscale(1);
 }
-.row label
+.row .label-max
 {
-
+  text-align:left;
+  width:100%;
+  padding:5px 0px;
+}
+.row label,.row select
+{
   font-size:16px;
   padding:5px 10px;
   box-sizing:border-box;
   letter-spacing:1px;
   font-family:var(--font-monospace);
 }
+.row select
+{
+  width:100%;
+  background:transparent;
+  border:2px solid #808080;
+  text-align:center;
+  border-radius:0px 0px 0px 0px;
+  transition:border-radius 0.3s;
+}
+.row select option
+{
+  text-align:center;
+  background:transparent;
+  padding:5px;
+}
+.row select:focus
+{
+  border-color:#000000;
+  border-radius:15px 15px 0px 0px;
+}
 .row input[type="text"],
 .row input[type="number"],
 .row input[type="date"],
+.row input[type="month"],
 .row textarea
 {
   width:100%;
   background:transparent;
-  border:2px solid transparent;
-  border-bottom:2px solid #404040;
+  border:none;
+  border-bottom:3px solid #808080;
   font-size:16px;
   padding:5px 10px;
   box-sizing:border-box;
@@ -666,9 +693,13 @@ button:hover
 {
   padding:5px 10px;
 }
-.row input[type="text"]:focus,textarea:focus
+.row input[type="text"]:focus,
+textarea:focus,
+.row input[type="date"]:focus,
+.row input[type="month"]:focus,
+.row input[type="number"]:focus
 {
-  border:2px solid #000000;
+  border-color:#000000;
   outline:0px solid #FFFFFF;
 }
 .row input::selection,.row textarea::selection
