@@ -92,7 +92,7 @@ video.bg
 .wrapper
 {
   width:90%;
-  height:500px;
+  height:550px;
   max-width:1000px;
   position:relative;
   border-radius:10px;
@@ -178,11 +178,6 @@ video.bg
   transform:translate(calc(-100% - 8px),-50%);
   background:#C0C0C0;
 }
-.wrapper .top .progress .pro a.active-box,
-.wrapper .top .progress .pro a.active-box::before
-{
-  background:#2196F3;
-}
 .wrapper .top .progress .pro a.active-box::after
 {
   content:"\2714";
@@ -197,6 +192,89 @@ video.bg
   display:inline-flex;
   align-items:center;
   justify-content:center;
+}
+.wrapper .top .progress .pro a.current-box span
+{
+  width:0;
+  height:0;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:rotate(-70deg);
+  animation:roller 1.2s linear infinite alternate;
+}
+@keyframes roller
+{
+  0%
+  {
+    transform:rotate(-70deg);
+  }
+  100%
+  {
+    transform:rotate(70deg);
+  }
+}
+.wrapper .top .progress .pro a.current-box span::after,
+.wrapper .top .progress .pro a.current-box span::before
+{
+  content:"";
+  position:absolute;
+  top:0;
+  border-radius:50px;
+  background:#C0C0C0;
+  width:10px;
+  height:10px;
+}
+.wrapper .top .progress .pro a.current-box span::after
+{
+  transform:translate(-50%,-32px);
+  animation:swipe1 1.2s linear infinite alternate;
+}
+.wrapper .top .progress .pro a.current-box span::before
+{
+  transform:translate(-50%,22px);
+  animation:swipe2 1.2s linear infinite alternate;
+}
+@keyframes swipe1
+{
+  0%
+  {
+    transform:translate(-50%,-32px) scale(0.5);
+  }
+  50%
+  {
+    transform:translate(-50%,-32px) scale(1);
+  }
+  100%
+  {
+    transform:translate(-50%,-32px) scale(0.5);
+  }
+}
+@keyframes swipe2
+{
+  0%
+  {
+    transform:translate(-50%,22px) scale(0.5);
+  }
+  50%
+  {
+    transform:translate(-50%,22px) scale(1);
+  }
+  100%
+  {
+    transform:translate(-50%,22px) scale(0.5);
+  }
+}
+.wrapper .top .progress .pro a.active-box,
+.wrapper .top .progress .pro a.active-box::before
+{
+  background:#2196F3;
+}
+.wrapper .top .progress .pro a.active-box.current-box span::after,
+.wrapper .top .progress .pro a.active-box.current-box span::before
+{
+  background-color:#2196F3;
+  background:linear-gradient(135deg,#29B6F6,#0D47A1)!important;
 }
 .wrapper .main
 {
@@ -336,6 +414,11 @@ video.bg
   flex-direction:row;
   flex-wrap:wrap;
   justify-content:space-evenly;
+  align-items:center;
+}
+.tab .row.row-left
+{
+  justify-content:flex-start;
 }
 .tab .row,.tab .otp-container
 {
@@ -531,7 +614,7 @@ button:hover
     max-width:300px;
   }
 }
-@media (max-height:500px)
+@media (max-height:550px)
 {
   .main .box .fit
   {
@@ -725,4 +808,23 @@ textarea:focus,
   content:"\2716";
   color:#E91E63;
   padding-left:5px;
+}
+.dis-wrapper.disabled
+{
+  opacity:0.6;
+  filter:blur(2px) grayscale(1);
+}
+.dis-wrapper.disabled::after
+{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:5;
+  width:100%;
+  height:100%;
+}
+.dis-wrapper.disabled:hover::after
+{
+  cursor:not-allowed;
 }

@@ -26,7 +26,7 @@
             <div class="pro">
               <%
                 var cls;
-                for(let i=1;i<16;i++)
+                for(let i=1;i<18;i++)
                 {
                   if(i==1 && verified)
                   {
@@ -37,7 +37,7 @@
                     cls="";
                   }
                   %>
-                    <a href="#box-<%-i%>" class="<%-cls%>"><%-i%></a>
+                    <a href="#box-<%-i%>" class="<%-cls%>"><%-i%><span></span></a>
                   <%
                 }
               %>
@@ -112,7 +112,7 @@
                   <div class="image">
                     <div class="preview">
                       <svg id="alt-profile-pic" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                      <img class="real-preview" onclick="selectProfilePic();"></img>
+                      <img class="real-preview" onclick="selectFile('profilepic');"></img>
                     </div>
                   </div>
                   <div class="text">Set up your profile by adding basic details. Note: These details will be visible publically</div>
@@ -132,7 +132,7 @@
                   <input type="file" name="profilepic" accept="image/*" id="profilepic" onchange="selectedProfilePic(this);">
                   <div class="file" id="view-profilepic">
                     <div class="desc">Profile Picture</div>
-                    <div class="button" onclick="selectProfilePic();" tabindex="1">Select</div>
+                    <div class="button" onclick="selectFile('profilepic');" tabindex="1">Select</div>
                   </div>
                 </div>
                 <div class="row">
@@ -229,7 +229,7 @@
                   <input type="file" name="idcard" accept="image/*,.pdf" id="idcard" onchange="selectedImageOrPdf(this,'view-idcard',4);">
                   <div class="file" id="view-idcard">
                     <div class="desc">ID Card</div>
-                    <div class="button" onclick="selectIdCard();" tabindex="1">Select</div>
+                    <div class="button" onclick="selectFile('idcard');" tabindex="1">Select</div>
                   </div>
                 </div>
                 <div class="row">
@@ -305,16 +305,16 @@
                 <div class="row">
                   <select name="sslcboard" id="sslcboard" onchange="this.blur();">
                     <option disabled selected value> -- Select Board -- </option>
-                    <option value="dummy" value="state">State</option>
-                    <option value="dummy" value="cbse">CBSE</option>
-                    <option value="dummy" value="icse">ICSE</option>
+                    <option value="state" value="state">State</option>
+                    <option value="cbse" value="cbse">CBSE</option>
+                    <option value="icse" value="icse">ICSE</option>
                   </select>
                 </div>
                 <div class="row">
                   <input type="text" name="sslcschool" id="sslcschool" placeholder="School">
                 </div>
                 <div class="row">
-                  <input type="number" name="sslcpercent" id="sslcpercent" placeholder="Percentage">
+                  <input type="number" name="sslcpercent" id="sslcpercent" placeholder="Marks - Percentage (%)">
                 </div>
                 <div class="row">
                   <label for="sslcpassdate" class="label-max">Passout Date</label>
@@ -324,7 +324,7 @@
                   <input type="file" name="sslccertificate" accept="image/*,.pdf" id="sslccertificate" onchange="selectedImageOrPdf(this,'view-sslccertificate',6);">
                   <div class="file" id="view-sslccertificate">
                     <div class="desc">Certificate</div>
-                    <div class="button" onclick="selectSslcCertificate();" tabindex="1">Select</div>
+                    <div class="button" onclick="selectFile('sslccertificate');" tabindex="1">Select</div>
                   </div>
                 </div>
                 <div class="row">
@@ -332,6 +332,111 @@
                 </div>
                 <div class="row">
                   <button type="button" class="b-green" onclick="toSeventhPage();" id="box-6-next">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <a class="a-box" id="box-7"></a>
+            <div class="fit">
+              <div class="info">
+                <div class="cen">
+                  <div class="image">
+                    <div class="preview">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    </div>
+                  </div>
+                  <div class="text">Complete Profile by adding Plus Two details.</div>
+                </div>
+              </div>
+              <div class="tab">
+                <div class="row">
+                  <div class="title">Plus Two</div>
+                </div>
+                <div class="row">
+                  <select name="plustwoboard" id="plustwoboard" onchange="this.blur();">
+                    <option disabled selected value> -- Select Board -- </option>
+                    <option value="state" value="state">State</option>
+                    <option value="cbse" value="cbse">CBSE</option>
+                    <option value="icse" value="icse">ICSE</option>
+                  </select>
+                </div>
+                <div class="row">
+                  <input type="text" name="plustwoschool" id="plustwoschool" placeholder="School">
+                </div>
+                <div class="row">
+                  <input type="number" name="plustwopercent" id="plustwopercent" placeholder="Marks - Percentage (%)">
+                </div>
+                <div class="row">
+                  <label for="plustwopassdate" class="label-max">Passout Date</label>
+                  <input type="month" name="plustwopassdate" id="plustwopassdate">
+                </div>
+                <div class="row">
+                  <input type="file" name="plustwocertificate" accept="image/*,.pdf" id="plustwocertificate" onchange="selectedImageOrPdf(this,'view-plustwocertificate',7);">
+                  <div class="file" id="view-plustwocertificate">
+                    <div class="desc">Certificate</div>
+                    <div class="button" onclick="selectFile('plustwocertificate');" tabindex="1">Select</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="message" id="message-box-7"></div>
+                </div>
+                <div class="row">
+                  <button type="button" class="b-green" onclick="toEightthPage();" id="box-7-next">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <a class="a-box" id="box-8"></a>
+            <div class="fit">
+              <div class="info">
+                <div class="cen">
+                  <div class="image">
+                    <div class="preview">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    </div>
+                  </div>
+                  <div class="text">Complete Profile by adding Diploma details, if you have one (Optional).</div>
+                </div>
+              </div>
+              <div class="tab">
+                <div class="row">
+                  <div class="title">Diploma</div>
+                </div>
+                <div class="row row-left gray">
+                  <input type="checkbox" name="diploma" id="diploma" onchange="toggleDiploma(this);">
+                  <label for="diploma">I have Diploma</label>
+                </div>
+                <div class="dis-wrapper disabled" id="diploma-diabler">
+                  <div class="row">
+                    <input type="text" name="diplomacourse" id="diplomacourse" placeholder="Course">
+                  </div>
+                  <div class="row">
+                    <input type="text" name="diplomacollege" id="diplomacollege" placeholder="College">
+                  </div>
+                  <div class="row">
+                    <input type="number" name="diplomapercent" id="diplomapercent" placeholder="Marks - Percentage (%)">
+                  </div>
+                  <div class="row">
+                    <label for="diplomapassdate" class="label-max">Passout Date</label>
+                    <input type="month" name="diplomapassdate" id="diplomapassdate">
+                  </div>
+                  <div class="row">
+                    <input type="file" name="diplomacertificate" accept="image/*,.pdf" id="diplomacertificate" onchange="selectedImageOrPdf(this,'view-diplomacertificate',8);">
+                    <div class="file" id="view-diplomacertificate">
+                      <div class="desc">Certificate</div>
+                      <div class="button" onclick="selectFile('diplomacertificate');" tabindex="1">Select</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="message" id="message-box-8"></div>
+                </div>
+                <div class="row">
+                  <button type="button" class="b-green" onclick="toNinethPage();" id="box-8-next">Next</button>
                 </div>
               </div>
             </div>

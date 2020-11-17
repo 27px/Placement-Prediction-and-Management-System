@@ -17,9 +17,7 @@
     "responsiveness",
     "send mail is commented ??",
     "dummy course data in page-5 use database",
-    "add validation in page-6 details",
-    "add rest of the pages",
-    "add file size validation"
+    "add rest of the pages"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"
@@ -28,6 +26,7 @@
     "handle file upload on post : /gallery"
   },
   "student/dashboard":{
+    "redirect":"redirect to complete-profile if profile not complete or otp not verified"
     "searchresultcontainer":"add data and link",//in the data.js file
     "sidebar":"set titles, icons and url",
   },

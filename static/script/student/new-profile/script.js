@@ -1,12 +1,13 @@
 const scrollDelay=1000;//important don't change // waits for next page to scroll into view to show next inline navigation
 var scrollnumber=3;
+max_file_upload_size=3;// In MB
 const _=s=>document.querySelector(s);
 const $=s=>document.querySelectorAll(s);
 const pi=s=>parseInt(s);
 var minute,second;
 function scrollToNav(n)
 {
-  n=Math.min(n+scrollnumber,14);//15 elements (14 max index) scroll atleast 1 elements (scrollnumber)
+  n=Math.min(n+scrollnumber,16);//17 elements (16 max index) scroll atleast 1 elements (scrollnumber)
   setTimeout(function(){
     _(".pro").children[n].scrollIntoView();
   },scrollDelay);
@@ -79,6 +80,7 @@ function nextPage(event)
 }
 window.onload=()=>{
   setScrollNumber();
+  setCurrentInlineNavActive()
   document.body.addEventListener("keydown",event=>{
     if(event.keyCode===9)
     {
@@ -175,6 +177,19 @@ window.onload=()=>{
 window.onresize=()=>{
   setScrollNumber()
 };
+window.onhashchange=()=>{
+  setCurrentInlineNavActive();
+};
+function setCurrentInlineNavActive()
+{
+  var current=pi(window.location.hash.split("-")[1]);
+  var anchors=_(".pro").children;
+  Array.from(anchors).forEach(anchor=>{
+    anchor.classList.remove("current-box");
+  });
+  anchors[current-1].classList.add("current-box");
+  scrollToNav(current);
+}
 function acceptNumberOnly(event)
 {
   if(!/[0-9]/.test(this.value))
@@ -243,6 +258,19 @@ function clearOtpText()
   })
   _("#otp-1").focus();
 }
+function toggleDiploma(checkbox)
+{
+  var wrapper=_("#diploma-diabler").classList;
+  if(checkbox.checked)
+  {
+    wrapper.remove("disabled");
+  }
+  else
+  {
+    wrapper.add("disabled");
+    resetMessage("#message-box-8");
+  }
+}
 function setMessage(selector,message,type)
 {
   var m=_(selector);
@@ -272,17 +300,9 @@ function alreadyVerified()
   </div>
   `;
 }
-function selectProfilePic()
+function selectFile(id)
 {
-  _("#profilepic").click();
-}
-function selectIdCard()
-{
-  _("#idcard").click();
-}
-function selectSslcCertificate()
-{
-  _("#sslccertificate").click();
+  _(`#${id}`).click();
 }
 function selectedProfilePic(element)
 {
@@ -301,6 +321,16 @@ function selectedProfilePic(element)
       profilepic.classList.add("file-select-error");
       return;
     }
+    else if((file.size/(1024*1024))>max_file_upload_size)
+    {
+      preview.src="";
+      alt.classList.remove("hidden");
+      setMessage("#message-box-2",`Add File size < ${max_file_upload_size} MB`,"error");
+      profilepic.classList.remove("file-selected");
+      profilepic.classList.add("file-select-error");
+      return;
+    }
+    resetMessage("#message-box-2");
     try
     {
       var reader=new FileReader();
@@ -341,6 +371,13 @@ function selectedImageOrPdf(element,id,m)
     if(!(file.type.split("/")[0]=="image" || file.type=="application/pdf"))
     {
       setMessage(`#message-box-${m}`,"Invalid File Type","error");
+      x.classList.remove("file-selected");
+      x.classList.add("file-select-error");
+      return false;
+    }
+    else if((file.size/(1024*1024))>max_file_upload_size)
+    {
+      setMessage(`#message-box-${m}`,`Add File size < ${max_file_upload_size} MB`,"error");
       x.classList.remove("file-selected");
       x.classList.add("file-select-error");
       return false;
@@ -427,6 +464,14 @@ function isXthPageValid(num=1)
   {
     result=isFifteenthPageValid();
   }
+  else if(num==16)
+  {
+    result=isSixteenthPageValid();
+  }
+  else if(num==17)
+  {
+    result=isSeventeenthPageValid();
+  }
   if(result)
   {
     _(`.pro`).children[num-1].classList.add("active-box");
@@ -473,6 +518,11 @@ function isSecondPageValid()
   else if(pic.type.split("/")[0]!="image")
   {
     setMessage(msg,"Invalid Picture","error");
+    return false;
+  }
+  else if((pic.size/(1024*1024))>max_file_upload_size)
+  {
+    setMessage(msg,`Add File less that ${max_file_upload_size} MB`,"error");
     return false;
   }
   return true;
@@ -576,7 +626,7 @@ function isFourthPageValid()
     setMessage(msg,"Invalid Admission Year","error");
     return false;
   }
-  else if(idcard.files.length<1)
+  else if(!selectedImageOrPdf(idcard,"view-idcard",4))
   {
     setMessage(msg,"Select ID Card","error");
     return false;
@@ -627,5 +677,156 @@ function toSixthPage()
   _(".pro").children[4].classList.add("active-box");
   window.location.hash="#box-6";
   scrollToNav(5);
+  return true;
+}
+function isSixthPageValid()
+{
+  var msg="#message-box-6",sslcboard=_("#sslcboard"),sslcschool=_("#sslcschool").value,sslcpercent=_("#sslcpercent").value,sslcpassdate=_("#sslcpassdate").value,sslccertificate=_("#sslccertificate");
+  sslcboard=sslcboard.options[sslcboard.selectedIndex].value;
+  if(sslcboard=="")
+  {
+    setMessage(msg,"Select board","error");
+    return false;
+  }
+  else if(sslcschool=="")
+  {
+    setMessage(msg,"Enter School name","error");
+    return false;
+  }
+  else if(sslcschool.length<3)
+  {
+    setMessage(msg,"School name too short","error");
+    return false;
+  }
+  else if(sslcpercent<1 || sslcpercent>100)
+  {
+    setMessage(msg,"Invalid Mark (%)","error");
+    return false;
+  }
+  else if(sslcpassdate=="")
+  {
+    setMessage(msg,"Enter passout month & year","error");
+    return false;
+  }
+  else if(!selectedImageOrPdf(sslccertificate,"view-sslccertificate",6))
+  {
+    setMessage(msg,"Select Certificate","error");
+    return false;
+  }
+  return true;
+}
+function toSeventhPage()
+{
+  if(!isSixthPageValid())
+  {
+    return false;
+  }
+  resetMessage("#message-box-6");
+  _(".pro").children[5].classList.add("active-box");
+  window.location.hash="#box-7";
+  scrollToNav(6);
+  return true;
+}
+function isSeventhPageValid()
+{
+  var msg="#message-box-7",plustwoboard=_("#plustwoboard"),plustwoschool=_("#plustwoschool").value,plustwopercent=_("#plustwopercent").value,plustwopassdate=_("#plustwopassdate").value,plustwocertificate=_("#plustwocertificate");
+  plustwoboard=plustwoboard.options[plustwoboard.selectedIndex].value;
+  if(plustwoboard=="")
+  {
+    setMessage(msg,"Select board","error");
+    return false;
+  }
+  else if(plustwoschool=="")
+  {
+    setMessage(msg,"Enter School name","error");
+    return false;
+  }
+  else if(plustwoschool.length<3)
+  {
+    setMessage(msg,"School name too short","error");
+    return false;
+  }
+  else if(plustwopercent<1 || plustwopercent>100)
+  {
+    setMessage(msg,"Invalid Mark (%)","error");
+    return false;
+  }
+  else if(plustwopassdate=="")
+  {
+    setMessage(msg,"Enter passout month & year","error");
+    return false;
+  }
+  else if(!selectedImageOrPdf(plustwocertificate,"view-plustwocertificate",7))
+  {
+    setMessage(msg,"Select Certificate","error");
+    return false;
+  }
+  return true;
+}
+function toEightthPage()
+{
+  if(!isSeventhPageValid())
+  {
+    return false;
+  }
+  resetMessage("#message-box-7");
+  _(".pro").children[6].classList.add("active-box");
+  window.location.hash="#box-8";
+  scrollToNav(7);
+  return true;
+}
+function isEighthPageValid()
+{
+  var msg="#message-box-8",diploma=_("#diploma"),diplomacourse=_("#diplomacourse").value,diplomacollege=_("#diplomacollege").value,diplomapercent=_("#diplomapercent").value,diplomapassdate=_("#diplomapassdate").value,diplomacertificate=_("#diplomacertificate");
+  if(diploma.checked)
+  {
+    if(diplomacourse=="")
+    {
+      setMessage(msg,"Enter Course Name","error");
+      return false;
+    }
+    else if(diplomacourse.length<2)
+    {
+      setMessage(msg,"Course name too short","error");
+      return false;
+    }
+    else if(diplomacollege=="")
+    {
+      setMessage(msg,"Enter College name","error");
+      return false;
+    }
+    else if(diplomacollege.length<3)
+    {
+      setMessage(msg,"College name too short","error");
+      return false;
+    }
+    else if(diplomapercent<1 || diplomapercent>100)
+    {
+      setMessage(msg,"Invalid Mark (%)","error");
+      return false;
+    }
+    else if(diplomapassdate=="")
+    {
+      setMessage(msg,"Enter passout month & year","error");
+      return false;
+    }
+    else if(!selectedImageOrPdf(diplomacertificate,"view-diplomacertificate",7))
+    {
+      setMessage(msg,"Select Certificate","error");
+      return false;
+    }
+  }
+  return true;
+}
+function toNinethPage()
+{
+  if(!isEighthPageValid())
+  {
+    return false;
+  }
+  resetMessage("#message-box-8");
+  _(".pro").children[7].classList.add("active-box");
+  window.location.hash="#box-9";
+  scrollToNav(8);
   return true;
 }
