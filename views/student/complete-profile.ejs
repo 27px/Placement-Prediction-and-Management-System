@@ -399,44 +399,60 @@
                       <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                     </div>
                   </div>
-                  <div class="text">Complete Profile by adding Diploma details, if you have one (Optional).</div>
+                  <div class="text">Complete Profile by adding Course details of UG, PG, Diploma. You can add multiple ones in this section</div>
                 </div>
               </div>
               <div class="tab">
                 <div class="row">
-                  <div class="title">Diploma</div>
+                  <div class="title">Course</div>
                 </div>
-                <div class="row row-left gray">
-                  <input type="checkbox" name="diploma" id="diploma" onchange="toggleDiploma(this);">
-                  <label for="diploma">I have Diploma</label>
-                </div>
-                <div class="dis-wrapper disabled" id="diploma-diabler">
-                  <div class="row">
-                    <input type="text" name="diplomacourse" id="diplomacourse" placeholder="Course">
-                  </div>
-                  <div class="row">
-                    <input type="text" name="diplomacollege" id="diplomacollege" placeholder="College">
-                  </div>
-                  <div class="row">
-                    <input type="number" name="diplomapercent" id="diplomapercent" placeholder="Marks - Percentage (%)">
-                  </div>
-                  <div class="row">
-                    <label for="diplomapassdate" class="label-max">Passout Date</label>
-                    <input type="month" name="diplomapassdate" id="diplomapassdate">
-                  </div>
-                  <div class="row">
-                    <input type="file" name="diplomacertificate" accept="image/*,.pdf" id="diplomacertificate" onchange="selectedImageOrPdf(this,'view-diplomacertificate',8);">
-                    <div class="file" id="view-diplomacertificate">
-                      <div class="desc">Certificate</div>
-                      <div class="button" onclick="selectFile('diplomacertificate');" tabindex="1">Select</div>
-                    </div>
-                  </div>
+                <div class="multiple-wrapper" id="multiple-course-wrapper">
+                  <script>
+                    function getMultipleCourseForm(n)
+                    {
+                      return `
+                        <div class="multiple multiple-course" id="multiple-course-${n}" data-multiple="${n}">
+                          <div class="closer" onclick="closeParent(this);">&#10006;</div>
+                          <div class="row">
+                            <select name="course-type-${n}" id="course-type-${n}" onchange="this.blur();">
+                              <option disabled selected value> -- Course Type -- </option>
+                              <option value="ug">UG</option>
+                              <option value="pg">PG</option>
+                              <option value="diploma">Diploma</option>
+                            </select>
+                          </div>
+                          <div class="row">
+                            <input type="text" name="coursename-${n}" id="coursename-${n}" placeholder="Course">
+                          </div>
+                          <div class="row">
+                            <input type="text" name="coursecollege-${n}" id="coursecollege-${n}" placeholder="College">
+                          </div>
+                          <div class="row">
+                            <input type="number" name="coursepercent-${n}" id="coursepercent-${n}" placeholder="Marks - Percentage (%)">
+                          </div>
+                          <div class="row">
+                            <label for="coursepassdate" class="label-max">Passout Date</label>
+                            <input type="month" name="coursepassdate-${n}" id="coursepassdate-${n}">
+                          </div>
+                          <div class="row">
+                            <input type="file" name="coursecertificate" accept="image/*,.pdf" id="coursecertificate" onchange="selectedImageOrPdf(this,'view-coursecertificate',8);">
+                            <div class="file" name="view-coursecertificate-${n}" id="view-coursecertificate-${n}">
+                              <div class="desc">Certificate</div>
+                              <div class="button" onclick="selectFile('coursecertificate');" tabindex="1">Select</div>
+                            </div>
+                          </div>
+                        </div>
+                      `;
+                    }
+                    document.write(getMultipleCourseForm(1));
+                  </script>
                 </div>
                 <div class="row">
                   <div class="message" id="message-box-8"></div>
                 </div>
                 <div class="row">
-                  <button type="button" class="b-green" onclick="toNinethPage();" id="box-8-next">Next</button>
+                  <button type="button" class="b-yellow b-skinny b-thin add-another" onclick="addAnotherCourse(this);" data-multiple="1"> Another</button>
+                  <button type="button" class="b-green b-medium" onclick="toNinethPage();" id="box-8-next">Next</button>
                 </div>
               </div>
             </div>

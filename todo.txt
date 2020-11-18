@@ -8,7 +8,7 @@
     "no notification messsage"
   ],
   "login-signup":[
-    when nav button to same page (login/register) is clicked, no animation but after a while clears input.,
+    "when nav button to same page (login/register) is clicked, no animation but after a while clears input.",
     "in login, after fetch returns and if there is a redirect show animation (mail and db delay)"
   ],
   "complete-profile":[
@@ -17,7 +17,8 @@
     "responsiveness",
     "send mail is commented ??",
     "dummy course data in page-5 use database",
-    "add rest of the pages"
+    "add rest of the pages",
+    "!important":"refine multiple form numbers(id and name) before submit"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"
@@ -26,12 +27,12 @@
     "handle file upload on post : /gallery"
   },
   "student/dashboard":{
-    "redirect":"redirect to complete-profile if profile not complete or otp not verified"
-    "searchresultcontainer":"add data and link",//in the data.js file
+    "redirect":"redirect to complete-profile if profile not complete or otp not verified",
+    "searchresultcontainer":"add data and link",//in the data.js file,
     "sidebar":"set titles, icons and url",
   },
   "before-production":[
-    "check if all pages have title"
+    "check if all pages have title",
     "remove chalk/unused imports (not uninstall)",
     "uninstall unused packages (if any)",
     "minify all client-side css and js and svg",

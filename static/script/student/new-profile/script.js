@@ -12,6 +12,21 @@ function scrollToNav(n)
     _(".pro").children[n].scrollIntoView();
   },scrollDelay);
 }
+function closeParent(x)
+{
+  if($(".multiple-course").length<2)
+  {
+    return;
+  }
+  var p=x.parentNode;
+  p.parentNode.removeChild(p);
+}
+function addAnotherCourse(x)
+{
+  var n=1+pi(x.getAttribute("data-multiple"));
+  x.setAttribute("data-multiple",n);
+  _("#multiple-course-wrapper").innerHTML+=getMultipleCourseForm(n);
+}
 function setProgress(clock,progress,total,unit)
 {
   var dash=220;//SVG dash array
@@ -258,19 +273,19 @@ function clearOtpText()
   })
   _("#otp-1").focus();
 }
-function toggleDiploma(checkbox)
-{
-  var wrapper=_("#diploma-diabler").classList;
-  if(checkbox.checked)
-  {
-    wrapper.remove("disabled");
-  }
-  else
-  {
-    wrapper.add("disabled");
-    resetMessage("#message-box-8");
-  }
-}
+// function toggleDiploma(checkbox)
+// {
+//   var wrapper=_("#diploma-diabler").classList;
+//   if(checkbox.checked)
+//   {
+//     wrapper.remove("disabled");
+//   }
+//   else
+//   {
+//     wrapper.add("disabled");
+//     resetMessage("#message-box-8");
+//   }
+// }
 function setMessage(selector,message,type)
 {
   var m=_(selector);
@@ -759,44 +774,73 @@ function toEightthPage()
   scrollToNav(7);
   return true;
 }
+function isMultiFormCourseValid(n)
+{
+  var coursename=_(`#coursename-${n}`).value,coursecollege=_(`#coursecollege-${n}`).value,coursepercent=_(`#coursepercent-${n}`).value,coursepassdate=_(`#coursepassdate-${n}`).value,coursecertificate=_(`#coursecertificate-${n}`);
+  if(coursename=="")
+  {
+    return {
+      message:"Enter Course Name",
+      type:"error"
+    };
+  }
+  else if(coursename.length<2)
+  {
+    return {
+      message:"Course name too short",
+      type:"error"
+    };
+  }
+  else if(coursecollege=="")
+  {
+    return {
+      message:"Enter College name",
+      type:"error"
+    };
+  }
+  else if(coursecollege.length<3)
+  {
+    return {
+      message:"College name too short",
+      type:"error"
+    };
+  }
+  else if(coursepercent<1 || coursepercent>100)
+  {
+    return {
+      message:"Invalid Mark (%)",
+      type:"error"
+    };
+  }
+  else if(coursepassdate=="")
+  {
+    return {
+      message:"Enter passout month & year",
+      type:"error"
+    };
+  }
+  else if(!selectedImageOrPdf(coursecertificate,"view-coursecertificate",7))
+  {
+    return {
+      message:"Select Certificate",
+      type:"error"
+    };
+  }
+  return {
+    success:true
+  };
+}
 function isEighthPageValid()
 {
-  var msg="#message-box-8",diploma=_("#diploma"),diplomacourse=_("#diplomacourse").value,diplomacollege=_("#diplomacollege").value,diplomapercent=_("#diplomapercent").value,diplomapassdate=_("#diplomapassdate").value,diplomacertificate=_("#diplomacertificate");
-  if(diploma.checked)
+  var msg="#message-box-8";
+  var n=$(".multiple-course").length;
+  var success;
+  for(let i=0;i<n;i++)
   {
-    if(diplomacourse=="")
+    var x=isMultiFormCourseValid(i+1);
+    if(x.success!=true)
     {
-      setMessage(msg,"Enter Course Name","error");
-      return false;
-    }
-    else if(diplomacourse.length<2)
-    {
-      setMessage(msg,"Course name too short","error");
-      return false;
-    }
-    else if(diplomacollege=="")
-    {
-      setMessage(msg,"Enter College name","error");
-      return false;
-    }
-    else if(diplomacollege.length<3)
-    {
-      setMessage(msg,"College name too short","error");
-      return false;
-    }
-    else if(diplomapercent<1 || diplomapercent>100)
-    {
-      setMessage(msg,"Invalid Mark (%)","error");
-      return false;
-    }
-    else if(diplomapassdate=="")
-    {
-      setMessage(msg,"Enter passout month & year","error");
-      return false;
-    }
-    else if(!selectedImageOrPdf(diplomacertificate,"view-diplomacertificate",7))
-    {
-      setMessage(msg,"Select Certificate","error");
+      setMessage(msg,x.message,x.type);
       return false;
     }
   }
