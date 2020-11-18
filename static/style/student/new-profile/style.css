@@ -149,7 +149,7 @@ video.bg
   position:relative;
   top:0;
   left:0;
-  margin-left:80px;
+  margin-left:100px;
   background:#C0C0C0;
   width:45px;
   min-width:45px;
@@ -173,7 +173,7 @@ video.bg
   position:absolute;
   top:50%;
   left:0;
-  width:80px;
+  width:100px;
   height:3px;
   transform:translate(calc(-100% - 8px),-50%);
   background:#C0C0C0;
@@ -750,7 +750,7 @@ button:hover
 {
   width:100%;
   font-size:16px;
-  padding:5px 10px;
+  padding:5px 0px;
   box-sizing:border-box;
   letter-spacing:1px;
   font-family:var(--font-monospace);
@@ -827,4 +827,12 @@ textarea:focus,
 .dis-wrapper.disabled:hover::after
 {
   cursor:not-allowed;
+}
+.dis-wrapper .row
+{
+  margin:15px 0px;
+}
+.dis-wrapper+.row
+{
+  margin:-5px 0px 25px 0px;
 }

@@ -7,7 +7,7 @@ const pi=s=>parseInt(s);
 var minute,second;
 function scrollToNav(n)
 {
-  n=Math.min(n+scrollnumber,16);//17 elements (16 max index) scroll atleast 1 elements (scrollnumber)
+  n=Math.min(n+scrollnumber,12);//13 elements (13 max index) scroll atleast 1 elements (scrollnumber)
   setTimeout(function(){
     _(".pro").children[n].scrollIntoView();
   },scrollDelay);
@@ -56,7 +56,7 @@ function nextPage(event)
     if((!x.contains("active-box") || x.contains("no-visit")))
     {
       event.preventDefault();
-      var min=Math.min(16,to+1);
+      var min=Math.min(12,to+1);
       for(let i=1;i<min;i++)
       {
         if(i==to || !isXthPageValid(i))
@@ -455,22 +455,6 @@ function isXthPageValid(num=1)
   else if(num==13)
   {
     result=isThirteenthPageValid();
-  }
-  else if(num==14)
-  {
-    result=isFourteenthPageValid();
-  }
-  else if(num==15)
-  {
-    result=isFifteenthPageValid();
-  }
-  else if(num==16)
-  {
-    result=isSixteenthPageValid();
-  }
-  else if(num==17)
-  {
-    result=isSeventeenthPageValid();
   }
   if(result)
   {
