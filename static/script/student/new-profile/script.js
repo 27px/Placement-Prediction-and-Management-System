@@ -162,16 +162,20 @@ function nextPage(event)
   const hash=window.location.hash;
   var no=false;
   var from=pi(hash.split("-")[1]);
+  var to=pi(event.currentTarget.href.split("#")[1].split("-")[1]);
+  if(from==to)
+  {
+    return;
+  }
   if(from==1)
   {
-    if(!_(".pro").classList.contains("no-visit"))
+    if(!_(".pro").children[0].classList.contains("no-visit"))
     {
       event.preventDefault();
       setMessage("#message-box-1","Verify OTP before moving to next.","info");
       return;
     }
   }
-  var to=pi(event.currentTarget.href.split("#")[1].split("-")[1]);
   if(isXthPageValid(from))
   {
     var x=event.currentTarget.classList;
@@ -366,6 +370,9 @@ function startChanges()
         _("#first-tab").innerHTML=`
         <div class="row">
           <div class="title">OTP Expired</div>
+        </div>
+        <div class="row">
+          <div class="message" id="message-box-1"></div>
         </div>
         <div class="row">
           <button type="button" class="b-blue" onclick="window.location.hash="";window.location.reload();">Resend</button>
@@ -815,7 +822,7 @@ function isSixthPageValid()
   }
   else if(sslcpassdate=="")
   {
-    setMessage(msg,"Enter passout month & year","error");
+    setMessage(msg,"Select passout month & year","error");
     return false;
   }
   else if(!selectedImageOrPdf(sslccertificate,"view-sslccertificate",6))
@@ -863,7 +870,7 @@ function isSeventhPageValid()
   }
   else if(plustwopassdate=="")
   {
-    setMessage(msg,"Enter passout month & year","error");
+    setMessage(msg,"Select passout month & year","error");
     return false;
   }
   else if(!selectedImageOrPdf(plustwocertificate,"view-plustwocertificate",7))
@@ -887,8 +894,15 @@ function toEightthPage()
 }
 function isMultiFormCourseValid(n)
 {
-  /// ///check type selected
-  var coursename=_(`#coursename-${n}`).value,coursecollege=_(`#coursecollege-${n}`).value,coursecgpa=_(`#coursecgpa-${n}`).value,coursepassdate=_(`#coursepassdate-${n}`).value,coursecertificate=_(`#coursecertificate-${n}`);
+  var coursetype=_(`#coursetype-${n}`),coursename=_(`#coursename-${n}`).value,coursecollege=_(`#coursecollege-${n}`).value,coursecgpa=_(`#coursecgpa-${n}`).value,coursepassdate=_(`#coursepassdate-${n}`).value,coursecertificate=_(`#coursecertificate-${n}`);
+  coursetype=coursetype.options[coursetype.selectedIndex].value;
+  if(coursetype=="")
+  {
+    return {
+      message:"Select Course type",
+      type:"error"
+    };
+  }
   if(coursename=="")
   {
     return {
@@ -927,11 +941,11 @@ function isMultiFormCourseValid(n)
   else if(coursepassdate=="")
   {
     return {
-      message:"Enter passout month & year",
+      message:"Select passout month & year",
       type:"error"
     };
   }
-  else if(!selectedImageOrPdf(coursecertificate,"view-coursecertificate",7))
+  else if(!selectedImageOrPdf(coursecertificate,`view-coursecertificate-${n}`,7))
   {
     return {
       message:"Select Certificate",
