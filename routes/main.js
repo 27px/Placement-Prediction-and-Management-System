@@ -29,6 +29,7 @@ route.get("/home",async(req,res)=>{
     isLoggedIn=data.isLoggedIn,
     type=data.type
   }).catch(error=>{
+    console.log(error.message);
     isLoggedIn=false,
     type="guest"
   }).finally(()=>{
@@ -50,6 +51,7 @@ route.get("/login",async(req,res)=>{
     state.isLoggedIn=data.isLoggedIn;
     state.type=data.type;
   }).catch(error=>{
+    console.log(error.message);
     state.isLoggedIn=false;
     state.type="guest";
   }).finally(()=>{
@@ -68,6 +70,7 @@ route.get("/register",async(req,res)=>{
     state.isLoggedIn=data.isLoggedIn;
     state.type=data.type;
   }).catch(error=>{
+    console.log(error.message);
     state.isLoggedIn=false;
     state.type="guest";
   }).finally(()=>{
@@ -87,6 +90,7 @@ route.post("/login",(req,res)=>{
   }
   catch(error)//Parse Error
   {
+    console.log(error.message);
     parseError=true;
     data.success=false;
     data.message="Invalid request";
@@ -146,6 +150,7 @@ route.post("/login",(req,res)=>{
           data.message="Invalid credentials";
         }
       }).catch(err=>{
+        console.log(err.message);
         data.success=false;
         data.message="Invalid data";
         data.devlog=err.message;
@@ -155,6 +160,7 @@ route.post("/login",(req,res)=>{
         res.json(data);
       });
     }).catch(error=>{
+      console.log(error.message);
       data.success=false;
       data.message="Connection Error";
       data.devlog=error.message;
@@ -175,6 +181,7 @@ route.post("/register",(req,res)=>{
   }
   catch(error)
   {
+    console.log(error.message);
     parseError=true;
     data.success=false;
     data.message="Invalid request";
@@ -225,12 +232,14 @@ route.post("/register",(req,res)=>{
           res.json(data);
         }
       }).catch(err=>{
+        console.log(err.message);
         data.success=false;
         data.message="Unknown Error";
         data.devlog=err.message;
         res.json(data);
       });
     }).catch(error=>{
+      console.log(error.message);
       data.success=false;
       data.message="Connection Error";
       data.devlog=error.message;
@@ -275,6 +284,7 @@ route.get("/gallery",async(req,res)=>{
     isLoggedIn=data.isLoggedIn;
     type=data.type;
   }).catch(error=>{
+    console.log(error.message);
     isLoggedIn=false;
     type="guest";
   }).finally(()=>{

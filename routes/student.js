@@ -24,6 +24,7 @@ student.get("/dashboard",async(req,res)=>{
     isLoggedIn=data.isLoggedIn;
     type=data.type;
   }).catch(error=>{
+    console.log(error.message);
     isLoggedIn=false;
     type="guest";
   }).finally(()=>{
@@ -232,9 +233,9 @@ student.post("/profile/new/verify-otp",async(req,res)=>{
       }
     }
   }).catch(error=>{
+    console.log(error.message);
     isLoggedIn=false;
     type="guest";
-    console.log(error.message);
     message.success=false;
     message.message="Unknown Error";
     message.devlog=error.message;

@@ -73,6 +73,7 @@ class User
         delete this.cookies;//porperty of this object
         return this;
       }).catch(err=>{
+        //Unknown
         throw new Error("Some Other Error");
       });
     }
@@ -110,6 +111,7 @@ class User
           data.message="Invalid credentials";
         }
       }).catch(err=>{
+        console.log(err.message);
         data.success=false;
         data.message="Loading Error";
         data.devlog=err.message;
@@ -117,6 +119,7 @@ class User
         mongo.close();
       });
     }).catch(error=>{
+      console.log(error.message);
       data.success=false;
       data.message="Connection Error";
       data.devlog=error.message;
@@ -147,12 +150,14 @@ class User
           data.message="not Found";
         }
       }).catch(err=>{
+        console.log(err.message);
         data.success=false;
         data.message=err.message;
       }).finally(()=>{
         mongo.close();
       });
     }).catch(error=>{
+      console.log(error.message);
       data.success=false;
       data.message=error.message;
     });

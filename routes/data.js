@@ -137,6 +137,7 @@ data.get("/sitemap",async(req,res)=>{
       }
     ];
   }).catch(error=>{
+    console.log(error.message);
     siteMap=[];
     code=0;
   }).finally(()=>{
