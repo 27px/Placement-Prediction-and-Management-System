@@ -1,4 +1,7 @@
 {
+  "important":{
+    "redirect/remove":"disable dashboard, profile in navigation"
+  },
   "coordinator/dashboard":[
     "images and icons",
     "tabs",
@@ -18,9 +21,8 @@
     "send mail is commented ??",
     "dummy course data in page-5 use database",
     "add rest of the pages",
-    "!important refine multiple form numbers(id and name) before submit",
-    "check validity before moving and adding",
-    "use fetch instead of post"
+    "use fetch instead of form post",
+    "add skills page(last page)"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"

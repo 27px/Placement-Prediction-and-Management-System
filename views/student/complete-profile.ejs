@@ -26,16 +26,10 @@
             <div class="pro">
               <%
                 var cls;
-                for(let i=1;i<14;i++)
+                var tabs=11;
+                for(let i=1;i<=tabs;i++)
                 {
-                  if(i==1 && verified)
-                  {
-                    cls="active-box no-visit";
-                  }
-                  else
-                  {
-                    cls="";
-                  }
+                  cls=(i==1 && verified)?"active-box no-visit":"";
                   %>
                     <a href="#box-<%-i%>" class="<%-cls%>"><%-i%><span></span></a>
                   <%
@@ -399,7 +393,7 @@
                       <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                     </div>
                   </div>
-                  <div class="text">Complete Profile by adding Course details of UG, PG, Diploma. You can add multiple ones in this section</div>
+                  <div class="text">You can add multiple ones in this section. Add atleast one qualification. You should also add your current course details. Not certified yet ? upload marklist.</div>
                 </div>
               </div>
               <div class="tab">
@@ -415,7 +409,7 @@
                       var wrapper=document.createElement("div");
                       wrapper.innerHTML=`
                         <div class="multiple multiple-course multiple-active" id="multiple-course-${n}" data-multiple="${n}">
-                          <div class="closer" onclick="closeMultipleForm(this,'course',8);">&#10006;</div>
+                          <div class="closer" onclick="closeMultipleForm(this,'course',8,false);">&#10006;</div>
                           <div class="row">
                             <select name="coursetype-${n}" id="coursetype-${n}" onchange="this.blur();">
                               <option disabled selected value> -- Course Type -- </option>
@@ -454,8 +448,157 @@
                   <div class="message" id="message-box-8"></div>
                 </div>
                 <div class="row">
-                  <button type="button" class="b-yellow b-skinny b-thin add-another" onclick="addAnotherCourse(this);" data-multiple="0" id="course-adder"> Another</button>
+                  <button type="button" class="b-yellow b-skinny b-thin add-another" onclick="addAnotherForm(this,'course');" data-multiple="0" id="course-adder"> Another</button>
                   <button type="button" class="b-green b-medium" onclick="toNinethPage();" id="box-8-next">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <a class="a-box" id="box-9"></a>
+            <div class="fit">
+              <div class="info">
+                <div class="cen">
+                  <div class="image">
+                    <div class="preview">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    </div>
+                  </div>
+                  <div class="text">Complete Profile by adding Project Details, Internships and Work Experience (All are Optional)</div>
+                </div>
+              </div>
+              <div class="tab">
+                <div class="row">
+                  <div class="title">Experience</div>
+                </div>
+                <div class="multiple-wrapper" id="multiple-experience-wrapper">
+                  <div class="mf-move mf-move-left mf-move-disabled" id="mf-arrow-left-experience" onclick="multiFormMove('experience','left');"></div>
+                  <div class="mf-move mf-move-right mf-move-disabled" id="mf-arrow-right-experience" onclick="multiFormMove('experience','right');"></div>
+                  <script>
+                    function getMultipleExperienceForm(n)
+                    {
+                      var wrapper=document.createElement("div");
+                      wrapper.innerHTML=`
+                        <div class="multiple multiple-experience multiple-active" id="multiple-experience-${n}" data-multiple="${n}">
+                          <div class="closer" onclick="closeMultipleForm(this,'experience',9,true);">&#10006;</div>
+                          <div class="row">
+                            <select name="experiencetype-${n}" id="experiencetype-${n}" onchange="this.blur();">
+                              <option selected value> -- Experience Type -- </option>
+                              <option value="project">Project</option>
+                              <option value="internship">Internship</option>
+                              <option value="work">Work Experience</option>
+                            </select>
+                          </div>
+                          <div class="row">
+                            <input type="text" name="experiencetitle-${n}" id="experiencetitle-${n}" placeholder="Title">
+                          </div>
+                          <div class="row">
+                            <input type="text" name="experiencedescription-${n}" id="experiencedescription-${n}" placeholder="Description">
+                          </div>
+                          <div class="row">
+                            <label for="experiencefrom-${n}" id="experience-from-label-${n}" class="label-max">Start date</label>
+                            <input type="month" name="experiencefrom-${n}" id="experiencefrom-${n}">
+                          </div>
+                          <div class="row">
+                            <label for="experienceto-${n}" id="experience-to-label-${n}" class="label-max">End date</label>
+                            <input type="month" name="experienceto-${n}" id="experienceto-${n}">
+                          </div>
+                          <div class="row">
+                            <input type="file" name="experiencecertificate-${n}" accept="image/*,.pdf" id="experiencecertificate-${n}" onchange="selectedImageOrPdf(this,'view-experiencecertificate-${n}',9);">
+                            <div class="file" id="view-experiencecertificate-${n}">
+                              <div class="desc">Certificate</div>
+                              <div class="button" onclick="selectFile('experiencecertificate-${n}');" tabindex="1">Select</div>
+                            </div>
+                          </div>
+                        </div>
+                      `;
+                      return wrapper.children[0];
+                    }
+                  </script>
+                </div>
+                <div class="row">
+                  <div class="message" id="message-box-9"></div>
+                </div>
+                <div class="row">
+                  <button type="button" class="b-yellow b-skinny b-thin add-another" onclick="addAnotherForm(this,'experience');" data-multiple="0" id="experience-adder"> Another</button>
+                  <button type="button" class="b-green b-medium" onclick="toTenthPage();" id="box-9-next">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <a class="a-box" id="box-10"></a>
+            <div class="fit">
+              <div class="info">
+                <div class="cen">
+                  <div class="image">
+                    <div class="preview">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-award"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                    </div>
+                  </div>
+                  <div class="text">Complete Profile by adding your achievements (All are Optional)</div>
+                </div>
+              </div>
+              <div class="tab">
+                <div class="row">
+                  <div class="title">Achievement</div>
+                </div>
+                <div class="multiple-wrapper" id="multiple-achievement-wrapper">
+                  <div class="mf-move mf-move-left mf-move-disabled" id="mf-arrow-left-achievement" onclick="multiFormMove('achievement','left');"></div>
+                  <div class="mf-move mf-move-right mf-move-disabled" id="mf-arrow-right-achievement" onclick="multiFormMove('achievement','right');"></div>
+                  <script>
+                    function getMultipleAchievementForm(n)
+                    {
+                      var wrapper=document.createElement("div");
+                      wrapper.innerHTML=`
+                        <div class="multiple multiple-achievement multiple-active" id="multiple-achievement-${n}" data-multiple="${n}">
+                          <div class="closer" onclick="closeMultipleForm(this,'achievement',10,true);">&#10006;</div>
+                          <div class="row">
+                            <select name="achievementtype-${n}" id="achievementtype-${n}" onchange="this.blur();">
+                              <option selected value> -- Achievement Type -- </option>
+                              <option value="organized">Organized</option>
+                              <option value="participated">Participated</option>
+                              <option value="volunteered">Volunteered</option>
+                              <option value="achievement">Achievement</option>
+                              <option value="publication">Publication</option>
+                              <option value="certification">Certification</option>
+                            </select>
+                          </div>
+                          <div class="row">
+                            <input type="text" name="achievementtitle-${n}" id="achievementtitle-${n}" placeholder="Title">
+                          </div>
+                          <div class="row">
+                            <input type="text" name="achievementdescription-${n}" id="achievementdescription-${n}" placeholder="Description">
+                          </div>
+                          <div class="row">
+                            <label for="achievementfrom-${n}" id="achievement-from-label-${n}" class="label-max">Start date</label>
+                            <input type="month" name="achievementfrom-${n}" id="achievementfrom-${n}">
+                          </div>
+                          <div class="row">
+                            <label for="achievementto-${n}" id="achievement-to-label-${n}" class="label-max">End date</label>
+                            <input type="month" name="achievementto-${n}" id="achievementto-${n}">
+                          </div>
+                          <div class="row">
+                            <input type="file" name="achievementcertificate-${n}" accept="image/*,.pdf" id="achievementcertificate-${n}" onchange="selectedImageOrPdf(this,'view-achievementcertificate-${n}',10);">
+                            <div class="file" id="view-achievementcertificate-${n}">
+                              <div class="desc">Certificate</div>
+                              <div class="button" onclick="selectFile('achievementcertificate-${n}');" tabindex="1">Select</div>
+                            </div>
+                          </div>
+                        </div>
+                      `;
+                      return wrapper.children[0];
+                    }
+                  </script>
+                </div>
+                <div class="row">
+                  <div class="message" id="message-box-10"></div>
+                </div>
+                <div class="row">
+                  <button type="button" class="b-yellow b-skinny b-thin add-another" onclick="addAnotherForm(this,'achievement');" data-multiple="0" id="achievement-adder"> Another</button>
+                  <button type="button" class="b-green b-medium" onclick="toEleventhPage();" id="box-10-next">Next</button>
                 </div>
               </div>
             </div>

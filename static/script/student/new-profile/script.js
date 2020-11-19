@@ -1,5 +1,5 @@
 const scrollDelay=1000;//important don't change // waits for next page to scroll into view to show next inline navigation
-var scrollnumber=3;
+var scrollnumber=3,tabs=11;
 max_file_upload_size=3;// In MB
 const _=s=>document.querySelector(s);
 const $=s=>document.querySelectorAll(s);
@@ -7,47 +7,48 @@ const pi=s=>parseInt(s);
 var minute,second;
 function scrollToNav(n)
 {
-  n=Math.min(n+scrollnumber,12);//13 elements (13 max index) scroll atleast 1 elements (scrollnumber)
+  n=Math.min(n+scrollnumber,tabs-1);//elements - 1, scroll atleast 1 elements (scrollnumber)
   setTimeout(function(){
     _(".pro").children[n].scrollIntoView();
   },scrollDelay);
 }
-function closeMultipleForm(x,type,msg)
+function closeMultipleForm(x,type,msg,optional)
 {
+  var t=_(`#${type}-adder`),p=x.parentNode;
   if($(`.multiple-${type}`).length<2)
   {
-    setMessage(`#message-box-${msg}`,"Atleast one form required","warning");
+    if(optional)
+    {
+      p.innerHTML+=" ";
+      t.setAttribute("data-multiple",$(`.multiple-${type}`).length);
+      return;
+    }
+    t.setAttribute("data-multiple",$(`.multiple-${type}`).length);
+    setMessage(`#message-box-${msg}`,`Atleast one ${type} required`,"warning");
     recheckFormMove(type);
     return;
   }
-  var p=x.parentNode;
   var n=pi(p.getAttribute("data-multiple"));
   if(_(`#multiple-${type}-${n+1}`))
   {
-    var t=_(`#${type}-adder`),x=[],c=0;
+    var x=[],c=0;
     while(_(`#multiple-${type}-${n+(++c)}`)!==null)
     {
       x.push(_(`#multiple-${type}-${n+c}`));
     }
     var temp=pi(x.pop().getAttribute("data-multiple"));
-    if(type=="course")
-    {
-      replaceIdNameCourse(temp,n,msg);
-    }
-    else if(type=="////")
-    {
-      ////////////
-    }
-    t.setAttribute("data-multiple",1+pi(t.getAttribute("data-multiple")));
+    replaceIdName(temp,n,msg,type);
+    t.setAttribute("data-multiple",$(`.multiple-${type}`).length);
   }
   p.parentNode.removeChild(p);
   _(`.multiple-${type}`).classList.add("multiple-active");
+  t.setAttribute("data-multiple",$(`.multiple-${type}`).length);
   recheckFormMove(type);
 }
 function recheckFormMove(type)
 {
-  var lf=_("#mf-arrow-left-course");
-  var rf=_("#mf-arrow-right-course");
+  var lf=_(`#mf-arrow-left-${type}`);
+  var rf=_(`#mf-arrow-right-${type}`);
   Array.from($(`.multiple-${type}`)).forEach(mf=>{
     if(mf.classList.contains(`multiple-active`))
     {
@@ -72,23 +73,36 @@ function recheckFormMove(type)
     }
   });
 }
-function replaceIdNameCourse(n,t,msg)
+function replaceIdName(t,n,msg,type)
 {
-  var a=_(`#multiple-course-${n}`);
-  a.setAttribute("data-multiple",t);
-  a.id=`multiple-course-${t}`;
-  ["type","name","college","cgpa","passdate"].forEach(type=>{
-    var b=_(`#course${type}-${n}`);
-    b.name=`course${type}-${t}`;
-    b.id=`course${type}-${t}`;
+  var a=_(`#multiple-${type}-${t}`);
+  a.setAttribute("data-multiple",n);
+  a.id=`multiple-${type}-${n}`;
+  if(type=="course")
+  {
+    var elements=["type","name","college","cgpa","passdate"];
+  }
+  else if(type=="experience" || type=="achievement")
+  {
+    var elements=["type","title","description","from","to"];
+    ["from","to"].forEach(date=>{
+      var e=_(`#${type}-${date}-label-${t}`);
+      e.setAttribute("for",`${type}${date}-${n}`);
+      e.id=`${type}-${date}-label-${n}`;
+    });
+  }
+  elements.forEach(elm=>{
+    var b=_(`#${type}${elm}-${t}`);
+    b.name=`${type}${elm}-${n}`;
+    b.id=`${type}${elm}-${n}`;
   });
-  var c=_(`#coursecertificate-${n}`);
-  c.name=`coursecertificate-${t}`;
-  c.setAttribute("onchange",`selectedImageOrPdf(this,'view-coursecertificate-${t}',${msg});`);
-  c.id=`coursecertificate-${t}`;
-  var d=_(`#view-coursecertificate-${n}`);
-  d.id=`view-coursecertificate-${t}`;
-  d.children[1].setAttribute("onclick",`selectFile('coursecertificate-${t}');`);
+  var c=_(`#${type}certificate-${t}`);
+  c.name=`${type}certificate-${n}`;
+  c.setAttribute("onchange",`selectedImageOrPdf(this,'view-${type}certificate-${n}',${msg});`);
+  c.id=`${type}certificate-${n}`;
+  var d=_(`#view-${type}certificate-${t}`);
+  d.id=`view-${type}certificate-${n}`;
+  d.children[1].setAttribute("onclick",`selectFile('${type}certificate-${n}');`);
 }
 function multiFormMove(type,direction)
 {
@@ -98,6 +112,34 @@ function multiFormMove(type,direction)
     var mf=x[i];
     if(mf.classList.contains("multiple-active"))
     {
+      var ret;
+      if(type=="course")
+      {
+        ret=isMultiFormCourseValid(pi(mf.getAttribute("data-multiple")));
+        if(ret.success!=true)
+        {
+          setMessage("#message-box-8",ret.message,ret.type);
+          return false;
+        }
+      }
+      else if(type=="experience")
+      {
+        ret=isMultiFormExpAchValid(pi(mf.getAttribute("data-multiple")),"experience");
+        if(ret.success!=true || ret.type=="warning" || ret.type=="error")
+        {
+          setMessage("#message-box-9",ret.message,ret.type);
+          return false;
+        }
+      }
+      else if(type=="achievement")
+      {
+        ret=isMultiFormExpAchValid(pi(mf.getAttribute("data-multiple")),"achievement");
+        if(ret.success!=true || ret.type=="warning" || ret.type=="error")
+        {
+          setMessage("#message-box-10",ret.message,ret.type);
+          return false;
+        }
+      }
       if(direction=="left")
       {
         var mfp=mf.previousElementSibling;
@@ -132,15 +174,71 @@ function setProgress(clock,progress,total,unit)
   _('#svg_'+clock+'_path').setAttribute("stroke-dasharray",cur+","+(dash-cur));
   _('#svg_'+clock+'_text').innerHTML=progress+unit;
 }
-function addAnotherCourse(x)
+function addAnotherForm(x,type)
 {
-  var n=1+pi(x.getAttribute("data-multiple"));
+  var n=pi(x.getAttribute("data-multiple"));
+  if(n>0)
+  {
+    var mxf=Array.from($(`.multiple-${type}`));
+    for(let i=0,n=mxf.length;i<n;i++)
+    {
+      var mf=mxf[i];
+      if(mf.classList.contains(`multiple-active`))
+      {
+        if(type=="course")
+        {
+          var ret=isMultiFormCourseValid(pi(mf.getAttribute("data-multiple")));
+          if(ret.success!=true)
+          {
+            setMessage("#message-box-8",ret.message,ret.type);
+            _(window.location.hash).scrollIntoView();
+            return false;
+          }
+        }
+        else if(type=="experience")
+        {
+          var ret=isMultiFormExpAchValid(pi(mf.getAttribute("data-multiple")),"experience");
+          if(ret.success!=true || ret.type=="warning" || ret.type=="error")
+          {
+            setMessage("#message-box-9",ret.message,ret.type);
+            _(window.location.hash).scrollIntoView();
+            return false;
+          }
+        }
+        else if(type=="achievement")
+        {
+          var ret=isMultiFormExpAchValid(pi(mf.getAttribute("data-multiple")),"achievement");
+          if(ret.success!=true || ret.type=="warning" || ret.type=="error")
+          {
+            setMessage("#message-box-10",ret.message,ret.type);
+            _(window.location.hash).scrollIntoView();
+            return false;
+          }
+        }
+      }
+    }
+  }
+  n++;
   x.setAttribute("data-multiple",n);
-  Array.from($(".multiple-course")).forEach(course=>{
-    course.classList.remove("multiple-active");
+  Array.from($(`.multiple-${type}`)).forEach(t=>{
+    t.classList.remove("multiple-active");
   });
-  _("#multiple-course-wrapper").appendChild(getMultipleCourseForm(n));
-  recheckFormMove("course");
+  var bd;
+  if(type=="course")
+  {
+    bd=getMultipleCourseForm(n);
+  }
+  else if(type=="experience")
+  {
+    bd=getMultipleExperienceForm(n);
+  }
+  else if(type=="achievement")
+  {
+    bd=getMultipleAchievementForm(n);
+  }
+  _(`#multiple-${type}-wrapper`).appendChild(bd);
+  recheckFormMove(type);
+  _(window.location.hash).scrollIntoView();
 }
 function setScrollNumber()
 {
@@ -302,7 +400,9 @@ window.onload=()=>{
   _("#verify-otp").addEventListener("click",verifyOTP);
   _("#otp-1").focus();
   //add course form
-  addAnotherCourse(_("#course-adder"));
+  ["course","experience","achievement"].forEach(type=>{
+    addAnotherForm(_(`#${type}-adder`),type);
+  });
 };
 window.onresize=()=>{
   setScrollNumber()
@@ -363,7 +463,7 @@ function startChanges()
       }
       else
       {
-        /// when timer hits zero
+        // when timer hits zero
         setProgress("minute",0,60," m");
         setProgress("second",0,60," s");
         clearInterval(t);
@@ -506,6 +606,7 @@ function selectedImageOrPdf(element,id,m)
       setMessage(`#message-box-${m}`,"Invalid File Type","error");
       x.classList.remove("file-selected");
       x.classList.add("file-select-error");
+      _(window.location.hash).scrollIntoView();
       return false;
     }
     else if((file.size/(1024*1024))>max_file_upload_size)
@@ -513,12 +614,14 @@ function selectedImageOrPdf(element,id,m)
       setMessage(`#message-box-${m}`,`Add File size < ${max_file_upload_size} MB`,"error");
       x.classList.remove("file-selected");
       x.classList.add("file-select-error");
+      _(window.location.hash).scrollIntoView();
       return false;
     }
     else
     {
       x.classList.remove("file-select-error");
       x.classList.add("file-selected");
+      _(window.location.hash).scrollIntoView();
       return true;
     }
   }
@@ -526,8 +629,10 @@ function selectedImageOrPdf(element,id,m)
   {
     x.classList.remove("file-selected");
     x.classList.add("file-select-error");
+    _(window.location.hash).scrollIntoView();
     return false;
   }
+  _(window.location.hash).scrollIntoView();
   return false;
 }
 function isXthPageValid(num=1)
@@ -580,14 +685,6 @@ function isXthPageValid(num=1)
   else if(num==11)
   {
     result=isEleventhPageValid();
-  }
-  else if(num==12)
-  {
-    result=isTwelvethPageValid();
-  }
-  else if(num==13)
-  {
-    result=isThirteenthPageValid();
   }
   if(result)
   {
@@ -945,7 +1042,7 @@ function isMultiFormCourseValid(n)
       type:"error"
     };
   }
-  else if(!selectedImageOrPdf(coursecertificate,`view-coursecertificate-${n}`,7))
+  else if(!selectedImageOrPdf(coursecertificate,`view-coursecertificate-${n}`,8))
   {
     return {
       message:"Select Certificate",
@@ -982,5 +1079,143 @@ function toNinethPage()
   _(".pro").children[7].classList.add("active-box");
   window.location.hash="#box-9";
   scrollToNav(8);
+  return true;
+}
+function isMultiFormExpAchValid(n,type)
+{
+  var xtype=_(`#${type}type-${n}`),
+  title=_(`#${type}title-${n}`).value,
+  description=_(`#${type}description-${n}`).value,
+  from=_(`#${type}from-${n}`).value,
+  to=_(`#${type}to-${n}`).value,
+  certificate=_(`#${type}certificate-${n}`);
+  xtype=xtype.options[xtype.selectedIndex].value;
+  var msg;
+  if(type=="experience")
+  {
+    msg=9;
+  }
+  else if(type=="achievement")
+  {
+    msg=10;
+  }
+  if(xtype!="")
+  {
+    if(title=="")
+    {
+      return {
+        message:`Enter ${type} title`,
+        type:"error"
+      };
+    }
+    else if(title.length<2)
+    {
+      return {
+        message:`${type} title too short`,
+        type:"error"
+      };
+    }
+    else if(description=="")
+    {
+      return {
+        message:"Enter description",
+        type:"error"
+      };
+    }
+    else if(description.length<10)
+    {
+      return {
+        message:"Description too short",
+        type:"error"
+      };
+    }
+    else if(from=="")
+    {
+      return {
+        message:"Select start month & year",
+        type:"error"
+      };
+    }
+    else if(to=="")
+    {
+      return {
+        message:"Select end month & year",
+        type:"error"
+      };
+    }
+    else if(!selectedImageOrPdf(certificate,`view-${type}certificate-${n}`,msg))
+    {
+      return {
+        message:"Select Certificate",
+        type:"error"
+      };
+    }
+    else
+    {
+      return {
+        success:true
+      };
+    }
+  }
+  return {
+    success:true,
+    message:`Select ${type} type`,
+    type:"warning"
+  };
+}
+function isNinethPageValid()
+{
+  var msg="#message-box-9";
+  var n=$(".multiple-experience").length;
+  var success;
+  for(let i=0;i<n;i++)
+  {
+    var x=isMultiFormExpAchValid(i+1,"experience");
+    if(x.success!=true)
+    {
+      setMessage(msg,x.message,x.type);
+      return false;
+    }
+  }
+  return true;
+}
+function toTenthPage()
+{
+  if(!isNinethPageValid())
+  {
+    return false;
+  }
+  resetMessage("#message-box-9");
+  _(".pro").children[8].classList.add("active-box");
+  window.location.hash="#box-10";
+  scrollToNav(9);
+  return true;
+}
+function isTenthPageValid()
+{
+  var msg="#message-box-10";
+  var n=$(".multiple-achievement").length;
+  var success;
+  for(let i=0;i<n;i++)
+  {
+    var x=isMultiFormExpAchValid(i+1,"achievement");
+    if(x.success!=true)
+    {
+      setMessage(msg,x.message,x.type);
+      return false;
+    }
+  }
+  return true;
+}
+function toEleventhPage()
+{
+  if(!isTenthPageValid())
+  {
+    return false;
+  }
+  resetMessage("#message-box-10");
+  _(".pro").children[9].classList.add("active-box");
+  window.location.hash="#box-11";
+  scrollToNav(10);
   return true;
 }
