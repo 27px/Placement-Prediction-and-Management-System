@@ -45,10 +45,7 @@
           </div>
         </div>
         <form class="main" method="POST" action="" enctype="multipart/form-data">
-          <%
-            var hide=verified?" hidden":"";
-          %>
-          <div class="box<%-hide%>">
+          <div class="box<%-verified?" hidden":""%>">
             <a class="a-box" id="box-1"></a>
             <div class="fit">
               <div class="info">
@@ -95,7 +92,7 @@
                     }
                   %>
                 </div>
-                <div class="message message-box-1"></div>
+                <div class="message" id="message-box-1"></div>
                 <div class="row">
                   <button type="button" class="b-red" onclick="clearOtpText();">Clear</button>
                   <button type="button" class="b-blue" id="verify-otp">Verify</button>
@@ -252,7 +249,7 @@
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                     </div>
                   </div>
-                  <div class="text">Complete Profile by adding some details of current College details.</div>
+                  <div class="text">Complete Profile by adding some details of current College details. Previously cleared Arrears are not to be considered as Active Arrears</div>
                 </div>
               </div>
               <div class="tab">
@@ -270,6 +267,9 @@
                     <option disabled selected value> -- (Dumy)Current Semester -- </option>
                     <option value="dummy">dummy COURSE 2</option>
                   </select>
+                </div>
+                <div class="row">
+                  <input type="number" name="arrears" id="arrears" placeholder="Active Arrears" min=0>
                 </div>
                 <div class="row">
                   <label for="passout" class="label-max">Passout month & year</label>
@@ -407,14 +407,17 @@
                   <div class="title">Course</div>
                 </div>
                 <div class="multiple-wrapper" id="multiple-course-wrapper">
+                  <div class="mf-move mf-move-left mf-move-disabled" id="mf-arrow-left-course" onclick="multiFormMove('course','left');"></div>
+                  <div class="mf-move mf-move-right mf-move-disabled" id="mf-arrow-right-course" onclick="multiFormMove('course','right');"></div>
                   <script>
                     function getMultipleCourseForm(n)
                     {
-                      return `
-                        <div class="multiple multiple-course" id="multiple-course-${n}" data-multiple="${n}">
-                          <div class="closer" onclick="closeParent(this);">&#10006;</div>
+                      var wrapper=document.createElement("div");
+                      wrapper.innerHTML=`
+                        <div class="multiple multiple-course multiple-active" id="multiple-course-${n}" data-multiple="${n}">
+                          <div class="closer" onclick="closeMultipleForm(this,'course',8);">&#10006;</div>
                           <div class="row">
-                            <select name="course-type-${n}" id="course-type-${n}" onchange="this.blur();">
+                            <select name="coursetype-${n}" id="coursetype-${n}" onchange="this.blur();">
                               <option disabled selected value> -- Course Type -- </option>
                               <option value="ug">UG</option>
                               <option value="pg">PG</option>
@@ -428,30 +431,30 @@
                             <input type="text" name="coursecollege-${n}" id="coursecollege-${n}" placeholder="College">
                           </div>
                           <div class="row">
-                            <input type="number" name="coursepercent-${n}" id="coursepercent-${n}" placeholder="Marks - Percentage (%)">
+                            <input type="number" name="coursecgpa-${n}" id="coursecgpa-${n}" placeholder="Marks - CGPA">
                           </div>
                           <div class="row">
                             <label for="coursepassdate" class="label-max">Passout Date</label>
                             <input type="month" name="coursepassdate-${n}" id="coursepassdate-${n}">
                           </div>
                           <div class="row">
-                            <input type="file" name="coursecertificate" accept="image/*,.pdf" id="coursecertificate" onchange="selectedImageOrPdf(this,'view-coursecertificate',8);">
-                            <div class="file" name="view-coursecertificate-${n}" id="view-coursecertificate-${n}">
+                            <input type="file" name="coursecertificate-${n}" accept="image/*,.pdf" id="coursecertificate-${n}" onchange="selectedImageOrPdf(this,'view-coursecertificate-${n}',8);">
+                            <div class="file" id="view-coursecertificate-${n}">
                               <div class="desc">Certificate</div>
-                              <div class="button" onclick="selectFile('coursecertificate');" tabindex="1">Select</div>
+                              <div class="button" onclick="selectFile('coursecertificate-${n}');" tabindex="1">Select</div>
                             </div>
                           </div>
                         </div>
                       `;
+                      return wrapper.children[0];
                     }
-                    document.write(getMultipleCourseForm(1));
                   </script>
                 </div>
                 <div class="row">
                   <div class="message" id="message-box-8"></div>
                 </div>
                 <div class="row">
-                  <button type="button" class="b-yellow b-skinny b-thin add-another" onclick="addAnotherCourse(this);" data-multiple="1"> Another</button>
+                  <button type="button" class="b-yellow b-skinny b-thin add-another" onclick="addAnotherCourse(this);" data-multiple="0" id="course-adder"> Another</button>
                   <button type="button" class="b-green b-medium" onclick="toNinethPage();" id="box-8-next">Next</button>
                 </div>
               </div>
@@ -461,11 +464,6 @@
         </form>
       </div>
     </div>
-    <script>
-      <%
-        var hash=verified?2:1;
-      %>
-      window.location.hash="#box-<%-hash%>";
-    </script>
+    <script>window.location.hash="#box-<%-verified?2:1%>";</script>
   </body>
 </html>

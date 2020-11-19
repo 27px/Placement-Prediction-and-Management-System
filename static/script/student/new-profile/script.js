@@ -12,20 +12,117 @@ function scrollToNav(n)
     _(".pro").children[n].scrollIntoView();
   },scrollDelay);
 }
-function closeParent(x)
+function closeMultipleForm(x,type,msg)
 {
-  if($(".multiple-course").length<2)
+  if($(`.multiple-${type}`).length<2)
   {
+    setMessage(`#message-box-${msg}`,"Atleast one form required","warning");
+    recheckFormMove(type);
     return;
   }
   var p=x.parentNode;
+  var n=pi(p.getAttribute("data-multiple"));
+  if(_(`#multiple-${type}-${n+1}`))
+  {
+    var t=_(`#${type}-adder`),x=[],c=0;
+    while(_(`#multiple-${type}-${n+(++c)}`)!==null)
+    {
+      x.push(_(`#multiple-${type}-${n+c}`));
+    }
+    var temp=pi(x.pop().getAttribute("data-multiple"));
+    if(type=="course")
+    {
+      replaceIdNameCourse(temp,n,msg);
+    }
+    else if(type=="////")
+    {
+      ////////////
+    }
+    t.setAttribute("data-multiple",1+pi(t.getAttribute("data-multiple")));
+  }
   p.parentNode.removeChild(p);
+  _(`.multiple-${type}`).classList.add("multiple-active");
+  recheckFormMove(type);
 }
-function addAnotherCourse(x)
+function recheckFormMove(type)
 {
-  var n=1+pi(x.getAttribute("data-multiple"));
-  x.setAttribute("data-multiple",n);
-  _("#multiple-course-wrapper").innerHTML+=getMultipleCourseForm(n);
+  var lf=_("#mf-arrow-left-course");
+  var rf=_("#mf-arrow-right-course");
+  Array.from($(`.multiple-${type}`)).forEach(mf=>{
+    if(mf.classList.contains(`multiple-active`))
+    {
+      var mfp=mf.previousElementSibling;
+      var mfn=mf.nextElementSibling;
+      if(mfp!=null && mfp.classList.contains("multiple"))
+      {
+        lf.classList.remove("mf-move-disabled");
+      }
+      else
+      {
+        lf.classList.add("mf-move-disabled");
+      }
+      if(mfn!=null && mfn.classList.contains("multiple"))
+      {
+        rf.classList.remove("mf-move-disabled");
+      }
+      else
+      {
+        rf.classList.add("mf-move-disabled");
+      }
+    }
+  });
+}
+function replaceIdNameCourse(n,t,msg)
+{
+  var a=_(`#multiple-course-${n}`);
+  a.setAttribute("data-multiple",t);
+  a.id=`multiple-course-${t}`;
+  ["type","name","college","cgpa","passdate"].forEach(type=>{
+    var b=_(`#course${type}-${n}`);
+    b.name=`course${type}-${t}`;
+    b.id=`course${type}-${t}`;
+  });
+  var c=_(`#coursecertificate-${n}`);
+  c.name=`coursecertificate-${t}`;
+  c.setAttribute("onchange",`selectedImageOrPdf(this,'view-coursecertificate-${t}',${msg});`);
+  c.id=`coursecertificate-${t}`;
+  var d=_(`#view-coursecertificate-${n}`);
+  d.id=`view-coursecertificate-${t}`;
+  d.children[1].setAttribute("onclick",`selectFile('coursecertificate-${t}');`);
+}
+function multiFormMove(type,direction)
+{
+  var x=Array.from($(`.multiple-${type}`));
+  for(let i=0,n=x.length;i<n;i++)
+  {
+    var mf=x[i];
+    if(mf.classList.contains("multiple-active"))
+    {
+      if(direction=="left")
+      {
+        var mfp=mf.previousElementSibling;
+        if(mfp!=null && mfp.classList.contains("multiple"))
+        {
+          mf.classList.remove("multiple-active");
+          mfp.classList.add("multiple-active");
+          recheckFormMove(type);
+          return;
+        }
+      }
+      else if(direction=="right")
+      {
+        var mfn=mf.nextElementSibling;
+        if(mfn!=null && mfn.classList.contains("multiple"))
+        {
+          mf.classList.remove("multiple-active");
+          mfn.classList.add("multiple-active");
+          recheckFormMove(type);
+          return;
+        }
+      }
+    }
+  }
+  recheckFormMove(type);
 }
 function setProgress(clock,progress,total,unit)
 {
@@ -34,6 +131,16 @@ function setProgress(clock,progress,total,unit)
   var cur=(progress*dash)/total;
   _('#svg_'+clock+'_path').setAttribute("stroke-dasharray",cur+","+(dash-cur));
   _('#svg_'+clock+'_text').innerHTML=progress+unit;
+}
+function addAnotherCourse(x)
+{
+  var n=1+pi(x.getAttribute("data-multiple"));
+  x.setAttribute("data-multiple",n);
+  Array.from($(".multiple-course")).forEach(course=>{
+    course.classList.remove("multiple-active");
+  });
+  _("#multiple-course-wrapper").appendChild(getMultipleCourseForm(n));
+  recheckFormMove("course");
 }
 function setScrollNumber()
 {
@@ -60,7 +167,7 @@ function nextPage(event)
     if(!_(".pro").classList.contains("no-visit"))
     {
       event.preventDefault();
-      setMessage(".message-box-1","Verify OTP before moving to next.","info");
+      setMessage("#message-box-1","Verify OTP before moving to next.","info");
       return;
     }
   }
@@ -92,6 +199,59 @@ function nextPage(event)
     event.preventDefault();
     return false;
   }
+}
+function verifyOTP()
+{
+  var otp="";
+  Array.from(_(".otp-container").children).forEach(input=>{
+    otp+=input.value;
+  });
+  otp=pi(otp);
+  if(isNaN(otp))
+  {
+    setMessage("#message-box-1","Invalid OTP","error");
+    return;
+  }
+  if(otp.toString().length<6)
+  {
+    setMessage("#message-box-1","Invalid OTP","error");
+    return;
+  }
+  else
+  {
+    setMessage("#message-box-1","Loading . . .","info");
+  }
+  fetch("./new/verify-otp",{
+    method:"POST",
+    cache:"no-store",
+    headers:{
+      'Content-Type':"application/json"
+    },
+    body:JSON.stringify({otp})
+  })
+  .then(result=>result.json())
+  .then(data=>{
+    if(!data.success)
+    {
+      setMessage("#message-box-1",data.message,"error");
+      if(data.devlog!=undefined)
+      {
+        console.error(data.devlog);
+      }
+    }
+    else
+    {
+      setMessage("#message-box-1",data.message,"success");
+      clearOtpText();
+      _(".pro").children[0].classList.add("active-box");
+      _(".pro").children[0].classList.add("no-visit");//only for otp
+      window.location.hash="#box-2";
+    }
+  })
+  .catch(err=>{
+    console.error(err.message);
+    setMessage("#message-box-1","Unknown error","error");
+  });
 }
 window.onload=()=>{
   setScrollNumber();
@@ -135,59 +295,10 @@ window.onload=()=>{
       text.addEventListener(event,acceptNumberOnly);
     })
   });
-  _("#verify-otp").addEventListener("click",()=>{
-    var otp="";
-    Array.from(_(".otp-container").children).forEach(input=>{
-      otp+=input.value;
-    });
-    otp=pi(otp);
-    if(isNaN(otp))
-    {
-      setMessage(".message-box-1","Invalid OTP","error");
-      return;
-    }
-    if(otp.toString().length<6)
-    {
-      setMessage(".message-box-1","Invalid OTP","error");
-      return;
-    }
-    else
-    {
-      setMessage(".message-box-1","Loading . . .","info");
-    }
-    fetch("./new/verify-otp",{
-      method:"POST",
-      cache:"no-store",
-      headers:{
-        'Content-Type':"application/json"
-      },
-      body:JSON.stringify({otp})
-    })
-    .then(result=>result.json())
-    .then(data=>{
-      if(!data.success)
-      {
-        setMessage(".message-box-1",data.message,"error");
-        if(data.devlog!=undefined)
-        {
-          console.error(data.devlog);
-        }
-      }
-      else
-      {
-        setMessage(".message-box-1",data.message,"success");
-        clearOtpText();
-        _(".pro").children[0].classList.add("active-box");
-        _(".pro").children[0].classList.add("no-visit");//only for otp
-        window.location.hash="#box-2";
-      }
-    })
-    .catch(err=>{
-      console.error(err.message);
-      setMessage(".message-box-1","Unknown error","error");
-    });
-  });
+  _("#verify-otp").addEventListener("click",verifyOTP);
   _("#otp-1").focus();
+  //add course form
+  addAnotherCourse(_("#course-adder"));
 };
 window.onresize=()=>{
   setScrollNumber()
@@ -776,7 +887,8 @@ function toEightthPage()
 }
 function isMultiFormCourseValid(n)
 {
-  var coursename=_(`#coursename-${n}`).value,coursecollege=_(`#coursecollege-${n}`).value,coursepercent=_(`#coursepercent-${n}`).value,coursepassdate=_(`#coursepassdate-${n}`).value,coursecertificate=_(`#coursecertificate-${n}`);
+  /// ///check type selected
+  var coursename=_(`#coursename-${n}`).value,coursecollege=_(`#coursecollege-${n}`).value,coursecgpa=_(`#coursecgpa-${n}`).value,coursepassdate=_(`#coursepassdate-${n}`).value,coursecertificate=_(`#coursecertificate-${n}`);
   if(coursename=="")
   {
     return {
@@ -805,10 +917,10 @@ function isMultiFormCourseValid(n)
       type:"error"
     };
   }
-  else if(coursepercent<1 || coursepercent>100)
+  else if(coursecgpa<1 || coursecgpa>10)
   {
     return {
-      message:"Invalid Mark (%)",
+      message:"Invalid CGPA",
       type:"error"
     };
   }

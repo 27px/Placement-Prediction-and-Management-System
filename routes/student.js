@@ -162,6 +162,19 @@ student.get("/profile/new",async(req,res)=>{
   });
 });
 
+//Handle Form Upload
+student.post("/profile/new",(req,res)=>{
+  // // form data
+  // console.log(req.body);
+  //
+  // // files
+  // console.log(req.files);
+  // console.log(req.files["profilepic"]);
+  // console.log(req.files["profilepic"].name);
+  res.json({message:"Not Implemented"});
+  res.end();
+});
+
 //verify otp
 student.post("/profile/new/verify-otp",async(req,res)=>{
   var message={};

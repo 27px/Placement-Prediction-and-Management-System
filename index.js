@@ -1,6 +1,7 @@
 const config=require("./config/config.json");
 const express=require("express");
 const session=require("express-session");
+const fileUpload=require('express-fileupload');
 const path=require("path");
 const favicon=require("serve-favicon");
 const route=require("./routes/main");
@@ -16,6 +17,7 @@ app.set("view engine","ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(fileUpload());
 
 app.use(session({
   secret:config.SESSION.SECRET,
