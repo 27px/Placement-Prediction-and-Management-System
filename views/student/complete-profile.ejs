@@ -47,7 +47,7 @@
             <div class="fit">
               <div class="info">
                 <div class="cen">
-                  <div class="timers">
+                  <div class="timers" data-start="<%-otpgenerated%>">
                     <svg class="timer minute-timer" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                       <defs>
                         <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -254,15 +254,13 @@
                   <div class="title">Course</div>
                 </div>
                 <div class="row">
-                  <select name="course" id="course" onchange="this.blur();">
-                    <option disabled selected value> -- (Dummy) Current Course -- </option>
-                    <option value="dummy">dummy COURSE 1</option>
+                  <select name="course" id="course" onchange="setUpSemester();this.blur();">
+                    <option disabled selected value> -- Current Course -- </option>
                   </select>
                 </div>
                 <div class="row">
                   <select name="semester" id="semester" onchange="this.blur();">
-                    <option disabled selected value> -- (Dumy)Current Semester -- </option>
-                    <option value="dummy">dummy COURSE 2</option>
+                    <option disabled selected value> -- Current Semester -- </option>
                   </select>
                 </div>
                 <div class="row">

@@ -381,6 +381,36 @@ function verifyOTP()
     setMessage("#message-box-1","Unknown error","error");
   });
 }
+function setUpCourseForm(data)
+{
+  var course=_("#course");
+  data.forEach(value=>{
+    var group=document.createElement("optgroup");
+    group.label=value.name;
+    value.courses.forEach(c=>{
+      var option=document.createElement("option");
+      option.value=`${value._id};${c.name}`;
+      option.innerHTML=c.name;
+      option.setAttribute("data-max-sem",c.num_of_sem);
+      group.appendChild(option);
+    });
+    course.appendChild(group);
+  });
+}
+function setUpSemester()
+{
+  var course=_("#course");
+  var semester=_("#semester");
+  semester.innerHTML="<option disabled selected value> -- Current Semester -- </option>";
+  var option=course.options[course.selectedIndex];
+  for(let i=0,n=pi(option.getAttribute("data-max-sem"));i<n;i++)
+  {
+    var o=document.createElement("option");
+    o.innerHTML=`Semester ${i+1}`;
+    o.value=i+1;
+    semester.appendChild(o);
+  }
+}
 window.onload=()=>{
   setScrollNumber();
   setCurrentInlineNavActive()
@@ -391,6 +421,22 @@ window.onload=()=>{
   _("#nav-profile").addEventListener("click",function(){
     event.preventDefault();
     return false;
+  });
+  // var created=new Date(pi(_(".timers").getAttribute("data-start")));
+  // var diff=parseInt((Date.now()-created)/(1000*60));
+  // console.log(diff);
+  // console.log(diff/1000);
+  // console.log(diff/(1000*60));
+  // console.log(diff/(1000*60*60));
+  fetch("/data/course/name",{
+    method:"GET",
+    cache:"no-store"
+  }).then(response=>response.json())
+  .then(data=>{
+    setUpCourseForm(data);
+  })
+  .catch(error=>{
+    console.log(error.message);
   });
   document.body.addEventListener("keydown",event=>{
     if(event.keyCode===9)

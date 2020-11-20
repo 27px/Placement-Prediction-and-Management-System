@@ -20,8 +20,7 @@
   ],
   "complete-profile":[
     "form, handle post file upload",
-    "dummy course data in page-5 use database",
-    "otp time hard code to actual time string"
+    "otp - time hard code to actual time string"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"

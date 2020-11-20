@@ -1,6 +1,43 @@
 const express=require("express");
 const data=express.Router();
 const User=require("../functions/user.js");
+const DB_CONNECTION_URL=require("../config/db.js");
+const config=require("../config/config.json");
+const MongoClient=require("mongodb").MongoClient;
+
+// This is data/statistics
+// statistics data for graph in dashboard
+data.get("/statistics",(req,res)=>{
+  res.end("statistics");
+});
+
+//course Names
+data.get("/course/name",async(req,res)=>{
+  var department=[];
+  await MongoClient.connect(DB_CONNECTION_URL,{
+    useUnifiedTopology:true
+  }).then(async mongo=>{
+    const db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+    var cursor=await db.collection("department")
+    .find({})
+    .project({name:1,courses:1});
+    await cursor.each((err,item)=>{
+      if(err!=null || item==null)
+      {
+        res.json(department);
+        cursor.close();
+        return;
+      }
+      else
+      {
+        department.push(item);
+      }
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    res.json([]);
+  });
+});
 
 // sitemap
 data.get("/sitemap",async(req,res)=>{
@@ -151,12 +188,6 @@ data.get("/sitemap",async(req,res)=>{
     });
     res.json(siteMap);
   });
-});
-
-// This is data/statistics
-// statistics data for graph in dashboard
-data.get("/statistics",(req,res)=>{
-  res.end("statistics");
 });
 
 module.exports=data;

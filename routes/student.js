@@ -72,12 +72,12 @@ student.get("/profile/new",async(req,res)=>{
   var isLoggedIn=false;
   var type="guest";
   var verified=false;
+  var otp=Math.random().toString().split("").splice(2,6).join("");
+  var gen;//otp generated time //value assigns later
   await user.initialize().then(async(data)=>{
     isLoggedIn=data.isLoggedIn && (data.type=="coordinator" || data.type=="student");
     if(isLoggedIn)//loggedin
     {
-      var otp=Math.random().toString().split("").splice(2,6).join("");
-      var gen;//otp generated time //value assigns later
       await MongoClient.connect(DB_CONNECTION_URL,{
         useUnifiedTopology:true
       }).then(async mongo=>{
@@ -159,6 +159,7 @@ student.get("/profile/new",async(req,res)=>{
         submittype:"",
         submitmessage:"",
         submitdevlog:"",
+        otpgenerated:gen,
         isLoggedIn,
         type,
         verified
@@ -220,6 +221,7 @@ student.post("/profile/new",async(req,res)=>{
         submittype:"warning",
         submitmessage:"Not Implemented",
         submitdevlog:"Code incomplete",
+        otpgenerated:0,
         isLoggedIn,
         type,
         verified
