@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/style/student/new-profile/style.css">
     <link rel="stylesheet" href="../../static/style/nav.css">
+    <link rel="stylesheet" href="../../static/style/popup.css">
     <script src="../../static/script/student/new-profile/script.js"></script>
+    <script src="../../static/script/popup.js"></script>
   </head>
   <body>
     <video muted autoplay loop poster="../../static/videos/student-new.png" class="bg">
@@ -693,9 +695,15 @@
     </div>
     <script>
       window.location.hash="#box-<%-verified?2:1%>";
-      <%-submittype!=false?`console.warn("${submittype}");`:""%>
-      <%-submitmessage!=false?`console.warn("${submitmessage}");`:""%>
-      <%-(submitdevlog!=false)?`console.error("${submitdevlog}");`:""%>
+      <%
+        if(submited && submittype!="success")
+        {
+          %>
+            console.error(`<%-submitdevlog%>`);
+            showPopUp(`<%-submittype%>`,`<%-submitmessage%>`);
+          <%
+        }
+      %>
     </script>
   </body>
 </html>

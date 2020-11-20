@@ -20,10 +20,8 @@
   ],
   "complete-profile":[
     "form, handle post file upload",
-    "responsiveness",
-    "send mail is commented ??",
     "dummy course data in page-5 use database",
-    "show submit error message as popup"
+    "otp time hard code to actual time string"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"

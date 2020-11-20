@@ -37,6 +37,14 @@ video.bg
   top:0;
   left:0;
 }
+nav #nav-dashboard:hover,
+nav #nav-profile:hover,
+nav #nav-dashboard:hover::before,
+nav #nav-profile:hover::before
+{
+  background:#f44336!important;
+  opacity:0.5;
+}
 @media (min-width:1150px)
 {
   nav a.nav-item

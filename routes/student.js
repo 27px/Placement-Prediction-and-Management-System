@@ -102,7 +102,7 @@ student.get("/profile/new",async(req,res)=>{
             }
           }).then(async up=>{
             // console.log(up);
-          });
+          })
         }
       });
       if(!verified)
@@ -156,9 +156,9 @@ student.get("/profile/new",async(req,res)=>{
         title:"Complete Profile",
         timeout:user_config.OTP.TIMEOUT,
         submited:false,
-        submittype:false,
-        submitmessage:false,
-        submitdevlog:false,
+        submittype:"",
+        submitmessage:"",
+        submitdevlog:"",
         isLoggedIn,
         type,
         verified
@@ -202,15 +202,16 @@ student.post("/profile/new",async(req,res)=>{
     }
     else
     {
-      // form data
-      console.log(req.body);
-
-      // files
-      console.log(req.files);
-      console.log(req.files["profilepic"]);
-      console.log(req.files["profilepic"].name);
+      // // form data
+      // console.log(req.body);
+      //
+      // // files
+      // console.log(req.files);
+      // console.log(req.files["profilepic"]);
+      // console.log(req.files["profilepic"].name);
 
       /////process update to mongodb
+      // redirect if success
 
       res.render("student/complete-profile",{
         title:"Complete Profile",

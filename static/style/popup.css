@@ -1,0 +1,91 @@
+
+.overlay
+{
+  z-index:100;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(255,255,255,0.5);
+}
+.pop-up
+{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:100%;
+  max-width:500px;
+  height:100px;
+  background-image: linear-gradient(348deg, transparent 0%, transparent 76%,rgba(194, 194, 194,0.04) 76%, rgba(194, 194, 194,0.04) 93%,transparent 93%, transparent 100%),linear-gradient(150deg, transparent 0%, transparent 10%,rgba(194, 194, 194,0.04) 10%, rgba(194, 194, 194,0.04) 74%,transparent 74%, transparent 100%),linear-gradient(68deg, transparent 0%, transparent 36%,rgba(194, 194, 194,0.04) 36%, rgba(194, 194, 194,0.04) 47%,transparent 47%, transparent 100%),linear-gradient(199deg, transparent 0%, transparent 37%,rgba(194, 194, 194,0.04) 37%, rgba(194, 194, 194,0.04) 47%,transparent 47%, transparent 100%),linear-gradient(90deg, rgb(0,0,0),rgb(0,0,0));
+  border-radius:10px;
+  box-shadow:0px 0px 5px 1px #000000;
+  color:#FFFFFF;
+  display:flex;
+  flex-direction:row;
+  font-family:var(--font-monospace);
+}
+.pop-up .close
+{
+  position:absolute;
+  top:0;
+  right:8px;
+  font-size:30px;
+  font-weight:900;
+}
+.pop-up .close:hover
+{
+  cursor:pointer;
+  color:#f44336;
+}
+.pop-up .icon
+{
+  width:100px;
+  height:100px;
+  position:relative;
+}
+.pop-up .icon svg
+{
+  width:60%;
+  height:60%;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  stroke-width:1;
+}
+.pop-up .pop-wrapper
+{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-evenly;
+}
+.pop-up .pop-wrapper .title
+{
+  font-weight:900;
+  text-transform:capitalize;
+  letter-spacing:1px;
+  font-size:20px;
+}
+.pop-up .pop-wrapper .subtitle
+{
+  font-size:16px;
+  letter-spacing:1px;
+  font-weight:100;
+}
+@media (max-width:250px)
+{
+  .pop-up
+  {
+    flex-direction:column;
+    height:auto;
+    justify-content:center;
+    align-items:center;
+  }
+  .pop-up .pop-wrapper .title,
+  .pop-up .pop-wrapper .subtitle
+  {
+    margin:15px 10px;
+  }
+}

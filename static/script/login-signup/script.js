@@ -161,6 +161,7 @@ function login()
     password:p,
     remember:r
   };
+  var didLoginSucceede=false;
   fetch("/login",{
     method:"POST",
     cache:"no-cache",
@@ -175,6 +176,7 @@ function login()
     response.json().then(data=>{
       if(data.success===true)
       {
+        didLoginSucceede=true;
         window.location=data.redirect;
       }
       else
@@ -193,7 +195,10 @@ function login()
     console.error(error.message);
     setMessage(loginEmail,"login","Server not responding","email","error");
   }).finally(()=>{
-    b.classList.remove("progress");
+    if(!didLoginSucceede)
+    {
+      b.classList.remove("progress");
+    }
   });
 }
 function register()
