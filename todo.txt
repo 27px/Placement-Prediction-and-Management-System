@@ -8,7 +8,8 @@
     "content",
     "email pass from ejs",
     "dynamic notifications",
-    "no notification messsage"
+    "no notification messsage",
+    "add course details"
   ],
   "login-signup":[
     "when nav button to same page (login/register) is clicked, no animation but after a while clears input.",

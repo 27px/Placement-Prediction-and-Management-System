@@ -316,50 +316,15 @@ function setScrollNumber()
 }
 function nextPage(event)
 {
-  const hash=window.location.hash;
-  var no=false;
-  var from=pi(hash.split("-")[1]);
+  // const hash=window.location.hash;
+  // var from=pi(hash.split("-")[1]);
   var to=pi(event.currentTarget.href.split("#")[1].split("-")[1]);
-  if(from==to)
-  {
-    return;
-  }
-  if(from==1)
-  {
-    if(!_(".pro").children[0].classList.contains("no-visit"))
-    {
-      event.preventDefault();
-      setMessage("#message-box-1","Verify OTP before moving to next.","info");
-      return;
-    }
-  }
-  if(isXthPageValid(from))
-  {
-    var x=event.currentTarget.classList;
-    if((!x.contains("active-box") || x.contains("no-visit")))
-    {
-      event.preventDefault();
-      var min=Math.min(12,to+1);
-      for(let i=1;i<min;i++)
-      {
-        if(i==to || !isXthPageValid(i))
-        {
-          window.location.hash=`box-${i}`;
-          return;
-        }
-      }
-      return false;
-    }
-    else
-    {
-      window.location.hash=`box-${to}`;
-    }
-  }
-  else
+  if(_(".pro").children[to-1].classList.contains("no-visit"))
   {
     event.preventDefault();
-    return false;
+    return;
   }
+  window.location.hash=`box-${to}`;
 }
 function verifyOTP()
 {
@@ -454,7 +419,7 @@ window.onload=()=>{
       "focus"
     ].forEach(event=>{
       text.addEventListener(event,acceptNumberOnly);
-    })
+    });
   });
   _("#verify-otp").addEventListener("click",verifyOTP);
   _("#otp-1").focus();
