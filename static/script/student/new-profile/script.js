@@ -1313,21 +1313,21 @@ function finalSubmit(event)
 {
   var loader=_("#loader");
   var msg="#message-box-12";
-  // for(let i=1;i<tabs;i++)
-  // {
-  //   if(!isXthPageValid(i))
-  //   {
-  //     loader.innerHTML=warningIcon;
-  //     setMessage(msg,`Complete details in page : ${i}`,"warning");
-  //     exactScroll=true;
-  //     window.location.hash=`#box-${i}`;
-  //     setTimeout(function(){
-  //       exactScroll=false;
-  //     },2000)
-  //     event.preventDefault();
-  //     return false;
-  //   }
-  // }
+  for(let i=1;i<tabs;i++)
+  {
+    if(!isXthPageValid(i))
+    {
+      loader.innerHTML=warningIcon;
+      setMessage(msg,`Complete details in page : ${i}`,"warning");
+      exactScroll=true;
+      window.location.hash=`#box-${i}`;
+      setTimeout(function(){
+        exactScroll=false;
+      },2000)
+      event.preventDefault();
+      return false;
+    }
+  }
   _(".pro").children[11].classList.add("active-box");
   loader.innerHTML=`<div class='icon icon-load'>${loadingIcon}</div>`;
   return true;
