@@ -155,6 +155,10 @@ student.get("/profile/new",async(req,res)=>{
       res.render("student/complete-profile",{
         title:"Complete Profile",
         timeout:user_config.OTP.TIMEOUT,
+        submited:false,
+        submittype:false,
+        submitmessage:false,
+        submitdevlog:false,
         isLoggedIn,
         type,
         verified
@@ -164,16 +168,63 @@ student.get("/profile/new",async(req,res)=>{
 });
 
 //Handle Form Upload
-student.post("/profile/new",(req,res)=>{
-  // // form data
-  // console.log(req.body);
-  //
-  // // files
-  // console.log(req.files);
-  // console.log(req.files["profilepic"]);
-  // console.log(req.files["profilepic"].name);
-  res.json({message:"Not Implemented"});
-  res.end();
+student.post("/profile/new",async(req,res)=>{
+  const user=new User(req);
+  var isLoggedIn=false;
+  var type="guest";
+  var verified=true;//default for post
+  await user.initialize().then(async(data)=>{
+    isLoggedIn=data.isLoggedIn && (data.type=="coordinator" || data.type=="student");
+    if(isLoggedIn)//loggedin
+    {
+      var data=await user.getUserData(data.user);
+      isLoggedIn=data.success;
+      type=data.type;
+      if(isLoggedIn)//returned data successfully
+      {
+        var profile=data.result.data;//undefined if profile is incomplete
+        if(profile!=undefined)
+        {
+          /////Update if already Exists ??? Possible ?
+          //profile already complete
+          isLoggedIn=false;
+        }
+      }
+    }
+  }).catch(error=>{
+    console.log(error.message);
+    isLoggedIn=false;
+  }).finally(()=>{
+    if(!isLoggedIn)
+    {
+      // req.session.destroy(); // no need to destroy session because there is no redirect in login page if already logged in. Instear shows a popup message
+      res.redirect("/login");
+    }
+    else
+    {
+      // form data
+      console.log(req.body);
+
+      // files
+      console.log(req.files);
+      console.log(req.files["profilepic"]);
+      console.log(req.files["profilepic"].name);
+
+      /////process update to mongodb
+
+      res.render("student/complete-profile",{
+        title:"Complete Profile",
+        timeout:user_config.OTP.TIMEOUT,
+        submited:true,
+        submittype:"warning",
+        submitmessage:"Not Implemented",
+        submitdevlog:"Code incomplete",
+        isLoggedIn,
+        type,
+        verified
+      });
+    }
+  });
 });
 
 //verify otp

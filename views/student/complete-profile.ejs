@@ -26,8 +26,8 @@
             <div class="pro">
               <%
                 var cls;
-                var tabs=11;
-                for(let i=1;i<=tabs;i++)
+                var tabs=12,i;
+                for(i=1;i<=tabs;i++)
                 {
                   cls=(i==1 && verified)?"active-box no-visit":"";
                   %>
@@ -35,10 +35,11 @@
                   <%
                 }
               %>
+              <a href="#box-<%-i%>" class="invisible" onclick="event.preventDefault();return false;"></a>
             </div>
           </div>
         </div>
-        <form class="main" method="POST" action="" enctype="multipart/form-data">
+        <form class="main" method="POST" action="" enctype="multipart/form-data" id="form">
           <div class="box<%-verified?" hidden":""%>">
             <a class="a-box" id="box-1"></a>
             <div class="fit">
@@ -117,7 +118,7 @@
                   <input type="text" name="name" placeholder="Name" id="name" autocomplete="off">
                 </div>
                 <div class="row">
-                  <textarea name="bio" placeholder="About you" maxlength="200" id="bio"></textarea>
+                  <textarea name="about" placeholder="About you" maxlength="200" id="about"></textarea>
                 </div>
                 <div class="row">
                   <input type="file" name="profilepic" accept="image/*" id="profilepic" onchange="selectedProfilePic(this);">
@@ -158,15 +159,15 @@
                 </div>
                 <div class="row gray">
                   <div class="input">
-                    <input type="radio" name="gender" id="gender-male">
+                    <input type="radio" name="gender" value="male" id="gender-male">
                     <label for="gender-male">Male</label>
                   </div>
                   <div class="input">
-                    <input type="radio" name="gender" id="gender-female">
+                    <input type="radio" name="gender" value="female" id="gender-female">
                     <label for="gender-female">Female</label>
                   </div>
                   <div class="input">
-                    <input type="radio" name="gender" id="gender-other">
+                    <input type="radio" name="gender" value="other" id="gender-other">
                     <label for="gender-other">Other</label>
                   </div>
                 </div>
@@ -604,9 +605,97 @@
             </div>
           </div>
 
+          <div class="box">
+            <a class="a-box" id="box-11"></a>
+            <div class="fit">
+              <div class="info">
+                <div class="cen">
+                  <div class="image">
+                    <div class="preview">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                  </div>
+                  <div class="text">Complete Profile by adding your skills (Add atleast 5), use comma to seperate keywords if you want to insert multiple keywords at once.</div>
+                </div>
+              </div>
+              <div class="tab">
+                <div class="row">
+                  <div class="title">Skills</div>
+                </div>
+                <div class="row hidden">
+                  <input type="text" class="hidden" id="skills" name="skills">
+                </div>
+                <div class="row hidden">
+                  <div class="skill-view" id="skill-view"></div>
+                </div>
+                <div class="row row-fit">
+                  <input type="text" id="skill-text" placeholder="Keyword">
+                  <button type="button" class="b-blue b-medium" onclick="addSkill();">Add</button>
+                </div>
+                <div class="row">
+                  <div class="message" id="message-box-11"></div>
+                </div>
+                <div class="row">
+                  <button type="button" class="b-green b-medium" onclick="toTwelvethPage();" id="box-11-next">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <a class="a-box" id="box-12"></a>
+            <div class="fit">
+              <div class="info">
+                <div class="cen">
+                  <div class="image">
+                    <div class="preview">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+                    </div>
+                  </div>
+                  <div class="text">Click Submit to save the data. Note that none of the previously entered data will not be saved until you click save.</div>
+                </div>
+              </div>
+              <div class="tab">
+                <div class="row">
+                  <div class="title">Final Submit</div>
+                </div>
+                <div class="row" id="loader">
+                  <%
+                    if(submited)
+                    {
+                      if(submittype=="error")
+                      {
+                        %>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d50000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-octagon"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        <%
+                      }
+                      else
+                      {
+                        %>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <%
+                      }
+                    }
+                  %>
+                </div>
+                <div class="row">
+                  <div class="message" id="message-box-12"></div>
+                </div>
+                <div class="row">
+                  <button type="submit" class="b-green b-medium" onclick="return finalSubmit(event);" id="box-12-next">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </form>
       </div>
     </div>
-    <script>window.location.hash="#box-<%-verified?2:1%>";</script>
+    <script>
+      window.location.hash="#box-<%-verified?2:1%>";
+      <%-submittype!=false?`console.warn("${submittype}");`:""%>
+      <%-submitmessage!=false?`console.warn("${submitmessage}");`:""%>
+      <%-(submitdevlog!=false)?`console.error("${submitdevlog}");`:""%>
+    </script>
   </body>
 </html>

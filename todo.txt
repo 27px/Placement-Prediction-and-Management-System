@@ -14,15 +14,15 @@
     "when nav button to same page (login/register) is clicked, no animation but after a while clears input.",
     "in login, after fetch returns and if there is a redirect show animation (mail and db delay)"
   ],
+  "initialize.js":[
+    "config values ?"
+  ],
   "complete-profile":[
-    "form",
-    "file-upload, post",
+    "form, handle post file upload",
     "responsiveness",
     "send mail is commented ??",
     "dummy course data in page-5 use database",
-    "add rest of the pages",
-    "use fetch instead of form post",
-    "add skills page(last page)"
+    "show submit error message as popup"
   ],
   "db":[
     "Use Indexing in search (index $text $search)"

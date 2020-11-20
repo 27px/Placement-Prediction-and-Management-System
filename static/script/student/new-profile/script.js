@@ -1,13 +1,18 @@
+const warningIcon=`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>`;
+const loadingIcon=`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>`;
+const errorIcon=`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d50000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-octagon"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
 const scrollDelay=1000;//important don't change // waits for next page to scroll into view to show next inline navigation
-var scrollnumber=3,tabs=11;
+var scrollnumber=3,tabs=12;
 max_file_upload_size=3;// In MB
 const _=s=>document.querySelector(s);
 const $=s=>document.querySelectorAll(s);
 const pi=s=>parseInt(s);
 var minute,second;
+var exactScroll=false;
 function scrollToNav(n)
 {
-  n=Math.min(n+scrollnumber,tabs-1);//elements - 1, scroll atleast 1 elements (scrollnumber)
+  var offset=!exactScroll?scrollnumber:-1;
+  n=Math.min(n+offset,tabs);
   setTimeout(function(){
     _(".pro").children[n].scrollIntoView();
   },scrollDelay);
@@ -44,6 +49,60 @@ function closeMultipleForm(x,type,msg,optional)
   _(`.multiple-${type}`).classList.add("multiple-active");
   t.setAttribute("data-multiple",$(`.multiple-${type}`).length);
   recheckFormMove(type);
+}
+function addSkill()
+{
+  const textbox=_("#skill-text");
+  var text=textbox.value.trim();
+  if(text=="")
+  {
+    setMessage("#message-box-11","Type keywords to add","warning");
+    return;
+  }
+  else if(/[^a-zA-Z0-9\.\+\-, ]/.test(text))
+  {
+    setMessage("#message-box-11","Invalid Character found","warning");
+    return;
+  }
+  else
+  {
+    resetMessage("#message-box-11");
+    var c=0;
+    text.split(",").map(skill=>skill.trim()).filter(skill=>skill!="").map(skill=>{return skill.replace(/[ ]+/g," ")}).forEach(appendSkill);
+    textbox.value="";
+  }
+}
+function skillExists(value)
+{
+  return Array.from(_("#skill-view").children).some(shell=>shell.children[0].innerHTML==value);
+}
+function appendSkill(value)
+{
+  if(!skillExists(value))
+  {
+    var container=_("#skill-view");
+    var keyword=document.createElement("div");
+    keyword.classList.add("keyword");
+    var skill=document.createElement("div");
+    skill.classList.add("skill");
+    skill.innerHTML=value;
+    keyword.appendChild(skill);
+    var close=document.createElement("div");
+    close.classList.add("close");
+    close.innerHTML="&#10006;";
+    close.addEventListener("click",closeParent);
+    keyword.appendChild(close);
+    container.appendChild(keyword);
+  }
+  else
+  {
+    setMessage("#message-box-11",`${value} exists`,"warning");
+  }
+}
+function closeParent(event)
+{
+  var c=event.currentTarget.parentNode;
+  c.parentNode.removeChild(c);
 }
 function recheckFormMove(type)
 {
@@ -686,6 +745,10 @@ function isXthPageValid(num=1)
   {
     result=isEleventhPageValid();
   }
+  else if(num==12)
+  {
+    result=true;
+  }
   if(result)
   {
     _(`.pro`).children[num-1].classList.add("active-box");
@@ -698,7 +761,7 @@ function isXthPageValid(num=1)
 }
 function isSecondPageValid()
 {
-  var msg="#message-box-2",name=_("#name").value,bio=_("#bio").value,pic=_("#profilepic").files[0];
+  var msg="#message-box-2",name=_("#name").value,about=_("#about").value,pic=_("#profilepic").files[0];
   if(name=="")
   {
     setMessage(msg,"Enter your Name","error");
@@ -714,14 +777,14 @@ function isSecondPageValid()
     setMessage(msg,"Symbols and numbers not allowed in name","error");
     return false;
   }
-  else if(bio=="")
+  else if(about=="")
   {
-    setMessage(msg,"Enter Bio","error");
+    setMessage(msg,"Enter About","error");
     return false;
   }
-  else if(bio.length<10)
+  else if(about.length<10)
   {
-    setMessage(msg,"Bio too short","error");
+    setMessage(msg,"About too short","error");
     return false;
   }
   else if(pic==undefined)
@@ -1217,5 +1280,55 @@ function toEleventhPage()
   _(".pro").children[9].classList.add("active-box");
   window.location.hash="#box-11";
   scrollToNav(10);
+  return true;
+}
+function isEleventhPageValid()
+{
+  var msg="#message-box-11";
+  if(_("#skill-view").children.length<5)
+  {
+    setMessage(msg,"Add atleast 5","error");
+    return false;
+  }
+  else if(_("#skill-text").value!="")
+  {
+    setMessage(msg,"Click add before going to next","warning");
+    return false;
+  }
+  return true;
+}
+function toTwelvethPage()
+{
+  if(!isEleventhPageValid())
+  {
+    return false;
+  }
+  resetMessage("#message-box-11");
+  _(".pro").children[10].classList.add("active-box");
+  window.location.hash="#box-12";
+  scrollToNav(12);
+  return true;
+}
+function finalSubmit(event)
+{
+  var loader=_("#loader");
+  var msg="#message-box-12";
+  // for(let i=1;i<tabs;i++)
+  // {
+  //   if(!isXthPageValid(i))
+  //   {
+  //     loader.innerHTML=warningIcon;
+  //     setMessage(msg,`Complete details in page : ${i}`,"warning");
+  //     exactScroll=true;
+  //     window.location.hash=`#box-${i}`;
+  //     setTimeout(function(){
+  //       exactScroll=false;
+  //     },2000)
+  //     event.preventDefault();
+  //     return false;
+  //   }
+  // }
+  _(".pro").children[11].classList.add("active-box");
+  loader.innerHTML=`<div class='icon icon-load'>${loadingIcon}</div>`;
   return true;
 }
