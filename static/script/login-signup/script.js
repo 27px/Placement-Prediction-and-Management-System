@@ -69,14 +69,18 @@ function resetPasswordAndMessages(event)
 }
 function animateNext(event,id,wrapperclass,otherwrapperclass)
 {
+  const wrapper=_(`.${wrapperclass}`);
+  if(wrapper.classList.contains("hidden"))
+  {
+    return;//return if on same page
+  }
+  const otherwrapper=_(`.${otherwrapperclass}`);
+  const target=_(`.${id}`);
+  const w=wrapper.getBoundingClientRect();
   var title=otherwrapperclass.split("-")[0].split("");
   title[0]=title[0].toUpperCase();
   title=title.join("");
   document.title=title;
-  const target=_(`.${id}`);
-  const wrapper=_(`.${wrapperclass}`);
-  const otherwrapper=_(`.${otherwrapperclass}`);
-  const w=wrapper.getBoundingClientRect();
   target.setAttribute("clip",0);
   const x=event.clientX-w.x;
   const y=event.clientY-w.y;
@@ -172,8 +176,8 @@ function login()
       raw:btoa(JSON.stringify(formData))
     }),
     credentials:"include"
-  }).then(response=>{
-    response.json().then(data=>{
+  }).then(async response=>{
+    await response.json().then(data=>{
       if(data.success===true)
       {
         didLoginSucceede=true;

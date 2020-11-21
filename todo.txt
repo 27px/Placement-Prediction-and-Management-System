@@ -11,10 +11,6 @@
     "no notification messsage",
     "add course details"
   ],
-  "login-signup":[
-    "when nav button to same page (login/register) is clicked, no animation but after a while clears input.",
-    "in login, after fetch returns and if there is a redirect show animation (mail and db delay)"
-  ],
   "initialize.js":[
     "config values ?"
   ],

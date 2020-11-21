@@ -422,7 +422,8 @@ window.onload=()=>{
     event.preventDefault();
     return false;
   });
-  // var created=new Date(pi(_(".timers").getAttribute("data-start")));
+  var created=new Date(pi(_(".timers").getAttribute("data-start")));
+  console.log(created,Date.now());
   // var diff=parseInt((Date.now()-created)/(1000*60));
   // console.log(diff);
   // console.log(diff/1000);
