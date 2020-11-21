@@ -31,3 +31,47 @@ function showPopUp(type,message)
   overlay.appendChild(pop);
   document.body.appendChild(overlay);
 }
+function closeOverlay(event)
+{
+  var c=event.currentTarget.parentNode.parentNode;
+  c.parentNode.removeChild(c);
+}
+function popUpImageUploadPreview(callback)
+{
+  var overlay=document.createElement("div");
+  overlay.classList.add("overlay");
+  var pop=document.createElement("div");
+  pop.classList.add("pop-up-image-preview-container");
+  var close=document.createElement("div");
+  close.classList.add("close");
+  close.innerHTML="&times;";
+  close.addEventListener("click",closeOverlay);
+  pop.appendChild(close);
+  var preview=document.createElement("img");
+  preview.classList.add("pop-up-upload-preview");
+  preview.id="pop-up-upload-preview";
+  pop.appendChild(preview);
+  var previewLoader=document.createElement("div");
+  previewLoader.classList.add("pop-up-upload-loader");
+  pop.appendChild(previewLoader);
+  var wrapper=document.createElement("div");
+  wrapper.classList.add("pop-up-wrapper");
+  var label=document.createElement("label");
+  label.innerHTML="Enter Image Title";
+  pop.appendChild(label);
+  var input=document.createElement("input");
+  input.type="text";
+  input.name="title";
+  input.id="upload-title";
+  input.placeholder="Image Title";
+  wrapper.appendChild(input);
+  var button=document.createElement("button");
+  button.classList.add("up-button");
+  button.type="button";
+  button.innerHTML="Upload";
+  button.addEventListener("click",callback);
+  wrapper.appendChild(button);
+  pop.appendChild(wrapper);
+  overlay.appendChild(pop);
+  document.body.appendChild(overlay);
+}

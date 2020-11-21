@@ -101,11 +101,6 @@ function closeParent(event)
   var c=event.currentTarget.parentNode;
   c.parentNode.removeChild(c);
 }
-function closeOverlay(event)
-{
-  var c=event.currentTarget.parentNode.parentNode;
-  c.parentNode.removeChild(c);
-}
 function recheckFormMove(type)
 {
   var lf=_(`#mf-arrow-left-${type}`);
@@ -422,13 +417,7 @@ window.onload=()=>{
     event.preventDefault();
     return false;
   });
-  var created=new Date(pi(_(".timers").getAttribute("data-start")));
-  console.log(created,Date.now());
-  // var diff=parseInt((Date.now()-created)/(1000*60));
-  // console.log(diff);
-  // console.log(diff/1000);
-  // console.log(diff/(1000*60));
-  // console.log(diff/(1000*60*60));
+  // var created=pi(_(".timers").getAttribute("data-start"));
   fetch("/data/course/name",{
     method:"GET",
     cache:"no-store"

@@ -303,8 +303,34 @@ route.get("/gallery",async(req,res)=>{
 });
 
 //Gallery Image Upload
-route.post("/gallery",(req,res)=>{
-  res.end(`{"devlog":"In development"}`);
+route.post("/gallery/upload",async(req,res)=>{
+  var data={};
+  if(req.files!=undefined)
+  {
+    if(req.files.image!=undefined && req.body.title!="")
+    {
+      var fname=`${__dirname}/../data/gallery/${req.body.title}.${req.files.image.name.split(".").pop()}`;
+      await req.files.image.mv(fname).then(()=>{
+        data.success=true;
+      }).catch(err=>{
+        console.log(err.message);
+        data.success=false;
+        data.message="Couldn't Upload Image";
+        data.devlog=err.message;
+      });
+    }
+    else
+    {
+      data.success=false;
+      data.message="Image not Uploaded";
+    }
+  }
+  else
+  {
+    data.success=false;
+    data.message="No files Uploaded";
+  }
+  res.json(data);
 });
 
 //Resources

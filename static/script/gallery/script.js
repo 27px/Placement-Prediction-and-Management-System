@@ -1,5 +1,6 @@
 const _=s=>document.querySelector(s);
 const $=s=>document.querySelectorAll(s);
+const file_upload_max_size=12;
 const createImage=(name,url,code)=>{
   var img=document.createElement("div");
   img.classList.add("preview");
@@ -106,14 +107,90 @@ const hkey=event=>{
 const upload=()=>{
   _("#up").click();
 };
-const testUpload=event=>{
-  var f=event.currentTarget;
-  fetch("/gallery",{
-    method:"POST",
-    body:f.files[0]
-  }).then(resp=>{
-    console.log(resp);
-  }).catch(err=>{
-    console.log(err.message);
+const testUpload=async(event)=>{
+  var files=event.currentTarget.files;
+  if(files.length<1)
+  {
+    showPopUp("warning","Nothing Selected");
+    return;
+  }
+  var file=files[0];
+  if(file.type.split("/")[0]!="image")
+  {
+    showPopUp("error","Invalid Type");
+    return;
+  }
+  if(file.size/(1024*1024)>file_upload_max_size)
+  {
+    showPopUp("error",`File size Greater than ${file_upload_max_size}MB`);
+    return;
+  }
+  popUpImageUploadPreview(uploadImage);
+  var reader=new FileReader();
+  reader.addEventListener("load",function(){
+    var preview=_("#pop-up-upload-preview");
+    if(preview!=undefined)
+    {
+      var ld=_(".pop-up-upload-loader");
+      if(ld!=null)
+      {
+        ld.parentNode.removeChild(ld);
+      }
+      preview.src=reader.result;
+    }
   });
+  reader.readAsDataURL(file);
 };
+async function uploadImage()
+{
+  var title=_("#upload-title");
+  if(title==undefined || title.value=="")
+  {
+    showPopUp("warning",`Enter Image Title`);
+    return;
+  }
+  if(Array.from($(".image")).some(img=>img.getAttribute("showtitle")==title.value))
+  {
+    showPopUp("error",`Same title exists for another Image`);
+    return;
+  }
+  var b=_(".up-button");
+  if(b!=undefined)
+  {
+    b.classList.add("pop-up-loading-button");
+  }
+  var file=_("#up").files[0];
+  var up=new FormData();
+  up.append('image',file);
+  var t=_("#upload-title");
+  if(t!=undefined)
+  {
+    up.append('title',t.value);
+  }
+  await fetch("/gallery/upload",{
+    method:"POST",
+    body:up
+  }).then(resp=>resp.json())
+  .then(data=>{
+    if(data.success)
+    {
+      window.location.reload();
+    }
+    else
+    {
+      if(data.devlog!=undefined)
+      {
+        console.error(data.devlog);
+      }
+      showPopUp("error",data.message);
+    }
+  })
+  .catch(err=>{
+    console.log(err.message);
+  }).finally(()=>{
+    if(b!=undefined)
+    {
+      b.classList.remove("pop-up-loading-button");
+    }
+  });
+}

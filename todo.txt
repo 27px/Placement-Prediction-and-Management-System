@@ -18,6 +18,9 @@
     "form, handle post file upload",
     "otp - time hard code to actual time string"
   ],
+  "login":[
+    "show profile pic when email enters"
+  ],
   "db":[
     "Use Indexing in search (index $text $search)"
   ],

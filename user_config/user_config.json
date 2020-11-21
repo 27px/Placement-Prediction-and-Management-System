@@ -5,6 +5,8 @@
   "MAIL":{
     "SERVICE":"gmail",
     "MAIL":"virtualappstore@gmail.com",
-    "PASSWORD":"$@{#07142128"
+    "PASSWORD":"$@{#07142128",
+    "PORT":465,
+    "SECURE":true
   }
 }
