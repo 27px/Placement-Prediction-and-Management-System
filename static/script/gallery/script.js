@@ -170,7 +170,9 @@ async function uploadImage()
   await fetch("/gallery/upload",{
     method:"POST",
     body:up
-  }).then(resp=>resp.json())
+  }).then(resp=>{
+    return resp.json()
+  })
   .then(data=>{
     if(data.success)
     {

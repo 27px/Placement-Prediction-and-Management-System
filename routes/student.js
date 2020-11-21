@@ -204,10 +204,10 @@ student.post("/profile/new",async(req,res)=>{
     else
     {
       // // form data
-      // console.log(req.body);
+      console.log(req.body);
       //
       // // files
-      // console.log(req.files);
+      console.log(req.files);
       // console.log(req.files["profilepic"]);
       // console.log(req.files["profilepic"].name);
 

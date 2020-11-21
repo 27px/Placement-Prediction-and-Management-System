@@ -68,6 +68,7 @@ function addSkill()
     text.split(",").map(skill=>skill.trim()).filter(skill=>skill!="").map(skill=>{return skill.replace(/[ ]+/g," ")}).forEach(appendSkill);
     textbox.value="";
   }
+  recheckSkillValues();
 }
 function skillExists(value)
 {
@@ -87,7 +88,7 @@ function appendSkill(value)
     var close=document.createElement("div");
     close.classList.add("close");
     close.innerHTML="&#10006;";
-    close.addEventListener("click",closeParent);
+    close.addEventListener("click",closeSkill);
     keyword.appendChild(close);
     container.appendChild(keyword);
   }
@@ -95,11 +96,17 @@ function appendSkill(value)
   {
     setMessage("#message-box-11",`${value} exists`,"warning");
   }
+  recheckSkillValues();
 }
-function closeParent(event)
+function closeSkill(event)
 {
   var c=event.currentTarget.parentNode;
   c.parentNode.removeChild(c);
+  recheckSkillValues();
+}
+function recheckSkillValues()
+{
+  _("#skills").value=Array.from(_("#skill-view").children).map(skill=>skill.children[0].innerHTML).join(";");
 }
 function recheckFormMove(type)
 {

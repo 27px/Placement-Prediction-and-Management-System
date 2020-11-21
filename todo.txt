@@ -1,7 +1,4 @@
 {
-  "important":{
-    "redirect/remove":"disable dashboard, profile in navigation"
-  },
   "coordinator/dashboard":[
     "images and icons",
     "tabs",
@@ -12,7 +9,7 @@
     "add course details"
   ],
   "initialize.js":[
-    "config values ?"
+    "set custom config values ?"
   ],
   "complete-profile":[
     "form, handle post file upload",
@@ -24,9 +21,6 @@
   "db":[
     "Use Indexing in search (index $text $search)"
   ],
-  "gallery":{
-    "handle file upload on post : /gallery"
-  },
   "student/dashboard":{
     "redirect":"redirect to complete-profile if profile not complete or otp not verified",
     "searchresultcontainer":"add data and link",//in the data.js file,
@@ -60,4 +54,60 @@
       "geo-location"
     ]
   }
+}
+
+
+
+//Insert Dummy form for complete-profile page
+function insertDummyForm()
+{
+  Array.from(document.forms).forEach(form=>{
+    Array.from(form.elements).forEach(input=>{
+      var type=input.type;
+      if(["checkbox","radio"].includes(type))
+      {
+        input.checked=true;
+      }
+      else if(type=="select-one")
+      {
+        input.selectedIndex=1;
+      }
+      else if(["text","name","textarea"].includes(type))
+      {
+        var v="inserted dumy value for testing";
+        if(input.name=="admnumber")
+        {
+          v="dummyvalue";
+        }
+        input.value=v;
+      }
+      else if(type=="tel")
+      {
+        input.value="0000000000"
+      }
+      else if(type=="number")
+      {
+        if(input.name=="admyear")
+        {
+          input.value="2020";
+        }
+        else
+        {
+          input.value="5";
+        }
+      }
+      else if(type=="date")
+      {
+        input.value="2020-12-31";
+      }
+      else if(type=="month")
+      {
+        input.value="2020-01";
+      }
+      else if(type=="file")
+      {
+        input.click();
+      }
+    });
+  });
 }

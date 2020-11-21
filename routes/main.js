@@ -304,33 +304,51 @@ route.get("/gallery",async(req,res)=>{
 
 //Gallery Image Upload
 route.post("/gallery/upload",async(req,res)=>{
-  var data={};
-  if(req.files!=undefined)
-  {
-    if(req.files.image!=undefined && req.body.title!="")
+  var isLoggedIn,type,result={};
+  const user=new User(req);
+  await user.initialize().then(data=>{
+    isLoggedIn=data.isLoggedIn;
+    type=data.type;
+  }).catch(error=>{
+    console.log(error.message);
+    isLoggedIn=false;
+    type="guest";
+  }).finally(async()=>{
+    if(isLoggedIn && ["coordinator","admin"].includes(type))
     {
-      var fname=`${__dirname}/../data/gallery/${req.body.title}.${req.files.image.name.split(".").pop()}`;
-      await req.files.image.mv(fname).then(()=>{
-        data.success=true;
-      }).catch(err=>{
-        console.log(err.message);
-        data.success=false;
-        data.message="Couldn't Upload Image";
-        data.devlog=err.message;
-      });
+      if(req.files!=undefined)
+      {
+        if(req.files.image!=undefined && req.body.title!="")
+        {
+          var fname=`${__dirname}/../data/gallery/${req.body.title}.${req.files.image.name.split(".").pop()}`;
+          await req.files.image.mv(fname).then(()=>{
+            result.success=true;
+          }).catch(err=>{
+            console.log(err.message);
+            result.success=false;
+            result.message="Couldn't Upload Image";
+            result.devlog=err.message;
+          });
+        }
+        else
+        {
+          result.success=false;
+          result.message="Image not Uploaded";
+        }
+      }
+      else
+      {
+        result.success=false;
+        result.message="No files Uploaded";
+      }
     }
     else
     {
-      data.success=false;
-      data.message="Image not Uploaded";
+      result.success=false;
+      result.message="Not Logged in";
     }
-  }
-  else
-  {
-    data.success=false;
-    data.message="No files Uploaded";
-  }
-  res.json(data);
+  });
+  res.json(result);
 });
 
 //Resources

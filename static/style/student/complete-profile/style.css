@@ -768,6 +768,7 @@ button:hover
 }
 .row input[type="text"],
 .row input[type="number"],
+.row input[type="tel"],
 .row input[type="date"],
 .row input[type="month"],
 .row textarea
@@ -820,7 +821,8 @@ button:hover
 textarea:focus,
 .row input[type="date"]:focus,
 .row input[type="month"]:focus,
-.row input[type="number"]:focus
+.row input[type="number"]:focus,
+.row input[type="tel"]:focus
 {
   border-color:#000000;
   outline:0px solid #FFFFFF;
