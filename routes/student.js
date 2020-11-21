@@ -113,17 +113,31 @@ student.get("/profile/new",async(req,res)=>{
           to:data.user,
           subject:'Verify Account',
           html:`
-                <div style="color:#000000;width:100%;box-sizing:border-box;background-image:repeating-linear-gradient(45deg, rgba(112, 112, 112, 0.12) 0px, rgba(112, 112, 112, 0.12) 42px,rgba(105, 105, 105, 0.12) 42px, rgba(105, 105, 105, 0.12) 83px,rgba(206, 206, 206, 0.12) 83px, rgba(206, 206, 206, 0.12) 103px,rgba(130, 130, 130, 0.12) 103px, rgba(130, 130, 130, 0.12) 125px,rgba(51, 51, 51, 0.12) 125px, rgba(51, 51, 51, 0.12) 174px,rgba(220, 220, 220, 0.12) 174px, rgba(220, 220, 220, 0.12) 199px),repeating-linear-gradient(45deg, rgba(192, 192, 192, 0.12) 0px, rgba(192, 192, 192, 0.12) 13px,rgba(119, 119, 119, 0.12) 13px, rgba(119, 119, 119, 0.12) 29px,rgba(157, 157, 157, 0.12) 29px, rgba(157, 157, 157, 0.12) 75px,rgba(223, 223, 223, 0.12) 75px, rgba(223, 223, 223, 0.12) 121px,rgba(80, 80, 80, 0.12) 121px, rgba(80, 80, 80, 0.12) 169px,rgba(208, 208, 208, 0.12) 169px, rgba(208, 208, 208, 0.12) 194px),repeating-linear-gradient(45deg, rgba(44, 44, 44, 0.1) 0px, rgba(44, 44, 44, 0.1) 147px,rgba(38, 38, 38, 0.1) 147px, rgba(38, 38, 38, 0.1) 248px,rgba(1, 1, 1, 0.1) 248px, rgba(1, 1, 1, 0.1) 325px,rgba(34, 34, 34, 0.1) 325px, rgba(34, 34, 34, 0.1) 434px,rgba(98, 98, 98, 0.1) 434px, rgba(98, 98, 98, 0.1) 534px,rgba(79, 79, 79, 0.1) 534px, rgba(79, 79, 79, 0.1) 630px),linear-gradient(90deg, rgb(153, 255, 73),rgb(51, 204, 35));background-size:cover;background-attachment:fixed;
-                padding:20px;">
-                  <center><h1>Placement Prediction & Management System</h1></center>
+            <div class="wrapper" style="width: 100%; text-align: center;">
+              <div class="title" style="font-size: 23px; font-weight: 900; font-family: monospace; padding: 20px 10px; letter-spacing: 1px;">Placement Prediction & Management System</div>
+              <div class="box" style="background:url('https://www.prosec-networks.com/wp-content/uploads/2019/06/web_app_testing.jpg') no-repeat center;background-size:cover;height:400px;">
+                <div class="sub-title" style="font-family: sans-serif; font-size: 30px; color: #FFF; font-weight: 900; letter-spacing: 1px;padding:110px 0px;">Verify E-Mail</div>
+                <div class="sub-wrapper">
+                  <a href="http://${config.SERVER.HOST}:${config.SERVER.PORT}/student/profile/new" target="_blank" style="background: linear-gradient(135deg,#64B5F6,#1E88E5); padding: 10px 30px; color: #000000; border-radius: 50px; text-decoration: none; font-family: monospace; font-size:16px;">Verify</a>
                 </div>
-                <p style="background:#f44336;color:#000000;padding:2px 10px;display:inline-block;font-weight:900;">Do not share your OTP with anyone.</p><br><br>
-                <div style="font-size:20px;">
-                  <i>Your OTP is</i> <b style="color:#0D47A1;font-size:25px;">${otp}</b><br>
-                  <i>OTP will expire in <b style="color:#F57F17;">${user_config.OTP.TIMEOUT} minutes</b></i><br>
-                  <i>OTP is only valid until <u>${new Date(gen+(user_config.OTP.TIMEOUT*60*1000))}</u></i>
+              </div>
+              <div class="dark" style="width: 100%; height: auto; min-height: 400px; background: #212121; color: #FFFFFF; padding: 50px 20px; box-sizing: border-box;">
+                <div><div class="info" style="font-family: sans-serif; font-size: 15px; box-sizing: border-box; width: auto; display: inline-block; margin: 50px 0px; padding: 10px 50px; color: #000000; background:#2196F3; border-radius:5px;">Your OTP is valid for ${user_config.OTP.TIMEOUT} minutes</div></div>
+                <div class="sub" style="font-family: sans-serif; margin: 10px 0px;">Your OTP is</div>
+                <div><span class="sub-title otp" style="font-family: sans-serif; font-size: 30px; color: #FFF; font-weight: 900; letter-spacing: 1px;">${otp}</span></div>
+                <div class="err" style="margin-top: 45px; font-family: sans-serif; font-size: 15px; color: #000000; background: #E91E63; display: inline-block; padding: 8px 15px; border-radius: 50px;">Do not share your OTP with anybody.</div>
+              </div>
+              <div class="light">
+                <div class="title" style="font-size: 16px; font-weight: 900; font-family: monospace; padding: 20px 10px; letter-spacing: 1px;">Developed By</div>
+                <div class="wrap" style="display: flex;">
+                  <div class="title dev" style="font-size: 16px; font-weight: 900; font-family: monospace; padding: 20px 10px; letter-spacing: 1px; margin: 0px auto;">Anisha</div>
+                  <div class="title dev" style="font-size: 16px; font-weight: 900; font-family: monospace; padding: 20px 10px; letter-spacing: 1px; margin: 0px auto;">Glorina</div>
+                  <div class="title dev" style="font-size: 16px; font-weight: 900; font-family: monospace; padding: 20px 10px; letter-spacing: 1px; margin: 0px auto;">Rahul</div>
                 </div>
-              `
+              </div>
+              <div style="color:#000000;padding:20px 0px;text-align:center;font-size:20px;letter-spacing:1px;background:linear-gradient(135deg,#64B5F6,#0D47A1)">Have a nice day !!!</div>
+            </div>
+          `
         }).then(async sent=>{
           // console.log(sent);
         });
