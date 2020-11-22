@@ -8,5 +8,8 @@
     "PASSWORD":"$@{#07142128",
     "PORT":465,
     "SECURE":true
+  },
+  "NETIMAGES":{
+    "OTP":"https://www.prosec-networks.com/wp-content/uploads/2019/06/web_app_testing.jpg"
   }
 }

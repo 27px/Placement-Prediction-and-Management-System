@@ -8,6 +8,7 @@ const MongoClient=require('mongodb').MongoClient;
 const config=require("../config/config.json");
 const user_config=require("../user_config/user_config.json");
 const mail_credentials=require("../config/mail.js");
+const setMailOTP=require("../functions/mail_otp.js");
 const nodemailer=require('nodemailer');
 const chalk=require("chalk");
 
@@ -112,32 +113,7 @@ student.get("/profile/new",async(req,res)=>{
           from:"Placement Manager",
           to:data.user,
           subject:'Verify Account',
-          html:`
-            <div class="wrapper" style="width: 100%; text-align: center;">
-              <div class="title" style="font-size: 23px; font-weight: 900; font-family: monospace; padding: 20px 10px; letter-spacing: 1px;">Placement Prediction & Management System</div>
-              <div class="box" style="background:url('https://www.prosec-networks.com/wp-content/uploads/2019/06/web_app_testing.jpg') no-repeat center;background-size:cover;height:400px;">
-                <div class="sub-title" style="font-family: sans-serif; font-size: 30px; color: #FFF; font-weight: 900; letter-spacing: 1px;padding:110px 0px;">Verify E-Mail</div>
-                <div class="sub-wrapper">
-                  <a href="http://${config.SERVER.HOST}:${config.SERVER.PORT}/student/profile/new" target="_blank" style="background: linear-gradient(135deg,#64B5F6,#1E88E5); padding: 10px 30px; color: #000000; border-radius: 50px; text-decoration: none; font-family: monospace; font-size:16px;">Verify</a>
-                </div>
-              </div>
-              <div class="dark" style="width: 100%; height: auto; min-height: 400px; background: #212121; color: #FFFFFF; padding: 50px 20px; box-sizing: border-box;">
-                <div><div class="info" style="font-family: sans-serif; font-size: 15px; box-sizing: border-box; width: auto; display: inline-block; margin: 50px 0px; padding: 10px 50px; color: #000000; background:#2196F3; border-radius:5px;">Your OTP is valid for ${user_config.OTP.TIMEOUT} minutes</div></div>
-                <div class="sub" style="font-family: sans-serif; margin: 10px 0px;">Your OTP is</div>
-                <div><span class="sub-title otp" style="font-family: sans-serif; font-size: 30px; color: #FFF; font-weight: 900; letter-spacing: 1px;">${otp}</span></div>
-                <div class="err" style="margin-top: 45px; font-family: sans-serif; font-size: 15px; color: #000000; background: #E91E63; display: inline-block; padding: 8px 15px; border-radius: 50px;">Do not share your OTP with anybody.</div>
-              </div>
-              <div class="light">
-                <div class="title" style="font-size: 16px; font-weight: 900; font-family: monospace; padding: 20px 10px; letter-spacing: 1px;">Developed By</div>
-                <div class="wrap" style="display: flex;">
-                  <div class="title dev" style="font-size: 16px; font-weight: 900; font-family: monospace; padding: 20px 10px; letter-spacing: 1px; margin: 0px auto;">Anisha</div>
-                  <div class="title dev" style="font-size: 16px; font-weight: 900; font-family: monospace; padding: 20px 10px; letter-spacing: 1px; margin: 0px auto;">Glorina</div>
-                  <div class="title dev" style="font-size: 16px; font-weight: 900; font-family: monospace; padding: 20px 10px; letter-spacing: 1px; margin: 0px auto;">Rahul</div>
-                </div>
-              </div>
-              <div style="color:#000000;padding:20px 0px;text-align:center;font-size:20px;letter-spacing:1px;background:linear-gradient(135deg,#64B5F6,#0D47A1)">Have a nice day !!!</div>
-            </div>
-          `
+          html:setMailOTP(otp)
         }).then(async sent=>{
           // console.log(sent);
         });
