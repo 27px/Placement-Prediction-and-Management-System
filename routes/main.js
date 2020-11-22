@@ -207,7 +207,8 @@ route.post("/register",(req,res)=>{
           .insertOne({
             email,
             password,
-            type:"student"
+            type:"student",
+            messages:[]
           },(err,retval)=>{
             if(err!==null)
             {

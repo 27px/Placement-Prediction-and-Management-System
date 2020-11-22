@@ -34,7 +34,6 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
     "express-session": "^1.17.1",
-    "html-pdf": "^2.2.0",
     "mongodb": "^3.6.2",
     "nodemailer": "^6.4.16",
     "serve-favicon": "^2.5.0"

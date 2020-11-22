@@ -30,7 +30,7 @@ finally
   }
   finally
   {
-    const paths=["gallery"];
+    const paths=["gallery","profilepic","idcard","certificate"];
     paths.forEach(p=>{
       path=`${dir}/${p}`;
       if(!fs.existsSync(path))

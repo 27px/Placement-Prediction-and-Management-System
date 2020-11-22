@@ -51,6 +51,7 @@ student.get("/dashboard",async(req,res)=>{
 
 student.get("/profile/new",async(req,res)=>{
   const user=new User(req);
+  var redirect="";
   var isLoggedIn=false;
   var type="guest";
   var verified=false;
@@ -87,7 +88,18 @@ student.get("/profile/new",async(req,res)=>{
           })
         }
       });
-      if(!verified)
+      var data=await user.getUserData(data.user);
+      isLoggedIn=data.success;
+      type=data.type;
+      if(isLoggedIn)//returned data successfully
+      {
+        var profile=data.result.data;//undefined if profile is incomplete
+        if(profile!=undefined)
+        {
+          redirect=`/${data.result.type}/dashboard`;
+        }
+      }
+      else if(!verified)
       {
         var transporter=await nodemailer.createTransport(mail_credentials);
         await transporter.sendMail({
@@ -98,28 +110,20 @@ student.get("/profile/new",async(req,res)=>{
         }).then(async sent=>{
           // console.log(sent);
         });
-        var data=await user.getUserData(data.user);
-        isLoggedIn=data.success;
-        type=data.type;
-        if(isLoggedIn)//returned data successfully
-        {
-          var profile=data.result.data;//undefined if profile is incomplete
-          if(profile!=undefined)
-          {
-            //profile already complete
-            isLoggedIn=false;
-          }
-        }
       }
     }
   }).catch(error=>{
     console.log(error.message);
     isLoggedIn=false;
   }).finally(()=>{
-    if(!isLoggedIn)
+    if(!isLoggedIn && redirect=="")
     {
       // req.session.destroy(); // no need to destroy session because there is no redirect in login page if already logged in. Instear shows a popup message
       res.redirect("/login");
+    }
+    else if(redirect!="")
+    {
+      res.redirect(redirect);
     }
     else
     {
@@ -127,9 +131,6 @@ student.get("/profile/new",async(req,res)=>{
         title:"Complete Profile",
         timeout:user_config.OTP.TIMEOUT,
         submited:false,
-        submittype:"",
-        submitmessage:"",
-        submitdevlog:"",
         otpgenerated:gen,
         isLoggedIn,
         type,
@@ -141,6 +142,7 @@ student.get("/profile/new",async(req,res)=>{
 
 //Handle Form Upload
 student.post("/profile/new",async(req,res)=>{
+  var userData={};
   const user=new User(req);
   var isLoggedIn=false;
   var type="guest";
@@ -150,6 +152,7 @@ student.post("/profile/new",async(req,res)=>{
     if(isLoggedIn)//loggedin
     {
       var data=await user.getUserData(data.user);
+      userData=data;
       isLoggedIn=data.success;
       type=data.type;
       if(isLoggedIn)//returned data successfully
@@ -157,6 +160,8 @@ student.post("/profile/new",async(req,res)=>{
         var profile=data.result.data;//undefined if profile is incomplete
         if(profile!=undefined)
         {
+          // this will not likely happen due to redirect
+          console.log("Already Inserted datas ??? Update Not Implemented");
           /////Update if already Exists ??? Possible ?
           //profile already complete
           isLoggedIn=false;
@@ -166,7 +171,7 @@ student.post("/profile/new",async(req,res)=>{
   }).catch(error=>{
     console.log(error.message);
     isLoggedIn=false;
-  }).finally(()=>{
+  }).finally(async()=>{
     if(!isLoggedIn)
     {
       // req.session.destroy(); // no need to destroy session because there is no redirect in login page if already logged in. Instear shows a popup message
@@ -174,37 +179,59 @@ student.post("/profile/new",async(req,res)=>{
     }
     else
     {
-      console.log(chalk.blue.inverse("Started Reading Form"));
-      // // form data
-      console.log(req.body);
-      // // files
-      // console.log(req.files);
-
-      // console.log(req.files["profilepic"]);
-      // console.log(req.files["profilepic"].name);
-
-
-
-
       const student_data=new setUpStudentProfileData(req.body,req.files).data;
-      /////set pic_ext & messages as {}
-
-
-      console.log(JSON.stringify(student_data,null,2));
-      /////process update to mongodb
-      // redirect if success
-
-      res.render("student/complete-profile",{
-        title:"Complete Profile",
-        timeout:user_config.OTP.TIMEOUT,
-        submited:true,
-        submittype:"warning",
-        submitmessage:"Not Implemented",
-        submitdevlog:"Code incomplete",
-        otpgenerated:0,
-        isLoggedIn,
-        type,
-        verified
+      var dir=`${__dirname}/../data`;
+      var cdir=`${dir}/certificate`;
+      var up=[
+        req.files.profilepic.mv(`${dir}/profilepic/${userData.result.email}.${req.files.profilepic.name.split(".").pop()}`),
+        req.files.idcard.mv(`${dir}/idcard/${userData.result.email}.${req.files.idcard.name.split(".").pop()}`),
+        req.files.sslccertificate.mv(`${cdir}/${userData.result.email}-sslc.${req.files.sslccertificate.name.split(".").pop()}`),
+        req.files.plustwocertificate.mv(`${cdir}/${userData.result.email}-plustwo.${req.files.plustwocertificate.name.split(".").pop()}`)
+      ];
+      ["course","experience","achievement"].forEach(cert=>{
+        student_data.education[cert].forEach((temp,i)=>{
+          up.push(req.files[`${cert}certificate-${i+1}`].mv(`${cdir}/${userData.result.email}-${cert}-${i+1}.${req.files[`${cert}certificate-${i+1}`].name.split(".").pop()}`));
+        });
+      });
+      var sub={
+        success:false,
+        type:"error",
+        message:"Unknown Error",
+        devlog:"Unknown Error"
+      };
+      await Promise.all(up)
+      .then(async(ret)=>{
+        await MongoClient.connect(DB_CONNECTION_URL,{
+          useUnifiedTopology:true
+        }).then(async mongo=>{
+          var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+          await db.collection("user_data").updateOne({
+            email:userData.result.email
+          },{
+            $set:{
+              data:student_data,
+              pic_ext:req.files.profilepic.name.split(".").pop()
+            }
+          }).then(t=>{
+            res.redirect(`/${userData.result.type}/dashboard`);
+          });
+        });
+      })
+      .catch(err=>{
+        console.log(err.message);
+        res.render("student/complete-profile",{
+          title:"Complete Profile",
+          timeout:user_config.OTP.TIMEOUT,
+          submited:{
+            type:"error",
+            message:"Error Submitting form",
+            devlog:err.message,
+          },
+          otpgenerated:0,
+          isLoggedIn,
+          type,
+          verified
+        });
       });
     }
   });

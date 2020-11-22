@@ -60,10 +60,14 @@ class setUpStudentProfileData
         mark:form.plustwopercent,
         passdate:form.plustwopassdate
       },
-      courses,
+      course:courses,
       experience,
-      achievements,
-      skills
+      achievement:achievements,
+      skills,
+      applied_jobs:[],
+      skill_recommendation:[],
+      placement_prediction:{},
+      custom_resume:{}
     };
   }
 }
