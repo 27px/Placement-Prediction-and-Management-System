@@ -9,6 +9,7 @@ const config=require("../config/config.json");
 const user_config=require("../user_config/user_config.json");
 const mail_credentials=require("../config/mail.js");
 const setMailOTP=require("../functions/mail_otp.js");
+const setUpStudentProfileData=require("../functions/setUpStudentProfileData.js");
 const nodemailer=require('nodemailer');
 const chalk=require("chalk");
 
@@ -46,26 +47,6 @@ student.get("/dashboard",async(req,res)=>{
       res.redirect("/login");
     }
   });
-
-
-  // const user=new User(req);
-  // //student or coordinator
-  // if(req.session.user!==undefined && ( req.session.type==="student" || req.session.type==="coordinator" ))
-  // {
-  //   res.render("student/dashboard",{
-  //     tab:req.query.tab,
-  //     version,
-  //     usertype:user.type
-  //   });
-  // }
-  // else if(req.session.user!==undefined && req.session.type!==undefined)//other users
-  // {
-  //   res.redirect("/404");
-  // }
-  // else
-  // {
-  //   res.redirect("/login");
-  // }
 });
 
 student.get("/profile/new",async(req,res)=>{
@@ -193,14 +174,23 @@ student.post("/profile/new",async(req,res)=>{
     }
     else
     {
+      console.log(chalk.blue.inverse("Started Reading Form"));
       // // form data
       console.log(req.body);
-      //
       // // files
-      console.log(req.files);
+      // console.log(req.files);
+
       // console.log(req.files["profilepic"]);
       // console.log(req.files["profilepic"].name);
 
+
+
+
+      const student_data=new setUpStudentProfileData(req.body,req.files).data;
+      /////set pic_ext & messages as {}
+
+
+      console.log(JSON.stringify(student_data,null,2));
       /////process update to mongodb
       // redirect if success
 

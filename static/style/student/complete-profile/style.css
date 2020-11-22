@@ -42,6 +42,7 @@ nav #nav-profile:hover,
 nav #nav-dashboard:hover::before,
 nav #nav-profile:hover::before
 {
+  cursor:no-drop;
   background:#f44336!important;
   opacity:0.5;
 }

@@ -404,7 +404,7 @@ function setUpSemester()
   var course=_("#course");
   var semester=_("#semester");
   semester.innerHTML="<option disabled selected value> -- Current Semester -- </option>";
-  var option=course.options[course.selectedIndex];
+  var option=course.selectedIndex<0?"":course.options[course.selectedIndex];
   for(let i=0,n=pi(option.getAttribute("data-max-sem"));i<n;i++)
   {
     var o=document.createElement("option");
@@ -872,7 +872,7 @@ function isFourthPageValid()
 {
   var msg="#message-box-4",admnumber=_("#admnumber").value,admtype=_("#admtype"),admyear_raw=_("#admyear").value,idcard=_("#idcard");
   var admyear=pi(admyear_raw);
-  admtype=admtype.options[admtype.selectedIndex].value;
+  admtype=admtype.selectedIndex<0?"":admtype.options[admtype.selectedIndex].value;
   if(admnumber=="")
   {
     setMessage(msg,"Enter Admission Number","error");
@@ -930,8 +930,8 @@ function toFifthPage()
 function isFifthPageValid()
 {
   var msg="#message-box-5",course=_("#course"),semester=_("#semester"),passout=_("#passout").value;
-  course=course.options[course.selectedIndex].value;
-  semester=semester.options[semester.selectedIndex].value;
+  course=course.selectedIndex<0?"":course.options[course.selectedIndex].value;
+  semester=semester.selectedIndex<0?"":semester.options[semester.selectedIndex].value;
   if(course=="")
   {
     setMessage(msg,"Select Course","error");
@@ -964,7 +964,7 @@ function toSixthPage()
 function isSixthPageValid()
 {
   var msg="#message-box-6",sslcboard=_("#sslcboard"),sslcschool=_("#sslcschool").value,sslcpercent=_("#sslcpercent").value,sslcpassdate=_("#sslcpassdate").value,sslccertificate=_("#sslccertificate");
-  sslcboard=sslcboard.options[sslcboard.selectedIndex].value;
+  sslcboard=sslcboard.selectedIndex<0?"":sslcboard.options[sslcboard.selectedIndex].value;
   if(sslcboard=="")
   {
     setMessage(msg,"Select board","error");
@@ -1012,7 +1012,7 @@ function toSeventhPage()
 function isSeventhPageValid()
 {
   var msg="#message-box-7",plustwoboard=_("#plustwoboard"),plustwoschool=_("#plustwoschool").value,plustwopercent=_("#plustwopercent").value,plustwopassdate=_("#plustwopassdate").value,plustwocertificate=_("#plustwocertificate");
-  plustwoboard=plustwoboard.options[plustwoboard.selectedIndex].value;
+  plustwoboard=plustwoboard.selectedIndex<0?"":plustwoboard.options[plustwoboard.selectedIndex].value;
   if(plustwoboard=="")
   {
     setMessage(msg,"Select board","error");
@@ -1060,7 +1060,7 @@ function toEightthPage()
 function isMultiFormCourseValid(n)
 {
   var coursetype=_(`#coursetype-${n}`),coursename=_(`#coursename-${n}`).value,coursecollege=_(`#coursecollege-${n}`).value,coursecgpa=_(`#coursecgpa-${n}`).value,coursepassdate=_(`#coursepassdate-${n}`).value,coursecertificate=_(`#coursecertificate-${n}`);
-  coursetype=coursetype.options[coursetype.selectedIndex].value;
+  coursetype=coursetype.selectedIndex<0?"":coursetype.options[coursetype.selectedIndex].value;
   if(coursetype=="")
   {
     return {
@@ -1157,7 +1157,7 @@ function isMultiFormExpAchValid(n,type)
   from=_(`#${type}from-${n}`).value,
   to=_(`#${type}to-${n}`).value,
   certificate=_(`#${type}certificate-${n}`);
-  xtype=xtype.options[xtype.selectedIndex].value;
+  xtype=xtype.selectedIndex<0?"":xtype.options[xtype.selectedIndex].value;
   var msg;
   if(type=="experience")
   {

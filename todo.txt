@@ -58,7 +58,7 @@
 
 
 
-//Insert Dummy form for complete-profile page
+/////Insert Dummy form for complete-profile page
 function insertDummyForm()
 {
   Array.from(document.forms).forEach(form=>{
