@@ -29,6 +29,7 @@ app.use(favicon(path.join(__dirname,'static','images','favicon.ico')));
 
 app.use("/static",express.static(path.join(__dirname,"static")));
 app.use("/pictures",express.static(path.join(__dirname,"data/gallery")));
+app.use("/data",express.static(path.join(__dirname,"data")));
 
 app.use("/",route);
 

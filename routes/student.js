@@ -30,7 +30,7 @@ student.get("/dashboard",async(req,res)=>{
     isLoggedIn=false;
     type="guest";
   }).finally(()=>{
-    if(isLoggedIn===true && ["student","coordinator"].includes(type))//student or coordinator
+    if(isLoggedIn===true && user.hasAccessOf("student"))//student or coordinator
     {
       res.render("student/dashboard",{
         tab:req.query.tab,
@@ -58,7 +58,7 @@ student.get("/profile/new",async(req,res)=>{
   var otp=Math.random().toString().split("").splice(2,6).join("");
   var gen;//otp generated time //value assigns later
   await user.initialize().then(async(data)=>{
-    isLoggedIn=data.isLoggedIn && (data.type=="coordinator" || data.type=="student");
+    isLoggedIn=data.isLoggedIn && user.hasAccessOf("student");
     if(isLoggedIn)//loggedin
     {
       await MongoClient.connect(DB_CONNECTION_URL,{
@@ -88,21 +88,20 @@ student.get("/profile/new",async(req,res)=>{
           })
         }
       });
-      var data=await user.getUserData(data.user);
-      isLoggedIn=data.success;
-      type=data.type;
-      var profile=data.result.data;//undefined if profile is incomplete
+      var userData=await user.getUserData(data.user);
+      isLoggedIn=userData.success;
+      type=userData.type;
+      var profile=userData.result.data;//undefined if profile is incomplete
       if(isLoggedIn && profile!=undefined)//returned data successfully
       {
-        redirect=`/${data.result.type}/dashboard`;
+        redirect=`/${userData.result.type}/dashboard`;
       }
       else if(!verified)
       {
-        console.log(data.result.email);
         var transporter=await nodemailer.createTransport(mail_credentials);
         await transporter.sendMail({
           from:"Placement Manager",
-          to:data.result.email,
+          to:userData.result.email,
           subject:'Verify Account',
           html:setMailOTP(otp)
         }).then(async sent=>{
@@ -146,16 +145,15 @@ student.post("/profile/new",async(req,res)=>{
   var type="guest";
   var verified=true;//default for post
   await user.initialize().then(async(data)=>{
-    isLoggedIn=data.isLoggedIn && (data.type=="coordinator" || data.type=="student");
+    isLoggedIn=data.isLoggedIn && user.hasAccessOf("student");
     if(isLoggedIn)//loggedin
     {
-      var data=await user.getUserData(data.user);
-      userData=data;
-      isLoggedIn=data.success;
-      type=data.type;
+      userData=await user.getUserData(data.user);
+      isLoggedIn=userData.success;
+      type=userData.type;
       if(isLoggedIn)//returned data successfully
       {
-        var profile=data.result.data;//undefined if profile is incomplete
+        var profile=userData.result.data;//undefined if profile is incomplete
         if(profile!=undefined)
         {
           // this will not likely happen due to redirect
@@ -188,6 +186,7 @@ student.post("/profile/new",async(req,res)=>{
       ];
       ["course","experience","achievement"].forEach(cert=>{
         student_data.education[cert].forEach((temp,i)=>{
+          console.log(temp);
           up.push(req.files[`${cert}certificate-${i+1}`].mv(`${cdir}/${userData.result.email}-${cert}-${i+1}.${req.files[`${cert}certificate-${i+1}`].name.split(".").pop()}`));
         });
       });
@@ -244,19 +243,19 @@ student.post("/profile/new/verify-otp",async(req,res)=>{
   await user.initialize().then(async(data)=>{
     isLoggedIn=data.isLoggedIn;//from session
     type=data.type;//from session
-    var data=await user.getUserData(data.user);
-    isLoggedIn=data.success;
-    type=data.type;
-    if(!data.success)
+    var userData=await user.getUserData(data.user);
+    isLoggedIn=userData.success;
+    type=userData.type;
+    if(!userData.success)
     {
-      throw new Error(data.message);
+      throw new Error(userData.message);
     }
-    if(data.result.otp==undefined)
+    if(userData.result.otp==undefined)
     {
       throw new Error("OTP not found/generated");
     }
-    var created=new Date(data.result.otp.generated);
-    var otp=data.result.otp.code.toString();
+    var created=new Date(userData.result.otp.generated);
+    var otp=userData.result.otp.code.toString();
     if(req.body.otp.toString()!=otp)
     {
       message.success=false;
@@ -280,7 +279,7 @@ student.post("/profile/new/verify-otp",async(req,res)=>{
         }).then(async mongo=>{
           var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
           await db.collection("user_data").updateOne({
-            email:data.result.email
+            email:userData.result.email
           },{
             $set:{
               otp:"verified"

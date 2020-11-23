@@ -1,9 +1,34 @@
 const express=require("express");
 const studentTabs=express.Router();
+const User=require("../functions/user.js");
 
 //Main Home tab in Dashboard of Student
-studentTabs.post("/main",(req,res)=>{
-  res.render(`student/dashboard-tabs/main`);
+studentTabs.post("/main",async(req,res)=>{
+  /////Use Promise.all() to fetch all datas
+  const user=new User(req);
+  await user.initialize().then(async(data)=>{
+    console.log(JSON.stringify(data,null,2));
+    if(data.isLoggedIn && user.hasAccessOf("student"))
+    {
+      var userData=await user.getUserData(data.user);
+      // console.log(JSON.stringify(userData,null,2));
+      res.render(`student/dashboard-tabs/main`,{
+        email:userData.result.email,
+        profilepic:`../data/profilepic/${userData.result.email}.${userData.result.pic_ext}`,
+        name:userData.result.data.name,
+        course:userData.result.data.admission.course,
+        phone:userData.result.data.phone,
+        about:userData.result.data.about
+      });
+    }
+    else
+    {
+      throw new Error("Not Logged In / Don't have access");
+    }
+  }).catch(error=>{
+    console.log(error.message);
+    res.end("");
+  });
 });
 
 //Student Settings

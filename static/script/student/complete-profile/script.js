@@ -320,9 +320,15 @@ function setScrollNumber()
 }
 function nextPage(event)
 {
-  // const hash=window.location.hash;
-  // var from=pi(hash.split("-")[1]);
+  const hash=window.location.hash;
+  var from=pi(hash.split("-")[1]);
   var to=pi(event.currentTarget.href.split("#")[1].split("-")[1]);
+  if(from==1 && !_(".pro").children[0].classList.contains("active-box"))
+  {
+    setMessage("#message-box-1","Verify OTP before moving to next","warning");
+    event.preventDefault();
+    return;
+  }
   if(_(".pro").children[to-1].classList.contains("no-visit"))
   {
     event.preventDefault();

@@ -103,17 +103,10 @@
   font-size:30px;
   font-weight:800;
 }
-.profile .details .wrapper .userid
+.profile .details .wrapper .course
 {
   color:rgba(0,0,0,0.7);
   vertical-align:middle;
-  line-height:20px;
-}
-.profile .details .wrapper .userid::before
-{
-  content:"@";
-  vertical-align:text-top;
-  position:relative;
   line-height:20px;
 }
 .profile .details .wrapper .email,.profile .details .wrapper .phone,.profile .details .wrapper .bio

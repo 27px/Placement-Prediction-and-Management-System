@@ -35,7 +35,7 @@
   <div class="item normal"></div>
   <div class="item wide profile">
     <div class="picwrapper">
-      <img class="pic" src="../../static/images/student/dashboard/sample.jpg">
+      <img class="pic" src="<%-profilepic%>">
       <div class="overlay" onclick="alert('in development');console.log('edit profile pic in development')">
         <div class="editwrapper">
           <div class="icon"></div>
@@ -45,11 +45,11 @@
     </div>
     <div class="details">
       <div class="wrapper">
-        <div class="name">Annie Machbeth</div>
-        <div class="userid">ann47</div>
-        <div class="email">anniemachbeth@gmail.com</div>
-        <div class="phone">+91 9894956738</div>
-        <div class="bio">Artist, Intrested in Painting, Photography</div>
+        <div class="name"><%-name%></div>
+        <div class="course"><%-course%></div>
+        <div class="email"><%-email%></div>
+        <div class="phone"><%-phone%></div>
+        <div class="bio"><%-about%></div>
       </div>
     </div>
     <div class="edit" onclick="alert('in development');console.log('edit profile in development')"></div>

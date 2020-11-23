@@ -18,6 +18,7 @@
     "show profile pic when email enters ? "
   ],
   "db":[
+    "export data for backup",
     "Use Indexing in search (index $text $search)"
   ],
   "student/dashboard":{
@@ -114,7 +115,7 @@ function insertDummyForm()
 }
 
 
-
+/////Try to use this clip path somewhere
 <svg>
   <defs>
     <clipPath id="svg-ld_masked_image_5fbb028da6094">

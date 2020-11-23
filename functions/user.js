@@ -185,7 +185,7 @@ class User
     {
       return true;
     }
-    else if(this.type=="admin" && access=="admin")//Admin have coordinator access too
+    else if(this.type=="admin" && ["coordinator","admin"].includes(access))//Admin have coordinator access too
     {
       return true;
     }
