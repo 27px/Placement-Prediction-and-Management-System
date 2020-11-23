@@ -39,7 +39,7 @@ finally
       }
       else
       {
-        console.log(`\n${p} Directory Exists`);
+        console.log(`\n${p} Directory Exists, make sure to check contents`);
       }
     });
   }

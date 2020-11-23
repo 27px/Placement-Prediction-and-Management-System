@@ -91,20 +91,18 @@ student.get("/profile/new",async(req,res)=>{
       var data=await user.getUserData(data.user);
       isLoggedIn=data.success;
       type=data.type;
-      if(isLoggedIn)//returned data successfully
+      var profile=data.result.data;//undefined if profile is incomplete
+      if(isLoggedIn && profile!=undefined)//returned data successfully
       {
-        var profile=data.result.data;//undefined if profile is incomplete
-        if(profile!=undefined)
-        {
-          redirect=`/${data.result.type}/dashboard`;
-        }
+        redirect=`/${data.result.type}/dashboard`;
       }
       else if(!verified)
       {
+        console.log(data.result.email);
         var transporter=await nodemailer.createTransport(mail_credentials);
         await transporter.sendMail({
           from:"Placement Manager",
-          to:data.user,
+          to:data.result.email,
           subject:'Verify Account',
           html:setMailOTP(otp)
         }).then(async sent=>{
