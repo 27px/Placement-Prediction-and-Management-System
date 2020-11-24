@@ -1,17 +1,62 @@
 const express=require("express");
 const studentTabs=express.Router();
 const User=require("../functions/user.js");
+const MongoClient=require("mongodb").MongoClient;
+const DB_CONNECTION_URL=require("../config/db.js");
+const config=require("../config/config.json");
+const chalk=require("chalk");
 
 //Main Home tab in Dashboard of Student
 studentTabs.post("/main",async(req,res)=>{
   /////Use Promise.all() to fetch all datas
   const user=new User(req);
   await user.initialize().then(async(data)=>{
-    console.log(JSON.stringify(data,null,2));
     if(data.isLoggedIn && user.hasAccessOf("student"))
     {
       var userData=await user.getUserData(data.user);
       // console.log(JSON.stringify(userData,null,2));
+
+
+      await MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      }).then(async mongo=>{
+        var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+        // await db.collection("user_data")
+        // .findOne({
+        //   email:data.user
+        // }).then(dbr=>{
+        //   verified=(dbr.otp=="verified");
+        // });
+
+
+        await Promise.all([
+          db.collection("user_data").find({type:"recruiter"}).limit(10),
+          db.collection("user_data").find({type:"student"}),
+          db.collection("user_data").find({
+            $or:[
+              {
+                type:"student"
+              },{
+                type:"coordinator"
+              }
+            ]
+          })
+        ]).then(ret=>{
+          let ix=0;
+          ret.forEach(r=>{
+            console.log(++ix);
+            console.log(r);
+          });
+        }).catch(err=>{
+          console.log(chalk.red.inverse("Inner Error"));
+          console.log(err.message);
+        });
+
+
+      });
+
+
+
       res.render(`student/dashboard-tabs/main`,{
         email:userData.result.email,
         profilepic:`../data/profilepic/${userData.result.email}.${userData.result.pic_ext}`,

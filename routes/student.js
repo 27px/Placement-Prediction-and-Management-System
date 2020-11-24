@@ -186,7 +186,6 @@ student.post("/profile/new",async(req,res)=>{
       ];
       ["course","experience","achievement"].forEach(cert=>{
         student_data.education[cert].forEach((temp,i)=>{
-          console.log(temp);
           up.push(req.files[`${cert}certificate-${i+1}`].mv(`${cdir}/${userData.result.email}-${cert}-${i+1}.${req.files[`${cert}certificate-${i+1}`].name.split(".").pop()}`));
         });
       });

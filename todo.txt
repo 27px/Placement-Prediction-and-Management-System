@@ -1,12 +1,13 @@
 {
-  "coordinator/dashboard":[
+  "recruiter/dashboard":[
     "images and icons",
     "tabs",
     "content",
     "email pass from ejs",
     "dynamic notifications",
     "no notification messsage",
-    "add course details"
+    "add course details",
+    "course, department are dummy hard coded data"
   ],
   "initialize.js":[
     "set custom config values ?"
@@ -19,7 +20,8 @@
   ],
   "db":[
     "export data for backup",
-    "Use Indexing in search (index $text $search)"
+    "Use Indexing in search (index $text $search)",
+    "course, department are dummy hard coded data"
   ],
   "student/dashboard":{
     "redirect":"redirect to complete-profile if profile not complete or otp not verified",
