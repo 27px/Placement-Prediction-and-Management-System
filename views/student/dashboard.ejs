@@ -1,18 +1,10 @@
 <%
-  //app version
-  if(!version)
-  {
-    version="0.0.0";
-  }
-  //open tab
-  if(!tab)
-  {
-    tab="main";
-  }
-  if(!usertype)
-  {
-    usertype="guest";
-  }
+  // default app version
+  var version=version==undefined?"1.0.0":version;
+  // default open tab
+  var tab=tab==undefined?"main":tab;
+  // default user type
+  var usertype=usertype==undefined?"guest":usertype;
 %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -26,6 +18,8 @@
     <link rel="stylesheet" href="../static/style/student/style.css">
     <link rel="stylesheet" href="../static/style/student/dash.css">
     <script src="../static/script/student/script.js"></script>
+    <script src="../static/plugins/chart.js/Chart.min.js"></script>
+    <script src="../static/plugins/chart.js/utils.js"></script>
     <title>Dashboard</title>
   </head>
   <body onresize="resizeSearch();">
@@ -57,7 +51,7 @@
         <div class="body" id="body" openTab="<%=tab%>">
           <!-- Contents will be dynamically loaded -->
           <div class="loading"></div>
-          <!-- If the number of items are multiples of both 2 and 3 the better -->
+          <!-- Contents will be dynamically loaded -->
         </div>
         <div class="seperator" id="seperator" onclick="hideMenu();" style="display: none;"></div>
         <div class="side" id="side">
@@ -69,8 +63,8 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </div>
             <div class="wrapper">
-              <div class="title">Home</div>
-              <div class="subtitle">Main Home page</div>
+              <div class="title">Dashboard</div>
+              <div class="subtitle">Student Home page</div>
             </div>
           </div>
           <div class="option" loadtab="profile">
@@ -79,76 +73,83 @@
             </div>
             <div class="wrapper">
               <div class="title">Profile</div>
-              <div class="subtitle">Your profile</div>
+              <div class="subtitle">Your profile &amp; resume</div>
             </div>
           </div>
-          <div class="option" loadtab="option1">
+          <div class="option" loadtab="notifications">
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             </div>
             <div class="wrapper">
-              <div class="title">Option 1</div>
-              <div class="subtitle">options</div>
+              <div class="title">Notifications</div>
+              <div class="subtitle">Messages for you</div>
             </div>
           </div>
-          <div class="option" loadtab="option2">
+          <div class="option" loadtab="prediction">
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
             </div>
             <div class="wrapper">
-              <div class="title">Option 2</div>
-              <div class="subtitle">options</div>
+              <div class="title">Prediction</div>
+              <div class="subtitle">Placement Prediction</div>
             </div>
           </div>
-          <div class="option" loadtab="option3">
+          <div class="option" loadtab="recommendation">
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-codesandbox"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline><polyline points="7.5 19.79 7.5 14.6 3 12"></polyline><polyline points="21 12 16.5 14.6 16.5 19.79"></polyline><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
             </div>
             <div class="wrapper">
-              <div class="title">Option 3</div>
-              <div class="subtitle">option</div>
+              <div class="title">Recommendation</div>
+              <div class="subtitle">Find top needed Skills</div>
             </div>
           </div>
-          <div class="option" loadtab="option4">
+          <div class="option" loadtab="statistics">
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
             </div>
             <div class="wrapper">
-              <div class="title">Option 4</div>
-              <div class="subtitle">options</div>
+              <div class="title">Statistics</div>
+              <div class="subtitle">Placement Statistics</div>
             </div>
           </div>
-          <div class="option" loadtab="option5">
+          <div class="option" loadtab="search-jobs">
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
             </div>
             <div class="wrapper">
-              <div class="title">Option 5</div>
-              <div class="subtitle">options</div>
+              <div class="title">Apply for Jobs</div>
+              <div class="subtitle">Apply for Drives</div>
             </div>
           </div>
-          <div class="option" loadtab="option6">
+          <div class="option" loadtab="applied-jobs">
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
             </div>
             <div class="wrapper">
-              <div class="title">Option 6</div>
-              <div class="subtitle">options</div>
+              <div class="title">Applied Jobs</div>
+              <div class="subtitle">Currently applied Jobs</div>
             </div>
           </div>
-          <div class="option" loadtab="option6">
+          <div class="option" loadtab="external-jobs">
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </div>
             <div class="wrapper">
-              <div class="title">Settings</div>
-              <div class="subtitle">settings</div>
+              <div class="title">External Jobs</div>
+              <div class="subtitle">Jobs from other sources</div>
+            </div>
+          </div>
+          <div class="option" loadtab="training-resources">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hard-drive"><line x1="22" y1="12" x2="2" y2="12"></line><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path><line x1="6" y1="16" x2="6.01" y2="16"></line><line x1="10" y1="16" x2="10.01" y2="16"></line></svg>
+            </div>
+            <div class="wrapper">
+              <div class="title">Resources</div>
+              <div class="subtitle">Training resources</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="../static/plugins/chart.js/Chart.min.js"></script>
-    <script src="../static/plugins/chart.js/utils.js"></script>
   </body>
 </html>

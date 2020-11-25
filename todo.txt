@@ -1,4 +1,7 @@
 {
+  "important":[
+    "user_config is not tracked and must not get deleted from local repo"
+  ],
   "recruiter/dashboard":[
     "images and icons",
     "tabs",
@@ -39,6 +42,7 @@
   ],
   "ui":{
     "designs-to-add":[
+      "https://jobs.github.com/api",
       "https://codepen.io/rudyt7/pen/ExjVwya",
       "https://codepen.io/dazulu/pen/VVZrQv",
       "http://localhost/Root/Workarea/My%20Collection/Card/",

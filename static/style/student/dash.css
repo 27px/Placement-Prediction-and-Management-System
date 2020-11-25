@@ -334,3 +334,82 @@
     grid-area:span 1 / span 1 !important;
   }
 }
+.verticallist
+{
+  --card-height:50px;
+  display:grid;
+  grid-template-columns:repeat(1,100%);
+  grid-auto-rows:minmax(min-content,max-content);
+  grid-auto-flow:row;
+  grid-gap:10px;
+  overflow-y:auto;
+  box-sizing:border-box;
+  position:relative;
+}
+.verticallist::after
+{
+  content:"";
+  position:relative;
+  background:transparent;
+  width:100%;
+  height:1px;
+}
+.verticallist::-webkit-scrollbar
+{
+  width:10px;
+  height:10px;
+  transition:width 0.3s,height 0.3s;
+  background:var(--primary0);
+}
+.verticallist::-webkit-scrollbar-thumb
+{
+  background:var(--primary5);
+}
+.verticallist::-webkit-scrollbar-thumb:hover
+{
+  background:var(--primary8);
+}
+.verticallist .card
+{
+  width:100%;
+  height:100%;
+  min-height:var(--card-height);
+  background:rgba(255,255,255,0.2) url("../../images/bubbles.gif");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  background-blend-mode:color;
+  padding:10px;
+  box-sizing:border-box;
+  border-radius:10px;
+}
+.verticallist .card .title
+{
+  font-size:18px;
+  letter-spacing:1px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+.verticallist .card .subtitle
+{
+  font-size:16px;
+  letter-spacing:1px;
+  font-weight:400;
+  text-align:justify;
+  line-height:30px;
+}
+.item.normal .fullwrapper.inversefullwrapper .iconic svg
+{
+  stroke:#000;
+}
+.item.normal .fullwrapper.inversefullwrapper .titlewrapper .title,
+.item.normal .fullwrapper.inversefullwrapper .contents,
+.item.normal .fullwrapper.inversefullwrapper .contents .content
+{
+  text-shadow:none;
+  color:#000;
+}
+.item.normal .fullwrapper.inversefullwrapper .contents .content::before
+{
+  border-color:#000;
+}

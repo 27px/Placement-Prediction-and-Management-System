@@ -121,6 +121,10 @@ route.post("/login",(req,res)=>{
           {
             data.redirect='student/profile/new';//If (student/coordinator) profile not complete
           }
+          else if(result.type=="coordinator")
+          {
+            data.redirect=`/student/dashboard`;//coordinator is also student
+          }
           else
           {
             data.redirect=`/${result.type}/dashboard`;
