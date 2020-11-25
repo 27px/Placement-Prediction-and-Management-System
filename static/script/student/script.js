@@ -24,7 +24,6 @@ function load(tab,callback)
   var container=_("#body");
   container.innerHTML="";
   container.appendChild(ce("div","loading"));
-
   fetch(`/student/dashboard/${tab}`,{
     method:"POST"
   }).then(response=>{
@@ -51,7 +50,7 @@ window.onload=()=>{
   {
     tab=open;
   }
-  var callback=void(0);
+  var callback=()=>{};
   if(tab=="main")
   {
     callback=loadCharts;
