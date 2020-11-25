@@ -20,3 +20,7 @@ Predicts whether a Student gets Placed in Campus Placement using Python,
 #### 🚀 Running in developer mode 🚀
 
 `npm run dev`
+
+### LICENSE
+
+Licensed under agpl-3.0
