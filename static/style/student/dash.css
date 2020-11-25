@@ -279,7 +279,7 @@
 {
   --card-width:200px;
   display:grid;
-  grid-template-columns:repeat(auto-fill,var(--card-width));\
+  grid-template-columns:repeat(auto-fill,var(--card-width));
   grid-template-rows:repeat(1,100%);
   grid-auto-flow:column;
   grid-gap:10px;
