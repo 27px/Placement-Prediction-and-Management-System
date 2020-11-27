@@ -397,7 +397,7 @@ function setUpCourseForm(data)
     group.label=value.name;
     value.courses.forEach(c=>{
       var option=document.createElement("option");
-      option.value=`${value._id};${c.name}`;
+      option.value=`${value._id};${c.name};${value.engineering}`;
       option.innerHTML=c.name;
       option.setAttribute("data-max-sem",c.num_of_sem);
       group.appendChild(option);

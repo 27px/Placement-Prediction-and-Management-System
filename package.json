@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/27px/placement-prediction-and-management-system#readme",
   "dependencies": {
+    "brain.js": "^2.0.0-beta.2",
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.5",
     "express": "^4.17.1",

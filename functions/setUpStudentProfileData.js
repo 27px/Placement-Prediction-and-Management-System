@@ -2,7 +2,8 @@ class setUpStudentProfileData
 {
   constructor(form,files)
   {
-    let [department,course]=form.course.split(";");
+    let [department,course,engineering]=form.course.split(";");
+    engineering=parseInt(engineering);
     let courses=[];
     for(let i=1,coursedata={};form[`coursetype-${i}`]!=""&&form[`coursetype-${i}`]!=undefined;i++)
     {
@@ -48,6 +49,7 @@ class setUpStudentProfileData
       course,
       semester:form.semester,
       arrears:form.arrears,
+      engineering,
       passdate:form.passout
     };
     this.data.education={

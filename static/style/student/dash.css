@@ -341,7 +341,8 @@
   grid-template-columns:repeat(1,100%);
   grid-auto-rows:minmax(min-content,max-content);
   grid-auto-flow:row;
-  grid-gap:10px;
+  grid-gap:20px;
+  padding:20px!important;
   overflow-y:auto;
   box-sizing:border-box;
   position:relative;
@@ -379,9 +380,12 @@
   background-position:center;
   background-attachment:fixed;
   background-blend-mode:color;
-  padding:10px;
+  padding:20px;
   box-sizing:border-box;
   border-radius:10px;
+  box-shadow:0px 0px 5px 1px rgba(0,0,0,0.5) inset,
+             0px 0px 10px 1px rgba(0,0,0,0.5) inset,
+             0px 0px 15px 1px rgba(0,0,0,0.3) inset;
 }
 .verticallist .card .title
 {
@@ -412,4 +416,33 @@
 .item.normal .fullwrapper.inversefullwrapper .contents .content::before
 {
   border-color:#000;
+}
+.layout .item.item-link:hover
+{
+  cursor:pointer;
+}
+.layout .prediction
+{
+  background:#d26ea5;
+  display:flex;
+  flex-direction:column;
+}
+.layout .prediction-success
+{
+  filter:hue-rotate(250deg) contrast(2);
+}
+.layout .prediction .icon
+{
+  width:260px;
+  height:100%;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:contain;
+
+  border:1px solid #000;
+}
+.layout .prediction-success .icon
+{
+  background-image:url("../../images/student/predict-success.gif");
+  background-size:175%;
 }

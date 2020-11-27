@@ -44,8 +44,8 @@ studentTabs.post("/main",async(req,res)=>{
         ]).then(ret=>{
           let ix=0;
           ret.forEach(r=>{
-            console.log(++ix);
-            console.log(r);
+            // console.log(++ix);
+            // console.log(r);
           });
         }).catch(err=>{
           console.log(chalk.red.inverse("Inner Error"));
@@ -131,5 +131,86 @@ studentTabs.post("/skills/tracking",(req,res)=>{
 studentTabs.post("/external",(req,res)=>{
   res.render("student/dashboard-tabs/external-jobs");
 });
+
+//recommendation
+studentTabs.post("/recommendation",(req,res)=>{
+  res.render("student/dashboard-tabs/recommendation");
+});
+
+//placement prediction
+studentTabs.post("/prediction",async(req,res)=>{
+  const NeuralNetwork=require("../neural_network/trained-model.js");
+
+  // Neural Network Loaded
+
+  const user=new User(req);
+  await user.initialize().then(async data=>{
+
+
+    var userData=await user.getUserData(data.user);
+    console.log(JSON.stringify(userData,null,2));
+
+
+    // d["project"],
+    // d["intern"],
+    // d["extras"],
+    // d["arrears"]
+
+    console.log(NeuralNetwork);
+
+    var input=[
+      userData.result.data.admission.engineering,//engineering
+      userData.result.data.education.sslc.mark/100,//sslc
+      userData.result.data.education.plustwo.mark/100//plustwo
+    ];
+    //Atleast one course will be there
+    var ug=0,pg=0;// ug uses cgpa and pg is binary status of yes or no
+    userData.result.data.education.course.forEach(course=>{
+      if(course.type=="ug")
+      {
+        if(course.cgpa>ug)
+        {
+          ug=course.cgpa;
+        }
+      }
+      else if(course.type=="pg")
+      {
+        pg=1;//not increment, just one
+      }
+    });
+    ug/=10;//cgpa
+    input.push(ug);
+    input.push(pg);
+    var project=0,intern=0;
+    userData.result.data.education.experience.forEach(exp=>{
+      if(exp.type=="project")
+      {
+        project++;
+      }
+      else // job or internship
+      {
+        intern++;
+      }
+    });
+    project=Math.min(1,project/6); // range 0 to 1
+    intern=Math.min(1,intern); // one or zero
+    var ach=Math.min(1,userData.result.data.education.achievement.length);
+    input.push(project);
+    input.push(intern);
+    input.push(ach);
+
+    // console.log(input);
+    var result=NeuralNetwork(input);//predict
+    result=result<0.75?false:true;
+    res.render("student/dashboard-tabs/prediction",{
+      placement:result
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    res.status(500);
+    res.end("");
+  });
+});
+
 
 module.exports=studentTabs;

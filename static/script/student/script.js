@@ -31,7 +31,19 @@ function load(tab,callback)
     {
       response.text().then(data=>{
         container.innerHTML=data;
-      }).then(callback);
+      }).then(function(){
+        var layout=_(".layout");
+        if(layout!=null)
+        {
+          Array.from(layout.querySelectorAll(".item-link")).forEach(link=>{
+            link.addEventListener("click",openTab);
+          });
+        }
+        if(callback!=undefined)
+        {
+          callback();
+        }
+      });
     }
     else
     {

@@ -1,6 +1,10 @@
 {
   "important":[
-    "user_config is not tracked and must not get deleted from local repo"
+    "user_config is not tracked and must not get deleted from local repo",
+    "add field engineering in db docs",
+    "otp error, first zero not considered",
+    "fix gif color in prediction, add text",
+    "test prediction with multiple values"
   ],
   "recruiter/dashboard":[
     "images and icons",
@@ -29,7 +33,7 @@
   "student/dashboard":{
     "redirect":"redirect to complete-profile if profile not complete or otp not verified",
     "searchresultcontainer":"add data and link",//in the data.js file,
-    "sidebar":"set titles, icons and url",
+    "sidebar":"set titles, icons and url, add logout, and other nav links"
   },
   "before-production":[
     "check if all pages have title",

@@ -20,7 +20,7 @@ data.get("/course/name",async(req,res)=>{
     const db=await mongo.db(config.DB_SERVER.DB_DATABASE);
     var cursor=await db.collection("department")
     .find({})
-    .project({name:1,courses:1});
+    .project({name:1,courses:1,engineering:1});
     await cursor.each((err,item)=>{
       if(err!=null || item==null)
       {
