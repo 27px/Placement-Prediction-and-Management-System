@@ -107,8 +107,8 @@ a.menu svg
     padding:2.5vmin !important;
     position:fixed;
     width:calc(100% - 5vmin);
-    height:calc((100% - 5vmin) - var(--nav-height));
-    top:var(--nav-height);
+    height:calc((100% - 5vmin) - var(--nav-height) + 10px);
+    top:calc(var(--nav-height) - 10px);
     left:0;
     z-index:300;
     background:#FFF;

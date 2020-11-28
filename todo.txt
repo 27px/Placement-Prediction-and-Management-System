@@ -1,8 +1,6 @@
 {
   "important":[
-    "user_config is not tracked and must not get deleted from local repo",
-    "test prediction with multiple values",
-    "student profile insert engineering data"
+    "user_config is not tracked and must not get deleted from local repo"
   ],
   "recruiter/dashboard":[
     "images and icons",

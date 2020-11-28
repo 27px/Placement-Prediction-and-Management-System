@@ -1,6 +1,6 @@
 const express=require("express");
 const recruiter=express.Router();
-const recruiterTabs=require("./recruiter-tabs.js");
+const User=require("../functions/user.js");
 
 //Route Recruiter
 recruiter.get("/",(req,res)=>{
@@ -8,13 +8,36 @@ recruiter.get("/",(req,res)=>{
 });
 
 //Recruiter Home
-recruiter.get("/dashboard",(req,res)=>{
-  res.render("recruiter/dashboard");
+recruiter.get("/dashboard",async(req,res)=>{
+  const user=new User(req);
+  await user.initialize().then(async data=>{
+    if(!data.isLoggedIn)
+    {
+      throw new Error("Authentication Failed");
+    }
+    var userData=await user.getUserData(data.user);
+    if(!userData.success)
+    {
+      throw new Error("Authentication Failed . . .");
+    }
+    if(!user.hasAccessOf("recruiter"))
+    {
+      throw new Error("Access Denied");
+    }
+    res.render("recruiter/dashboard",{
+      usertype:userData.result.type,
+      email:userData.result.email
+    });// same for recruiter and admin
+  }).catch(error=>{
+    console.log(error.message);
+    res.redirect("/login");
+  });
 });
 
 //Dashboard Tabs
-recruiter.use("/dashboard/dashboard-tabs",recruiterTabs);
-
+recruiter.post("/dashboard/:tab",(req,res)=>{
+  res.render(`recruiter/${req.params.tab}`);
+});
 
 //View company details
 recruiter.get("/details",(req,res)=>{

@@ -41,12 +41,23 @@ studentTabs.post("/main",async(req,res)=>{
               }
             ]
           })
-        ]).then(ret=>{
-          let ix=0;
-          ret.forEach(r=>{
-            // console.log(++ix);
-            // console.log(r);
-          });
+        ]).then(([a,b,c])=>{
+          console.log(a);
+          console.log(b);
+          console.log(c);
+
+          // await cursor.each((err,item)=>{
+          //   if(err!=null || item==null)
+          //   {
+          //     res.json(department);
+          //     cursor.close();
+          //     return;
+          //   }
+          //   else
+          //   {
+          //     department.push(item);
+          //   }
+          // });
         }).catch(err=>{
           console.log(chalk.red.inverse("Inner Error"));
           console.log(err.message);

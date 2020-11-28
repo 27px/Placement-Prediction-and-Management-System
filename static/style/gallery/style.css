@@ -193,6 +193,11 @@ body
     height:calc(100% - (var(--nav-height) * 1.2) + 10px);
     top:var(--nav-height);
   }
+  nav
+  {
+    height:calc(100% - 5vmin - var(--nav-height)) !important;
+    top:var(--nav-height)!important;
+  }
 }
 @media (min-width:1150px)
 {
