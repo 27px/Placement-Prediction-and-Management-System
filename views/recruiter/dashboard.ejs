@@ -24,13 +24,28 @@
         <div class="nav" id="nav" data-user="<%-usertype%>">
           <!-- Rest of the URL is in the Script -->
           <div class="nav-option nav-option-active" toURL="main">Dashboard</div>
-          <div class="nav-option" toURL="option1">Option 1</div>
-          <div class="nav-option" toURL="option2">Option 2</div>
-          <div class="nav-option" toURL="option3">Option 3</div>
-          <div class="nav-option" toURL="option4">Option 4</div>
-          <div class="nav-option" toURL="option5">Option 5</div>
-          <div class="nav-option" toURL="option4">Option 6</div>
-          <div class="nav-option" toURL="option5">Option 7</div>
+          <%
+            if(usertype=="recruiter")
+            {
+              %>
+                <div class="nav-option" id="job" toURL="job">Job</div>
+                <div class="nav-option" id="status" toURL="status">Job Status</div>
+                <div class="nav-option" id="schedule" toURL="schedule">Schedule</div>
+                <div class="nav-option" id="mcq" toURL="mcq">MCQ</div>
+                <div class="nav-option" id="students" toURL="students">Students</div>
+              <%
+            }
+            else if(usertype=="admin")
+            {
+              %>
+                <div class="nav-option" toURL="option3">Option 3</div>
+                <div class="nav-option" toURL="option4">Option 4</div>
+                <div class="nav-option" toURL="option5">Option 5</div>
+                <div class="nav-option" toURL="option4">Option 6</div>
+                <div class="nav-option" toURL="option5">Option 7</div>
+              <%
+            }
+          %>
         </div>
       </div>
       <div class="bottom" id="maincontainer">

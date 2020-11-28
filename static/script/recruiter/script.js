@@ -10,6 +10,11 @@ window.onload=(event)=>{
     nav.addEventListener("click",selectThisOption);
   });
 };
+function openTab(event)
+{
+  var target=event.currentTarget.getAttribute("data-target");
+  _(`#${target}`).click();
+}
 function selectThisOption(event)
 {
   var a=event.currentTarget;
@@ -33,6 +38,9 @@ function selectThisOption(event)
     {
       response.text().then(data=>{
         c.innerHTML=data;
+        Array.from($(".link")).forEach(link=>{
+          link.addEventListener("click",openTab);
+        });
       });
     }
     else

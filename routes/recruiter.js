@@ -35,8 +35,35 @@ recruiter.get("/dashboard",async(req,res)=>{
 });
 
 //Dashboard Tabs
-recruiter.post("/dashboard/:tab",(req,res)=>{
-  res.render(`recruiter/${req.params.tab}`);
+recruiter.post("/dashboard/:tab",async(req,res)=>{
+  const user=new User(req);
+  await user.initialize().then(async data=>{
+    if(!data.isLoggedIn)
+    {
+      throw new Error("Authentication Failed");
+    }
+    var userData=await user.getUserData(data.user);
+    if(!userData.success)
+    {
+      throw new Error("Authentication Failed . . .");
+    }
+    if(!user.hasAccessOf("recruiter"))
+    {
+      throw new Error("Access Denied");
+    }
+    var jobPosted=false;
+    if(userData.result.data!=undefined)
+    {
+      jobPosted=userData.result.data.job!=undefined;
+    }
+    res.render(`recruiter/${req.params.tab}`,{
+      jobPosted
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    res.status(500);
+    res.end();
+  });
 });
 
 //View company details

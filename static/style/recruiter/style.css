@@ -31,6 +31,8 @@ body,.main
   --primary7:#202020;
   --primary8:#101010;
   --primary9:#000000;
+
+  --title-size:25px;
 }
 .main
 {
@@ -126,7 +128,6 @@ body,.main
   text-align:center;
   font-family:var(--font-monospace);
   white-space:nowrap;
-  transition:background-color 0.8s;
 }
 .nav .nav-option:hover,.nav .nav-option:focus
 {
@@ -255,6 +256,7 @@ body,.main
 {
   text-align:center;
   padding:10px;
+  letter-spacing:1.5px;
   border-bottom:1px solid var(--primary8);
   font-family:var(--font-monospace);
   font-weight:900;
@@ -508,14 +510,17 @@ body,.main
   width:65px;
   height:65px;
   vertical-align:middle;
-  background-image:url("../../images/recruiter/default-white.svg");
-  background-size:80%;
-  background-position:center;
-  background-repeat:no-repeat;
   position:absolute;
   top:50%;
   left:10px;
   transform:translateY(-50%);
+  padding:10px;
+  box-sizing:border-box;
+}
+.subcard .icon svg
+{
+  width:100%;
+  height:100%;
 }
 .subcard .content
 {
@@ -554,16 +559,54 @@ body,.main
 }
 .bg-highlighted
 {
-  transition:background-color 0.5s;
   border:2px solid var(--primary9);
   background-image:radial-gradient(circle at top left, rgb(0,0,0) 0%, rgb(0,0,0) 5%,rgb(16,16,16) 5%, rgb(16,16,16) 15%,rgb(32,32,32) 15%, rgb(32,32,32) 25%,rgb(48,48,48) 25%, rgb(48,48,48) 35%,rgb(64,64,64) 35%, rgb(64,64,64) 45%,rgb(80,80,80) 45%, rgb(80,80,80) 55%,rgb(96,96,96) 55%, rgb(96,96,96) 65%,rgb(112,112,112) 65%, rgb(112,112,112) 100%);
   background-position:0% 0%;
   background-size:100%;
   transition:background-size 1s;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-evenly;
+  text-shadow:0px 3px 3px #000000;
 }
 .bg-highlighted:hover
 {
   background-size:150%;
+}
+.bg-highlighted *
+{
+  color:#FFFFFF;
+}
+.bg-highlighted .title
+{
+  font-size:var(--title-size);
+  font-family:var(--font-title);
+  font-weight:900;
+  letter-spacing:2px;
+}
+.white-light
+{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-evenly;
+}
+.white-light *
+{
+  color:#000000;
+}
+.white-light .title
+{
+  font-size:var(--title-size);
+  font-family:var(--font-title);
+  font-weight:900;
+  letter-spacing:2px;
+}
+.bg-highlighted svg,
+.white-light svg
+{
+  width:100px;
+  height:100px;
+  margin:0px auto;
 }
 .loader
 {
@@ -776,4 +819,8 @@ body,.main
   {
     padding:0px!important;
   }
+}
+.link
+{
+  cursor:pointer;
 }
