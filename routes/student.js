@@ -255,7 +255,6 @@ student.post("/profile/new/verify-otp",async(req,res)=>{
     }
     var created=new Date(userData.result.otp.generated);
     var otp=userData.result.otp.code.toString();
-    // console.log(req.body.otp.toString(),otp);
     if(req.body.otp.toString()!=otp)
     {
       message.success=false;

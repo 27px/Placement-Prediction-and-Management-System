@@ -76,6 +76,10 @@ function openTab(event)
 {
   hideMenu();
   var tab=event.currentTarget.getAttribute("loadtab");
+  if(tab==null)
+  {
+    return;
+  }
   var callback=void(0);
   if(tab=="main")
   {
@@ -408,4 +412,12 @@ function resetSearch(delay=400)
       x.parentNode.removeChild(x);
     },delay);
   }
+}
+function logout()
+{
+  window.location="/logout";
+}
+function goHome()
+{
+  window.location="/home";
 }

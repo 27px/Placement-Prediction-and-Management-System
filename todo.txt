@@ -1,10 +1,8 @@
 {
   "important":[
     "user_config is not tracked and must not get deleted from local repo",
-    "add field engineering in db docs",
-    "otp error, first zero not considered",
-    "fix gif color in prediction, add text",
-    "test prediction with multiple values"
+    "test prediction with multiple values",
+    "student profile insert engineering data"
   ],
   "recruiter/dashboard":[
     "images and icons",

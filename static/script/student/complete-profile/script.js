@@ -342,13 +342,12 @@ function verifyOTP()
   Array.from(_(".otp-container").children).forEach(input=>{
     otp+=input.value;
   });
-  otp=pi(otp);
-  if(isNaN(otp))
+  if(isNaN(pi(otp)))
   {
     setMessage("#message-box-1","Invalid OTP","error");
     return;
   }
-  if(otp.toString().length<6)
+  if(otp.length<6)
   {
     setMessage("#message-box-1","Invalid OTP","error");
     return;

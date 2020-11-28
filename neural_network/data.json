@@ -6,21 +6,21 @@
     "plustwo": 0.37,
     "ug": 0.46,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.54
+    "arrears": 0.7
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.81,
+    "sslc": 0.87,
+    "plustwo": 0.73,
+    "ug": 0.79,
     "pg": 1,
-    "project": 0.66,
+    "project": 0.5,
     "intern": 0,
-    "extras": 0.33,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -30,34 +30,34 @@
     "plustwo": 1,
     "ug": 0.66,
     "pg": 1,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0.31,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.86,
+    "sslc": 0.91,
+    "plustwo": 0.76,
+    "ug": 0.85,
     "pg": 1,
-    "project": 0.33,
-    "intern": 0,
-    "extras": 0.08,
+    "project": 0.16,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.51,
-    "pg": 1,
-    "project": 0.5,
+    "sslc": 0.8,
+    "plustwo": 0.67,
+    "ug": 0.5,
+    "pg": 0,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.02
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -66,21 +66,21 @@
     "plustwo": 0.74,
     "ug": 0.63,
     "pg": 0,
-    "project": 0,
-    "intern": 0,
-    "extras": 0.25,
+    "project": 0.16,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.65,
-    "plustwo": 0.54,
+    "sslc": 0.66,
+    "plustwo": 0.55,
     "ug": 0.49,
     "pg": 0,
-    "project": 0,
-    "intern": 0,
-    "extras": 0,
+    "project": 0.16,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -90,10 +90,10 @@
     "plustwo": 0.39,
     "ug": 0.36,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.07
   },
   {
     "placed": 1,
@@ -102,8 +102,8 @@
     "plustwo": 0.53,
     "ug": 0.73,
     "pg": 0,
-    "project": 0.66,
-    "intern": 0,
+    "project": 0.33,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
@@ -114,10 +114,10 @@
     "plustwo": 0.69,
     "ug": 0.44,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.06
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -129,7 +129,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.12
+    "arrears": 0.28
   },
   {
     "placed": 0,
@@ -138,20 +138,20 @@
     "plustwo": 0.43,
     "ug": 0.31,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.08
+    "arrears": 0.13
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.65,
-    "pg": 1,
-    "project": 0.16,
-    "intern": 0,
+    "sslc": 0.91,
+    "plustwo": 0.76,
+    "ug": 0.63,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
@@ -165,16 +165,16 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.12
+    "arrears": 0.17
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.85,
-    "plustwo": 0.71,
-    "ug": 0.62,
-    "pg": 0,
-    "project": 0.16,
+    "sslc": 0.99,
+    "plustwo": 0.83,
+    "ug": 0.64,
+    "pg": 1,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -186,7 +186,7 @@
     "plustwo": 0.47,
     "ug": 0.46,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -206,14 +206,14 @@
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.87,
-    "plustwo": 0.73,
-    "ug": 0.41,
+    "sslc": 0.5,
+    "plustwo": 0.42,
+    "ug": 0.39,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.71
   },
   {
     "placed": 0,
@@ -225,18 +225,18 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.45
+    "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.64,
+    "sslc": 0.63,
     "plustwo": 0.53,
     "ug": 0.57,
     "pg": 0,
-    "project": 0.83,
+    "project": 0.33,
     "intern": 0,
-    "extras": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -249,7 +249,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.71
   },
   {
     "placed": 1,
@@ -258,14 +258,14 @@
     "plustwo": 0.84,
     "ug": 0.71,
     "pg": 1,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
-    "engineering": 0,
+    "engineering": 1,
     "sslc": 0.71,
     "plustwo": 0.59,
     "ug": 0.49,
@@ -273,7 +273,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.04
+    "arrears": 0.66
   },
   {
     "placed": 0,
@@ -282,7 +282,7 @@
     "plustwo": 0.67,
     "ug": 0.52,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -296,43 +296,43 @@
     "pg": 1,
     "project": 0.5,
     "intern": 0,
+    "extras": 1,
+    "arrears": 0
+  },
+  {
+    "placed": 1,
+    "engineering": 1,
+    "sslc": 1,
+    "plustwo": 1,
+    "ug": 0.63,
+    "pg": 1,
+    "project": 0.5,
+    "intern": 1,
+    "extras": 1,
+    "arrears": 0
+  },
+  {
+    "placed": 1,
+    "engineering": 1,
+    "sslc": 0.9,
+    "plustwo": 0.75,
+    "ug": 0.59,
+    "pg": 0,
+    "project": 0.83,
+    "intern": 0,
     "extras": 0,
     "arrears": 0
   },
   {
     "placed": 1,
-    "engineering": 1,
-    "sslc": 0.98,
-    "plustwo": 1,
-    "ug": 0.63,
-    "pg": 1,
-    "project": 0.33,
-    "intern": 0,
-    "extras": 0.1,
-    "arrears": 0
-  },
-  {
-    "placed": 1,
-    "engineering": 1,
-    "sslc": 0.75,
-    "plustwo": 0.63,
-    "ug": 0.57,
-    "pg": 0,
-    "project": 0.33,
-    "intern": 0,
-    "extras": 0.04,
-    "arrears": 0
-  },
-  {
-    "placed": 1,
     "engineering": 0,
-    "sslc": 0.62,
-    "plustwo": 0.52,
+    "sslc": 0.61,
+    "plustwo": 0.51,
     "ug": 0.86,
     "pg": 0,
-    "project": 0.5,
+    "project": 0.66,
     "intern": 0,
-    "extras": 0.39,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -342,40 +342,40 @@
     "plustwo": 0.84,
     "ug": 0.67,
     "pg": 1,
-    "project": 0.5,
+    "project": 0.33,
     "intern": 0,
-    "extras": 0.32,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.62,
-    "plustwo": 0.52,
+    "sslc": 0.61,
+    "plustwo": 0.51,
     "ug": 0.32,
-    "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
-    "arrears": 0
-  },
-  {
-    "placed": 0,
-    "engineering": 0,
-    "sslc": 0.63,
-    "plustwo": 0.53,
-    "ug": 0.55,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.79
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.9,
-    "plustwo": 0.75,
+    "sslc": 0.64,
+    "plustwo": 0.53,
+    "ug": 0.55,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.54
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.89,
+    "plustwo": 0.74,
     "ug": 0.47,
     "pg": 0,
     "project": 0.5,
@@ -393,7 +393,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.11
   },
   {
     "placed": 1,
@@ -402,9 +402,9 @@
     "plustwo": 1,
     "ug": 0.86,
     "pg": 1,
-    "project": 0,
-    "intern": 0.01,
-    "extras": 0.08,
+    "project": 0.66,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -414,7 +414,7 @@
     "plustwo": 0.35,
     "ug": 0.29,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -426,7 +426,7 @@
     "plustwo": 0.39,
     "ug": 0.36,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -438,7 +438,7 @@
     "plustwo": 0.57,
     "ug": 0.32,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -446,14 +446,14 @@
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.96,
-    "plustwo": 0.8,
+    "sslc": 1,
+    "plustwo": 0.84,
     "ug": 0.44,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.46
+    "arrears": 0.77
   },
   {
     "placed": 1,
@@ -462,34 +462,34 @@
     "plustwo": 0.49,
     "ug": 0.6,
     "pg": 0,
-    "project": 0,
-    "intern": 0.01,
-    "extras": 0.34,
+    "project": 0.83,
+    "intern": 0,
+    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.61,
-    "plustwo": 0.51,
-    "ug": 0.65,
-    "pg": 0,
-    "project": 0.66,
-    "intern": 0,
-    "extras": 0.28,
-    "arrears": 0
-  },
-  {
-    "placed": 0,
-    "engineering": 1,
-    "sslc": 0.89,
-    "plustwo": 0.74,
-    "ug": 0.34,
+    "sslc": 0.62,
+    "plustwo": 0.52,
+    "ug": 0.66,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.54
+    "arrears": 0
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.66,
+    "plustwo": 0.55,
+    "ug": 0.33,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.67
   },
   {
     "placed": 1,
@@ -498,21 +498,21 @@
     "plustwo": 0.58,
     "ug": 0.63,
     "pg": 0,
-    "project": 0.5,
+    "project": 0.83,
     "intern": 0,
-    "extras": 0.05,
+    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.7,
-    "plustwo": 0.58,
-    "ug": 0.61,
+    "sslc": 0.71,
+    "plustwo": 0.59,
+    "ug": 0.62,
     "pg": 0,
     "project": 0.33,
-    "intern": 0,
-    "extras": 0,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -522,10 +522,10 @@
     "plustwo": 0.49,
     "ug": 0.45,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.03
   },
   {
     "placed": 0,
@@ -547,7 +547,7 @@
     "ug": 0.72,
     "pg": 0,
     "project": 0.5,
-    "intern": 0,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
@@ -558,28 +558,28 @@
     "plustwo": 0.57,
     "ug": 0.64,
     "pg": 0,
-    "project": 0.66,
-    "intern": 0.01,
-    "extras": 0.21,
+    "project": 0.5,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.86,
-    "plustwo": 0.72,
-    "ug": 0.51,
-    "pg": 0,
-    "project": 0,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.52,
+    "pg": 1,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.31
+    "arrears": 0.62
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.75,
-    "plustwo": 0.63,
+    "sslc": 0.69,
+    "plustwo": 0.58,
     "ug": 0.47,
     "pg": 0,
     "project": 0,
@@ -594,10 +594,10 @@
     "plustwo": 0.39,
     "ug": 0.44,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.23
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -618,7 +618,7 @@
     "plustwo": 0.43,
     "ug": 0.5,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -633,18 +633,18 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.08
+    "arrears": 0.14
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.67,
-    "pg": 1,
+    "sslc": 0.89,
+    "plustwo": 0.74,
+    "ug": 0.66,
+    "pg": 0,
     "project": 0.16,
-    "intern": 0.01,
-    "extras": 0,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -654,21 +654,21 @@
     "plustwo": 0.65,
     "ug": 0.46,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.05
+    "arrears": 0.3
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.91,
-    "plustwo": 0.76,
-    "ug": 0.83,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.85,
     "pg": 1,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0.13,
+    "project": 0,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -681,19 +681,19 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.07
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.74,
-    "plustwo": 0.62,
+    "sslc": 0.78,
+    "plustwo": 0.65,
     "ug": 0.43,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.58
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -702,10 +702,10 @@
     "plustwo": 0.39,
     "ug": 0.4,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.62
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -722,13 +722,13 @@
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.66,
-    "pg": 1,
+    "sslc": 0.87,
+    "plustwo": 0.73,
+    "ug": 0.64,
+    "pg": 0,
     "project": 0.33,
-    "intern": 0,
-    "extras": 0.28,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -738,10 +738,10 @@
     "plustwo": 0.55,
     "ug": 0.52,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.18
+    "arrears": 0.73
   },
   {
     "placed": 0,
@@ -753,37 +753,37 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.28
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.93,
-    "plustwo": 0.78,
-    "ug": 0.82,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.83,
     "pg": 1,
-    "project": 0.83,
+    "project": 0.33,
     "intern": 0,
-    "extras": 0.15,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.68,
-    "plustwo": 0.57,
+    "sslc": 0.69,
+    "plustwo": 0.58,
     "ug": 0.5,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.25
+    "arrears": 0.69
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.7,
-    "plustwo": 0.58,
+    "sslc": 0.71,
+    "plustwo": 0.59,
     "ug": 0.41,
     "pg": 0,
     "project": 0.5,
@@ -801,7 +801,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.78
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -810,7 +810,7 @@
     "plustwo": 0.61,
     "ug": 0.32,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -822,10 +822,10 @@
     "plustwo": 0.57,
     "ug": 0.35,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.59
+    "arrears": 0.64
   },
   {
     "placed": 0,
@@ -834,7 +834,7 @@
     "plustwo": 1,
     "ug": 0.38,
     "pg": 1,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -846,7 +846,7 @@
     "plustwo": 0.63,
     "ug": 0.5,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -854,26 +854,26 @@
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.73,
-    "plustwo": 0.61,
-    "ug": 0.5,
+    "sslc": 0.58,
+    "plustwo": 0.48,
+    "ug": 0.49,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.11
+    "arrears": 0.29
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.56,
-    "plustwo": 0.47,
+    "sslc": 0.57,
+    "plustwo": 0.48,
     "ug": 0.52,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.11
+    "arrears": 0.78
   },
   {
     "placed": 0,
@@ -882,10 +882,10 @@
     "plustwo": 0.57,
     "ug": 0.43,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.25
   },
   {
     "placed": 0,
@@ -894,7 +894,7 @@
     "plustwo": 0.71,
     "ug": 0.54,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -909,13 +909,13 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.08
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.65,
-    "plustwo": 0.54,
+    "sslc": 0.66,
+    "plustwo": 0.55,
     "ug": 0.46,
     "pg": 0,
     "project": 0,
@@ -926,13 +926,13 @@
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
+    "sslc": 0.99,
     "plustwo": 1,
     "ug": 0.86,
     "pg": 1,
-    "project": 0.16,
-    "intern": 0,
-    "extras": 0.23,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -954,7 +954,7 @@
     "plustwo": 0.84,
     "ug": 0.65,
     "pg": 1,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -962,11 +962,11 @@
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
+    "sslc": 0.94,
+    "plustwo": 0.79,
     "ug": 0.51,
-    "pg": 1,
-    "project": 0.5,
+    "pg": 0,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -981,31 +981,31 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.68
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.63,
-    "plustwo": 0.53,
-    "ug": 0.34,
+    "sslc": 0.81,
+    "plustwo": 0.68,
+    "ug": 0.35,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.19
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.94,
-    "plustwo": 0.79,
-    "ug": 0.51,
+    "sslc": 0.73,
+    "plustwo": 0.61,
+    "ug": 0.5,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.01
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -1014,22 +1014,22 @@
     "plustwo": 0.49,
     "ug": 0.74,
     "pg": 0,
-    "project": 0,
-    "intern": 0,
-    "extras": 0.21,
+    "project": 0.5,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
-    "engineering": 0,
-    "sslc": 0.61,
-    "plustwo": 0.51,
-    "ug": 0.36,
+    "engineering": 1,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.38,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.41
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -1046,11 +1046,11 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.71,
-    "plustwo": 0.59,
+    "sslc": 0.7,
+    "plustwo": 0.58,
     "ug": 0.4,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1065,7 +1065,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.57
   },
   {
     "placed": 1,
@@ -1075,8 +1075,8 @@
     "ug": 0.72,
     "pg": 0,
     "project": 0,
-    "intern": 0,
-    "extras": 0,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -1089,17 +1089,17 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.35
+    "arrears": 0.68
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.61,
+    "sslc": 0.93,
+    "plustwo": 0.78,
+    "ug": 0.6,
     "pg": 1,
-    "project": 0.5,
-    "intern": 0.01,
+    "project": 0,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
@@ -1113,19 +1113,19 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.2
+    "arrears": 0.54
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.86,
-    "plustwo": 0.72,
-    "ug": 0.37,
+    "sslc": 0.93,
+    "plustwo": 0.78,
+    "ug": 0.38,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.21
+    "arrears": 0.67
   },
   {
     "placed": 1,
@@ -1134,7 +1134,7 @@
     "plustwo": 0.84,
     "ug": 0.69,
     "pg": 1,
-    "project": 0.16,
+    "project": 0.33,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1146,10 +1146,10 @@
     "plustwo": 0.64,
     "ug": 0.39,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.67
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -1158,22 +1158,22 @@
     "plustwo": 0.63,
     "ug": 0.54,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.44
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.56,
-    "plustwo": 0.47,
+    "sslc": 0.57,
+    "plustwo": 0.48,
     "ug": 0.4,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.29
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -1185,7 +1185,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.11
   },
   {
     "placed": 0,
@@ -1206,10 +1206,10 @@
     "plustwo": 0.33,
     "ug": 0.43,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.44
   },
   {
     "placed": 0,
@@ -1218,10 +1218,10 @@
     "plustwo": 0.57,
     "ug": 0.47,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.32
+    "arrears": 0.13
   },
   {
     "placed": 0,
@@ -1230,19 +1230,19 @@
     "plustwo": 0.37,
     "ug": 0.51,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.66
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.64,
+    "sslc": 0.63,
     "plustwo": 0.53,
     "ug": 0.49,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1250,13 +1250,13 @@
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.74,
+    "sslc": 0.88,
+    "plustwo": 0.74,
+    "ug": 0.72,
     "pg": 1,
-    "project": 0.16,
-    "intern": 0,
-    "extras": 0.31,
+    "project": 0.66,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -1267,7 +1267,7 @@
     "ug": 0.62,
     "pg": 0,
     "project": 0.33,
-    "intern": 0,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
@@ -1278,7 +1278,7 @@
     "plustwo": 0.84,
     "ug": 0.6,
     "pg": 1,
-    "project": 0.5,
+    "project": 0.16,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1286,21 +1286,21 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.56,
-    "plustwo": 0.47,
+    "sslc": 0.57,
+    "plustwo": 0.48,
     "ug": 0.37,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.05
+    "arrears": 0.56
   },
   {
     "placed": 0,
-    "engineering": 1,
-    "sslc": 0.7,
-    "plustwo": 0.58,
-    "ug": 0.43,
+    "engineering": 0,
+    "sslc": 0.47,
+    "plustwo": 0.39,
+    "ug": 0.42,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
@@ -1314,10 +1314,10 @@
     "plustwo": 0.47,
     "ug": 0.39,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.05
   },
   {
     "placed": 0,
@@ -1326,10 +1326,10 @@
     "plustwo": 0.67,
     "ug": 0.51,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.36
   },
   {
     "placed": 0,
@@ -1341,19 +1341,19 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.18
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.67,
-    "plustwo": 0.56,
+    "sslc": 0.71,
+    "plustwo": 0.59,
     "ug": 0.43,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.71
+    "arrears": 0.08
   },
   {
     "placed": 0,
@@ -1362,22 +1362,22 @@
     "plustwo": 0.58,
     "ug": 0.32,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.53
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.85,
-    "plustwo": 0.71,
+    "sslc": 0.84,
+    "plustwo": 0.7,
     "ug": 0.5,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.75
+    "arrears": 0.08
   },
   {
     "placed": 0,
@@ -1398,9 +1398,9 @@
     "plustwo": 0.43,
     "ug": 0.62,
     "pg": 0,
-    "project": 0.66,
-    "intern": 0.01,
-    "extras": 0,
+    "project": 0.5,
+    "intern": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -1410,10 +1410,10 @@
     "plustwo": 0.69,
     "ug": 0.42,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.45
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -1422,17 +1422,17 @@
     "plustwo": 1,
     "ug": 0.63,
     "pg": 1,
-    "project": 0.33,
-    "intern": 0,
-    "extras": 0.22,
+    "project": 0.66,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.65,
-    "plustwo": 0.54,
-    "ug": 0.43,
+    "sslc": 0.42,
+    "plustwo": 0.35,
+    "ug": 0.41,
     "pg": 0,
     "project": 0,
     "intern": 0,
@@ -1442,13 +1442,13 @@
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.61,
-    "plustwo": 0.51,
+    "sslc": 0.62,
+    "plustwo": 0.52,
     "ug": 0.66,
     "pg": 0,
     "project": 0,
-    "intern": 0.01,
-    "extras": 0,
+    "intern": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -1458,19 +1458,19 @@
     "plustwo": 0.47,
     "ug": 0.55,
     "pg": 0,
-    "project": 0.33,
+    "project": 0.66,
     "intern": 0,
-    "extras": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
-    "engineering": 0,
-    "sslc": 0.61,
-    "plustwo": 0.51,
-    "ug": 0.42,
+    "engineering": 1,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.44,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1478,9 +1478,9 @@
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.6,
-    "plustwo": 0.5,
-    "ug": 0.43,
+    "sslc": 0.81,
+    "plustwo": 0.68,
+    "ug": 0.44,
     "pg": 0,
     "project": 0,
     "intern": 0,
@@ -1490,11 +1490,11 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.85,
-    "plustwo": 0.71,
+    "sslc": 0.84,
+    "plustwo": 0.7,
     "ug": 0.5,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1509,7 +1509,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.55
+    "arrears": 0.24
   },
   {
     "placed": 1,
@@ -1519,8 +1519,8 @@
     "ug": 0.55,
     "pg": 0,
     "project": 0.83,
-    "intern": 0,
-    "extras": 0.27,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -1538,14 +1538,14 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.64,
+    "sslc": 0.63,
     "plustwo": 0.53,
     "ug": 0.38,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.48
   },
   {
     "placed": 0,
@@ -1554,7 +1554,7 @@
     "plustwo": 0.45,
     "ug": 0.5,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1562,13 +1562,13 @@
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.82,
-    "plustwo": 0.69,
-    "ug": 0.64,
-    "pg": 0,
-    "project": 0,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.66,
+    "pg": 1,
+    "project": 0.5,
     "intern": 0,
-    "extras": 0.1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -1578,10 +1578,10 @@
     "plustwo": 0.84,
     "ug": 0.37,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.29
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -1602,22 +1602,22 @@
     "plustwo": 0.49,
     "ug": 0.43,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.03
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.7,
-    "plustwo": 0.58,
-    "ug": 0.36,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.38,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.47
+    "arrears": 0.4
   },
   {
     "placed": 0,
@@ -1626,10 +1626,10 @@
     "plustwo": 0.49,
     "ug": 0.47,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.39
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -1638,10 +1638,10 @@
     "plustwo": 0.55,
     "ug": 0.52,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.47
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -1650,10 +1650,10 @@
     "plustwo": 0.69,
     "ug": 0.51,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.6
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -1665,16 +1665,16 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.13
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.7,
-    "plustwo": 0.58,
+    "sslc": 0.71,
+    "plustwo": 0.59,
     "ug": 0.56,
     "pg": 0,
-    "project": 0.33,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1686,10 +1686,10 @@
     "plustwo": 0.63,
     "ug": 0.43,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.35
   },
   {
     "placed": 1,
@@ -1700,7 +1700,7 @@
     "pg": 1,
     "project": 0.66,
     "intern": 0,
-    "extras": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -1713,7 +1713,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.72
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -1722,7 +1722,7 @@
     "plustwo": 0.57,
     "ug": 0.46,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1730,11 +1730,11 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.68,
-    "plustwo": 0.57,
+    "sslc": 0.69,
+    "plustwo": 0.58,
     "ug": 0.53,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1746,7 +1746,7 @@
     "plustwo": 0.37,
     "ug": 0.45,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -1761,19 +1761,19 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.19
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.94,
-    "plustwo": 0.79,
-    "ug": 0.43,
+    "sslc": 0.85,
+    "plustwo": 0.71,
+    "ug": 0.42,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.07
   },
   {
     "placed": 1,
@@ -1782,9 +1782,9 @@
     "plustwo": 0.48,
     "ug": 0.47,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
-    "extras": 0.27,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -1807,8 +1807,8 @@
     "ug": 0.64,
     "pg": 1,
     "project": 0.16,
-    "intern": 0,
-    "extras": 0.38,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -1818,21 +1818,21 @@
     "plustwo": 0.39,
     "ug": 0.38,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.67
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.93,
-    "plustwo": 0.78,
-    "ug": 0.73,
+    "sslc": 0.98,
+    "plustwo": 0.82,
+    "ug": 0.74,
     "pg": 1,
-    "project": 0.16,
-    "intern": 0.01,
-    "extras": 0,
+    "project": 0.33,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -1866,17 +1866,17 @@
     "plustwo": 0.58,
     "ug": 0.79,
     "pg": 0,
-    "project": 0,
-    "intern": 0.01,
-    "extras": 0.26,
+    "project": 0.16,
+    "intern": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.83,
-    "plustwo": 0.69,
-    "ug": 0.34,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.35,
     "pg": 0,
     "project": 0,
     "intern": 0,
@@ -1890,34 +1890,34 @@
     "plustwo": 0.47,
     "ug": 0.54,
     "pg": 0,
-    "project": 0.33,
-    "intern": 0,
-    "extras": 0.34,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.77,
-    "plustwo": 0.64,
+    "sslc": 0.78,
+    "plustwo": 0.65,
     "ug": 0.4,
-    "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
-    "arrears": 0
-  },
-  {
-    "placed": 0,
-    "engineering": 0,
-    "sslc": 0.82,
-    "plustwo": 0.69,
-    "ug": 0.5,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.5
+    "arrears": 0
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.83,
+    "plustwo": 0.69,
+    "ug": 0.5,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.11
   },
   {
     "placed": 0,
@@ -1926,10 +1926,10 @@
     "plustwo": 0.59,
     "ug": 0.38,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.59
+    "arrears": 0.57
   },
   {
     "placed": 0,
@@ -1938,46 +1938,46 @@
     "plustwo": 0.63,
     "ug": 0.4,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.02
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.88,
-    "plustwo": 0.74,
-    "ug": 0.68,
-    "pg": 0,
-    "project": 0.33,
-    "intern": 0.01,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.7,
+    "pg": 1,
+    "project": 0.16,
+    "intern": 0,
     "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.61,
-    "plustwo": 0.51,
-    "ug": 0.34,
+    "sslc": 0.79,
+    "plustwo": 0.66,
+    "ug": 0.35,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.62
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.68,
-    "plustwo": 0.57,
+    "sslc": 0.69,
+    "plustwo": 0.58,
     "ug": 0.39,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.69
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -1989,19 +1989,19 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.54
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.52,
-    "plustwo": 0.43,
+    "sslc": 0.51,
+    "plustwo": 0.42,
     "ug": 0.51,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.74
   },
   {
     "placed": 0,
@@ -2010,10 +2010,10 @@
     "plustwo": 0.71,
     "ug": 0.49,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.73
+    "arrears": 0.59
   },
   {
     "placed": 0,
@@ -2025,7 +2025,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.14
+    "arrears": 0.05
   },
   {
     "placed": 0,
@@ -2034,10 +2034,10 @@
     "plustwo": 0.59,
     "ug": 0.48,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.23
+    "arrears": 0.47
   },
   {
     "placed": 0,
@@ -2049,19 +2049,19 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.57
+    "arrears": 0.32
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.92,
-    "plustwo": 0.77,
-    "ug": 0.43,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.44,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.04
+    "arrears": 0.21
   },
   {
     "placed": 0,
@@ -2073,18 +2073,18 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.58
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.94,
+    "sslc": 1,
     "plustwo": 1,
     "ug": 0.7,
     "pg": 1,
-    "project": 0.33,
-    "intern": 0,
-    "extras": 0.15,
+    "project": 0,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -2094,7 +2094,7 @@
     "plustwo": 0.49,
     "ug": 0.53,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -2107,32 +2107,32 @@
     "ug": 0.68,
     "pg": 1,
     "project": 0.33,
-    "intern": 0,
-    "extras": 0,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.73,
-    "plustwo": 0.61,
+    "sslc": 0.74,
+    "plustwo": 0.62,
     "ug": 0.34,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.41
+    "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.83,
-    "plustwo": 0.69,
-    "ug": 0.74,
-    "pg": 0,
-    "project": 0.33,
-    "intern": 0,
-    "extras": 0.33,
+    "sslc": 0.93,
+    "plustwo": 0.78,
+    "ug": 0.76,
+    "pg": 1,
+    "project": 0.66,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -2145,7 +2145,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.2
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -2154,7 +2154,7 @@
     "plustwo": 0.29,
     "ug": 0.42,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -2162,35 +2162,35 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.72,
-    "plustwo": 0.6,
+    "sslc": 0.73,
+    "plustwo": 0.61,
     "ug": 0.49,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.47
-  },
-  {
-    "placed": 0,
-    "engineering": 0,
-    "sslc": 0.59,
-    "plustwo": 0.49,
-    "ug": 0.55,
-    "pg": 0,
-    "project": 0,
-    "intern": 0,
-    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.82,
+    "sslc": 0.58,
+    "plustwo": 0.48,
+    "ug": 0.55,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.24
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.83,
     "plustwo": 0.69,
     "ug": 0.44,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -2198,26 +2198,26 @@
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.64,
+    "sslc": 0.63,
     "plustwo": 0.53,
     "ug": 0.67,
     "pg": 0,
-    "project": 0.16,
-    "intern": 0.01,
-    "extras": 0.11,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.64,
-    "plustwo": 0.53,
-    "ug": 0.48,
+    "sslc": 0.93,
+    "plustwo": 0.78,
+    "ug": 0.5,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.01
   },
   {
     "placed": 0,
@@ -2226,10 +2226,10 @@
     "plustwo": 1,
     "ug": 0.44,
     "pg": 1,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.7
   },
   {
     "placed": 0,
@@ -2245,15 +2245,15 @@
   },
   {
     "placed": 0,
-    "engineering": 0,
-    "sslc": 0.69,
-    "plustwo": 0.58,
-    "ug": 0.36,
+    "engineering": 1,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.38,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.07
   },
   {
     "placed": 0,
@@ -2265,7 +2265,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.54
   },
   {
     "placed": 0,
@@ -2277,7 +2277,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.53
   },
   {
     "placed": 1,
@@ -2286,22 +2286,22 @@
     "plustwo": 0.63,
     "ug": 0.6,
     "pg": 0,
-    "project": 0.5,
-    "intern": 0,
+    "project": 0.83,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.94,
+    "sslc": 0.95,
     "plustwo": 1,
     "ug": 0.5,
     "pg": 1,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.58
   },
   {
     "placed": 0,
@@ -2310,10 +2310,10 @@
     "plustwo": 0.64,
     "ug": 0.49,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.11
+    "arrears": 0.73
   },
   {
     "placed": 0,
@@ -2322,7 +2322,7 @@
     "plustwo": 0.37,
     "ug": 0.53,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -2336,20 +2336,20 @@
     "pg": 0,
     "project": 0.83,
     "intern": 0,
-    "extras": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.66,
-    "plustwo": 0.55,
+    "sslc": 0.65,
+    "plustwo": 0.54,
     "ug": 0.4,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.6
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -2370,7 +2370,7 @@
     "plustwo": 0.39,
     "ug": 0.79,
     "pg": 0,
-    "project": 0.16,
+    "project": 0.33,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -2378,8 +2378,8 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.71,
-    "plustwo": 0.59,
+    "sslc": 0.7,
+    "plustwo": 0.58,
     "ug": 0.48,
     "pg": 0,
     "project": 0.5,
@@ -2397,7 +2397,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.13
+    "arrears": 0.33
   },
   {
     "placed": 0,
@@ -2409,7 +2409,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.58
+    "arrears": 0.78
   },
   {
     "placed": 1,
@@ -2418,34 +2418,34 @@
     "plustwo": 0.57,
     "ug": 0.62,
     "pg": 0,
-    "project": 0.66,
+    "project": 0.5,
     "intern": 0,
-    "extras": 0.22,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.65,
-    "pg": 1,
-    "project": 0.5,
+    "sslc": 0.88,
+    "plustwo": 0.74,
+    "ug": 0.63,
+    "pg": 0,
+    "project": 0,
     "intern": 0,
-    "extras": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.49,
-    "plustwo": 0.41,
+    "sslc": 0.5,
+    "plustwo": 0.42,
     "ug": 0.55,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.71
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -2456,7 +2456,7 @@
     "pg": 0,
     "project": 0.16,
     "intern": 0,
-    "extras": 0.14,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -2468,30 +2468,30 @@
     "pg": 1,
     "project": 0.33,
     "intern": 0,
-    "extras": 0.12,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.87,
-    "plustwo": 0.73,
+    "sslc": 0.88,
+    "plustwo": 0.74,
     "ug": 0.35,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.45
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.87,
-    "plustwo": 0.73,
-    "ug": 0.59,
-    "pg": 0,
-    "project": 0,
-    "intern": 0,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.61,
+    "pg": 1,
+    "project": 0.66,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
@@ -2505,7 +2505,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.4
   },
   {
     "placed": 0,
@@ -2517,7 +2517,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.25
   },
   {
     "placed": 0,
@@ -2526,46 +2526,46 @@
     "plustwo": 0.73,
     "ug": 0.53,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.7
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.69,
-    "plustwo": 0.58,
-    "ug": 0.37,
-    "pg": 0,
-    "project": 0,
-    "intern": 0,
-    "extras": 0,
-    "arrears": 0
-  },
-  {
-    "placed": 0,
-    "engineering": 1,
     "sslc": 0.68,
     "plustwo": 0.57,
-    "ug": 0.36,
+    "ug": 0.37,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.36
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.76,
-    "plustwo": 0.64,
+    "sslc": 0.54,
+    "plustwo": 0.45,
+    "ug": 0.35,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.68
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.75,
+    "plustwo": 0.63,
     "ug": 0.46,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.73
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -2574,8 +2574,8 @@
     "plustwo": 0.58,
     "ug": 0.66,
     "pg": 0,
-    "project": 0.16,
-    "intern": 0,
+    "project": 0.83,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
@@ -2586,22 +2586,22 @@
     "plustwo": 0.65,
     "ug": 0.7,
     "pg": 0,
-    "project": 0.5,
+    "project": 0.66,
     "intern": 0,
-    "extras": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.68,
-    "plustwo": 0.57,
-    "ug": 0.29,
+    "sslc": 0.43,
+    "plustwo": 0.36,
+    "ug": 0.28,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.61
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -2618,14 +2618,14 @@
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.67,
-    "plustwo": 0.56,
+    "sslc": 0.72,
+    "plustwo": 0.6,
     "ug": 0.3,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.71
+    "arrears": 0.36
   },
   {
     "placed": 1,
@@ -2634,15 +2634,15 @@
     "plustwo": 0.55,
     "ug": 0.65,
     "pg": 0,
-    "project": 0.83,
-    "intern": 0,
+    "project": 0,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.64,
+    "sslc": 0.63,
     "plustwo": 0.53,
     "ug": 0.45,
     "pg": 0,
@@ -2658,10 +2658,10 @@
     "plustwo": 0.67,
     "ug": 0.51,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.19
+    "arrears": 0.7
   },
   {
     "placed": 1,
@@ -2670,9 +2670,9 @@
     "plustwo": 0.47,
     "ug": 0.48,
     "pg": 0,
-    "project": 0,
-    "intern": 0,
-    "extras": 0,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -2685,7 +2685,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.12
   },
   {
     "placed": 0,
@@ -2706,9 +2706,9 @@
     "plustwo": 0.84,
     "ug": 0.8,
     "pg": 1,
-    "project": 0.83,
-    "intern": 0,
-    "extras": 0,
+    "project": 0,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -2718,10 +2718,10 @@
     "plustwo": 0.61,
     "ug": 0.41,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.57
   },
   {
     "placed": 0,
@@ -2733,30 +2733,30 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.63
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.56,
-    "plustwo": 0.47,
+    "sslc": 0.57,
+    "plustwo": 0.48,
     "ug": 0.39,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.48
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.97,
-    "plustwo": 0.81,
-    "ug": 0.68,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.69,
     "pg": 1,
-    "project": 0.16,
-    "intern": 0,
-    "extras": 0,
+    "project": 0.66,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -2766,46 +2766,46 @@
     "plustwo": 0.57,
     "ug": 0.52,
     "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
-    "arrears": 0
-  },
-  {
-    "placed": 0,
-    "engineering": 0,
-    "sslc": 0.7,
-    "plustwo": 0.58,
-    "ug": 0.45,
-    "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.48
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.45,
+    "sslc": 0.71,
+    "plustwo": 0.59,
+    "ug": 0.45,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.19
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.44,
     "plustwo": 0.37,
     "ug": 0.38,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.18
+    "arrears": 0.59
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.54,
-    "plustwo": 0.45,
-    "ug": 0.4,
+    "sslc": 0.97,
+    "plustwo": 0.81,
+    "ug": 0.43,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.73
   },
   {
     "placed": 1,
@@ -2815,32 +2815,32 @@
     "ug": 0.61,
     "pg": 1,
     "project": 0.16,
-    "intern": 0,
-    "extras": 0,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.73,
-    "plustwo": 0.61,
+    "sslc": 0.72,
+    "plustwo": 0.6,
     "ug": 0.37,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.23
+    "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.69,
+    "sslc": 0.91,
+    "plustwo": 0.76,
+    "ug": 0.68,
     "pg": 1,
     "project": 0.33,
-    "intern": 0.01,
-    "extras": 0.18,
+    "intern": 0,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -2853,54 +2853,54 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.66
-  },
-  {
-    "placed": 0,
-    "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.51,
-    "pg": 1,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
-    "arrears": 0.75
-  },
-  {
-    "placed": 0,
-    "engineering": 0,
-    "sslc": 0.83,
-    "plustwo": 0.69,
-    "ug": 0.47,
-    "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
+    "sslc": 0.6,
+    "plustwo": 0.5,
+    "ug": 0.49,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.31
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.82,
+    "plustwo": 0.69,
+    "ug": 0.47,
+    "pg": 0,
+    "project": 0,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.17
+  },
+  {
+    "placed": 0,
+    "engineering": 1,
+    "sslc": 0.94,
+    "plustwo": 0.79,
     "ug": 0.37,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.58
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.61,
-    "plustwo": 0.51,
+    "sslc": 0.62,
+    "plustwo": 0.52,
     "ug": 0.57,
     "pg": 0,
     "project": 0.16,
-    "intern": 0.01,
-    "extras": 0,
+    "intern": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -2910,9 +2910,9 @@
     "plustwo": 0.67,
     "ug": 0.71,
     "pg": 0,
-    "project": 0.66,
-    "intern": 0,
-    "extras": 0.39,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -2922,10 +2922,10 @@
     "plustwo": 0.61,
     "ug": 0.38,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.6
+    "arrears": 0.21
   },
   {
     "placed": 0,
@@ -2934,7 +2934,7 @@
     "plustwo": 0.53,
     "ug": 0.3,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -2942,14 +2942,14 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.95,
+    "sslc": 0.94,
     "plustwo": 1,
     "ug": 0.52,
     "pg": 1,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.24
+    "arrears": 0.58
   },
   {
     "placed": 0,
@@ -2973,7 +2973,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.21
+    "arrears": 0.71
   },
   {
     "placed": 0,
@@ -2982,10 +2982,10 @@
     "plustwo": 0.67,
     "ug": 0.48,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.28
   },
   {
     "placed": 0,
@@ -2994,10 +2994,10 @@
     "plustwo": 0.63,
     "ug": 0.49,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.63
   },
   {
     "placed": 0,
@@ -3006,10 +3006,10 @@
     "plustwo": 0.64,
     "ug": 0.53,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.5
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -3031,7 +3031,7 @@
     "ug": 0.69,
     "pg": 0,
     "project": 0.66,
-    "intern": 0,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
@@ -3054,9 +3054,9 @@
     "plustwo": 0.84,
     "ug": 0.9,
     "pg": 1,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
-    "extras": 0.11,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -3066,10 +3066,10 @@
     "plustwo": 0.63,
     "ug": 0.46,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.38
+    "arrears": 0.55
   },
   {
     "placed": 1,
@@ -3078,21 +3078,21 @@
     "plustwo": 0.51,
     "ug": 0.62,
     "pg": 0,
-    "project": 0,
-    "intern": 0,
-    "extras": 0,
+    "project": 0.5,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.97,
-    "plustwo": 0.81,
+    "sslc": 1,
+    "plustwo": 0.84,
     "ug": 0.84,
     "pg": 1,
     "project": 0.66,
     "intern": 0,
-    "extras": 0.34,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -3102,10 +3102,10 @@
     "plustwo": 0.51,
     "ug": 0.4,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.12
+    "arrears": 0.47
   },
   {
     "placed": 0,
@@ -3114,10 +3114,10 @@
     "plustwo": 0.63,
     "ug": 0.42,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.42
+    "arrears": 0.67
   },
   {
     "placed": 0,
@@ -3134,20 +3134,20 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.52,
-    "plustwo": 0.43,
+    "sslc": 0.51,
+    "plustwo": 0.42,
     "ug": 0.37,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.32
+    "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.61,
-    "plustwo": 0.51,
+    "sslc": 0.62,
+    "plustwo": 0.52,
     "ug": 0.71,
     "pg": 0,
     "project": 0.5,
@@ -3158,13 +3158,13 @@
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
+    "sslc": 0.97,
+    "plustwo": 0.81,
     "ug": 0.84,
     "pg": 1,
-    "project": 0.5,
-    "intern": 0.01,
-    "extras": 0.04,
+    "project": 0.33,
+    "intern": 0,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -3174,22 +3174,22 @@
     "plustwo": 0.51,
     "ug": 0.78,
     "pg": 0,
-    "project": 0.16,
-    "intern": 0.01,
-    "extras": 0.24,
+    "project": 0.66,
+    "intern": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.45,
+    "sslc": 0.44,
     "plustwo": 0.37,
     "ug": 0.44,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.61
   },
   {
     "placed": 0,
@@ -3198,6 +3198,18 @@
     "plustwo": 0.55,
     "ug": 0.51,
     "pg": 0,
+    "project": 0,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.17
+  },
+  {
+    "placed": 1,
+    "engineering": 0,
+    "sslc": 0.71,
+    "plustwo": 0.59,
+    "ug": 0.77,
+    "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
@@ -3205,34 +3217,22 @@
   },
   {
     "placed": 1,
-    "engineering": 0,
-    "sslc": 0.7,
-    "plustwo": 0.58,
-    "ug": 0.76,
+    "engineering": 1,
+    "sslc": 0.83,
+    "plustwo": 0.69,
+    "ug": 0.67,
     "pg": 0,
     "project": 0.83,
-    "intern": 0,
-    "extras": 0.24,
-    "arrears": 0
-  },
-  {
-    "placed": 1,
-    "engineering": 1,
-    "sslc": 0.98,
-    "plustwo": 0.82,
-    "ug": 0.69,
-    "pg": 1,
-    "project": 0,
-    "intern": 0,
-    "extras": 0.03,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.44,
+    "sslc": 0.82,
+    "plustwo": 0.69,
+    "ug": 0.43,
     "pg": 0,
     "project": 0,
     "intern": 0,
@@ -3246,22 +3246,22 @@
     "plustwo": 0.84,
     "ug": 0.74,
     "pg": 1,
-    "project": 0.66,
-    "intern": 0,
+    "project": 0.83,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.64,
+    "sslc": 0.63,
     "plustwo": 0.53,
     "ug": 0.45,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.57
+    "arrears": 0.11
   },
   {
     "placed": 1,
@@ -3270,9 +3270,9 @@
     "plustwo": 0.84,
     "ug": 0.71,
     "pg": 1,
-    "project": 0.33,
+    "project": 0.83,
     "intern": 0,
-    "extras": 0.31,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -3302,26 +3302,26 @@
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.71,
-    "plustwo": 0.59,
+    "sslc": 0.7,
+    "plustwo": 0.58,
     "ug": 0.6,
     "pg": 0,
-    "project": 0.83,
-    "intern": 0,
+    "project": 0.16,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.54,
-    "plustwo": 0.45,
+    "sslc": 0.55,
+    "plustwo": 0.46,
     "ug": 0.48,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.32
   },
   {
     "placed": 1,
@@ -3330,9 +3330,9 @@
     "plustwo": 0.57,
     "ug": 0.56,
     "pg": 0,
-    "project": 0.16,
-    "intern": 0,
-    "extras": 0.11,
+    "project": 0,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -3342,21 +3342,21 @@
     "plustwo": 0.67,
     "ug": 0.82,
     "pg": 0,
-    "project": 0.16,
-    "intern": 0,
-    "extras": 0.3,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.66,
-    "pg": 1,
-    "project": 0,
-    "intern": 0,
-    "extras": 0.12,
+    "sslc": 0.8,
+    "plustwo": 0.67,
+    "ug": 0.63,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -3366,10 +3366,10 @@
     "plustwo": 0.65,
     "ug": 0.43,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.02
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -3381,19 +3381,19 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.07
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.78,
-    "plustwo": 0.65,
-    "ug": 0.54,
+    "sslc": 0.77,
+    "plustwo": 0.64,
+    "ug": 0.53,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.19
   },
   {
     "placed": 0,
@@ -3405,7 +3405,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.19
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -3414,9 +3414,9 @@
     "plustwo": 0.43,
     "ug": 0.61,
     "pg": 0,
-    "project": 0.33,
+    "project": 0.5,
     "intern": 0,
-    "extras": 0.12,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -3429,29 +3429,29 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.72
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.97,
+    "sslc": 1,
     "plustwo": 1,
     "ug": 0.58,
     "pg": 1,
     "project": 0.16,
-    "intern": 0.01,
-    "extras": 0.22,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.98,
-    "plustwo": 0.82,
+    "sslc": 0.99,
+    "plustwo": 0.83,
     "ug": 0.91,
     "pg": 1,
     "project": 0.83,
-    "intern": 0,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
@@ -3462,33 +3462,33 @@
     "plustwo": 1,
     "ug": 0.54,
     "pg": 1,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.13
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.62,
-    "plustwo": 0.52,
+    "sslc": 0.63,
+    "plustwo": 0.53,
     "ug": 0.45,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.01
+    "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.74,
-    "plustwo": 0.62,
-    "ug": 0.65,
-    "pg": 0,
-    "project": 0.66,
-    "intern": 0,
-    "extras": 0.12,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.69,
+    "pg": 1,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -3501,7 +3501,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.38
+    "arrears": 0.48
   },
   {
     "placed": 0,
@@ -3513,7 +3513,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.36
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -3522,7 +3522,7 @@
     "plustwo": 1,
     "ug": 0.39,
     "pg": 1,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -3537,7 +3537,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.4
+    "arrears": 0.17
   },
   {
     "placed": 0,
@@ -3546,10 +3546,10 @@
     "plustwo": 0.51,
     "ug": 0.45,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.67
+    "arrears": 0.32
   },
   {
     "placed": 0,
@@ -3561,7 +3561,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.56
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -3570,7 +3570,7 @@
     "plustwo": 0.45,
     "ug": 0.36,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -3578,14 +3578,14 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.64,
+    "sslc": 0.63,
     "plustwo": 0.53,
     "ug": 0.4,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.06
   },
   {
     "placed": 0,
@@ -3602,14 +3602,14 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.75,
-    "plustwo": 0.63,
+    "sslc": 0.76,
+    "plustwo": 0.64,
     "ug": 0.39,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.7
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -3618,9 +3618,9 @@
     "plustwo": 0.84,
     "ug": 0.81,
     "pg": 1,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
+    "project": 0.66,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -3630,9 +3630,9 @@
     "plustwo": 0.39,
     "ug": 0.58,
     "pg": 0,
-    "project": 0.16,
-    "intern": 0,
-    "extras": 0.09,
+    "project": 0.33,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -3642,19 +3642,19 @@
     "plustwo": 0.8,
     "ug": 0.74,
     "pg": 1,
-    "project": 0,
-    "intern": 0,
+    "project": 0.66,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.48,
-    "plustwo": 0.4,
-    "ug": 0.41,
+    "sslc": 0.56,
+    "plustwo": 0.47,
+    "ug": 0.42,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -3666,10 +3666,10 @@
     "plustwo": 0.58,
     "ug": 0.53,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.38
+    "arrears": 0.11
   },
   {
     "placed": 1,
@@ -3678,9 +3678,9 @@
     "plustwo": 0.53,
     "ug": 0.51,
     "pg": 0,
-    "project": 0.66,
-    "intern": 0.01,
-    "extras": 0.1,
+    "project": 0.16,
+    "intern": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -3690,34 +3690,34 @@
     "plustwo": 0.57,
     "ug": 0.4,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.03
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.63,
+    "sslc": 0.64,
     "plustwo": 0.53,
     "ug": 0.37,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.22
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.92,
-    "plustwo": 0.77,
-    "ug": 0.45,
+    "sslc": 0.78,
+    "plustwo": 0.65,
+    "ug": 0.44,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.25
   },
   {
     "placed": 0,
@@ -3729,31 +3729,31 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.42
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.78,
-    "plustwo": 0.65,
+    "sslc": 0.77,
+    "plustwo": 0.64,
     "ug": 0.42,
-    "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
-    "arrears": 0.29
-  },
-  {
-    "placed": 0,
-    "engineering": 0,
-    "sslc": 0.78,
-    "plustwo": 0.65,
-    "ug": 0.49,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.77,
+    "plustwo": 0.64,
+    "ug": 0.49,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.79
   },
   {
     "placed": 1,
@@ -3762,8 +3762,8 @@
     "plustwo": 0.51,
     "ug": 0.85,
     "pg": 0,
-    "project": 0.16,
-    "intern": 0.01,
+    "project": 0.83,
+    "intern": 1,
     "extras": 0,
     "arrears": 0
   },
@@ -3782,13 +3782,13 @@
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.35,
-    "plustwo": 0.29,
+    "sslc": 0.36,
+    "plustwo": 0.3,
     "ug": 0.53,
     "pg": 0,
-    "project": 0.33,
-    "intern": 0.01,
-    "extras": 0.07,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -3798,9 +3798,9 @@
     "plustwo": 0.33,
     "ug": 0.55,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
-    "extras": 0.38,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -3810,9 +3810,9 @@
     "plustwo": 0.84,
     "ug": 0.91,
     "pg": 1,
-    "project": 0.83,
-    "intern": 0,
-    "extras": 0.02,
+    "project": 0.5,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -3824,7 +3824,7 @@
     "pg": 0,
     "project": 0.33,
     "intern": 0,
-    "extras": 0.28,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -3834,10 +3834,10 @@
     "plustwo": 0.53,
     "ug": 0.32,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.69
   },
   {
     "placed": 0,
@@ -3849,7 +3849,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.39
   },
   {
     "placed": 0,
@@ -3858,7 +3858,7 @@
     "plustwo": 0.45,
     "ug": 0.4,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -3873,31 +3873,31 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.52
-  },
-  {
-    "placed": 0,
-    "engineering": 1,
-    "sslc": 0.64,
-    "plustwo": 0.53,
-    "ug": 0.34,
-    "pg": 0,
-    "project": 0,
-    "intern": 0,
-    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.93,
-    "plustwo": 0.78,
+    "sslc": 0.62,
+    "plustwo": 0.52,
+    "ug": 0.34,
+    "pg": 0,
+    "project": 0,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.13
+  },
+  {
+    "placed": 0,
+    "engineering": 1,
+    "sslc": 0.94,
+    "plustwo": 0.79,
     "ug": 0.43,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.42
+    "arrears": 0.67
   },
   {
     "placed": 0,
@@ -3906,10 +3906,10 @@
     "plustwo": 0.67,
     "ug": 0.37,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.39
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -3918,10 +3918,10 @@
     "plustwo": 0.67,
     "ug": 0.39,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.23
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -3930,9 +3930,9 @@
     "plustwo": 0.55,
     "ug": 0.64,
     "pg": 0,
-    "project": 0.16,
+    "project": 0.66,
     "intern": 0,
-    "extras": 0.33,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -3942,22 +3942,22 @@
     "plustwo": 0.57,
     "ug": 0.39,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.63
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.87,
-    "plustwo": 0.73,
-    "ug": 0.51,
+    "sslc": 0.8,
+    "plustwo": 0.67,
+    "ug": 0.5,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.29
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -3966,10 +3966,10 @@
     "plustwo": 0.73,
     "ug": 0.51,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.78
   },
   {
     "placed": 0,
@@ -3981,19 +3981,19 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.59
+    "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.74,
-    "plustwo": 0.62,
-    "ug": 0.3,
+    "sslc": 0.55,
+    "plustwo": 0.46,
+    "ug": 0.29,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.51
+    "arrears": 0.52
   },
   {
     "placed": 0,
@@ -4002,10 +4002,10 @@
     "plustwo": 0.55,
     "ug": 0.46,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.03
+    "arrears": 0.66
   },
   {
     "placed": 1,
@@ -4014,19 +4014,19 @@
     "plustwo": 0.45,
     "ug": 0.74,
     "pg": 0,
-    "project": 0.33,
-    "intern": 0,
-    "extras": 0.13,
+    "project": 0.16,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.62,
-    "pg": 1,
-    "project": 0.33,
+    "sslc": 0.75,
+    "plustwo": 0.63,
+    "ug": 0.58,
+    "pg": 0,
+    "project": 0.66,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -4038,10 +4038,10 @@
     "plustwo": 0.51,
     "ug": 0.44,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.66
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -4050,19 +4050,19 @@
     "plustwo": 0.61,
     "ug": 0.51,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.55
+    "arrears": 0.12
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.63,
+    "sslc": 0.64,
     "plustwo": 0.53,
     "ug": 0.31,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -4070,37 +4070,37 @@
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.9,
-    "plustwo": 0.75,
-    "ug": 0.78,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.79,
     "pg": 1,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
-    "extras": 0.11,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.58,
-    "plustwo": 0.48,
+    "sslc": 0.59,
+    "plustwo": 0.49,
     "ug": 0.51,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.55
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.65,
-    "plustwo": 0.54,
+    "sslc": 0.66,
+    "plustwo": 0.55,
     "ug": 0.66,
     "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0.38,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -4110,10 +4110,10 @@
     "plustwo": 0.49,
     "ug": 0.56,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.37
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -4122,22 +4122,22 @@
     "plustwo": 0.57,
     "ug": 0.37,
     "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
-    "arrears": 0.75
-  },
-  {
-    "placed": 0,
-    "engineering": 0,
-    "sslc": 0.61,
-    "plustwo": 0.51,
-    "ug": 0.45,
-    "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.62,
+    "plustwo": 0.52,
+    "ug": 0.45,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.27
   },
   {
     "placed": 0,
@@ -4146,34 +4146,34 @@
     "plustwo": 0.49,
     "ug": 0.43,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.43
+    "arrears": 0.06
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.7,
-    "plustwo": 0.58,
+    "sslc": 0.71,
+    "plustwo": 0.59,
     "ug": 0.39,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.79
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.69,
-    "plustwo": 0.58,
+    "sslc": 0.68,
+    "plustwo": 0.57,
     "ug": 0.42,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.17
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -4185,7 +4185,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.77
+    "arrears": 0.22
   },
   {
     "placed": 0,
@@ -4194,10 +4194,10 @@
     "plustwo": 0.84,
     "ug": 0.37,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.5
+    "arrears": 0.54
   },
   {
     "placed": 1,
@@ -4206,9 +4206,9 @@
     "plustwo": 0.84,
     "ug": 0.75,
     "pg": 1,
-    "project": 0,
-    "intern": 0.01,
-    "extras": 0,
+    "project": 0.5,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -4218,21 +4218,21 @@
     "plustwo": 0.61,
     "ug": 0.46,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.17
+    "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.68,
-    "plustwo": 0.57,
+    "sslc": 0.69,
+    "plustwo": 0.58,
     "ug": 0.71,
     "pg": 0,
     "project": 0.83,
-    "intern": 0.01,
-    "extras": 0.17,
+    "intern": 0,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -4242,7 +4242,7 @@
     "plustwo": 0.69,
     "ug": 0.41,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -4254,21 +4254,21 @@
     "plustwo": 0.53,
     "ug": 0.67,
     "pg": 0,
-    "project": 0.83,
-    "intern": 0,
-    "extras": 0.04,
+    "project": 0.66,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.89,
-    "plustwo": 0.74,
+    "sslc": 0.9,
+    "plustwo": 0.75,
     "ug": 0.51,
     "pg": 0,
-    "project": 0,
-    "intern": 0,
-    "extras": 0.29,
+    "project": 0.33,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -4281,19 +4281,19 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.05
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.85,
-    "plustwo": 0.71,
+    "sslc": 0.84,
+    "plustwo": 0.7,
     "ug": 0.33,
     "pg": 0,
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.31
+    "arrears": 0.68
   },
   {
     "placed": 1,
@@ -4302,9 +4302,9 @@
     "plustwo": 0.55,
     "ug": 0.76,
     "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0.3,
+    "project": 0.33,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -4317,18 +4317,18 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.35
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.62,
-    "plustwo": 0.52,
+    "sslc": 0.61,
+    "plustwo": 0.51,
     "ug": 0.59,
     "pg": 0,
-    "project": 0.16,
-    "intern": 0,
-    "extras": 0,
+    "project": 0.33,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -4338,7 +4338,7 @@
     "plustwo": 0.53,
     "ug": 0.54,
     "pg": 0,
-    "project": 0.33,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -4350,7 +4350,7 @@
     "plustwo": 0.67,
     "ug": 0.38,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -4365,7 +4365,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.57
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -4374,34 +4374,34 @@
     "plustwo": 0.55,
     "ug": 0.53,
     "pg": 0,
+    "project": 0.66,
+    "intern": 0,
+    "extras": 1,
+    "arrears": 0
+  },
+  {
+    "placed": 0,
+    "engineering": 1,
+    "sslc": 0.74,
+    "plustwo": 0.62,
+    "ug": 0.42,
+    "pg": 0,
+    "project": 0,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.1
+  },
+  {
+    "placed": 0,
+    "engineering": 1,
+    "sslc": 0.59,
+    "plustwo": 0.49,
+    "ug": 0.42,
+    "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
-  },
-  {
-    "placed": 0,
-    "engineering": 1,
-    "sslc": 0.67,
-    "plustwo": 0.56,
-    "ug": 0.42,
-    "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
-    "arrears": 0
-  },
-  {
-    "placed": 0,
-    "engineering": 1,
-    "sslc": 0.77,
-    "plustwo": 0.64,
-    "ug": 0.43,
-    "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
-    "arrears": 0.69
   },
   {
     "placed": 0,
@@ -4410,10 +4410,10 @@
     "plustwo": 0.61,
     "ug": 0.48,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.06
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -4422,10 +4422,10 @@
     "plustwo": 0.57,
     "ug": 0.37,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.67
+    "arrears": 0.66
   },
   {
     "placed": 0,
@@ -4437,7 +4437,7 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.18
+    "arrears": 0.55
   },
   {
     "placed": 1,
@@ -4445,30 +4445,6 @@
     "sslc": 0.64,
     "plustwo": 0.53,
     "ug": 0.67,
-    "pg": 0,
-    "project": 0.66,
-    "intern": 0,
-    "extras": 0.31,
-    "arrears": 0
-  },
-  {
-    "placed": 1,
-    "engineering": 1,
-    "sslc": 0.96,
-    "plustwo": 0.8,
-    "ug": 0.82,
-    "pg": 1,
-    "project": 0,
-    "intern": 0,
-    "extras": 0.38,
-    "arrears": 0
-  },
-  {
-    "placed": 1,
-    "engineering": 0,
-    "sslc": 0.8,
-    "plustwo": 0.67,
-    "ug": 0.46,
     "pg": 0,
     "project": 0.33,
     "intern": 0,
@@ -4478,26 +4454,50 @@
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 0.89,
-    "plustwo": 0.74,
-    "ug": 0.57,
-    "pg": 0,
-    "project": 0,
-    "intern": 0.01,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.82,
+    "pg": 1,
+    "project": 0.16,
+    "intern": 1,
     "extras": 0,
+    "arrears": 0
+  },
+  {
+    "placed": 1,
+    "engineering": 0,
+    "sslc": 0.8,
+    "plustwo": 0.67,
+    "ug": 0.46,
+    "pg": 0,
+    "project": 0.5,
+    "intern": 1,
+    "extras": 1,
+    "arrears": 0
+  },
+  {
+    "placed": 1,
+    "engineering": 1,
+    "sslc": 1,
+    "plustwo": 0.84,
+    "ug": 0.58,
+    "pg": 1,
+    "project": 0.83,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.65,
-    "plustwo": 0.54,
+    "sslc": 0.66,
+    "plustwo": 0.55,
     "ug": 0.42,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.71
+    "arrears": 0.1
   },
   {
     "placed": 0,
@@ -4509,7 +4509,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.76
+    "arrears": 0.73
   },
   {
     "placed": 0,
@@ -4521,18 +4521,18 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.42
+    "arrears": 0.78
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
+    "sslc": 0.97,
     "plustwo": 1,
     "ug": 0.76,
     "pg": 1,
-    "project": 0.5,
+    "project": 0.16,
     "intern": 0,
-    "extras": 0.35,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -4542,45 +4542,45 @@
     "plustwo": 0.63,
     "ug": 0.45,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.24
+    "arrears": 0.48
   },
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.36,
+    "sslc": 0.67,
+    "plustwo": 0.56,
+    "ug": 0.35,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0.28
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.82,
+    "plustwo": 0.69,
+    "ug": 0.42,
+    "pg": 0,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
   },
   {
-    "placed": 0,
-    "engineering": 0,
-    "sslc": 0.83,
-    "plustwo": 0.69,
-    "ug": 0.42,
-    "pg": 0,
-    "project": 0.5,
-    "intern": 0,
-    "extras": 0,
-    "arrears": 0.21
-  },
-  {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.64,
+    "sslc": 0.63,
     "plustwo": 0.53,
     "ug": 0.64,
     "pg": 0,
-    "project": 0.83,
-    "intern": 0.01,
-    "extras": 0.12,
+    "project": 0.16,
+    "intern": 1,
+    "extras": 0,
     "arrears": 0
   },
   {
@@ -4593,7 +4593,7 @@
     "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.24
   },
   {
     "placed": 0,
@@ -4602,21 +4602,21 @@
     "plustwo": 0.64,
     "ug": 0.37,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.75
+    "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.56,
-    "plustwo": 0.47,
+    "sslc": 0.57,
+    "plustwo": 0.48,
     "ug": 0.54,
     "pg": 0,
-    "project": 0.66,
-    "intern": 0.01,
-    "extras": 0.23,
+    "project": 0.33,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -4626,10 +4626,10 @@
     "plustwo": 0.42,
     "ug": 0.29,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.34
+    "arrears": 0
   },
   {
     "placed": 1,
@@ -4638,19 +4638,19 @@
     "plustwo": 0.84,
     "ug": 0.73,
     "pg": 1,
-    "project": 0.83,
-    "intern": 0.01,
-    "extras": 0.08,
+    "project": 0.16,
+    "intern": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.69,
-    "plustwo": 0.58,
+    "sslc": 0.68,
+    "plustwo": 0.57,
     "ug": 0.39,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -4662,10 +4662,10 @@
     "plustwo": 0.63,
     "ug": 0.38,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.34
+    "arrears": 0.29
   },
   {
     "placed": 0,
@@ -4677,18 +4677,18 @@
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0
+    "arrears": 0.11
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
+    "sslc": 0.96,
     "plustwo": 1,
-    "ug": 0.67,
+    "ug": 0.66,
     "pg": 1,
     "project": 0.83,
     "intern": 0,
-    "extras": 0.26,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -4698,33 +4698,33 @@
     "plustwo": 0.84,
     "ug": 0.73,
     "pg": 1,
-    "project": 0.83,
-    "intern": 0,
-    "extras": 0.16,
+    "project": 0.66,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 0,
-    "sslc": 0.71,
-    "plustwo": 0.59,
+    "sslc": 0.7,
+    "plustwo": 0.58,
     "ug": 0.74,
     "pg": 0,
-    "project": 0.83,
-    "intern": 0,
-    "extras": 0,
+    "project": 0.5,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 1,
     "engineering": 1,
-    "sslc": 1,
-    "plustwo": 0.84,
-    "ug": 0.72,
-    "pg": 1,
-    "project": 0.16,
-    "intern": 0,
-    "extras": 0.02,
+    "sslc": 0.82,
+    "plustwo": 0.69,
+    "ug": 0.69,
+    "pg": 0,
+    "project": 0,
+    "intern": 1,
+    "extras": 1,
     "arrears": 0
   },
   {
@@ -4734,22 +4734,22 @@
     "plustwo": 0.45,
     "ug": 0.78,
     "pg": 0,
-    "project": 0.66,
+    "project": 0.5,
     "intern": 0,
-    "extras": 0,
+    "extras": 1,
     "arrears": 0
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.73,
-    "plustwo": 0.61,
+    "sslc": 0.72,
+    "plustwo": 0.6,
     "ug": 0.44,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.17
+    "arrears": 0
   },
   {
     "placed": 0,
@@ -4758,7 +4758,7 @@
     "plustwo": 0.55,
     "ug": 0.43,
     "pg": 0,
-    "project": 0,
+    "project": 0.5,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -4766,11 +4766,11 @@
   {
     "placed": 0,
     "engineering": 1,
-    "sslc": 0.67,
-    "plustwo": 0.56,
-    "ug": 0.34,
+    "sslc": 0.55,
+    "plustwo": 0.46,
+    "ug": 0.33,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
     "arrears": 0
@@ -4778,25 +4778,25 @@
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.82,
+    "sslc": 0.83,
     "plustwo": 0.69,
     "ug": 0.42,
     "pg": 0,
     "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.68
+    "arrears": 0.69
   },
   {
     "placed": 0,
     "engineering": 0,
-    "sslc": 0.71,
-    "plustwo": 0.59,
+    "sslc": 0.7,
+    "plustwo": 0.58,
     "ug": 0.49,
     "pg": 0,
-    "project": 0.5,
+    "project": 0,
     "intern": 0,
     "extras": 0,
-    "arrears": 0.39
+    "arrears": 0.79
   }
 ]

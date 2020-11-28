@@ -150,13 +150,9 @@ studentTabs.post("/prediction",async(req,res)=>{
     var userData=await user.getUserData(data.user);
     console.log(JSON.stringify(userData,null,2));
 
-
-    // d["project"],
-    // d["intern"],
-    // d["extras"],
-    // d["arrears"]
-
     console.log(NeuralNetwork);
+
+    //d["project"],d["intern"],d["extras"],d["arrears"]
 
     var input=[
       userData.result.data.admission.engineering,//engineering
@@ -194,16 +190,25 @@ studentTabs.post("/prediction",async(req,res)=>{
     });
     project=Math.min(1,project/6); // range 0 to 1
     intern=Math.min(1,intern); // one or zero
-    var ach=Math.min(1,userData.result.data.education.achievement.length);
     input.push(project);
     input.push(intern);
-    input.push(ach);
+    var ach=Math.min(1,userData.result.data.education.achievement.length);
+    input.push(ach);//extras
+    var arrears=(Math.min(1,parseInt(userData.result.data.admission.arrears)/2)*100)/100;
+    input.push(arrears);
 
-    // console.log(input);
-    var result=NeuralNetwork(input);//predict
-    result=result<0.75?false:true;
+    console.log(JSON.stringify(userData,null,2))
+
+    console.log(input);
+    var percent=NeuralNetwork(input);//predict
+    var placement=percent<0.75?false:true;
+    percent=parseInt(percent*10000)/100;
+
+    console.log(percent,placement);
+
     res.render("student/dashboard-tabs/prediction",{
-      placement:result
+      placement,
+      percent
     });
   }).catch(error=>{
     console.log(error.message);

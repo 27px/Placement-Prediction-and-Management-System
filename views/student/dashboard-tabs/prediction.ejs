@@ -1,9 +1,37 @@
-<div class="layout dashboard">
-  <div class="item wide prediction<%-(placement)?' prediction-success':''%>">
-    <div class="icon icon"></div>
-    
+<div class="layout dashboard single-layout">
+  <div class="item wide prediction <%-(placement)?'prediction-success':'prediction-failure'%>">
+    <div class="icon"></div>
+    <div class="wrap">
+      <div class="title"><%-(placement)?'Congrats':'Sorry'%></div>
+      <%
+        if(placement)
+        {
+          %>
+            <div class="sub-title">You have a high <!--<%-percent%>%--> chance to get placed.</div>
+            <div class="sub-title">Don't stop, Keep training.</div>
+            <div class="sub-title">See Suggestions.</div>
+          <%
+        }
+        else
+        {
+          %>
+            <div class="sub-title">Your chances of getting placed are low<!-- (<%-percent%>%)-->.</div>
+            <div class="sub-title">Don't let this discourage you.</div>
+            <div class="sub-title">See Suggestions.</div>
+          <%
+        }
+      %>
+    </div>
   </div>
-  <div class="item tall"></div>
+  <div class="item tall suggestion">
+    <div class="title">Suggestions</div>
+    <div class="sub-title">Complete more Projects</div>
+    <div class="sub-title">Try to do Internships</div>
+    <div class="sub-title">Learn new Skills</div>
+    <div class="sub-title">Clear Arrears, if any</div>
+    <div class="sub-title">Prepare for Aptitude</div>
+    <div class="sub-title">Prepare for HR Interview</div>
+  </div>
   <div class="item normal item-link">
     <div class="fullwrapper inversefullwrapper">
       <div class="titlewrapper">
