@@ -3,11 +3,13 @@
     color: icon stroke color
     isLoggedIn: logged in or not
     type: type of user
+    dash: created dashboard redirection value
   */
   if(!color)
   {
     var color="#000000";
   }
+  dash=["student","coordinator"].includes(type)?"student":type;
 %>
 <div class="top-bar">
   <a class="nav-item menu" id="nav-menu" href="" onclick="event.preventDefault();document.getElementById('nav-bar').classList.toggle('nav-bar-active');">
@@ -23,7 +25,7 @@
       if(isLoggedIn)
       {
         %>
-          <a class="nav-item" id="nav-dashboard" href="/<%=type%>/dashboard">
+          <a class="nav-item" id="nav-dashboard" href="/<%=dash%>/dashboard">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="<%-color%>" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
             </div>

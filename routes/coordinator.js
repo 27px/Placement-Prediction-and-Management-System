@@ -3,13 +3,13 @@ const coordinator=express.Router();
 
 //Route Coordinator
 coordinator.get("/",(req,res)=>{
-  res.redirect("coordinator/dashboard");
+  res.redirect("student/dashboard");//Coordinator Home is Student Dashboard
 });
 
-//Coordinator Home
-coordinator.get("/dashboard",(req,res)=>{
-  res.render("coordinator/coordinator");
-});
+//Coordinator Home is Student Dashboard
+// coordinator.get("/dashboard",(req,res)=>{
+//   res.render("coordinator/coordinator");
+// });
 
 //Send Messages / Mail / Notification
 coordinator.get("/message/add",(req,res)=>{

@@ -10,11 +10,18 @@ window.onload=(event)=>{
     nav.addEventListener("click",selectThisOption);
   });
 };
+function openTab(event)
+{
+  var target=event.currentTarget.getAttribute("data-target");
+  _(`#${target}`).click();
+}
 function selectThisOption(event)
 {
   var a=event.currentTarget;
-  var x=a.parentNode.children;
+  var p=a.parentNode;
+  var x=p.children;
   var n=x.length,i=0;
+  var userType=p.getAttribute("data-user");
   for(i=0;i<n;i++)
   {
     x[i].classList.remove("nav-option-active");
@@ -23,7 +30,7 @@ function selectThisOption(event)
   document.title=a.innerHTML;
   var c=_("#maincontainer");
   c.innerHTML="<div class='loader'></div>";
-  fetch(`/recruiter/dashboard/dashboard-tabs/${a.getAttribute("toURL")}`,{
+  fetch(`/${userType}/dashboard/${a.getAttribute("toURL")}`,{
     method:"POST",
     cahce:"no-store"
   }).then(response=>{
@@ -31,6 +38,9 @@ function selectThisOption(event)
     {
       response.text().then(data=>{
         c.innerHTML=data;
+        Array.from($(".link")).forEach(link=>{
+          link.addEventListener("click",openTab);
+        });
       });
     }
     else

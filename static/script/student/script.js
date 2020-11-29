@@ -24,7 +24,6 @@ function load(tab,callback)
   var container=_("#body");
   container.innerHTML="";
   container.appendChild(ce("div","loading"));
-
   fetch(`/student/dashboard/${tab}`,{
     method:"POST"
   }).then(response=>{
@@ -32,7 +31,19 @@ function load(tab,callback)
     {
       response.text().then(data=>{
         container.innerHTML=data;
-      }).then(callback);
+      }).then(function(){
+        var layout=_(".layout");
+        if(layout!=null)
+        {
+          Array.from(layout.querySelectorAll(".item-link")).forEach(link=>{
+            link.addEventListener("click",openTab);
+          });
+        }
+        if(callback!=undefined)
+        {
+          callback();
+        }
+      });
     }
     else
     {
@@ -51,7 +62,7 @@ window.onload=()=>{
   {
     tab=open;
   }
-  var callback=void(0);
+  var callback=()=>{};
   if(tab=="main")
   {
     callback=loadCharts;
@@ -65,6 +76,10 @@ function openTab(event)
 {
   hideMenu();
   var tab=event.currentTarget.getAttribute("loadtab");
+  if(tab==null)
+  {
+    return;
+  }
   var callback=void(0);
   if(tab=="main")
   {
@@ -397,4 +412,12 @@ function resetSearch(delay=400)
       x.parentNode.removeChild(x);
     },delay);
   }
+}
+function logout()
+{
+  window.location="/logout";
+}
+function goHome()
+{
+  window.location="/home";
 }

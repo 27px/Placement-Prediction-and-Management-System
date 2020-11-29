@@ -1,12 +1,16 @@
 {
-  "coordinator/dashboard":[
+  "important":[
+    "user_config is not tracked and must not get deleted from local repo"
+  ],
+  "recruiter/dashboard":[
     "images and icons",
     "tabs",
     "content",
     "email pass from ejs",
     "dynamic notifications",
     "no notification messsage",
-    "add course details"
+    "add course details",
+    "course, department are dummy hard coded data"
   ],
   "initialize.js":[
     "set custom config values ?"
@@ -18,12 +22,14 @@
     "show profile pic when email enters ? "
   ],
   "db":[
-    "Use Indexing in search (index $text $search)"
+    "export data for backup",
+    "Use Indexing in search (index $text $search)",
+    "course, department are dummy hard coded data"
   ],
   "student/dashboard":{
     "redirect":"redirect to complete-profile if profile not complete or otp not verified",
     "searchresultcontainer":"add data and link",//in the data.js file,
-    "sidebar":"set titles, icons and url",
+    "sidebar":"set titles, icons and url, add logout, and other nav links"
   },
   "before-production":[
     "check if all pages have title",
@@ -36,6 +42,7 @@
   ],
   "ui":{
     "designs-to-add":[
+      "https://jobs.github.com/api",
       "https://codepen.io/rudyt7/pen/ExjVwya",
       "https://codepen.io/dazulu/pen/VVZrQv",
       "http://localhost/Root/Workarea/My%20Collection/Card/",
@@ -114,7 +121,7 @@ function insertDummyForm()
 }
 
 
-
+/////Try to use this clip path somewhere
 <svg>
   <defs>
     <clipPath id="svg-ld_masked_image_5fbb028da6094">

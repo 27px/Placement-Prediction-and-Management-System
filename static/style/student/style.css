@@ -511,6 +511,7 @@
   text-decoration:none;
   /* border-radius:0px 15px 0px 15px; */
   overflow:hidden;
+  white-space:nowrap;
 }
 .contents .side .option:hover
 {
@@ -593,6 +594,7 @@
   display:inline-flex;
   flex-direction:column;
   justify-content:center;
+  overflow:hidden;
 }
 .side .option .title
 {
@@ -607,6 +609,7 @@
 {
   color:rgba(255,255,255,0.8);
   font-size:14px;
+  letter-spacing:1px;
   transition:color 0.3s;
 }
 @media (max-width:250px)

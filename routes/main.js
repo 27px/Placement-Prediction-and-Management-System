@@ -4,7 +4,7 @@ const cookieParser=require("cookie-parser");
 const student=require("./student");
 const coordinator=require("./coordinator");
 const recruiter=require("./recruiter");
-const administrator=require("./administrator");
+const admin=require("./admin");
 const data=require("./data");// statistics, sitemap and other data
 const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
@@ -120,6 +120,10 @@ route.post("/login",(req,res)=>{
           if(result.data==undefined && (result.type=="student" || result.type=="coordinator"))
           {
             data.redirect='student/profile/new';//If (student/coordinator) profile not complete
+          }
+          else if(result.type=="coordinator")
+          {
+            data.redirect=`/student/dashboard`;//coordinator is also student
           }
           else
           {
@@ -373,7 +377,7 @@ route.get("/profile",(req,res)=>{
   //Important
   var user="student";//Hardcoded - change when db is implemented
 
-  if(user!="administrator")
+  if(user!="admin")
   {
     res.redirect(`${user}/dashboard?tab=profile`);
   }
@@ -392,8 +396,8 @@ route.use("/coordinator",coordinator);
 //Coordinator Route
 route.use("/recruiter",recruiter);
 
-//Administrator Route
-route.use("/administrator",administrator);
+//admin Route
+route.use("/admin",admin);
 
 //Get non html data for displaying
 route.use("/data",data);

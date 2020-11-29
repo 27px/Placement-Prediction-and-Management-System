@@ -10,7 +10,7 @@ var mail_credentials={
     "pass":user_config.MAIL.PASSWORD
   },
   tls:{
-    rejectUnauthorized: false
+    rejectUnauthorized:false
   }
 }
 module.exports=mail_credentials;

@@ -13,7 +13,7 @@
   <div class="item normal">
     <canvas id="graph"></canvas>
   </div>
-  <div class="item normal special">
+  <div class="item normal special item-link" loadtab="prediction">
     <div class="fullwrapper">
       <div class="titlewrapper">
         <div class="iconic">
@@ -30,13 +30,96 @@
   <div class="item huge">
     <canvas id="graph2"></canvas>
   </div>
-  <div class="item normal"></div>
-  <div class="item normal"></div>
-  <div class="item normal"></div>
-  <div class="item wide profile">
+  <div class="item normal item-link">
+    <div class="fullwrapper inversefullwrapper">
+      <div class="titlewrapper">
+        <div class="iconic">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hard-drive"><line x1="22" y1="12" x2="2" y2="12"></line><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path><line x1="6" y1="16" x2="6.01" y2="16"></line><line x1="10" y1="16" x2="10.01" y2="16"></line></svg>
+        </div>
+        <div class="title">Apply for Job</div>
+      </div>
+      <div class="contents">
+        <div class="content">Search and apply for jobs</div>
+        <div class="content">Attend tests to get selected.</div>
+      </div>
+    </div>
+  </div>
+  <div class="item normal verticallist">
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+    <div class="card">
+      <div class="title">Rahul R</div>
+      <div class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    </div>
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+    <div class="card">
+      <div class="title">Notification</div>
+      <div class="subtitle">Dummy Value</div>
+    </div>
+  </div>
+  <div class="item normal item-link">
+    <div class="fullwrapper inversefullwrapper">
+      <div class="titlewrapper">
+        <div class="iconic">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        </div>
+        <div class="title">Training Resources</div>
+      </div>
+      <div class="contents">
+        <div class="content">Access study materials</div>
+        <div class="content">Prepare for the Placement Drive.</div>
+      </div>
+    </div>
+  </div>
+  <div class="item wide horizontallist">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+  <div class="item wide profile item-link">
     <div class="picwrapper">
-      <img class="pic" src="../../static/images/student/dashboard/sample.jpg">
-      <div class="overlay" onclick="alert('in development');console.log('edit profile pic in development')">
+      <img class="pic" src="<%-profilepic%>">
+      <div class="overlay">
         <div class="editwrapper">
           <div class="icon"></div>
           <div class="title">Edit</div>
@@ -45,18 +128,18 @@
     </div>
     <div class="details">
       <div class="wrapper">
-        <div class="name">Annie Machbeth</div>
-        <div class="userid">ann47</div>
-        <div class="email">anniemachbeth@gmail.com</div>
-        <div class="phone">+91 9894956738</div>
-        <div class="bio">Artist, Intrested in Painting, Photography</div>
+        <div class="name"><%-name%></div>
+        <div class="course"><%-course%></div>
+        <div class="email"><%-email%></div>
+        <div class="phone"><%-phone%></div>
+        <div class="bio"><%-about%></div>
       </div>
     </div>
     <div class="edit" onclick="alert('in development');console.log('edit profile in development')"></div>
   </div>
-  <div class="item normal"></div>
-  <div class="item normal"></div>
-  <div class="item normal special">
+  <!-- <div class="item normal"></div>
+  <div class="item normal"></div> -->
+  <div class="item normal special item-link">
     <div class="fullwrapper">
       <div class="titlewrapper">
         <div class="iconic">

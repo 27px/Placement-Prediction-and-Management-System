@@ -2,10 +2,12 @@ class setUpStudentProfileData
 {
   constructor(form,files)
   {
-    let [department,course]=form.course.split(";");
+    let [department,course,engineering]=form.course.split(";");
+    engineering=parseInt(engineering);
     let courses=[];
-    for(let i=1,coursedata={};form[`coursetype-${i}`]!==undefined;i++)
+    for(let i=1,coursedata={};form[`coursetype-${i}`]!=""&&form[`coursetype-${i}`]!=undefined;i++)
     {
+      console.log(i);
       ["type","name","college","cgpa","passdate"].forEach(details=>{
         coursedata[details]=form[`course${details}-${i}`];
       });
@@ -13,8 +15,9 @@ class setUpStudentProfileData
       /////Also set Files
     }
     let experience=[];
-    for(let i=1,experiencedata={};form[`experiencetype-${i}`]!==undefined;i++)
+    for(let i=1,experiencedata={};form[`experiencetype-${i}`]!=""&&form[`experiencetype-${i}`]!=undefined;i++)
     {
+      console.log(i);
       ["type","title","description","from","to"].forEach(details=>{
         experiencedata[details]=form[`experience${details}-${i}`];
       });
@@ -22,8 +25,9 @@ class setUpStudentProfileData
       /////Also set Files
     }
     let achievements=[];
-    for(let i=1,achievementdata={};form[`achievementtype-${i}`]!==undefined;i++)
+    for(let i=1,achievementdata={};form[`achievementtype-${i}`]!=""&&form[`achievementtype-${i}`]!=undefined;i++)
     {
+      console.log(i);
       ["type","title","description","from","to"].forEach(details=>{
         achievementdata[details]=form[`achievement${details}-${i}`];
       });
@@ -45,6 +49,7 @@ class setUpStudentProfileData
       course,
       semester:form.semester,
       arrears:form.arrears,
+      engineering,
       passdate:form.passout
     };
     this.data.education={

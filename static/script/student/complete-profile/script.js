@@ -320,9 +320,15 @@ function setScrollNumber()
 }
 function nextPage(event)
 {
-  // const hash=window.location.hash;
-  // var from=pi(hash.split("-")[1]);
+  const hash=window.location.hash;
+  var from=pi(hash.split("-")[1]);
   var to=pi(event.currentTarget.href.split("#")[1].split("-")[1]);
+  if(from==1 && !_(".pro").children[0].classList.contains("active-box"))
+  {
+    setMessage("#message-box-1","Verify OTP before moving to next","warning");
+    event.preventDefault();
+    return;
+  }
   if(_(".pro").children[to-1].classList.contains("no-visit"))
   {
     event.preventDefault();
@@ -336,13 +342,12 @@ function verifyOTP()
   Array.from(_(".otp-container").children).forEach(input=>{
     otp+=input.value;
   });
-  otp=pi(otp);
-  if(isNaN(otp))
+  if(isNaN(pi(otp)))
   {
     setMessage("#message-box-1","Invalid OTP","error");
     return;
   }
-  if(otp.toString().length<6)
+  if(otp.length<6)
   {
     setMessage("#message-box-1","Invalid OTP","error");
     return;
@@ -391,7 +396,7 @@ function setUpCourseForm(data)
     group.label=value.name;
     value.courses.forEach(c=>{
       var option=document.createElement("option");
-      option.value=`${value._id};${c.name}`;
+      option.value=`${value._id};${c.name};${value.engineering}`;
       option.innerHTML=c.name;
       option.setAttribute("data-max-sem",c.num_of_sem);
       group.appendChild(option);
