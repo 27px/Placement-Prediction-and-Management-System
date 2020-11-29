@@ -1,0 +1,146 @@
+*{
+  margin: 0;
+  padding:0;
+  font-family: monospace;
+
+}
+body,:root{
+  overflow-x:hidden;
+  width: 100vw!important;
+  position: absolute;
+}
+.about {
+  padding: 70px 0px;
+  text-align: center;
+  font-size: 60px;
+  background: linear-gradient(to bottom, #015871 0%, #000000 100%);
+  text-transform: uppercase;
+  color: white;
+  border-radius:0px 0px 50% 50%;
+  width: 110%;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-weight: bold;
+  transform: translateX(-50%);
+}
+.about-section{
+  overflow: hidden;
+  text-align: center;
+
+  padding: 60px;
+}
+.main{
+  margin-top: 200px;
+  margin-bottom: 40px;
+  padding: 10px;
+  padding-bottom: 300px;
+  text-align:center;
+}
+.main img{
+  display:inline-block;
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 175px;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 0 20px #555555;
+}
+.center{
+  font-weight: bold;
+  padding:10px;
+  font-size: 40px!important;
+}
+.center p{
+  text-align: justify;
+  line-height: 40px;
+  font-size: 25px;
+  padding: 30px;
+  box-sizing: border-box;
+  max-width: 800px;
+  font-weight: normal;
+}
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.box:nth-child(odd){
+  flex-direction: row;
+}
+.box:nth-child(even){
+  flex-direction:row-reverse;
+}
+.ocean {
+  height: 2%;
+  width:100%;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background: #015871;
+}
+
+.wave {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+  position: absolute;
+  top: -198px;
+  width: 6400px;
+  height: 200px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+  top: -175px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+  opacity: 1;
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+
+@keyframes swell {
+  0%, 100% {
+    transform: translate3d(0,-25px,0);
+  }
+  50% {
+    transform: translate3d(0,5px,0);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .box {
+    width: 100%;
+    flex-direction: column!important;
+    text-align: center;
+    display: flex;
+  }
+  .main{
+    padding-bottom: 300px;
+  }
+  .main img{
+    margin: 75px 0px 40px 0px;
+  }
+  .about-section,p{
+    padding: 0!important;
+  }
+  .center p{
+    font-size: 20px;
+    width: 400px;
+  }
+  .center{
+    font-size: 30px!important;
+    }
+    .about {
+      padding: 60px 0px;
+      font-size: 50px;
+    }
+}
