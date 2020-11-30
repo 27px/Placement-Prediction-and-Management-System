@@ -26,7 +26,8 @@ admin.get("/dashboard",async(req,res)=>{
     }
     res.render("recruiter/dashboard",{
       usertype:userData.result.type,
-      email:userData.result.email
+      email:userData.result.email,
+      notifications:userData.result.messages
     });// same for recruiter and admin
   }).catch(error=>{
     console.log(error.message);
@@ -34,8 +35,29 @@ admin.get("/dashboard",async(req,res)=>{
   });
 });
 
-admin.post("/dashboard/:tab",(req,res)=>{
-  res.render(`admin/${req.params.tab}`);
+admin.post("/dashboard/:tab",async(req,res)=>{
+  const user=new User(req);
+  await user.initialize().then(async data=>{
+    if(!data.isLoggedIn)
+    {
+      throw new Error("Authentication Failed");
+    }
+    var userData=await user.getUserData(data.user);
+    if(!userData.success)
+    {
+      throw new Error("Authentication Failed . . .");
+    }
+    if(!user.hasAccessOf("admin"))
+    {
+      throw new Error("Access Denied");
+    }
+    res.render(`admin/${req.params.tab}`,{
+      notifications:userData.result.messages
+    });// same for recruiter and admin
+  }).catch(error=>{
+    console.log(error.message);
+    res.end("");
+  });
 });
 
 

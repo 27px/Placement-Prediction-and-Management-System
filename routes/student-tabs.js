@@ -182,6 +182,7 @@ studentTabs.post("/prediction",async(req,res)=>{
     //Atleast one course will be there
     var ug=0,pg=0;// ug uses cgpa and pg is binary status of yes or no
     userData.result.data.education.course.forEach(course=>{
+      console.log(course.type,course.cgpa);
       if(course.type=="ug")
       {
         if(course.cgpa>ug)
@@ -216,7 +217,11 @@ studentTabs.post("/prediction",async(req,res)=>{
     input.push(ach);//extras
     var arrears=(Math.min(1,parseInt(userData.result.data.admission.arrears)/2)*100)/100;
     input.push(arrears);
-    // console.log(input);
+    console.log(input);
+
+    // [0,0.823,0.784,0,1,0,1,1,0]
+
+
     var percent=NeuralNetwork(input);//predict
     var placement=percent<0.75?false:true;
     percent=parseInt(percent*10000)/100;

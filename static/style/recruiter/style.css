@@ -67,6 +67,7 @@ body,.main
 .titlebar .titleleft
 {
   text-align:left;
+  cursor:pointer;
 }
 .titlebar .icon,.titlebar .title
 {
@@ -275,6 +276,7 @@ body,.main
   box-sizing:border-box;
   height:100px;
   position:relative;
+  cursor:pointer;
 }
 .notifycontainer::-webkit-scrollbar
 {
@@ -400,10 +402,25 @@ body,.main
   color:var(--primary3);
   font-family:var(--font-sub-title);
   font-weight:300;
-  font-size:15px;
+  font-size:18px;
   text-align:justify;
   letter-spacing:1px;
   line-height:25px;
+}
+.notification .from,
+.notification .time
+{
+  color:var(--primary9);
+  font-family:var(--font-sub-title);
+  font-weight:300;
+  font-size:15px;
+  text-align:right;
+  letter-spacing:1px;
+  line-height:25px;
+}
+.notification .from
+{
+  margin-top:25px;
 }
 .rounded
 {
@@ -823,4 +840,33 @@ body,.main
 .link
 {
   cursor:pointer;
+}
+.notification-general::after,
+.notification-feedback::after,
+.notification-help::after,
+.notification-bug::after
+{
+  content:"";
+  width:10px;
+  height:10px;
+  position:absolute;
+  top:12px;
+  right:12px;
+  border-radius:100px;
+}
+.notification-general::after
+{
+  background:#03A9F4;
+}
+.notification-feedback::after
+{
+  background:#4CAF50;
+}
+.notification-help::after
+{
+  background:#FFEB3B;
+}
+.notification-bug::after
+{
+  background:#f44336;
 }

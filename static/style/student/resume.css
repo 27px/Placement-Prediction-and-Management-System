@@ -1,0 +1,140 @@
+*
+{
+  padding:0;
+  margin:0;
+}
+:root,body
+{
+  width:100%;
+  height:auto;
+}
+:root
+{
+  --r-gap:20px;
+}
+body
+{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:minmax(min-content,max-content);
+  padding:var(--r-gap);
+  grid-gap:var(--r-gap);
+  box-sizing:border-box;
+  font-family:var(--font-sub-title);
+  letter-spacing:1px;
+  word-spacing:5px;
+}
+@media (max-width:1150px)
+{
+  body
+  {
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+@media (max-width:950px)
+{
+  body
+  {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+@media (max-width:550px)
+{
+  body
+  {
+    grid-template-columns:repeat(1,1fr);
+  }
+  .block
+  {
+    text-align:center;
+  }
+}
+.block
+{
+  width:100%;
+  height:100%;
+  padding:var(--r-gap);
+  box-sizing:border-box;
+  border-radius:var(--r-gap);
+  background:linear-gradient(135deg,#42a5f5,#1565c0);
+  /* box-shadow:-2px -2px 5px 1px rgba(0,0,0,0.5),
+             -2px -2px 10px 1px rgba(0,0,0,0.5),
+             2px 2px 5px 1px rgba(255,255,255,0.25),
+             2px 2px 10px 1px rgba(255,255,255,0.25); */
+}
+.flex-block
+{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-evenly;
+  align-items:flex-start;
+}
+.hvcenter
+{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+img.pic
+{
+  width:200px;
+  height:200px;
+  border-radius:100px;
+}
+.row
+{
+  text-transform:capitalize;
+  font-size:20px;
+  padding:5px 0px;
+}
+.email
+{
+  text-transform:none;
+}
+.huge
+{
+  font-size:30px;
+  text-transform:uppercase;
+  font-weight:900;
+}
+.medium
+{
+  font-size:25px;
+  text-align:center;
+  width:100%;
+  font-weight:900;
+}
+.right
+{
+  width:100%;
+  text-align:right;
+}
+.date
+{
+  font-style:italic;
+}
+.upper
+{
+  text-transform:uppercase;
+}
+.lower
+{
+  text-transform:lowercase;
+}
+.h-flex
+{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+}
+.h-flex *
+{
+  width:100%;
+}
+.h-flex :nth-child(1)
+{
+  text-align:left;
+}

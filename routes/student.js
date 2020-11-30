@@ -94,7 +94,8 @@ student.get("/profile/new",async(req,res)=>{
       var profile=userData.result.data;//undefined if profile is incomplete
       if(isLoggedIn && profile!=undefined)//returned data successfully
       {
-        redirect=`/${userData.result.type}/dashboard`;
+        var rdr=userData.result.type=="coordinator"?"student":userData.result.type;
+        redirect=`/${rdr}/dashboard`;
       }
       else if(!verified)
       {
@@ -301,7 +302,30 @@ student.post("/profile/new/verify-otp",async(req,res)=>{
   });
 });
 
-//Profile of others or current user
+//Current User profile (custom resume)
+student.get("/profile/view",async(req,res)=>{
+  const user=new User(req);
+  await user.initialize().then(async data=>{
+    if(!data.isLoggedIn)
+    {
+      throw new Error("Not logged in");
+    }
+    var userData=await user.getUserData(data.user);
+    if(!userData.success)
+    {
+      throw new Error("Data fetch error");
+    }
+    console.log(JSON.stringify(userData.result,null,2));
+    res.render("student/resume",{
+      data:userData.result
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    res.redirect("/login");
+  });
+});
+
+//Profile of others
 student.get("/profile/view/:id",(req,res)=>{
   var userID=req.params.id;
   res.render("student/view-profile",{

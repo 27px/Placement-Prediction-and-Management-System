@@ -3,12 +3,10 @@
     "user_config is not tracked and must not get deleted from local repo"
   ],
   "recruiter/dashboard":[
-    "images and icons",
-    "tabs",
     "content",
-    "email pass from ejs",
-    "dynamic notifications",
-    "no notification messsage",
+    "no notification messsage"
+  ],
+  "coordinator":[
     "add course details",
     "course, department are dummy hard coded data"
   ],

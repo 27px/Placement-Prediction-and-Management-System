@@ -171,7 +171,8 @@ body,:root
 {
   .box div img
   {
-    height:80vmin;
-    width:80vmin;
+    height:80vmin!important;
+    width:80vmin!important;
+    border-radius:40vmin;
   }
 }
