@@ -421,3 +421,88 @@ function goHome()
 {
   window.location="/home";
 }
+function searchExternalJob()
+{
+  var url="https://jobs.github.com/positions.json",search=[];
+  var keyword=_("#external-job-search-keyword").value;
+  var place=_("#external-job-search-place").value;
+  var container=_("#external-job-search-result");
+  container.innerHTML="<div class='loading high-contrast'></div>";
+  if(keyword!="")
+  {
+    search.push(`description=${keyword}`);
+  }
+  if(place!="")
+  {
+    search.push(`location=${place}`);
+  }
+  search=encodeURI(search.join("&").replaceAll(" ","+"));
+  if(search!="")
+  {
+    url+=`?${search}`;
+  }
+  fetch(`./dashboard/external/fetch`,{
+    method:"POST",
+    cache:"force-cache",
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify({url})
+  })
+  .then(resp=>{
+    if(resp.status!==200)
+    {
+      throw new Error("Status Error");
+    }
+    return resp.json();
+  })
+  .then(data=>{
+    if(!data.success)
+    {
+      throw new Error(data.message);
+    }
+    container.innerHTML="";
+    if(data.data.length>0)
+    {
+      data.data.forEach(job=>{
+        container.innerHTML+=createJob(job);
+      });
+    }
+    else
+    {
+      container.innerHTML+=`
+        <div class="external-job not-found">
+          <div class="not-found"></div>
+          <div class="text">No results found</div>
+        </div>
+      `;
+    }
+  })
+  .catch(err=>{
+    console.warn(err.message);
+    container.innerHTML="<div class='error'></div>";
+  });
+}
+function createJob(job)
+{
+  return `
+    <div class="external-job">
+      <div class="top">
+        <a class="company" href="${job.company_url}">
+          <img src="${job.company_logo}" class="logo">
+          <div class="name">${job.company}</div>
+        </a>
+        <div class="title">${job.title}</div>
+      </div>
+      <div class="apply">
+        <div class="short">
+          <div class="type">${job.type}</div>
+          <div class="location">${job.location}</div>
+        </div>
+        <div class="description">${job.description}</div>
+        <div class="details">${job.how_to_apply}</div>
+        <a class="apply-button" target="_blank" href="${job.url}">More Info</a>
+      </div>
+    </div>
+  `;
+}

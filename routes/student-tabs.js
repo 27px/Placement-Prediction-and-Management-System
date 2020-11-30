@@ -3,6 +3,7 @@ const studentTabs=express.Router();
 const User=require("../functions/user.js");
 const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
+const fetch=require("node-fetch");
 const config=require("../config/config.json");
 const chalk=require("chalk");
 
@@ -143,6 +144,25 @@ studentTabs.post("/external",(req,res)=>{
   res.render("student/dashboard-tabs/external-jobs");
 });
 
+//cors proxy for api fetch
+studentTabs.post("/external/fetch",async(req,res)=>{
+  fetch(req.body.url)
+  .then(resp=>resp.json())
+  .then(data=>{
+    res.json({
+      success:true,
+      data
+    });
+  })
+  .catch(error=>{
+    console.log(error.message);
+    resp.json({
+      success:false,
+      message:error.message
+    });
+  });
+});
+
 //recommendation
 studentTabs.post("/recommendation",(req,res)=>{
   res.render("student/dashboard-tabs/recommendation");
@@ -151,20 +171,9 @@ studentTabs.post("/recommendation",(req,res)=>{
 //placement prediction
 studentTabs.post("/prediction",async(req,res)=>{
   const NeuralNetwork=require("../neural_network/trained-model.js");
-
-  // Neural Network Loaded
-
   const user=new User(req);
   await user.initialize().then(async data=>{
-
-
     var userData=await user.getUserData(data.user);
-    console.log(JSON.stringify(userData,null,2));
-
-    console.log(NeuralNetwork);
-
-    //d["project"],d["intern"],d["extras"],d["arrears"]
-
     var input=[
       userData.result.data.admission.engineering,//engineering
       userData.result.data.education.sslc.mark/100,//sslc
@@ -207,16 +216,11 @@ studentTabs.post("/prediction",async(req,res)=>{
     input.push(ach);//extras
     var arrears=(Math.min(1,parseInt(userData.result.data.admission.arrears)/2)*100)/100;
     input.push(arrears);
-
-    console.log(JSON.stringify(userData,null,2))
-
-    console.log(input);
+    // console.log(input);
     var percent=NeuralNetwork(input);//predict
     var placement=percent<0.75?false:true;
     percent=parseInt(percent*10000)/100;
-
-    console.log(percent,placement);
-
+    // console.log(percent,placement);
     res.render("student/dashboard-tabs/prediction",{
       placement,
       percent
@@ -227,6 +231,5 @@ studentTabs.post("/prediction",async(req,res)=>{
     res.end("");
   });
 });
-
 
 module.exports=studentTabs;

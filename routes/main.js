@@ -275,9 +275,79 @@ route.get("/about",(req,res)=>{
   res.render("about");
 });
 
-//help / contact / feedback
-route.get("/contact",(req,res)=>{
-  res.render("contact");
+//help / contact / feedback / bug report
+route.get("/contact",async(req,res)=>{
+  var type="guest";
+  var isLoggedIn=false;
+  var email="";
+  const user=new User(req);
+  await user.initialize()
+  .then(data=>{
+    type=data.type;
+    isLoggedIn=data.isLoggedIn;
+    email=isLoggedIn?data.user:"";
+  }).catch(error=>{
+    console.log(error.message);
+    type="guest";
+    isLoggedIn=false;
+    email="";
+  }).finally(()=>{
+    res.render("contact",{
+      type,
+      isLoggedIn,
+      email,
+      error:""
+    });
+  });
+});
+
+//send message
+route.post("/contact",async(req,res)=>{
+  const user=new User(req);
+  var err=false;
+  await user.initialize()
+  .then(async data=>{
+    isLoggedIn=data.isLoggedIn;
+    email=isLoggedIn?data.user:req.body.email;
+    await MongoClient.connect(DB_CONNECTION_URL,{
+      useUnifiedTopology:true
+    }).then(async mongo=>{
+      const db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+      await db.collection("user_data")
+      .updateOne({
+        type:"admin"
+      },{
+        $push:{
+          messages:{
+            from:email,
+            name:req.body.name,
+            type:req.body.type,
+            message:req.body.message,
+            date:Date.now()
+          }
+        }
+      }).then(d=>{
+        // console.log(d);
+      });
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    err=true;
+  }).finally(()=>{
+    if(err)
+    {
+      res.render("contact",{
+        type,
+        isLoggedIn,
+        email,
+        error:"Couldn't send Message"
+      });
+    }
+    else
+    {
+      res.redirect("/home");
+    }
+  });
 });
 
 //Gallery

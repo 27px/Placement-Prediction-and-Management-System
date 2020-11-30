@@ -3,9 +3,65 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Feedback</title>
+    <link rel="stylesheet" href="../static/style/home/contact.css">
+    <link rel="stylesheet" href="../static/style/nav.css">
   </head>
   <body>
-    <h1>Contact</h1>
+    <%- include("partials/nav.ejs",{
+      type:"temp",
+      isLoggedIn:"temp"
+    }); %>
+    <div class="container">
+      <div class="form">
+        <div class="contact-form">
+          <form action="" method="POST">
+            <span class="square"></span>
+            <span class="circle one"></span>
+            <span class="circle two"></span>
+            <div class="input-container focus">
+              <label for="name">Your Name</label>
+              <input type="text" name="name" id="name" placeholder="Name" required>
+            </div>
+            <div class="input-container focus">
+              <label for="email">Your Email</label>
+              <input type="email" name="email" id="email" placeholder="E-Mail" <%if(email!=""){%>readonly="true" value="<%-email%>"<%}%> required>
+            </div>
+            <div class="input-container focus">
+              <label for="type">Type</label>
+              <select name="type" id="type" onchange="this.blur();" required>
+                <option value selected disabled>Select Type</option>
+                <option value="general">General</option>
+                <option value="feedback">Feedback</option>
+                <option value="help">Help</option>
+                <option value="bug">Error Reporting</option>
+              </select>
+            </div>
+            <div class="input-container textarea focus">
+              <label for="message">Your Message</label>
+              <textarea name="message" id="message" class="input" placeholder="Message" required></textarea>
+            </div>
+            <%
+              if(error!="")
+              {
+                %>
+                  <div class="err"><%-error%></div>
+                <%
+              }
+            %>
+            <div class="button-wrapper">
+              <button class="button">Send</button>
+            </div>
+          </form>
+        </div>
+        <div class="contact-info">
+          <div class="head">Drop Us a Feedback</div>
+          <div class="quote">
+            <div class="text">The pursuit of perfection often impedes improvement</div>
+            <div class="author">George Will</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
