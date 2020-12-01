@@ -1,6 +1,10 @@
 const express=require("express");
 const admin=express.Router();
+const MongoClient=require("mongodb").MongoClient;
+const DB_CONNECTION_URL=require("../config/db.js");
+const config=require("../config/config.json");
 const User=require("../functions/user.js");
+const generatePassword=require("../functions/generatePassword.js");
 
 //Route admin
 admin.get("/",(req,res)=>{
@@ -34,6 +38,61 @@ admin.get("/dashboard",async(req,res)=>{
     res.redirect("/login");
   });
 });
+
+
+// Create Company Account Backend
+admin.post("/dashboard/add-company-data",async(req,res)=>{
+  const user=new User(req);
+  await user.initialize().then(async data=>{
+    if(data.isLoggedIn && user.hasAccessOf("admin"))
+    {
+      await MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      }).then(async mongo=>{
+        var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+        var data_collection=await db.collection("user_data");
+        data_collection.findOne({
+          email:req.body.email
+        }).then(async result=>{
+          if(result!=null)
+          {
+            throw new Error("Email exists");
+          }
+          else
+          {
+            data_collection.insertOne({
+              email:req.body.email,
+              data:{
+                name:req.body.name,
+                website:req.body.website
+              },
+              type:"recruiter",
+              pic_ext:"",
+              password:Buffer.from(generatePassword()).toString("base64"),
+              messages:[]
+            }).then(re=>{
+              ////send mail
+              res.json({
+
+              });
+            });
+          }
+        });
+      })
+    }
+    else
+    {
+      throw new Error("Not Authorized");
+    }
+  }).catch(error=>{
+    console.log(error.message);
+    res.json({
+      success:false,
+      message:error.message
+    });
+  });
+});
+
 
 admin.post("/dashboard/:tab",async(req,res)=>{
   const user=new User(req);
@@ -84,6 +143,11 @@ admin.get("/dump/data",(req,res)=>{
 //Manage Coordinators
 admin.get("/coordinators/modify",(req,res)=>{
   res.render("admin/manage-coordinators");
+});
+
+//Create Company Account
+admin.get("/add-company",(req,res)=>{
+  res.render("admin/add-company");
 });
 
 //Report Generation

@@ -17,7 +17,6 @@ studentTabs.post("/main",async(req,res)=>{
       var userData=await user.getUserData(data.user);
       // console.log(JSON.stringify(userData,null,2));
 
-
       await MongoClient.connect(DB_CONNECTION_URL,{
         useUnifiedTopology:true
       }).then(async mongo=>{
@@ -28,7 +27,6 @@ studentTabs.post("/main",async(req,res)=>{
         // }).then(dbr=>{
         //   verified=(dbr.otp=="verified");
         // });
-
 
         await Promise.all([
           db.collection("user_data").find({type:"recruiter"}).limit(10),
@@ -91,11 +89,6 @@ studentTabs.post("/main",async(req,res)=>{
 //Student Settings
 studentTabs.post("/settings",(req,res)=>{
   res.render("student/dashboard-tabs/settings");
-});
-
-//Student Profile
-studentTabs.post("/profile",(req,res)=>{
-  res.render(`student/dashboard-tabs/profile`);
 });
 
 //Edit Profile

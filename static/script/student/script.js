@@ -506,3 +506,7 @@ function createJob(job)
     </div>
   `;
 }
+function openInNewTab(url)
+{
+  window.open(url);
+}

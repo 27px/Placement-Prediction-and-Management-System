@@ -1,3 +1,13 @@
+<%
+  var theme=[
+    "green",
+    "blue",
+    "lightblue",
+    "yellow",
+    "pink",
+    "darkgreen"
+  ];
+%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -5,8 +15,9 @@
     <title>Profile</title>
     <link rel="stylesheet" href="../../static/style/student/resume.css">
     <link rel="stylesheet" href="../../static/style/default-values.css">
+    <script src="../../static/script/student/resume.js"></script>
   </head>
-  <body>
+  <body class="<%- theme[Math.floor(Math.random()*theme.length)]; %>">
     <div class="block hvcenter">
       <img class="pic" src="../../data/profilepic/<%=data.email%>.<%-data.pic_ext%>">
     </div>
@@ -33,6 +44,9 @@
       <div class="row upper"><%-data.data.education.sslc.board%></div>
       <div class="row"><%-data.data.education.sslc.school%></div>
       <div class="row huge"><%-data.data.education.sslc.mark%> %</div>
+      <div class="progress">
+        <div class="bar" data-progress="<%-data.data.education.sslc.mark%>"></div>
+      </div>
       <div class="row right date"><%-data.data.education.sslc.passdate%></div>
     </div>
     <div class="block flex-block">
@@ -40,6 +54,9 @@
       <div class="row upper"><%-data.data.education.plustwo.board%></div>
       <div class="row"><%-data.data.education.plustwo.school%></div>
       <div class="row huge"><%-data.data.education.plustwo.mark%> %</div>
+      <div class="progress">
+        <div class="bar" data-progress="<%-data.data.education.plustwo.mark%>"></div>
+      </div>
       <div class="row right date"><%-data.data.education.plustwo.passdate%></div>
     </div>
     <%
@@ -47,9 +64,12 @@
         %>
           <div class="block flex-block">
             <div class="row medium upper"><%-course.type%></div>
-            <div class="row"><%-course.name%></div>
+            <div class="row normal"><%-course.name%></div>
             <div class="row"><%-course.college%></div>
             <div class="row huge"><%-course.cgpa%> <span class="lower medium">cgpa</span></div>
+            <div class="progress">
+              <div class="bar" data-progress="<%-(course.cgpa*10)%>"></div>
+            </div>
             <div class="row right date"><%-course.passdate%></div>
           </div>
         <%
@@ -60,7 +80,7 @@
         %>
           <div class="block flex-block">
             <div class="row medium upper"><%-exp.type%></div>
-            <div class="row"><%-exp.title%></div>
+            <div class="row normal"><%-exp.title%></div>
             <div class="row"><%-exp.description%></div>
             <div class="h-flex">
               <div class="row right date"><%-exp.from%></div>

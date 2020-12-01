@@ -52,3 +52,43 @@ function selectThisOption(event)
     console.warn(error.message);
   });
 }
+function createRecruiterAccount(event)
+{
+  event.preventDefault();
+  var email=_("#email").value;
+  var name=_("#name").value;
+  var website=_("#website").value;
+  var message=_("#create-account-message");
+  if(email=="")
+  {
+    message.innerHTML="Enter E-Mail ID";
+    return;
+  }
+  if(name=="")
+  {
+    message.innerHTML="Enter Company Name";
+    return;
+  }//website not mandatory
+  fetch("./dashboard/add-company-data",{
+    method:"POST",
+    cache:"no-store",
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify({
+      email,
+      name,
+      website
+    })
+  }).then(resp=>{
+    if(resp.status===200)
+    {
+      return resp.json();
+    }
+    throw new Error("Status Error");
+  }).then(data=>{
+    console.log(data);
+  }).catch(error=>{
+    console.log(error.message);
+  });
+}

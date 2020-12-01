@@ -441,22 +441,6 @@ route.get("/team",(req,res)=>{
   res.render("placement-cell-members");
 });
 
-//Profile
-route.get("/profile",(req,res)=>{
-
-  //Important
-  var user="student";//Hardcoded - change when db is implemented
-
-  if(user!="admin")
-  {
-    res.redirect(`${user}/dashboard?tab=profile`);
-  }
-  else
-  {
-    res.redirect("/404");
-  }
-});
-
 //Student Route
 route.use("/student",student);
 

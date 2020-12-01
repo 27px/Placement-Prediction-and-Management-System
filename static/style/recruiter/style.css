@@ -129,6 +129,7 @@ body,.main
   text-align:center;
   font-family:var(--font-monospace);
   white-space:nowrap;
+  position:relative;
 }
 .nav .nav-option:hover,.nav .nav-option:focus
 {
@@ -143,6 +144,31 @@ body,.main
   background-color:var(--light) !important;
   color:var(--primary9) !important;
   font-weight:900;
+}
+.nav-option-active::before,
+.nav-option-active::after
+{
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:0px;
+  height:0px;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+}
+.nav-option-active::before
+{
+  left:0;
+  transform:translate(-100%,50%) scale(1.1);
+  border-left:15px solid transparent;
+  border-right:15px solid var(--light);
+}
+.nav-option-active::after
+{
+  right:0;
+  transform:translate(100%,50%) scale(1.1);
+  border-left:15px solid var(--light);
+  border-right:15px solid transparent;
 }
 .box
 {
@@ -343,7 +369,7 @@ body,.main
   box-shadow:0px 0px 10px 1px rgba(0,0,0,1);
   transition:box-shadow 0.5s;
   color:#FFFFFF;
-  background-image: repeating-linear-gradient(135deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px,transparent 10px, transparent 11px),repeating-linear-gradient(22.5deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px,transparent 10px, transparent 11px),linear-gradient(90deg, hsl(194,74%,56%),hsl(266,74%,56%),hsl(338,74%,56%),hsl(50,74%,56%),hsl(122,74%,56%));
+  background-image:repeating-linear-gradient(135deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px,transparent 10px, transparent 11px),repeating-linear-gradient(22.5deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px,transparent 10px, transparent 11px),linear-gradient(90deg, hsl(194,74%,56%),hsl(266,74%,56%),hsl(338,74%,56%),hsl(50,74%,56%),hsl(122,74%,56%));
 }
 .grad:hover
 {
@@ -669,7 +695,7 @@ body,.main
   }
   .gradcontainer
   {
-    margin-bottom: 10px;
+    margin-bottom:10px;
   }
   .notifycontainer
   {
@@ -869,4 +895,143 @@ body,.main
 .notification-bug::after
 {
   background:#f44336;
+}
+.full-wrap
+{
+  width:calc(100% - 40px);
+  height:calc(100% - 40px);
+  border:1px solid #000000;
+  margin:20px;
+  box-sizing:border-box;
+  border-radius:20px;
+  background:#ffffff;
+  display:flex;
+  flex-direction:row;
+  overflow:hidden;
+}
+.full-wrap .image
+{
+  width:100%;
+  height:100%;
+  background:url("../../images/recruiter/recruiter-create-account.jpg");
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+.full-wrap form
+{
+  width:100%;
+  height:100%;
+  max-width:400px;
+  padding:25px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-evenly;
+}
+.full-wrap form .row
+{
+  width:100%;
+  padding:10px 0px;
+  display:flex;
+  flex-direction:column;
+}
+.full-wrap form .row .title
+{
+  font-size:35px;
+  font-family:var(--font-title);
+  text-align:center;
+}
+.full-wrap form .row label,
+.full-wrap form .row input
+{
+  width:100%;
+  box-sizing:border-box;
+}
+.full-wrap form .row input
+{
+  padding:6px;
+  font-size:18px;
+  border:none;
+  border-bottom:4px solid #808080;
+}
+.full-wrap form .row input:focus
+{
+  border-bottom:4px solid #000000;
+  outline:0px solid transparent;
+}
+.full-wrap form .row label
+{
+  padding:6px 0px;
+  font-family:var(--font-monospace);
+  font-size:20px;
+}
+.full-wrap form .row button
+{
+  min-width:25%;
+  margin:0px auto;
+  padding:10px 25px;
+  font-size:18px;
+  background-image:linear-gradient(90deg, #42A5F5 0%, #0D47A1 51%, #42A5F5 100%);
+  transition:background-position 0.5s;
+  background-size:200% auto;
+  color:white;
+  box-shadow:0 0 20px #eee;
+  border-radius:100px;
+  border:none;
+  display:flex;
+  flex-direction:row;
+  vertical-align:middle;
+  text-align:center;
+  align-items:center;
+  justify-content:center;
+  letter-spacing:1px;
+}
+.full-wrap form .row button svg
+{
+  margin-left:15px;
+  animation:roller 2.5s linear infinite normal;
+}
+.full-wrap form .row button:not(.loading) svg
+{
+  display:none;
+}
+.full-wrap form .row button:hover
+{
+  background-position:right center;
+  color:#fff;
+}
+.full-wrap form .row button:focus
+{
+  outline:0px solid transparent;
+}
+@media (max-width:750px)
+{
+  .full-wrap .image
+  {
+    display:none;
+  }
+  .full-wrap
+  {
+    justify-content:center;
+  }
+}
+@keyframes roller
+{
+  0%
+  {
+    transform:rotate(0deg);
+  }
+  100%
+  {
+    transform:rotate(360deg);
+  }
+}
+.row .message
+{
+  font-size:18px;
+  color:#f44336;
+  font-family:var(--font-monospace);
+  width:100%;
+  text-align:center;
 }

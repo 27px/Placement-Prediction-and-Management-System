@@ -315,7 +315,6 @@ student.get("/profile/view",async(req,res)=>{
     {
       throw new Error("Data fetch error");
     }
-    console.log(JSON.stringify(userData.result,null,2));
     res.render("student/resume",{
       data:userData.result
     });
