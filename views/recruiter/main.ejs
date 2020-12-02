@@ -108,42 +108,32 @@
     <div class="notificationcontainer">
       <div class="notifytitle">Notification</div>
       <div class="notifycontainer">
-        <div class="notification">
-          <div class="title">Notification 1</div>
-          <div class="desc">This is a very long long notification message used to test the height of the message in notification container along with the responsiveness of the container acccording to the dynamic size of the screen and is not user for final results.</div>
-        </div>
-        <div class="notification">
-          <div class="title">N2</div>
-          <div class="desc">Notification 2</div>
-        </div>
-        <div class="notification">
-          <div class="title">N3</div>
-          <div class="desc">Notification 3</div>
-        </div>
-        <div class="notification">
-          <div class="title">N4</div>
-          <div class="desc">Notification 4</div>
-        </div>
-        <div class="notification">
-          <div class="title">N5</div>
-          <div class="desc">Notification 5</div>
-        </div>
-        <div class="notification">
-          <div class="title">N6</div>
-          <div class="desc">Notification 6</div>
-        </div>
-        <div class="notification">
-          <div class="title">N7</div>
-          <div class="desc">Notification 7</div>
-        </div>
-        <div class="notification">
-          <div class="title">N8</div>
-          <div class="desc">Notification 8</div>
-        </div>
-        <div class="notification">
-          <div class="title">N9</div>
-          <div class="desc">Notification 9</div>
-        </div>
+        <%
+          if(notifications.length>0)
+          {
+            notifications.forEach(message=>{
+              %>
+                <div class="notification notification-<%-message.type%>">
+                  <div class="title"><%-message.name%></div>
+                  <div class="desc"><%-message.message%></div>
+                  <div class="from"><%-message.from%></div>
+                  <div class="time"><%-new Date(message.date).toLocaleDateString("en-US")%></div>
+                </div>
+              <%
+            });
+          }
+          else
+          {
+            %>
+              <div class="notification notification-general">
+                <div class="title">Bot</div>
+                <div class="desc">You have no notifications</div>
+                <div class="from">System</div>
+                <div class="time"><%-new Date().toLocaleDateString("en-US")%></div>
+              </div>
+            <%
+          }
+        %>
       </div>
     </div>
     <div class="gradcontainer grad" onclick="window.location='/about';">

@@ -4,7 +4,7 @@
   ],
   "recruiter/dashboard":[
     "content",
-    "no notification messsage"
+    change theme color(primary) for admin or recruiter
   ],
   "coordinator":[
     "add course details",
@@ -27,7 +27,8 @@
   "student/dashboard":{
     "redirect":"redirect to complete-profile if profile not complete or otp not verified",
     "searchresultcontainer":"add data and link",//in the data.js file,
-    "sidebar":"set titles, icons and url, add logout, and other nav links"
+    "sidebar":"set titles, icons and url, add logout, and other nav links".
+    "notification":"no notification messsage"
   },
   "before-production":[
     "check if all pages have title",

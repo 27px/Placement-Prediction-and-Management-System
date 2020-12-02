@@ -57,7 +57,8 @@ recruiter.post("/dashboard/:tab",async(req,res)=>{
       jobPosted=userData.result.data.job!=undefined;
     }
     res.render(`recruiter/${req.params.tab}`,{
-      jobPosted
+      jobPosted,
+      notifications:userData.result.messages
     });
   }).catch(error=>{
     console.log(error.message);

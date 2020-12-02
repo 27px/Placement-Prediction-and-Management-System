@@ -5,6 +5,9 @@ const DB_CONNECTION_URL=require("../config/db.js");
 const config=require("../config/config.json");
 const User=require("../functions/user.js");
 const generatePassword=require("../functions/generatePassword.js");
+const setMailWelcomeRecruiter=require("../functions/mail_recruiter_welome.js");
+const nodemailer=require("nodemailer");
+const mail_credentials=require("../config/mail.js");
 
 //Route admin
 admin.get("/",(req,res)=>{
@@ -42,7 +45,9 @@ admin.get("/dashboard",async(req,res)=>{
 
 // Create Company Account Backend
 admin.post("/dashboard/add-company-data",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
+  var ret={};
+  var password=generatePassword();
   await user.initialize().then(async data=>{
     if(data.isLoggedIn && user.hasAccessOf("admin"))
     {
@@ -51,16 +56,17 @@ admin.post("/dashboard/add-company-data",async(req,res)=>{
       }).then(async mongo=>{
         var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
         var data_collection=await db.collection("user_data");
-        data_collection.findOne({
+        await data_collection.findOne({
           email:req.body.email
         }).then(async result=>{
           if(result!=null)
           {
-            throw new Error("Email exists");
+            ret.success=false;
+            ret.message="Email exists";
           }
           else
           {
-            data_collection.insertOne({
+            await data_collection.insertOne({
               email:req.body.email,
               data:{
                 name:req.body.name,
@@ -68,12 +74,20 @@ admin.post("/dashboard/add-company-data",async(req,res)=>{
               },
               type:"recruiter",
               pic_ext:"",
-              password:Buffer.from(generatePassword()).toString("base64"),
+              password:Buffer.from(password).toString("base64"),
               messages:[]
-            }).then(re=>{
-              ////send mail
-              res.json({
-
+            }).then(async _=>{
+              var transporter=await nodemailer.createTransport(mail_credentials);
+              await transporter.sendMail({
+                from:"Placement Manager",
+                to:req.body.email,
+                subject:'Recruiter Account Created',
+                html:setMailWelcomeRecruiter(password)
+              }).then(async sent=>{
+                console.log(sent);
+                ret.success=true;
+                ret.redirect=`./dashboard`;
+                delete ret.message;
               });
             });
           }
@@ -82,14 +96,15 @@ admin.post("/dashboard/add-company-data",async(req,res)=>{
     }
     else
     {
-      throw new Error("Not Authorized");
+      ret.success=false;
+      ret.message="Not Authorized";
     }
   }).catch(error=>{
     console.log(error.message);
-    res.json({
-      success:false,
-      message:error.message
-    });
+    ret.success=false;
+    ret.message=error.message;
+  }).finally(()=>{
+    res.json(ret);
   });
 });
 

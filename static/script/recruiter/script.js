@@ -69,6 +69,8 @@ function createRecruiterAccount(event)
     message.innerHTML="Enter Company Name";
     return;
   }//website not mandatory
+  event.currentTarget.classList.add("loading");
+  message.innerHTML="";
   fetch("./dashboard/add-company-data",{
     method:"POST",
     cache:"no-store",
@@ -87,8 +89,18 @@ function createRecruiterAccount(event)
     }
     throw new Error("Status Error");
   }).then(data=>{
-    console.log(data);
+    if(data.message!=undefined)
+    {
+      message.innerHTML=data.message;
+    }
+    if(data.success)
+    {
+      window.location=data.redirect;
+    }
   }).catch(error=>{
     console.log(error.message);
+    message.innerHTML="Unknown Error occured";
+  }).finally(()=>{
+    _("#create-recruiter-account-button").classList.remove("loading");
   });
 }

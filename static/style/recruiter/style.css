@@ -954,6 +954,7 @@ body,.main
   font-size:18px;
   border:none;
   border-bottom:4px solid #808080;
+  box-shadow: 0px 0px 0px 1000px #ffffff inset;
 }
 .full-wrap form .row input:focus
 {
@@ -1034,4 +1035,38 @@ body,.main
   font-family:var(--font-monospace);
   width:100%;
   text-align:center;
+}
+.admin-dashboard .bottom-container
+{
+  margin:15px 15px 0px 15px;
+}
+.admin-dashboard .listcontainer
+{
+  padding:5px 15px 0px 15px;
+}
+@media (max-width:800px)
+{
+  .admin-dashboard .listcontainer
+  {
+    padding:0px 15px 0px 15px;
+  }
+}
+@media (max-width:600px)
+{
+  .admin-dashboard .listcontainer
+  {
+    padding:0px 5px 0px 5px;
+  }
+  .admin-dashboard .bottom-container div.sub-card.equal.rounded.link
+  {
+    margin-bottom:0px!important;
+  }
+}
+@media (max-width:400px)
+{
+  .admin-dashboard .card
+  {
+    width:calc(100% - 30px);
+    margin:10px 15px;
+  }
 }
