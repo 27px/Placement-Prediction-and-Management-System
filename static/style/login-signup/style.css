@@ -376,9 +376,45 @@ input::selection
   font-size:18px;
   padding:8px 20px;
   width:130px;
+  min-height:45px;
   margin:0px auto;
   border-radius:50px;
   letter-spacing:1px;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  vertical-align:middle;
+  text-align:center;
+}
+.login .login-form .row button:not(.progress) svg,
+.register .register-form .row button:not(.progress) svg
+{
+  display:none;
+}
+.login .login-form .row button.progress,
+.register .register-form .row button.progress
+{
+  background:#000;
+  padding:8px 0px 8px 20px;
+}
+.login .login-form .row button.progress svg,
+.register .register-form .row button.progress svg
+{
+  margin-left:10px;
+  animation:roller 2.5s linear infinite normal;
+  transform:rotate(0deg);
+}
+@keyframes roller
+{
+  0%
+  {
+    transform:rotate(0deg);
+  }
+  100%
+  {
+    transform:rotate(360deg);
+  }
 }
 .register .register-form .row:last-child
 {
@@ -662,39 +698,6 @@ label:hover,input[type=checkbox]:hover
   .wrapper
   {
     border-radius:0px !important;
-  }
-}
-button.progress
-{
-  color:#FFFFFF!important;
-  background:#000000!important;
-  text-align:left;
-}
-button.progress::after
-{
-  width:15px;
-  height:15px;
-  content:"";
-  position:absolute;
-  top:50%;
-  right:0;
-  border-top:3px solid #FFFFFF;
-  border-left:3px solid rgba(255,255,255,0.2);
-  border-right:3px solid rgba(255,255,255,0.2);
-  border-bottom:3px solid #FFFFFF;
-  border-radius:50px;
-  transform:translate(-25%,-50%);
-  animation:pro 0.6s linear infinite normal;
-}
-@keyframes pro
-{
-  0%
-  {
-    transform:translate(-25%,-50%) rotate(0deg);
-  }
-  100%
-  {
-    transform:translate(-25%,-50%) rotate(360deg);
   }
 }
 .overlay

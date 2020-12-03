@@ -1007,7 +1007,6 @@ body,.main
   transition:background-position 0.5s;
   background-size:200% auto;
   color:white;
-  box-shadow:0 0 20px #eee;
   border-radius:100px;
   border:none;
   display:flex;
@@ -1018,6 +1017,7 @@ body,.main
   justify-content:center;
   letter-spacing:1px;
   cursor:pointer;
+  box-shadow:0 15px 20px -12px rgba(0,111,255,0.73);
 }
 .full-wrap .row button svg
 {
@@ -1181,6 +1181,7 @@ body,.main
   border:none;
   justify-content:center;
   align-items:center;
+  overflow:visible;
 }
 .quad.full-wrap .row
 {
