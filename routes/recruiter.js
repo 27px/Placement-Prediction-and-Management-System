@@ -1,6 +1,9 @@
 const express=require("express");
 const recruiter=express.Router();
 const User=require("../functions/user.js");
+const MongoClient=require("mongodb").MongoClient;
+const DB_CONNECTION_URL=require("../config/db.js");
+const config=require("../config/config.json");
 
 //Route Recruiter
 recruiter.get("/",(req,res)=>{
@@ -78,8 +81,75 @@ recruiter.get("/details/update",(req,res)=>{
 });
 
 //Add Jobs/Internships
-recruiter.get("/recruitments/add",(req,res)=>{
-  res.render("recruiter/add-recruitments");
+recruiter.post("/recruitments/add",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(async data=>{
+    if(data.isLoggedIn)
+    {
+      var userData=await user.getUserData(user.user);
+      if(userData.success)
+      {
+        await MongoClient.connect(DB_CONNECTION_URL,{
+          useUnifiedTopology:true
+        }).then(async mongo=>{
+          var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+          await db.collection("user_data")
+          .updateOne({
+            email:user.user,
+            // job:{
+            //   $exists:false
+            // }
+          },{
+            $set:{
+              "data.job":req.body
+            }
+          })
+          .then(d=>{
+            // console.log(d);
+            res.json({
+              success:true
+            });
+          }).catch(e=>{
+            console.log(e.message);
+            res.json({
+              success:false,
+              message:"Database Error",
+              devlog:e.message
+            });
+          })
+        }).catch(err=>{
+          console.log(err.message);
+          res.json({
+            success:false,
+            message:"Database Error",
+            devlog:err.message
+          });
+        });
+      }
+      else
+      {
+        res.json({
+          success:false,
+          message:"Authentication failed",
+          devlog:userData.message
+        });
+      }
+    }
+    else
+    {
+      res.json({
+        success:false,
+        message:"Not Loggedin"
+      });
+    }
+  }).catch(error=>{
+    console.log(error.message);
+    res.json({
+      success:false,
+      message:"An Error occured",
+      devlog:error.message
+    });
+  });
 });
 
 //Add MCQ for jobs/internships

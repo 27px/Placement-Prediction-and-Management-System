@@ -686,7 +686,7 @@ body,.main
     margin-left:3% !important;
   }
 }
-@media (max-width:1010px)
+@media (max-width:1010px),(max-height:450px),(max-height:600px) and (min-width:1010px)
 {
   .dashboard,.dashboard.inverse
   {
@@ -1023,6 +1023,10 @@ body,.main
 {
   margin-left:15px;
   animation:roller 2.5s linear infinite normal;
+}
+.full-wrap .row button.loading
+{
+  padding:10px 20px 10px 25px;
 }
 .full-wrap .row button:not(.loading) svg
 {
@@ -1401,4 +1405,50 @@ body,.main
 .keyword .close
 {
   cursor:pointer!important;
+}
+@media (max-width:350px)
+{
+  .min-full
+  {
+    width:100%;
+    height:auto;
+    min-height:100%;
+    margin:0;
+    border:none;
+    border-radius:0px;
+  }
+}
+.small-container.full-wrap.fit-full-wrap.already-job-posted-wrap
+{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  vertical-align:middle;
+  background:#f0fee4;
+}
+.small-container.full-wrap.fit-full-wrap.already-job-posted-wrap .title
+{
+  line-height:50px;
+  padding:40px;
+  box-sizing:border-box;
+}
+.small-container.full-wrap.fit-full-wrap.already-job-posted-wrap .ufo-image
+{
+  width:300px;
+  height:300px;
+  background-image:url("../../images/recruiter/ufo.jpg");
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:200%;
+}
+.dashboard .wide.already-job-posted-image
+{
+  min-height:40vh;
+  background-color:#212121;
+  background-image:url("../../images/recruiter/ufo.svg");
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
 }

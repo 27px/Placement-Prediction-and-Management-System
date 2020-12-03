@@ -1,90 +1,114 @@
 <%
   var d=new Date();
   var mindate=`${d.getFullYear().toString().padStart(4,0)}-${(d.getMonth()+1).toString().padStart(2,0)}-${d.getDate().toString().padStart(2,0)}`;
+  if(!jobPosted)
+  {
+    %>
+      <div class="dashboard second-dashboard inverse">
+        <div class="small-container full-wrap fit-full-wrap">
+          <form action="" method="POST" id="create-job-post" onsubmit="return createJobPost(event);">
+            <div class="row">
+              <div class="title">Add Job</div>
+            </div>
+            <div class="row">
+              <label for="job-title">Job Title</label>
+              <input type="text" name="job-title" id="job-title" placeholder="Job Title" required>
+            </div>
+            <div class="row">
+              <label for="job-type">Job Type</label>
+              <select name="job-type" id="job-type" required>
+                <option value disabled selected>-- Select Type --</option>
+                <option value="internship">Internship</option>
+                <option value="trainee">Trainee</option>
+                <option value="job">Job</option>
+              </select>
+            </div>
+            <div class="row">
+              <label for="job-closing-date">Job Closing Date</label>
+              <input type="date" name="job-closing-date" id="job-closing-date" min="<%=mindate%>" required>
+            </div>
+            <div class="row">
+              <label for="job-salary">Monthly Salary</label>
+              <input type="number" name="job-salary" id="job-salary" min="0" placeholder="Monthly Salary" required>
+            </div>
+            <div class="row">
+              <div class="message" id="post-job-message"></div>
+            </div>
+          </form>
+        </div>
+        <div class="wide">
+          <div class="quad-grid">
+            <div class="quad">
+              <div class="row">
+                <div class="title">Must Have Skills</div>
+              </div>
+              <div class="row hidden">
+                <input type="hidden" class="hidden" id="must-have-skills" name="skills" form="create-job-post" required>
+              </div>
+              <div class="row">
+                <div class="skill-view" id="must-have-skill-view" placeholder="Add mandatory Skills (Use comma to add multiple at once)" title="Use the below textbox" data-target="must-have-skill-text" data-main="must-have-skill-view" data-input="must-have-skills"></div>
+              </div>
+              <div class="row row-fit">
+                <input type="text" id="must-have-skill-text" placeholder="Keyword">
+                <button type="button" class="b-blue b-medium" onclick="addSkill(event);" data-target="must-have-skill-text" data-main="must-have-skill-view" data-input="must-have-skills">Add</button>
+              </div>
+            </div>
+            <div class="quad">
+              <div class="row">
+                <div class="title">Good to have Skills</div>
+              </div>
+              <div class="row hidden">
+                <input type="hidden" class="hidden" id="good-to-have-skills" name="skills" form="create-job-post" required>
+              </div>
+              <div class="row">
+                <div class="skill-view" id="good-to-have-skill-view" placeholder="Add optional Skills (Use comma to add multiple at once)" title="Use the below textbox" data-target="good-to-have-skill-view" data-main="good-to-have-skill-view" data-input="good-to-have-skills"></div>
+              </div>
+              <div class="row row-fit">
+                <input type="text" id="good-to-have-skill-text" placeholder="Keyword">
+                <button type="button" class="b-blue b-medium" onclick="addSkill(event);" data-target="good-to-have-skill-view" data-main="good-to-have-skill-view" data-input="good-to-have-skills">Add</button>
+              </div>
+            </div>
+            <div class="quad full-wrap fit-full-wrap no-radius">
+              <div class="row mh">
+                <label for="job-description">Job Description</label>
+                <textarea name="job-description" id="job-description" placeholder="Description" form="create-job-post" required></textarea>
+              </div>
+            </div>
+            <div class="quad full-wrap fit-full-wrap no-radius">
+              <div class="row">
+                <label for="job-vacancy">Number of Vacancies</label>
+                <input type="number" name="job-vacancy" id="job-vacancy" min="0" placeholder="Vacancies" form="create-job-post" required>
+              </div>
+              <div class="row">
+                <label for="job-rounds">Number of Rounds</label>
+                <input type="number" name="job-rounds" id="job-rounds" min="1" placeholder="Selection rounds" form="create-job-post" required>
+              </div>
+              <div class="row">
+                <button type="submit" form="create-job-post" class="submit">
+                  <span>Post</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%
+  }
+  else
+  {
+    %>
+      <div class="dashboard second-dashboard inverse">
+        <div class="small-container full-wrap fit-full-wrap already-job-posted-wrap">
+          <div class="ufo-image"></div>
+          <div class="row">
+            <div class="title">You have already posted a JOB</div>
+          </div>
+        </div>
+        <div class="wide already-job-posted-image">
+
+        </div>
+      </div>
+    <%
+  }
 %>
-<div class="dashboard second-dashboard inverse">
-  <div class="small-container full-wrap fit-full-wrap">
-    <form action="" method="POST" id="create-job-post" onsubmit="return createJobPost(event);">
-      <div class="row">
-        <div class="title">Add Job</div>
-      </div>
-      <div class="row">
-        <label for="job-title">Job Title</label>
-        <input type="text" name="job-title" id="job-title" placeholder="Job Title" required>
-      </div>
-      <div class="row">
-        <label for="job-type">Job Type</label>
-        <select name="job-type" id="job-type" required>
-          <option value disabled selected>-- Select Type --</option>
-          <option value="internship">Internship</option>
-          <option value="internship">Trainee</option>
-          <option value="internship">Job</option>
-        </select>
-      </div>
-      <div class="row">
-        <label for="job-closing-date">Job Closing Date</label>
-        <input type="date" name="job-closing-date" id="job-closing-date" min="<%=mindate%>" required>
-      </div>
-      <div class="row">
-        <label for="job-salary">Monthly Salary</label>
-        <input type="number" name="job-salary" id="job-salary" min="0" placeholder="Monthly Salary" required>
-      </div>
-      <div class="row">
-        <div class="message" id="post-job-message"></div>
-      </div>
-    </form>
-  </div>
-  <div class="wide">
-    <div class="quad-grid">
-      <div class="quad">
-        <div class="row">
-          <div class="title">Must Have Skills</div>
-        </div>
-        <div class="row hidden">
-          <input type="hidden" class="hidden" id="must-have-skills" name="skills" form="create-job-post" required>
-        </div>
-        <div class="row">
-          <div class="skill-view" id="must-have-skill-view" placeholder="Add mandatory Skills (Use comma to add multiple at once)" title="Use the below textbox" data-target="must-have-skill-text" data-main="must-have-skill-view"></div>
-        </div>
-        <div class="row row-fit">
-          <input type="text" id="must-have-skill-text" placeholder="Keyword">
-          <button type="button" class="b-blue b-medium" onclick="addSkill(event);" data-target="must-have-skill-text" data-main="must-have-skill-view" data-input="must-have-skills">Add</button>
-        </div>
-      </div>
-      <div class="quad">
-        <div class="row">
-          <div class="title">Good to have Skills</div>
-        </div>
-        <div class="row hidden">
-          <input type="hidden" class="hidden" id="good-to-have-skills" name="skills" form="create-job-post" required>
-        </div>
-        <div class="row">
-          <div class="skill-view" id="good-to-have-skill-view" placeholder="Add optional Skills (Use comma to add multiple at once)" title="Use the below textbox" data-target="good-to-have-skill-view" data-main="good-to-have-skill-view"></div>
-        </div>
-        <div class="row row-fit">
-          <input type="text" id="good-to-have-skill-text" placeholder="Keyword">
-          <button type="button" class="b-blue b-medium" onclick="addSkill(event);" data-target="good-to-have-skill-view" data-main="good-to-have-skill-view" data-input="good-to-have-skills">Add</button>
-        </div>
-      </div>
-      <div class="quad full-wrap fit-full-wrap no-radius">
-        <div class="row mh">
-          <label for="job-description">Job Description</label>
-          <textarea name="job-description" id="job-description" placeholder="Description" form="create-job-post" required></textarea>
-        </div>
-      </div>
-      <div class="quad full-wrap fit-full-wrap no-radius">
-        <div class="row">
-          <label for="job-vacancy">Number of Vacancies</label>
-          <input type="number" name="job-vacancy" id="job-vacancy" min="0" placeholder="Vacancies" form="create-job-post" required>
-        </div>
-        <div class="row">
-          <label for="job-rounds">Number of Rounds</label>
-          <input type="number" name="job-rounds" id="job-rounds" min="1" placeholder="Selection rounds" form="create-job-post" required>
-        </div>
-        <div class="row">
-          <button type="submit" form="create-job-post">Post</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

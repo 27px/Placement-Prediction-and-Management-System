@@ -31,6 +31,10 @@ function selectThisOption(event)
   document.title=a.innerText;
   var c=_("#maincontainer");
   c.innerHTML="<div class='loader'></div>";
+  if(toURL==null)
+  {
+    return;
+  }
   fetch(`/${userType}/dashboard/${toURL}`,{
     method:"POST",
     cahce:"no-store"
@@ -105,26 +109,6 @@ function createRecruiterAccount(event)
     _("#create-recruiter-account-button").classList.remove("loading");
   });
 }
-function createJobPost(event)
-{
-  event.preventDefault();
-  var message=_("#post-job-message");
-  var m=_("#must-have-skill-text").value;
-  var g=_("#good-to-have-skill-text").value;
-  if(m!="" || g!="")
-  {
-    message.innerHTML="Click Add to add Skill";
-    return false;
-  }
-  message.innerHTML="";
-  return false;
-}
-
-
-
-
-
-
 function addSkill(event)
 {
   const message=_("#post-job-message");
@@ -193,4 +177,54 @@ function recheckSkillValues(input,target)
 function skillExists(value,target)
 {
   return Array.from(target.children).some(shell=>shell.children[0].innerHTML==value);
+}
+function createJobPost(event)
+{
+  event.preventDefault();
+  var message=_("#post-job-message");
+  var m=_("#must-have-skill-text").value;
+  var g=_("#good-to-have-skill-text").value;
+  if(m!="" || g!="")
+  {
+    message.innerHTML="Click Add to add Skill";
+    return false;
+  }
+  message.innerHTML="";
+  var type=_("#job-type");
+  _(".submit").classList.add("loading");
+  fetch("./recruitments/add",{
+    method:"POST",
+    cache:"no-store",
+    headers:{
+      "Content-Type":"application/json",
+    },
+    body:JSON.stringify({
+      title:_("#job-title").value,
+      type:type.options[type.selectedIndex].value,
+      date:_("#job-closing-date").value,
+      salary:parseInt(_("#job-salary").value),
+      mhskills:_("#must-have-skills").value.split(";"),
+      ghskilss:_("#good-to-have-skills").value.split(";"),
+      description:_("#job-description").value,
+      vacancy:parseInt(_("#job-vacancy").value),
+      rounds:parseInt(_("#job-rounds").value)
+    })
+  }).then(resp=>{
+    if(resp.status==200)
+    {
+      return resp.json();
+    }
+    throw new Error("Status error");
+  }).then(data=>{
+    if(data.success && data.refresh)
+    {
+      window.location.reload();
+    }
+  }).catch(err=>{
+    console.log(err.message);
+    message.innerHTML=err.message
+  }).finally(()=>{
+    _(".submit").classList.remove("loading");
+  });
+  return false;
 }
