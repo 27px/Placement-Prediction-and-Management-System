@@ -21,16 +21,17 @@ function selectThisOption(event)
   var p=a.parentNode;
   var x=p.children;
   var n=x.length,i=0;
+  var toURL=a.getAttribute("toURL");
   var userType=p.getAttribute("data-user");
   for(i=0;i<n;i++)
   {
     x[i].classList.remove("nav-option-active");
   }
   a.classList.add("nav-option-active");
-  document.title=a.innerHTML;
+  document.title=a.innerText;
   var c=_("#maincontainer");
   c.innerHTML="<div class='loader'></div>";
-  fetch(`/${userType}/dashboard/${a.getAttribute("toURL")}`,{
+  fetch(`/${userType}/dashboard/${toURL}`,{
     method:"POST",
     cahce:"no-store"
   }).then(response=>{

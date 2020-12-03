@@ -499,9 +499,6 @@ button
   font-size:16px;
   line-height:16px;
   margin:0px 10px;
-}
-button:hover
-{
   cursor:pointer;
 }
 .b-green,.b-red,.b-blue,.b-yellow

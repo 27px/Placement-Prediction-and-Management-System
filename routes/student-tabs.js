@@ -10,7 +10,7 @@ const chalk=require("chalk");
 //Main Home tab in Dashboard of Student
 studentTabs.post("/main",async(req,res)=>{
   /////Use Promise.all() to fetch all datas
-  const user=new User(req);
+  const user=await new User(req);
   await user.initialize().then(async(data)=>{
     if(data.isLoggedIn && user.hasAccessOf("student"))
     {
@@ -164,7 +164,7 @@ studentTabs.post("/recommendation",(req,res)=>{
 //placement prediction
 studentTabs.post("/prediction",async(req,res)=>{
   const NeuralNetwork=require("../neural_network/trained-model.js");
-  const user=new User(req);
+  const user=await new User(req);
   await user.initialize().then(async data=>{
     var userData=await user.getUserData(data.user);
     var input=[

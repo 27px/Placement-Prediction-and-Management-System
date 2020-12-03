@@ -9,7 +9,7 @@ recruiter.get("/",(req,res)=>{
 
 //Recruiter Home
 recruiter.get("/dashboard",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   await user.initialize().then(async data=>{
     if(!data.isLoggedIn)
     {
@@ -36,7 +36,7 @@ recruiter.get("/dashboard",async(req,res)=>{
 
 //Dashboard Tabs
 recruiter.post("/dashboard/:tab",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   await user.initialize().then(async data=>{
     if(!data.isLoggedIn)
     {

@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../static/style/recruiter/style.css">
     <script src="../../static/script/recruiter/script.js"></script>
+    <script src="../../static/plugins/ckeditor.js/ckeditor.js"></script>
   </head>
   <body>
     <div class="main" id="main">
@@ -23,27 +24,26 @@
         </div>
         <div class="nav" id="nav" data-user="<%-usertype%>">
           <!-- Rest of the URL is in the Script -->
-          <div class="nav-option nav-option-active" toURL="main">Dashboard</div>
+          <div class="nav-option nav-option-active" toURL="main"><span>Dashboard</span></div>
           <%
             if(usertype=="recruiter")
             {
               %>
-                <div class="nav-option" id="job" toURL="job">Job</div>
-                <div class="nav-option" id="status" toURL="status">Job Status</div>
-                <div class="nav-option" id="schedule" toURL="schedule">Schedule</div>
-                <div class="nav-option" id="mcq" toURL="mcq">MCQ</div>
-                <div class="nav-option" id="students" toURL="students">Students</div>
+                <div class="nav-option" id="job" toURL="job"><span>Job</span></div>
+                <div class="nav-option" id="status" toURL="status"><span>Job Status</span></div>
+                <div class="nav-option" id="schedule" toURL="schedule"><span>Schedule</span></div>
+                <div class="nav-option" id="mcq" toURL="mcq"><span>MCQ</span></div>
+                <div class="nav-option" id="students" toURL="students"><span>Students</span></div>
               <%
             }
             else if(usertype=="admin")
             {
               %>
-                <div class="nav-option" id="add-company" toURL="add-company">Add Company</div>
-                <div class="nav-option" id="add-course" toURL="add-course">Add Course</div>
-                <div class="nav-option" id="schedule" toURL="schedule">Schedule</div>
-                <div class="nav-option" id="students" toURL="students">Students</div>
-                <div class="nav-option" id="dump-data" toURL="dump-data">Dump Data</div>
-
+                <div class="nav-option" id="add-company" toURL="add-company"><span>Add Company</span></div>
+                <div class="nav-option" id="add-course" toURL="add-course"><span>Add Course</span></div>
+                <div class="nav-option" id="schedule" toURL="schedule"><span>Schedule</span></div>
+                <div class="nav-option" id="students" toURL="students"><span>Students</span></div>
+                <div class="nav-option" id="dump-data" toURL="dump-data"><span>Dump Data</span></div>
               <%
             }
           %>

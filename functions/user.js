@@ -3,7 +3,7 @@
 
 // route.get("/test",async(req,res)=>{
 //
-//   const user=new User(req);
+//   const user=await new User(req);
 //   await user.initialize().then(data=>{
 //     console.log("success");
 //     console.log(data);

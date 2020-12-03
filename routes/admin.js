@@ -16,7 +16,7 @@ admin.get("/",(req,res)=>{
 
 //admin Home
 admin.get("/dashboard",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   await user.initialize().then(async data=>{
     if(!data.isLoggedIn)
     {
@@ -110,7 +110,7 @@ admin.post("/dashboard/add-company-data",async(req,res)=>{
 
 
 admin.post("/dashboard/:tab",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   await user.initialize().then(async data=>{
     if(!data.isLoggedIn)
     {

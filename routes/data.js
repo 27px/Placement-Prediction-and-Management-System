@@ -41,7 +41,7 @@ data.get("/course/name",async(req,res)=>{
 
 // sitemap
 data.get("/sitemap",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   var siteMap,code;
   await user.initialize().then(data=>{
     code=data.userCode();

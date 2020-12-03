@@ -1,1 +1,87 @@
-<h1>JOB</h1>
+<%
+  var d=new Date();
+  var mindate=`${d.getFullYear().toString().padStart(4,0)}-${(d.getMonth()+1).toString().padStart(2,0)}-${d.getDate().toString().padStart(2,0)}`;
+%>
+<div class="dashboard second-dashboard inverse">
+  <div class="small-container full-wrap fit-full-wrap">
+    <form action="" method="POST" id="create-job-post">
+      <div class="row">
+        <div class="title">Add Job</div>
+      </div>
+      <div class="row">
+        <label for="job-title">Job Title</label>
+        <input type="text" name="job-title" id="job-title" placeholder="Job Title">
+      </div>
+      <div class="row">
+        <label for="job-type">Job Type</label>
+        <select name="job-type" id="job-type">
+          <option value disabled selected>-- Select Type --</option>
+          <option value="internship">Internship</option>
+          <option value="internship">Trainee</option>
+          <option value="internship">Job</option>
+        </select>
+      </div>
+      <div class="row">
+        <label for="job-closing-date">Job Closing Date</label>
+        <input type="date" name="job-closing-date" id="job-closing-date" min="<%=mindate%>">
+      </div>
+      <div class="row">
+        <label for="job-salary">Monthly Salary</label>
+        <input type="number" name="job-salary" id="job-salary" min="0" placeholder="Monthly Salary">
+      </div>
+    </form>
+  </div>
+  <div class="wide">
+    <div class="quad-grid">
+      <div class="quad">
+        <div class="row">
+          <div class="title">Must Have Skills</div>
+        </div>
+        <div class="row hidden">
+          <input type="text" class="hidden" id="must-have-skills" name="skills">
+        </div>
+        <div class="row">
+          <div class="skill-view" id="must-have-skill-view"></div>
+        </div>
+        <div class="row row-fit">
+          <input type="text" id="must-have-skill-text" placeholder="Keyword">
+          <button type="button" class="b-blue b-medium" onclick="addSkill();">Add</button>
+        </div>
+      </div>
+      <div class="quad">
+        <div class="row">
+          <div class="title">Good to have Skills</div>
+        </div>
+        <div class="row hidden">
+          <input type="text" class="hidden" id="good-to-have-skills" name="skills">
+        </div>
+        <div class="row">
+          <div class="skill-view" id="good-to-have-skill-view"></div>
+        </div>
+        <div class="row row-fit">
+          <input type="text" id="good-to-have-skill-text" placeholder="Keyword">
+          <button type="button" class="b-blue b-medium" onclick="addSkill();">Add</button>
+        </div>
+      </div>
+      <div class="quad full-wrap fit-full-wrap no-radius">
+        <div class="row mh">
+          <label for="job-description">Job Description</label>
+          <textarea name="job-description" id="job-description" placeholder="Description" form="create-job-post"></textarea>
+        </div>
+      </div>
+      <div class="quad full-wrap fit-full-wrap no-radius">
+        <div class="row">
+          <label for="job-vacancy">Number of Vacancies</label>
+          <input type="number" name="job-vacancy" id="job-vacancy" min="0" placeholder="Vacancies" form="create-job-post">
+        </div>
+        <div class="row">
+          <label for="job-rounds">Number of Rounds</label>
+          <input type="number" name="job-rounds" id="job-rounds" min="1" placeholder="Selection rounds" form="create-job-post">
+        </div>
+        <div class="row">
+          <button type="button" form="create-job-post">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

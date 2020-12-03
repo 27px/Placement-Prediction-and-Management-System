@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "initialize": "node initialize.js"
+    "initialize": "node initialize.js",
+    "git-stats": "git shortlog -snec"
   },
   "repository": {
     "type": "git",

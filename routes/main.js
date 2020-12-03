@@ -23,7 +23,7 @@ route.get("/",(req,res)=>{
 
 //Main Home
 route.get("/home",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   var isLoggedIn,type;
   await user.initialize().then(data=>{
     isLoggedIn=data.isLoggedIn,
@@ -42,7 +42,7 @@ route.get("/home",async(req,res)=>{
 
 //Login
 route.get("/login",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   var state={
     login:"visible",
     register:"hidden"
@@ -61,7 +61,7 @@ route.get("/login",async(req,res)=>{
 
 //New Account
 route.get("/register",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   var state={
     login:"hidden",
     register:"visible"
@@ -280,7 +280,7 @@ route.get("/contact",async(req,res)=>{
   var type="guest";
   var isLoggedIn=false;
   var email="";
-  const user=new User(req);
+  const user=await new User(req);
   await user.initialize()
   .then(data=>{
     type=data.type;
@@ -303,7 +303,7 @@ route.get("/contact",async(req,res)=>{
 
 //send message
 route.post("/contact",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   var err=false;
   await user.initialize()
   .then(async data=>{
@@ -354,7 +354,7 @@ route.post("/contact",async(req,res)=>{
 route.get("/gallery",async(req,res)=>{
   const dir=path.join(__dirname,"../data/gallery");
   var isLoggedIn,type;
-  const user=new User(req);
+  const user=await new User(req);
   await user.initialize().then(data=>{
     isLoggedIn=data.isLoggedIn;
     type=data.type;
@@ -380,7 +380,7 @@ route.get("/gallery",async(req,res)=>{
 //Gallery Image Upload
 route.post("/gallery/upload",async(req,res)=>{
   var isLoggedIn,type,result={};
-  const user=new User(req);
+  const user=await new User(req);
   await user.initialize().then(data=>{
     isLoggedIn=data.isLoggedIn;
     type=data.type;

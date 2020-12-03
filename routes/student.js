@@ -20,7 +20,7 @@ student.get("/",(req,res)=>{
 
 //Student Dashboard
 student.get("/dashboard",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   var isLoggedIn,type;
   await user.initialize().then(data=>{
     isLoggedIn=data.isLoggedIn;
@@ -50,7 +50,7 @@ student.get("/dashboard",async(req,res)=>{
 });
 
 student.get("/profile/new",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   var redirect="";
   var isLoggedIn=false;
   var type="guest";
@@ -141,7 +141,7 @@ student.get("/profile/new",async(req,res)=>{
 //Handle Form Upload
 student.post("/profile/new",async(req,res)=>{
   var userData={};
-  const user=new User(req);
+  const user=await new User(req);
   var isLoggedIn=false;
   var type="guest";
   var verified=true;//default for post
@@ -237,7 +237,7 @@ student.post("/profile/new",async(req,res)=>{
 //verify otp
 student.post("/profile/new/verify-otp",async(req,res)=>{
   var message={};
-  const user=new User(req);
+  const user=await new User(req);
   var isLoggedIn=false;
   var type="guest";
   await user.initialize().then(async(data)=>{
@@ -304,7 +304,7 @@ student.post("/profile/new/verify-otp",async(req,res)=>{
 
 //Current User profile (custom resume)
 student.get("/profile/view",async(req,res)=>{
-  const user=new User(req);
+  const user=await new User(req);
   await user.initialize().then(async data=>{
     if(!data.isLoggedIn)
     {
