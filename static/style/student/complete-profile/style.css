@@ -1000,6 +1000,24 @@ textarea:focus,
   align-content:flex-start;
   overflow-x:hidden;
   overflow-y:auto;
+  cursor:no-drop;
+  position:relative;
+}
+.skill-view:empty::after
+{
+  content:attr(placeholder);
+  position:absolute;
+  top:50%;
+  left:0;
+  width:100%;
+  text-align:center;
+  font-size:20px;
+  opacity:0.5;
+  color:#000000;
+  font-family:var(--font-monospace);
+  transform:translateY(-50%);
+  padding:10px;
+  box-sizing:border-box;
 }
 .skill-view .keyword
 {

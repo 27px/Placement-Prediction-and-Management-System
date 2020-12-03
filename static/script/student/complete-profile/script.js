@@ -420,15 +420,23 @@ function setUpSemester()
 }
 window.onload=()=>{
   setScrollNumber();
-  setCurrentInlineNavActive()
-  _("#nav-dashboard").addEventListener("click",function(){
-    event.preventDefault();
-    return false;
-  });
-  _("#nav-profile").addEventListener("click",function(){
-    event.preventDefault();
-    return false;
-  });
+  setCurrentInlineNavActive();
+  var __dashboard=_("#nav-dashboard");
+  if(__dashboard!=null)
+  {
+    __dashboard.addEventListener("click",function(){
+      event.preventDefault();
+      return false;
+    });
+  }
+  var __nav_profile=_("#nav-profile");
+  if(__nav_profile!=null)
+  {
+    __nav_profile.addEventListener("click",function(){
+      event.preventDefault();
+      return false;
+    });
+  }
   // var created=pi(_(".timers").getAttribute("data-start"));
   fetch("/data/course/name",{
     method:"GET",

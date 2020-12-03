@@ -99,9 +99,98 @@ function createRecruiterAccount(event)
       window.location=data.redirect;
     }
   }).catch(error=>{
-    console.log(error.message);
+    console.error(error.message);
     message.innerHTML="Unknown Error occured";
   }).finally(()=>{
     _("#create-recruiter-account-button").classList.remove("loading");
   });
+}
+function createJobPost(event)
+{
+  event.preventDefault();
+  var message=_("#post-job-message");
+  var m=_("#must-have-skill-text").value;
+  var g=_("#good-to-have-skill-text").value;
+  if(m!="" || g!="")
+  {
+    message.innerHTML="Click Add to add Skill";
+    return false;
+  }
+  message.innerHTML="";
+  return false;
+}
+
+
+
+
+
+
+function addSkill(event)
+{
+  const message=_("#post-job-message");
+  const button=event.currentTarget;
+  const textbox=button.previousElementSibling;
+  var text=textbox.value.trim();
+  var target=_(`#${button.getAttribute("data-target")}`);
+  var main=_(`#${button.getAttribute("data-main")}`);
+  var inp=_(`#${button.getAttribute("data-input")}`);
+  if(text=="")
+  {
+    message.innerHTML="Enter keyword";
+    textbox.focus();
+    return;
+  }
+  else if(/[^a-zA-Z0-9\.\+\-, ]/.test(text))
+  {
+    message.innerHTML="Invalid Character Found";
+    textbox.focus();
+    return;
+  }
+  else
+  {
+    var c=0;
+    text.split(",").map(skill=>skill.trim()).filter(skill=>skill!="").map(skill=>{return skill.replace(/[ ]+/g," ")}).forEach(ex=>{appendSkill(ex,target,main,inp);});
+    textbox.value="";
+  }
+  recheckSkillValues(inp,main);
+}
+function appendSkill(value,target,main,inp)
+{
+  if(!skillExists(value,main))
+  {
+    var container=main;
+    var keyword=document.createElement("div");
+    keyword.classList.add("keyword");
+    var skill=document.createElement("div");
+    skill.classList.add("skill");
+    skill.innerHTML=value;
+    keyword.appendChild(skill);
+    var close=document.createElement("div");
+    close.classList.add("close");
+    close.innerHTML="&#10006;";
+    close.addEventListener("click",closeSkill);
+    keyword.appendChild(close);
+    container.appendChild(keyword);
+  }
+  else
+  {
+    const message=_("#post-job-message");
+    message.innerHTML=`${value} exists`;
+  }
+  recheckSkillValues(inp,main);
+}
+function closeSkill(event)
+{
+  var c=event.currentTarget.parentNode;
+  var p=c.parentNode;
+  p.removeChild(c);
+  recheckSkillValues(_(`#${p.getAttribute("data-input")}`),_(`#${p.getAttribute("data-target")}`));
+}
+function recheckSkillValues(input,target)
+{
+  input.value=Array.from(target.children).map(skill=>skill.children[0].innerHTML).join(";");
+}
+function skillExists(value,target)
+{
+  return Array.from(target.children).some(shell=>shell.children[0].innerHTML==value);
 }
