@@ -381,20 +381,23 @@
   box-sizing:border-box;
 }
 .contents .body::-webkit-scrollbar,
-.external-job-search-result::-webkit-scrollbar
+.external-job-search-result::-webkit-scrollbar,
+.skill-recommendation::-webkit-scrollbar
 {
   width:var(--scroll);
   height:var(--scroll);
   background:rgba(0,0,0,0.2);
 }
 .contents .body::-webkit-scrollbar-thumb,
-.external-job-search-result::-webkit-scrollbar-thumb
+.external-job-search-result::-webkit-scrollbar-thumb,
+.skill-recommendation::-webkit-scrollbar-thumb
 {
   background-color:var(--primary3);
   transition:background-color 0.3s;
 }
 .contents .body::-webkit-scrollbar-thumb:hover,
-.external-job-search-result::-webkit-scrollbar-thumb:hover
+.external-job-search-result::-webkit-scrollbar-thumb:hover,
+.skill-recommendation::-webkit-scrollbar-thumb:hover
 {
   background-color:var(--primary5);
 }
@@ -659,7 +662,19 @@
 }
 .loading
 {
-  background-image:url("../../images/loading.gif");
+  background-image:url("../../images/loading.svg");
+  animation:load-rotate 2s linear infinite normal;
+}
+@keyframes load-rotate
+{
+  0%
+  {
+    transform:translate(-50%,-50%) rotate(0deg);
+  }
+  100%
+  {
+    transform:translate(-50%,-50%) rotate(360deg);
+  }
 }
 .error
 {
@@ -1078,5 +1093,71 @@
   {
     width:90vw;
     height:90vw;
+  }
+}
+.external.external-recommendation
+{
+  background-image:linear-gradient(0deg,#0093E9,#80D0C7);
+}
+.external.external-recommendation .keyword
+{
+  color:#000000!important;
+}
+.skill-recommendation
+{
+  width:100%;
+  height:100%;
+  padding:10px;
+  box-sizing:border-box;
+  overflow-y:auto;
+  position:relative;
+}
+.skill-recommendation-result
+{
+  width:100%;
+  height:auto;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  overflow-y:visible;
+}
+.skill-recommendation .skill,
+.skill-recommendation .no-skill
+{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:50px;
+  margin:10px;
+  font-size:22px;
+  letter-spacing:2px;
+}
+.skill-recommendation .skill
+{
+  color:#000000;
+  min-width:100px;
+  text-align:center;
+  box-shadow:2px 2px 5px 0px rgba(0,0,0,0.5),
+            -2px -2px 5px 0px rgba(255,255,255,0.5);
+}
+.skill-recommendation .no-skill
+{
+  background:#f44336;
+  color:#000000;
+}
+@media (max-width:550px)
+{
+  .skill-recommendation .skill
+  {
+    box-shadow:2px 2px 5px 0px rgba(0,0,0,0.5),
+              -2px -2px 5px 0px rgba(255,255,255,0.5);
+    padding:8px 15px;
+    margin:8px;
+  }
+}
+@media (max-width:300px)
+{
+  .skill-recommendation .skill
+  {
+    min-width:calc(100% - 25px);
   }
 }

@@ -5,6 +5,10 @@ const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
 const fetch=require("node-fetch");
 const config=require("../config/config.json");
+const stripHTML=require("string-strip-html");
+const purifyDescription=require("../functions/purifyDescription.js");
+const mostRepeated=require("../functions/mostRepeated.js");
+const notInEnglishWords=require("../functions/notInEnglishWords.js");
 const chalk=require("chalk");
 
 //Main Home tab in Dashboard of Student
@@ -156,9 +160,40 @@ studentTabs.post("/external/fetch",async(req,res)=>{
   });
 });
 
-//recommendation
+//recommendation layout
 studentTabs.post("/recommendation",(req,res)=>{
   res.render("student/dashboard-tabs/recommendation");
+});
+
+//recommendation search
+studentTabs.post("/recommendation/search",(req,res)=>{
+  Promise.all([
+    fetch(`${req.body.url}&location=india`),
+    fetch(`${req.body.url}&location=usa`),
+    fetch(`${req.body.url}&location=asia`)
+  ])
+  .then((resp)=>Promise.all(resp.map(re=>re.json())))
+  .then(([d1,d2,d3])=>{
+    var data=[...d1,...d2,...d3];
+    parsed=[];
+    data.forEach(job=>{
+      var p=purifyDescription(stripHTML(job.description).result);
+      parsed=[...parsed,...p];
+    })
+    return notInEnglishWords(mostRepeated(parsed)).splice(0,100);
+  }).then(data=>{
+    res.json({
+      success:true,
+      data
+    });
+  })
+  .catch(error=>{
+    console.log(error.message);
+    res.json({
+      success:false,
+      message:error.message
+    });
+  });
 });
 
 //placement prediction

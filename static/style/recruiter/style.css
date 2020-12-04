@@ -650,9 +650,21 @@ body,.main
   height:100px;
   margin:0px auto;
 }
-.loader
+.loading
 {
-  background-image:url("../../images/loading.gif");
+  background-image:url("../../images/loading.svg");
+  animation:load-rotate 2s linear infinite normal;
+}
+@keyframes load-rotate
+{
+  0%
+  {
+    transform:translate(-50%,-50%) rotate(0deg);
+  }
+  100%
+  {
+    transform:translate(-50%,-50%) rotate(360deg);
+  }
 }
 .loadererror
 {

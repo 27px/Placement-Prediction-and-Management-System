@@ -510,3 +510,60 @@ function openInNewTab(url)
 {
   window.open(url);
 }
+function recommendSkills()
+{
+  var text=_("#skill-recommendation-keyword"),keyword=text.value;
+  if(keyword=="")
+  {
+    text.focus();
+    return;
+  }
+  var container=_("#skill-recommendation-result");
+  container.innerHTML="<div class='loading'></div>";
+  fetch("./dashboard/recommendation/search",{
+    method:"POST",
+    cache:"no-store",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      url:`https://jobs.github.com/positions.json?description=${keyword}`
+    })
+  }).then(resp=>{
+    if(resp.status===200)
+    {
+      return resp.json();
+    }
+    throw new Error(`Status Error ${resp.status}`);
+  }).then(data=>{
+    if(data.success)
+    {
+      container.innerHTML="";
+      if(data.data.length>0)
+      {
+        data.data.forEach(skill=>{
+          container.innerHTML+=`<div class="skill">${skill}</div>`;
+        });
+      }
+      else
+      {
+        container.innerHTML=`<div class="no-skill">Nothing found</div>`;
+      }
+    }
+    else
+    {
+      container.innerHTML="<div class='error'></div>";
+      if(data.message)
+      {
+        console.warn(data.message);
+      }
+      if(data.devlog)
+      {
+        console.error(data.devlog);
+      }
+    }
+  }).catch(err=>{
+    console.log(err.message);
+    container.innerHTML="<div class='error'></div>";
+  });
+}
