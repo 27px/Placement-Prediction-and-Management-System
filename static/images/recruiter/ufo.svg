@@ -5,7 +5,7 @@
 	.st2{fill:#003349;}
 	.st3{fill:#03293C;}
 	.st4{fill:#001D2D;}
-	.st5{fill:#00FFFF;}
+	.st5{fill:#FFFFFF;}
 	.st6{opacity:0.71;}
 	.st7{fill:#63A69F;}
 	.st8{fill:#FFFFFF;}
@@ -26,11 +26,11 @@
 	{
 		0%
 		{
-			transform:translateY(-6%) rotate(0deg);
+			transform:translateY(-16%) rotate(0deg);
 		}
 		50%
 		{
-			transform:translateY(0%) rotate(3deg);
+			transform:translateY(-5%) rotate(3deg);
 		}
 		100%
 		{

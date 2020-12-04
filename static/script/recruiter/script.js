@@ -216,7 +216,7 @@ function createJobPost(event)
     }
     throw new Error("Status error");
   }).then(data=>{
-    if(data.success && data.refresh)
+    if(data.success)
     {
       window.location.reload();
     }

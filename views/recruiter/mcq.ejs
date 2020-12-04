@@ -1,1 +1,31 @@
-<h1>MCQ</h1>
+<%
+  if(jobPosted)
+  {
+    %>
+      <div class="dashboard second-dashboard inverse">
+        <div class="small-container full-wrap fit-full-wrap">
+
+        </div>
+        <div class="wide">
+
+        </div>
+      </div>
+    <%
+  }
+  else
+  {
+    %>
+      <div class="dashboard second-dashboard inverse">
+        <div class="small-container full-wrap fit-full-wrap already-job-posted-wrap">
+          <div class="ufo-image"></div>
+          <div class="row">
+            <div class="title">You have not posted any JOBs</div>
+          </div>
+        </div>
+        <div class="wide already-job-posted-image">
+
+        </div>
+      </div>
+    <%
+  }
+%>
