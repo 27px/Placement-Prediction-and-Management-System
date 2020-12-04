@@ -674,13 +674,15 @@ function selectedProfilePic(element)
 }
 function selectedImageOrPdf(element,id,m)
 {
+  //currentyly not accepting Image type even the name says so
   var file=element.files[0];
   var x=_(`#${id}`);
   if(file!=undefined)
   {
-    if(!(file.type.split("/")[0]=="image" || file.type=="application/pdf"))
+    // if(!(file.type.split("/")[0]=="image" || file.type=="application/pdf"))
+    if(file.type!="application/pdf")
     {
-      setMessage(`#message-box-${m}`,"Invalid File Type","error");
+      setMessage(`#message-box-${m}`,"Select PDF","error");
       x.classList.remove("file-selected");
       x.classList.add("file-select-error");
       _(window.location.hash).scrollIntoView();

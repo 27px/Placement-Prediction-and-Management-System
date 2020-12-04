@@ -1036,11 +1036,11 @@ body,.main
   margin-left:15px;
   animation:roller 2.5s linear infinite normal;
 }
-.full-wrap .row button.loading
+.full-wrap .row button.progress
 {
   padding:10px 20px 10px 25px;
 }
-.full-wrap .row button:not(.loading) svg
+.full-wrap .row button:not(.progress) svg
 {
   display:none;
 }

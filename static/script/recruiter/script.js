@@ -74,7 +74,7 @@ function createRecruiterAccount(event)
     message.innerHTML="Enter Company Name";
     return;
   }//website not mandatory
-  event.currentTarget.classList.add("loading");
+  event.currentTarget.classList.add("progress");
   message.innerHTML="";
   fetch("./dashboard/add-company-data",{
     method:"POST",
@@ -106,7 +106,7 @@ function createRecruiterAccount(event)
     console.error(error.message);
     message.innerHTML="Unknown Error occured";
   }).finally(()=>{
-    _("#create-recruiter-account-button").classList.remove("loading");
+    _("#create-recruiter-account-button").classList.remove("progress");
   });
 }
 function addSkill(event)
@@ -191,7 +191,7 @@ function createJobPost(event)
   }
   message.innerHTML="";
   var type=_("#job-type");
-  _(".submit").classList.add("loading");
+  _(".submit").classList.add("progress");
   fetch("./recruitments/add",{
     method:"POST",
     cache:"no-store",
@@ -224,7 +224,7 @@ function createJobPost(event)
     console.log(err.message);
     message.innerHTML=err.message
   }).finally(()=>{
-    _(".submit").classList.remove("loading");
+    _(".submit").classList.remove("progress");
   });
   return false;
 }

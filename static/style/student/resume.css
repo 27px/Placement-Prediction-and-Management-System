@@ -56,6 +56,7 @@ body
   padding:var(--r-gap);
   box-sizing:border-box;
   border-radius:var(--r-gap);
+  position:relative;
 }
 body.green .block
 {
@@ -176,4 +177,11 @@ img.pic
   width:0%;
   background:#000000;
   transition:width 1s;
+}
+.certificate
+{
+  position:absolute;
+  top:0;
+  right:0;
+  padding:10px;
 }
