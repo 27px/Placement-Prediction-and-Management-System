@@ -7,6 +7,25 @@
     "pink",
     "darkgreen"
   ];
+  var month=[
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
+  function showDate(date)
+  {
+    var d=date.split("-");
+    return `${d[0]}&nbsp;-&nbsp;${month[parseInt(d[1])-1]}`;
+  }
 %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -17,7 +36,7 @@
     <link rel="stylesheet" href="../../static/style/default-values.css">
     <script src="../../static/script/student/resume.js"></script>
   </head>
-  <body class="<%- theme[Math.floor(Math.random()*theme.length)]; %>">
+  <body class="<%-theme[Math.floor(Math.random()*theme.length)];%>">
     <div class="block hvcenter">
       <img class="pic" src="../../data/profilepic/<%=data.email%>.<%-data.pic_ext%>">
     </div>
@@ -25,77 +44,88 @@
       <div class="row huge"><%-data.data.name%></div>
       <div class="row"><%-data.data.about%></div>
       <div class="row"><%-data.data.gender%></div>
-      <div class="row"><%-data.data.dob%></div>
+
+      <div class="row">Age&nbsp;:&nbsp;<%-parseInt((new Date()-new Date(data.data.dob))/(1000*60*60*24*365))%></div>
     </div>
     <div class="block flex-block">
       <div class="row email"><%-data.email%></div>
       <div class="row"><%-data.data.phone%></div>
       <div class="row"><%-data.data.admission.course%></div>
-      <div class="row">Sem - <%-data.data.admission.semester%></div>
+      <div class="row">Sem : <%-data.data.admission.semester%></div>
     </div>
     <div class="block flex-block">
-      <div class="certificate" link="../../data/idcard/<%=data.email%>.pdf">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-      </div>
+      <div class="certificate" link="../../data/idcard/<%=data.email%>.pdf"></div>
       <div class="row"><%-data.data.admission.number%></div>
       <div class="row"><%-data.data.admission.engineering==1?"Engineering":"Non Engineering"%></div>
-      <div class="row">Arrears - <%-data.data.admission.arrears%></div>
-      <div class="row">Passout - <%-data.data.admission.passdate%></div>
-    </div>
-    <div class="block flex-block">
-      <div class="row medium">SSLC</div>
-      <div class="row upper"><%-data.data.education.sslc.board%></div>
-      <div class="row"><%-data.data.education.sslc.school%></div>
-      <div class="row huge"><%-data.data.education.sslc.mark%> %</div>
-      <div class="progress">
-        <div class="bar" data-progress="<%-data.data.education.sslc.mark%>"></div>
-      </div>
-      <div class="row right date"><%-data.data.education.sslc.passdate%></div>
-    </div>
-    <div class="block flex-block">
-      <div class="row medium">Plus Two</div>
-      <div class="row upper"><%-data.data.education.plustwo.board%></div>
-      <div class="row"><%-data.data.education.plustwo.school%></div>
-      <div class="row huge"><%-data.data.education.plustwo.mark%> %</div>
-      <div class="progress">
-        <div class="bar" data-progress="<%-data.data.education.plustwo.mark%>"></div>
-      </div>
-      <div class="row right date"><%-data.data.education.plustwo.passdate%></div>
+      <div class="row">Arrears : <%-data.data.admission.arrears%></div>
+      <div class="row">Passout : <%-showDate(data.data.admission.passdate)%></div>
     </div>
     <%
-      data.data.education.course.forEach(course=>{
+      [["sslc","SSLC"],["plustwo","Plus Two"]].forEach(school=>{
         %>
           <div class="block flex-block">
+            <div class="certificate" link="../../data/certificate/<%=data.email%>-<%-school[0]%>.pdf"></div>
+            <div class="row medium"><%-school[1]%></div>
+            <div class="row upper"><%-data.data.education[school[0]].board%></div>
+            <div class="row"><%-data.data.education[school[0]].school%></div>
+            <div class="row huge"><%-data.data.education[school[0]].mark%>&nbsp;%</div>
+            <div class="progress">
+              <div class="bar" data-progress="<%-data.data.education[school[0]].mark%>"></div>
+            </div>
+            <div class="row right date"><%-showDate(data.data.education[school[0]].passdate)%></div>
+          </div>
+        <%
+      });
+      data.data.education.course.forEach((course,i)=>{
+        %>
+          <div class="block flex-block">
+            <div class="certificate" link="../../data/certificate/<%=data.email%>-course-<%-i+1%>.pdf"></div>
             <div class="row medium upper"><%-course.type%></div>
             <div class="row normal"><%-course.name%></div>
             <div class="row"><%-course.college%></div>
-            <div class="row huge"><%-course.cgpa%> <span class="lower medium">cgpa</span></div>
+            <div class="row huge"><%-course.cgpa%>&nbsp;<span class="lower medium">cgpa</span></div>
             <div class="progress">
               <div class="bar" data-progress="<%-(course.cgpa*10)%>"></div>
             </div>
-            <div class="row right date"><%-course.passdate%></div>
+            <div class="row right date"><%-showDate(course.passdate)%></div>
           </div>
         <%
       });
-    %>
-    <%
-      [...data.data.education.experience,...data.data.education.achievement].forEach(exp=>{
+      ["achievement","experience"].forEach(extras=>{
+        data.data.education[extras].forEach((exp,i)=>{
+          console.log(exp.from,exp.to);
+          %>
+            <div class="block flex-block">
+              <div class="certificate" link="../../data/certificate/<%=data.email%>-<%-extras%>-<%-i+1%>.pdf"></div>
+              <div class="row medium upper"><%-exp.type%></div>
+              <div class="row normal"><%-exp.title%></div>
+              <div class="row"><%-exp.description%></div>
+              <div class="h-flex">
+                <div class="row right date"><%-showDate(exp.from)%></div>
+                <div class="row right date"><%-showDate(exp.to)%></div>
+              </div>
+            </div>
+          <%
+        });
+      })
+      while(data.data.education.skills.length>0)
+      {
+        var skillset=data.data.education.skills.splice(0,5);
         %>
           <div class="block flex-block">
-            <div class="row medium upper"><%-exp.type%></div>
-            <div class="row normal"><%-exp.title%></div>
-            <div class="row"><%-exp.description%></div>
-            <div class="h-flex">
-              <div class="row right date"><%-exp.from%></div>
-              <div class="row right date"><%-exp.to%></div>
+            <div class="row medium upper">Skills</div>
+            <div class="row flex-horizontal">
+              <%
+                skillset.forEach(skill=>{
+                  %>
+                    <div class="skill"><%-skill%></div>
+                  <%
+                });
+              %>
             </div>
           </div>
         <%
-      });
+      }
     %>
-    <div class="block flex-block">
-      <div class="row medium upper">Skills</div>
-      <div class="row"><%-data.data.education.skills.join(", ")%></div>
-    </div>
   </body>
 </html>
