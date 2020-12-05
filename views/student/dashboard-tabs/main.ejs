@@ -1,11 +1,38 @@
 <div class="layout dashboard">
   <div class="item wide horizontallist">
+    <div class="card no-pad">
+      <div class="first">Top Recruiters</div>
+    </div>
+    <%
+      companies.forEach(company=>{
+        %>
+          <div class="card">
+            <div class="website" link="<%-company.data.website%>">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </div>
+            <div class="name"><%-company.data.name%></div>
+            <div class="type"><%-company.data.job.type%></div>
+            <div class="title"><%-company.data.job.title%></div>
+            <div class="row">
+              <div class="obj">Salary</div>
+              <div class="obj">:</div>
+              <div class="salary"><%-company.data.job.salary%></div>
+            </div>
+            <div class="row">
+              <div class="obj">Vacancy</div>
+              <div class="obj">:</div>
+              <div class="vacancy"><%-company.data.job.vacancy%></div>
+            </div>
+          </div>
+        <%
+      });
+    %>
+    <!-- <div class="card"></div>
     <div class="card"></div>
     <div class="card"></div>
     <div class="card"></div>
     <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    <div class="card"></div> -->
   </div>
   <div class="item tall">
     <canvas id="graph3"></canvas>
@@ -109,6 +136,9 @@
     </div>
   </div>
   <div class="item wide horizontallist">
+    <div class="card no-pad">
+      <div class="first">Coordinators</div>
+    </div>
     <div class="card"></div>
     <div class="card"></div>
     <div class="card"></div>

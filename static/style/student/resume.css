@@ -213,3 +213,9 @@ img.pic
   border-radius:50px;
   user-select:all;
 }
+.block .row.institute
+{
+  min-height:150px;
+  padding:40px 0px;
+  box-sizing:border-box;
+}

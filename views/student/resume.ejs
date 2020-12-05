@@ -67,7 +67,7 @@
             <div class="certificate" link="../../data/certificate/<%=data.email%>-<%-school[0]%>.pdf"></div>
             <div class="row medium"><%-school[1]%></div>
             <div class="row upper"><%-data.data.education[school[0]].board%></div>
-            <div class="row"><%-data.data.education[school[0]].school%></div>
+            <div class="row institute"><%-data.data.education[school[0]].school%></div>
             <div class="row huge"><%-data.data.education[school[0]].mark%>&nbsp;%</div>
             <div class="progress">
               <div class="bar" data-progress="<%-data.data.education[school[0]].mark%>"></div>
@@ -82,7 +82,7 @@
             <div class="certificate" link="../../data/certificate/<%=data.email%>-course-<%-i+1%>.pdf"></div>
             <div class="row medium upper"><%-course.type%></div>
             <div class="row normal"><%-course.name%></div>
-            <div class="row"><%-course.college%></div>
+            <div class="row institute"><%-course.college%></div>
             <div class="row huge"><%-course.cgpa%>&nbsp;<span class="lower medium">cgpa</span></div>
             <div class="progress">
               <div class="bar" data-progress="<%-(course.cgpa*10)%>"></div>
@@ -93,7 +93,6 @@
       });
       ["achievement","experience"].forEach(extras=>{
         data.data.education[extras].forEach((exp,i)=>{
-          console.log(exp.from,exp.to);
           %>
             <div class="block flex-block">
               <div class="certificate" link="../../data/certificate/<%=data.email%>-<%-extras%>-<%-i+1%>.pdf"></div>

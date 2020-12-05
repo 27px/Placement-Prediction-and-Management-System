@@ -9,75 +9,88 @@ const stripHTML=require("string-strip-html");
 const purifyDescription=require("../functions/purifyDescription.js");
 const mostRepeated=require("../functions/mostRepeated.js");
 const notInEnglishWords=require("../functions/notInEnglishWords.js");
+const getResultFromCursor=require("../functions/getResultFromCursor.js");
 const chalk=require("chalk");
 
 //Main Home tab in Dashboard of Student
 studentTabs.post("/main",async(req,res)=>{
-  /////Use Promise.all() to fetch all datas
   const user=await new User(req);
   await user.initialize().then(async(data)=>{
     if(data.isLoggedIn && user.hasAccessOf("student"))
     {
       var userData=await user.getUserData(data.user);
-      // console.log(JSON.stringify(userData,null,2));
-
       await MongoClient.connect(DB_CONNECTION_URL,{
         useUnifiedTopology:true
       }).then(async mongo=>{
         var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
-        // await db.collection("user_data")
-        // .findOne({
-        //   email:data.user
-        // }).then(dbr=>{
-        //   verified=(dbr.otp=="verified");
-        // });
-
         await Promise.all([
-          db.collection("user_data").find({type:"recruiter"}).limit(10),
-          db.collection("user_data").find({type:"student"}),
-          db.collection("user_data").find({
-            $or:[
-              {
-                type:"student"
-              },{
-                type:"coordinator"
+          db.collection("user_data")
+          .aggregate([
+            {
+              $match:{
+                type:"recruiter",
+                "data.job":{
+                  $exists:true
+                }
+              },
+            },
+            {
+              $project:{
+                "data.name":1,
+                "data.website":1,
+                "data.job.salary":1,
+                "data.job.vacancy":1,
+                "data.job.title":1,
+                "data.job.type":1
               }
-            ]
-          })
+            },
+            {
+              $addFields:{
+                rank:{
+                  $add:[
+                    {
+                      $divide:[
+                        "$data.job.salary",
+                        1000
+                      ]
+                    },
+                    "$data.job.vacancy"
+                  ]
+                }
+              }
+            },
+            {
+              $sort:{
+                rank:-1,
+                "data.job.salary":-1
+              }
+            }
+          ]).limit(10),
+          db.collection("user_data").aggregate([
+            {
+              $match:{
+                type:"student"
+              }
+            }
+          ]),
+          db.collection("user_data").find({$or:[{type:"student"},{type:"coordinator"}]})
         ]).then(([a,b,c])=>{
-          console.log(a);
-          console.log(b);
-          console.log(c);
-
-          // await cursor.each((err,item)=>{
-          //   if(err!=null || item==null)
-          //   {
-          //     res.json(department);
-          //     cursor.close();
-          //     return;
-          //   }
-          //   else
-          //   {
-          //     department.push(item);
-          //   }
-          // });
-        }).catch(err=>{
-          console.log(chalk.red.inverse("Inner Error"));
-          console.log(err.message);
+          return Promise.all([
+            getResultFromCursor(a),
+            getResultFromCursor(b),
+            getResultFromCursor(c)
+          ]);
+        }).then(([companies,b,c])=>{
+          res.render(`student/dashboard-tabs/main`,{
+            email:userData.result.email,
+            profilepic:`../data/profilepic/${userData.result.email}.${userData.result.pic_ext}`,
+            name:userData.result.data.name,
+            course:userData.result.data.admission.course,
+            phone:userData.result.data.phone,
+            about:userData.result.data.about,
+            companies
+          });
         });
-
-
-      });
-
-
-
-      res.render(`student/dashboard-tabs/main`,{
-        email:userData.result.email,
-        profilepic:`../data/profilepic/${userData.result.email}.${userData.result.pic_ext}`,
-        name:userData.result.data.name,
-        course:userData.result.data.admission.course,
-        phone:userData.result.data.phone,
-        about:userData.result.data.about
       });
     }
     else
@@ -86,6 +99,7 @@ studentTabs.post("/main",async(req,res)=>{
     }
   }).catch(error=>{
     console.log(error.message);
+    res.status(500);
     res.end("");
   });
 });

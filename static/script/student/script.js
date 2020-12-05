@@ -65,7 +65,19 @@ window.onload=()=>{
   var callback=()=>{};
   if(tab=="main")
   {
-    callback=loadCharts;
+    callback=function(){
+      loadCharts();
+      Array.from($(".website")).forEach(website=>{
+        website.addEventListener("click",function(){
+          var url=event.currentTarget.getAttribute("link");
+          if(!url.startsWith("http"))
+          {
+            url=`http://${url}`;
+          }
+          window.open(url);
+        });
+      });
+    };
   }
   load(tab,callback);
   Array.from($(".option")).forEach(option=>{

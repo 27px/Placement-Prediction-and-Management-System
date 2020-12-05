@@ -326,10 +326,76 @@ body
 .horizontallist .card
 {
   width:100%;
+  position:relative;
+  padding:45px 5px 5px 5px;
+  box-sizing:border-box;
   min-width:var(--card-width);
   height:100%;
+  font-weight:900;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-evenly;
   background:var(--primary0) linear-gradient(45deg,var(--primary0),var(--primary0),var(--primary1));
   background-image: radial-gradient(circle at 80% 60%, rgba(17, 17, 17,0.03) 0%, rgba(17, 17, 17,0.03) 50%,rgba(197, 197, 197,0.03) 50%, rgba(197, 197, 197,0.03) 100%),radial-gradient(circle at 26% 17%, rgba(64, 64, 64,0.03) 0%, rgba(64, 64, 64,0.03) 50%,rgba(244, 244, 244,0.03) 50%, rgba(244, 244, 244,0.03) 100%),radial-gradient(circle at 44% 60%, rgba(177, 177, 177,0.03) 0%, rgba(177, 177, 177,0.03) 50%,rgba(187, 187, 187,0.03) 50%, rgba(187, 187, 187,0.03) 100%),linear-gradient(45deg,#FFFFFF,#FFFFFF,var(--primary0),var(--primary0),var(--primary1));
+}
+.horizontallist .card .website
+{
+  position:absolute;
+  top:0;
+  right:0;
+  padding:5px;
+  cursor:pointer;
+}
+.horizontallist .card .website svg
+{
+  stroke:#505050;
+  transition:color 0.3s,transform 0.3s;
+  transform:scale(1);
+}
+.horizontallist .card .website:hover svg
+{
+  stroke:#000000;
+  transform:scale(1.1);
+}
+.horizontallist .card.no-pad
+{
+  padding-top:5px!important;
+}
+.horizontallist .card .first
+{
+  font-size:24px;
+  font-weight:900;
+  text-align:center;
+}
+.horizontallist .card .name
+{
+  font-size:24px;
+  text-align:center;
+  margin-bottom:10px;
+  font-weight:900;
+  color:#009688;
+}
+.horizontallist .card .type,
+.horizontallist .card .title
+{
+  text-align:center;
+  margin:5px 0px;
+  text-transform:capitalize;
+  font-size:16px;
+}
+.horizontallist .card .title,
+.horizontallist .card .salary,
+.horizontallist .card .vacancy
+{
+  color:#009688;
+}
+.horizontallist .card .row
+{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  padding:0px 20px;
+  box-sizing:border-box;
 }
 .verticallist
 {
