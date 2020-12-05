@@ -3,9 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/nav.css">
+    <link rel="stylesheet" href="../static/style/statistics.css">
+    <script src="../static/script/statistics.js"></script>
+    <script src="../static/plugins/chart.js/Chart.min.js"></script>
+    <script src="../static/plugins/chart.js/utils.js"></script>
     <title>View Statistics</title>
   </head>
   <body>
-    <h1>View Statistics</h1>
+    <!--Navigation Bar Start-->
+      <%- include("partials/nav.ejs",{
+        isLoggedIn,
+        type
+      }); %>
+    <!--Navigation Bar End-->
+    <div class="hidden" id="data"><%-JSON.stringify(statistics);%></div>
+    <div class="container">
+      <div class="small">
+        <canvas id="graph1"></canvas>
+      </div>
+      <div class="large">
+        <canvas id="graph2"></canvas>
+      </div>
+    </div>
   </body>
 </html>

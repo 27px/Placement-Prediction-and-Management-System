@@ -402,11 +402,18 @@ body
   text-transform:capitalize;
   font-size:16px;
 }
-.horizontallist .card .title,
+.horizontallist .card .type
+{
+  font-weight:400;
+}
+.horizontallist .card .title
+{
+  font-weight:900;
+}
 .horizontallist .card .salary,
 .horizontallist .card .vacancy
 {
-  color:#039be5;
+  font-weight:900;
 }
 .horizontallist .card .row
 {
@@ -414,6 +421,7 @@ body
   flex-direction:row;
   justify-content:space-between;
   padding:0px 20px;
+  font-weight:400;
   box-sizing:border-box;
 }
 .verticallist

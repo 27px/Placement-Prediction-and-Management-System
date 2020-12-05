@@ -10,6 +10,7 @@ const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
 const config=require("../config/config.json");
 const User=require("../functions/user.js");
+const getResultFromCursor=require("../functions/getResultFromCursor.js");
 const fs=require("fs");//for gallery
 const path=require("path");
 const chalk=require("chalk");
@@ -432,8 +433,38 @@ route.get("/resources",(req,res)=>{
 });
 
 //view statistics
-route.get("/statistics",(req,res)=>{
-  res.render("statistics");
+route.get("/statistics",async(req,res)=>{
+  var isLoggedIn=false;
+  var type="guest"
+  const user=await new User(req);
+  await user.initialize().then(async(data)=>{
+    isLoggedIn=data.isLoggedIn;
+    type=data.type;
+    await MongoClient.connect(DB_CONNECTION_URL,{
+      useUnifiedTopology:true
+    }).then(async mongo=>{
+      var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+      var stat=await db.collection("statistical_data").aggregate([
+        {
+          $sort:{
+            year:1
+          }
+        }
+      ]);
+      getResultFromCursor(stat)
+      .then(statistics=>{
+        res.render(`statistics`,{
+          isLoggedIn,
+          type,
+          email:user.user,
+          statistics
+        });
+      });
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    res.redirect("/login");
+  });
 });
 
 //placement cell members

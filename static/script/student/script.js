@@ -117,9 +117,6 @@ function loadCharts()
       window.open(url);
     });
   });
-  var randomScalingFactor = function() {
-    return Math.round(Math.random() * 100);
-  };
   var blueColorSet=[
     "rgb(2,136,209)",
     "rgb(13,71,161)",
@@ -149,7 +146,7 @@ function loadCharts()
       },
       title: {
         display: true,
-        text: 'Department Data'
+        text:'Number of Students this year'
       },
       animation: {
         animateScale: true,
