@@ -65,19 +65,7 @@ window.onload=()=>{
   var callback=()=>{};
   if(tab=="main")
   {
-    callback=function(){
-      loadCharts();
-      Array.from($(".website")).forEach(website=>{
-        website.addEventListener("click",function(){
-          var url=event.currentTarget.getAttribute("link");
-          if(!url.startsWith("http"))
-          {
-            url=`http://${url}`;
-          }
-          window.open(url);
-        });
-      });
-    };
+    callback=loadCharts;
   }
   load(tab,callback);
   Array.from($(".option")).forEach(option=>{
@@ -119,30 +107,38 @@ function hideMenu()
 }
 function loadCharts()
 {
+  Array.from($(".website")).forEach(website=>{
+    website.addEventListener("click",function(){
+      var url=event.currentTarget.getAttribute("link");
+      if(!url.startsWith("http"))
+      {
+        url=`http://${url}`;
+      }
+      window.open(url);
+    });
+  });
   var randomScalingFactor = function() {
     return Math.round(Math.random() * 100);
   };
+  var graphData=_("#graphData").innerHTML;
+  graphData=JSON.parse(graphData);
+  var data1=[],label1=[];
+  graphData.forEach(d=>{
+    data1.push(d["count"]);
+    label1.push(d["_id"]);
+  });
   var config = {
     type: 'doughnut',
     data: {
       datasets: [{
-        data: [
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-        ],
+        data:data1,
         backgroundColor: [
           "rgb(233,30,99)",
           "rgb(76,175,80)",
           "rgb(33,150,243)",
-        ],
-        label: 'Dataset 1'
+        ]
       }],
-      labels: [
-        'Red',
-        'Green',
-        'Blue'
-      ]
+      labels:label1
     },
     options: {
       responsive: true,
@@ -152,7 +148,7 @@ function loadCharts()
       },
       title: {
         display: true,
-        text: 'Chart.js Doughnut Chart'
+        text: 'Department Data'
       },
       animation: {
         animateScale: true,

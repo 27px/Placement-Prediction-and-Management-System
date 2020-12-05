@@ -73,7 +73,6 @@ admin.post("/dashboard/add-company-data",async(req,res)=>{
                 website:req.body.website
               },
               type:"recruiter",
-              pic_ext:"",
               password:Buffer.from(password).toString("base64"),
               messages:[]
             }).then(async _=>{

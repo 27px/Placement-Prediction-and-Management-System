@@ -1,6 +1,7 @@
 <div class="layout dashboard">
   <div class="item wide horizontallist">
     <div class="card no-pad">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
       <div class="first">Top Recruiters</div>
     </div>
     <%
@@ -39,6 +40,7 @@
   </div>
   <div class="item normal">
     <canvas id="graph"></canvas>
+    <div class="hidden hidden-data" id="graphData"><%-JSON.stringify(department);%></div>
   </div>
   <div class="item normal special item-link" loadtab="prediction">
     <div class="fullwrapper">
@@ -72,54 +74,32 @@
     </div>
   </div>
   <div class="item normal verticallist">
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
-    <div class="card">
-      <div class="title">Rahul R</div>
-      <div class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-    </div>
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
-    <div class="card">
-      <div class="title">Notification</div>
-      <div class="subtitle">Dummy Value</div>
-    </div>
+    <%
+      if(messages.length>0)
+      {
+        messages.forEach(message=>{
+          %>
+            <div class="card">
+              <div class="title"><%-message.title%></div>
+              <div class="subtitle"><%-message.message%></div>
+            </div>
+          <%
+        });
+      }
+      else
+      {
+        %>
+          <div class="card">
+            <div class="title">Notification</div>
+            <div class="subtitle">Your Notifications will appear here.</div>
+          </div>
+          <div class="card">
+            <div class="title">System</div>
+            <div class="subtitle">You have no notifications until now. You will receive notifications when you get Selected in a Placement.</div>
+          </div>
+        <%
+      }
+    %>
   </div>
   <div class="item normal item-link">
     <div class="fullwrapper inversefullwrapper">
@@ -137,14 +117,21 @@
   </div>
   <div class="item wide horizontallist">
     <div class="card no-pad">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
       <div class="first">Coordinators</div>
     </div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    <%
+      coordinators.forEach(coordinator=>{
+        %>
+          <div class="card no-pad">
+            <img src="../../data/profilepic/<%-coordinator.email%>.<%-coordinator.pic_ext%>" alt="">
+            <div class="name"><%-coordinator.data.name%></div>
+            <div class="type"><%-coordinator.data.about%></div>
+            <div class="title"><%-coordinator.data.admission.course%></div>
+          </div>
+        <%
+      });
+    %>
   </div>
   <div class="item wide profile item-link" onclick="openInNewTab('./profile/view');">
     <div class="picwrapper">

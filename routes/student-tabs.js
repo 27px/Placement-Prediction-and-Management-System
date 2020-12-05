@@ -69,18 +69,42 @@ studentTabs.post("/main",async(req,res)=>{
           db.collection("user_data").aggregate([
             {
               $match:{
-                type:"student"
+                type:"coordinator"
+              }
+            },
+            {
+              $project:{
+                email:1,
+                "data.name":1,
+                "data.about":1,
+                "data.admission.course":1,
+                "pic_ext":1
               }
             }
           ]),
-          db.collection("user_data").find({$or:[{type:"student"},{type:"coordinator"}]})
+          db.collection("user_data").aggregate([
+            {
+              "$match":{$or:[{"type":"student"},{"type":"coordinator"}]},
+            },
+            {
+              "$group":{
+                _id:"$data.admission.course",
+                count:{
+                  $sum:1
+                }
+              }
+            },
+            {
+              "$sort":{count:1}
+            }
+          ])
         ]).then(([a,b,c])=>{
           return Promise.all([
             getResultFromCursor(a),
             getResultFromCursor(b),
             getResultFromCursor(c)
           ]);
-        }).then(([companies,b,c])=>{
+        }).then(([companies,coordinators,department])=>{
           res.render(`student/dashboard-tabs/main`,{
             email:userData.result.email,
             profilepic:`../data/profilepic/${userData.result.email}.${userData.result.pic_ext}`,
@@ -88,7 +112,10 @@ studentTabs.post("/main",async(req,res)=>{
             course:userData.result.data.admission.course,
             phone:userData.result.data.phone,
             about:userData.result.data.about,
-            companies
+            messages:userData.result.messages,
+            companies,
+            coordinators,
+            department
           });
         });
       });
