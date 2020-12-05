@@ -468,8 +468,47 @@ route.get("/statistics",async(req,res)=>{
 });
 
 //placement cell members
-route.get("/team",(req,res)=>{
-  res.render("placement-cell-members");
+route.get("/team",async(req,res)=>{
+  var isLoggedIn=false;
+  var type="guest"
+  const user=await new User(req);
+  await user.initialize().then(async(data)=>{
+    isLoggedIn=data.isLoggedIn;
+    type=data.type;
+    await MongoClient.connect(DB_CONNECTION_URL,{
+      useUnifiedTopology:true
+    }).then(async mongo=>{
+      var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+      var coordinators=await db.collection("user_data").aggregate([
+        {
+          $match:{
+            type:"coordinator"
+          }
+        },
+        {
+          $project:{
+            email:1,
+            "data.name":1,
+            "data.about":1,
+            "data.admission.course":1,
+            "pic_ext":1
+          }
+        }
+      ]);
+      getResultFromCursor(coordinators)
+      .then(coordinators=>{
+        res.render(`placement-cell-members`,{
+          isLoggedIn,
+          type,
+          email:user.user,
+          coordinators
+        });
+      });
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    res.redirect("/login");
+  });
 });
 
 //Student Route

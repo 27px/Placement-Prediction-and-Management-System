@@ -3,9 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team</title>
+    <link rel="stylesheet" href="../static/style/nav.css">
+    <link rel="stylesheet" href="../static/style/team.css">
+    <title>Coordinators</title>
   </head>
   <body>
-    <h1>Members of Placement Cell</h1>
+    <!--Navigation Bar Start-->
+      <%- include("partials/nav.ejs",{
+        isLoggedIn,
+        type
+      }); %>
+    <!--Navigation Bar End-->
+    <div class="container">
+      <div class="wrap">
+        <%
+        coordinators.forEach(coordinator=>{
+          %>
+            <div class="card">
+              <img src="../../data/profilepic/<%-coordinator.email%>.<%-coordinator.pic_ext%>" alt="">
+              <div class="name"><%-coordinator.data.name%></div>
+              <div class="type"><%-coordinator.data.about%></div>
+              <div class="title"><%-coordinator.data.admission.course%></div>
+            </div>
+          <%
+        });
+        %>
+      </div>
+    </div>
   </body>
 </html>
