@@ -120,6 +120,11 @@ function loadCharts()
   var randomScalingFactor = function() {
     return Math.round(Math.random() * 100);
   };
+  var blueColorSet=[
+    "rgb(2,136,209)",
+    "rgb(13,71,161)",
+    "rgb(33,150,243)",
+  ];
   var graphData=_("#graphData").innerHTML;
   graphData=JSON.parse(graphData);
   var data1=[],label1=[];
@@ -132,11 +137,7 @@ function loadCharts()
     data: {
       datasets: [{
         data:data1,
-        backgroundColor: [
-          "rgb(233,30,99)",
-          "rgb(76,175,80)",
-          "rgb(33,150,243)",
-        ]
+        backgroundColor:blueColorSet
       }],
       labels:label1
     },
@@ -156,48 +157,45 @@ function loadCharts()
       }
     }
   };
+  var statistical_data=JSON.parse(_("#graphData2").innerHTML);
+  var gdata=[],g2data=[];
+  Object.keys(statistical_data[0].departments).forEach((dep,i)=>{
+    var sdata=[];
+    statistical_data.forEach(stat=>{
+      sdata.push(stat.departments[dep]);
+    });
+    gdata.push({
+      label:dep,
+      backgroundColor:"rgba(0,128,255,0.3)",
+      borderColor:"rgb(13,71,161)",
+      data:sdata,
+      fill:true,
+    });
+    g2data.push({
+      label:dep,
+      backgroundColor:blueColorSet[i%3],
+      borderColor:"rgb(13,71,161)",
+      data:sdata,
+      fill:true,
+    });
+  })
+  var glabel=[];
+  statistical_data.forEach(stat=>{
+    glabel.push(stat.year);
+  });
   var colorNames = Object.keys(window.chartColors);
-  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   var xconfig = {
     type: 'line',
     data: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [{
-        label: 'My First dataset',
-        backgroundColor: window.chartColors.red,
-        borderColor: window.chartColors.red,
-        data: [
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor()
-        ],
-        fill: false,
-      }, {
-        label: 'My Second dataset',
-        fill: false,
-        backgroundColor: window.chartColors.blue,
-        borderColor: window.chartColors.blue,
-        data: [
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor(),
-          randomScalingFactor()
-        ],
-      }]
+      labels:glabel,
+      datasets:gdata
     },
     options: {
       responsive: true,
       maintainAspectRatio:false,
       title: {
         display: true,
-        text: 'Chart.js Line Chart'
+        text: 'Previous Years Placement Statistics'
       },
       tooltips: {
         mode: 'index',
@@ -212,52 +210,23 @@ function loadCharts()
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Month'
+            labelString: 'Year'
           }
         }],
         yAxes: [{
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Value'
+            labelString: 'Number of Recruits'
           }
         }]
       }
     }
   };
-  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   var color = Chart.helpers.color;
   var barChartData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [{
-      label: 'Dataset 1',
-      backgroundColor:"rgba(233,30,99,0.8)",
-      borderColor: window.chartColors.red,
-      borderWidth: 1,
-      data: [
-        randomScalingFactor(),
-        randomScalingFactor(),
-        randomScalingFactor(),
-        randomScalingFactor(),
-        randomScalingFactor(),
-        randomScalingFactor(),
-        randomScalingFactor()
-      ]
-    }, {
-      label: 'Dataset 2',
-      backgroundColor:"rgba(33,150,243,0.8)",
-      borderColor: window.chartColors.blue,
-      borderWidth: 1,
-      data: [
-        randomScalingFactor(),
-        randomScalingFactor(),
-        randomScalingFactor(),
-        randomScalingFactor(),
-        randomScalingFactor(),
-        randomScalingFactor(),
-        randomScalingFactor()
-      ]
-    }]
+    labels:glabel,
+    datasets:g2data
   };
   function applyEffect(){
     var ctx = _('#graph').getContext('2d');
@@ -274,11 +243,27 @@ function loadCharts()
         responsive: true,
         maintainAspectRatio:false,
         legend: {
-          position: 'top',
+          position:'top',
         },
         title: {
           display: true,
-          text: 'Chart.js Bar Chart'
+          text:'Department wise yearly statistics'
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Year'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Number of Recruits'
+            }
+          }]
         }
       }
     });

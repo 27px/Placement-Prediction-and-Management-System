@@ -28,19 +28,14 @@
         <%
       });
     %>
-    <!-- <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div> -->
   </div>
   <div class="item tall">
     <canvas id="graph3"></canvas>
+    <div class="hidden" id="graphData2"><%-JSON.stringify(statistics);%></div>
   </div>
   <div class="item normal">
     <canvas id="graph"></canvas>
-    <div class="hidden hidden-data" id="graphData"><%-JSON.stringify(department);%></div>
+    <div class="hidden" id="graphData"><%-JSON.stringify(department);%></div>
   </div>
   <div class="item normal special item-link" loadtab="prediction">
     <div class="fullwrapper">

@@ -97,14 +97,22 @@ studentTabs.post("/main",async(req,res)=>{
             {
               "$sort":{count:1}
             }
+          ]),
+          db.collection("statistical_data").aggregate([
+            {
+              $sort:{
+                year:1
+              }
+            }
           ])
-        ]).then(([a,b,c])=>{
+        ]).then(([a,b,c,d])=>{
           return Promise.all([
             getResultFromCursor(a),
             getResultFromCursor(b),
-            getResultFromCursor(c)
+            getResultFromCursor(c),
+            getResultFromCursor(d)
           ]);
-        }).then(([companies,coordinators,department])=>{
+        }).then(([companies,coordinators,department,statistics])=>{
           res.render(`student/dashboard-tabs/main`,{
             email:userData.result.email,
             profilepic:`../data/profilepic/${userData.result.email}.${userData.result.pic_ext}`,
@@ -115,7 +123,8 @@ studentTabs.post("/main",async(req,res)=>{
             messages:userData.result.messages,
             companies,
             coordinators,
-            department
+            department,
+            statistics
           });
         });
       });
