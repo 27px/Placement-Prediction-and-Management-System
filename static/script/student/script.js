@@ -118,14 +118,19 @@ function loadCharts()
     });
   });
   var blueColorSet=[
-    "rgb(2,136,209)",
-    "rgb(13,71,161)",
+    "rgb(100,181,246)",
     "rgb(33,150,243)",
+    "rgb(25,118,210)",
+    "rgb(13,71,161)"
   ];
   var graphData=_("#graphData").innerHTML;
   graphData=JSON.parse(graphData);
   var data1=[],label1=[];
   graphData.forEach(d=>{
+    if(d["_id"]==null)
+    {
+      d["_id"]="Not Selected";
+    }
     data1.push(d["count"]);
     label1.push(d["_id"]);
   });
