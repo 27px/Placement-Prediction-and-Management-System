@@ -401,9 +401,16 @@ input::selection
 .login .login-form .row button.progress svg,
 .register .register-form .row button.progress svg
 {
-  margin-left:10px;
   animation:roller 2.5s linear infinite normal;
   transform:rotate(0deg);
+}
+.login .login-form .row button.progress svg
+{
+  margin-left:10px;
+}
+.register .register-form .row button.progress svg
+{
+  margin:0px 5px;
 }
 @keyframes roller
 {

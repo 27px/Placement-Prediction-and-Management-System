@@ -288,7 +288,23 @@ function register()
     response.json().then(data=>{
       if(data.success===true)
       {
-        window.location=data.redirect;
+        // // always to login
+        // window.location=data.redirect;
+        try
+        {
+          // // to animate instead of redirecting
+          var box=_("#next-login-button").getBoundingClientRect();
+          var customEvent={
+            clientX:box["left"]+(box["width"]/2),
+            clientY:box["top"]+(box["height"]/2)
+          };
+          setMessage(registerEmail,"register","Created Account","email","success");
+          animateNext(customEvent,'register-to-next',`register-wrapper`,`login-wrapper`);
+        }
+        catch(err)
+        {
+          window.location=data.redirect;
+        }
       }
       else
       {

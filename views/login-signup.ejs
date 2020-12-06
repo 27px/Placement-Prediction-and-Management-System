@@ -47,7 +47,7 @@
               </div>
             <div class="title-wrapper">
               <div class="sub-title">Don't have an account ?</div>
-              <div class="other-button" tabindex=0 onclick="animateNext(event,'login-to-next',`login-wrapper`,`register-wrapper`);">Register</div>
+              <div class="other-button" tabindex=0 onclick="animateNext(event,'login-to-next',`login-wrapper`,`register-wrapper`);" id="next-register-button">Register</div>
             </div>
           </div>
           <form action="/login" method="post" class="login-form">
@@ -97,7 +97,7 @@
             </div>
             <div class="title-wrapper">
               <div class="sub-title">Already have an account ?</div>
-              <div class="other-button" tabindex=0 onclick="animateNext(event,'register-to-next',`register-wrapper`,`login-wrapper`);">Login</div>
+              <div class="other-button" tabindex=0 onclick="animateNext(event,'register-to-next',`register-wrapper`,`login-wrapper`);" id="next-login-button">Login</div>
             </div>
           </div>
           <form action="/register" method="post" class="register-form">
