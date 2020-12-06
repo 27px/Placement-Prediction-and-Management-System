@@ -85,7 +85,48 @@ function openTab(event)
   {
     callback=loadCharts;
   }
+  if(tab=="drive")
+  {
+    callback=function(){
+      Array.from($(".apply-button")).forEach(button=>{
+        button.addEventListener("click",applyForInternalJob);
+      });
+    };
+  }
   load(tab,callback);
+}
+function applyForInternalJob()
+{
+  var button=event.currentTarget;
+  var url=`./dashboard/drive/${button.getAttribute("target")}/apply`;
+  button.classList.add("progress");
+  fetch(url,{
+    method:"POST",
+    cache:"no-store"
+  }).then(response=>{
+    if(response.status!==200)
+    {
+      throw new Error("Status Error");
+    }
+    return response.json();
+  }).then(data=>{
+    button.classList.remove("progress");
+    if(data.success)
+    {
+      var xbt=document.createElement("div");
+      xbt.classList.add("applied");
+      xbt.innerHTML="Applied";
+      button.replaceWith(xbt);
+    }
+    else
+    {
+      throw new Error(data.message!=undefined?data.message:"Failed");
+    }
+  }).catch(err=>{
+    console.error(err.message);
+    button.classList.remove("progress");
+    button.classList.add("apply-button-failed");
+  });
 }
 function toggleMenu()
 {
@@ -175,7 +216,7 @@ function loadCharts()
     });
     g2data.push({
       label:dep,
-      backgroundColor:blueColorSet[i%3],
+      backgroundColor:blueColorSet[i%blueColorSet.length],
       borderColor:"rgb(13,71,161)",
       data:sdata,
       fill:true,
@@ -431,6 +472,10 @@ function searchExternalJob()
   {
     search.push(`location=${place}`);
   }
+  else
+  {
+    search.push(`location=asia`);
+  }
   search=encodeURI(search.join("&").replaceAll(" ","+"));
   if(search!="")
   {
@@ -462,6 +507,7 @@ function searchExternalJob()
       data.data.forEach(job=>{
         container.innerHTML+=createJob(job);
       });
+      container.innerHTML+="<div class='spacer'></div>";
     }
     else
     {

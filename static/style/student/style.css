@@ -49,6 +49,10 @@
     --side-gap:8px;
   }
 }
+.hidden
+{
+  display:none;
+}
 :root,body
 {
   width:100%;
@@ -764,7 +768,7 @@
   background:var(--primary) linear-gradient(270deg,var(--primary4),var(--primary9)) !important;/* Alternate less complex bg */
   background:repeating-linear-gradient(135deg,rgba(54, 54, 54, 0.06) 0px,rgba(54, 54, 54, 0.06) 41px,rgba(218, 218, 218, 0.06) 41px,rgba(218, 218, 218, 0.06) 64px,rgba(117, 117, 117, 0.06) 64px,rgba(117, 117, 117, 0.06) 85px,rgba(56, 56, 56, 0.06) 85px,rgba(56, 56, 56, 0.06) 98px,rgba(26, 26, 26, 0.06) 98px,rgba(26, 26, 26, 0.06) 114px,rgba(219, 219, 219, 0.06) 114px,rgba(219, 219, 219, 0.06) 152px,rgba(11, 11, 11, 0.06) 152px,rgba(11, 11, 11, 0.06) 176px,rgba(130, 130, 130, 0.06) 176px,rgba(130, 130, 130, 0.06) 221px),repeating-linear-gradient(135deg,rgba(37, 37, 37, 0.06) 0px,rgba(37, 37, 37, 0.06) 10px,rgba(185, 185, 185, 0.06) 10px,rgba(185, 185, 185, 0.06) 55px,rgba(91, 91, 91, 0.06) 55px,rgba(91, 91, 91, 0.06) 101px,rgba(50, 50, 50, 0.06) 101px,rgba(50, 50, 50, 0.06) 117px,rgba(185, 185, 185, 0.06) 117px,rgba(185, 185, 185, 0.06) 148px,rgba(90, 90, 90, 0.06) 148px,rgba(90, 90, 90, 0.06) 172px,rgba(82, 82, 82, 0.06) 172px,rgba(82, 82, 82, 0.06) 219px,rgba(56, 56, 56, 0.06) 219px,rgba(56, 56, 56, 0.06) 255px),repeating-linear-gradient(135deg,rgba(11, 11, 11, 0.06) 0px,rgba(11, 11, 11, 0.06) 47px,rgba(211, 211, 211, 0.06) 47px,rgba(211, 211, 211, 0.06) 73px,rgba(115, 115, 115, 0.06) 73px,rgba(115, 115, 115, 0.06) 94px,rgba(145, 145, 145, 0.06) 94px,rgba(145, 145, 145, 0.06) 109px,rgba(40, 40, 40, 0.06) 109px,rgba(40, 40, 40, 0.06) 155px,rgba(150, 150, 150, 0.06) 155px,rgba(150, 150, 150, 0.06) 179px,rgba(79, 79, 79, 0.06) 179px,rgba(79, 79, 79, 0.06) 200px,rgba(57, 57, 57, 0.06) 200px,rgba(57, 57, 57, 0.06) 236px),linear-gradient(90deg,var(--primary4),var(--primary7)) !important;
   box-shadow:0px 0px 5px 0px rgba(0,0,0,1),
-              0px 0px 10px 0px rgba(0,0,0,1) !important;
+  0px 0px 10px 0px rgba(0,0,0,1) !important;
   border-radius:10px !important;
 }
 @media (max-width:950px)/*Tablet*/
@@ -966,7 +970,7 @@
   display:flex;
   flex-direction:row;
   align-items:center;
-  justify-content:space-between;
+  justify-content:space-evenly;
 }
 .external-job a
 {
@@ -979,7 +983,8 @@
   flex-direction:column;
   margin-right:10px;
 }
-.external-job .top .company img
+.external-job .top .company img,
+.external-job .top .company svg
 {
   width:auto;
   height:180px;
@@ -1000,7 +1005,7 @@
 }
 .external-job .top .title
 {
-  width:100%;
+  width:auto;
   text-align:center;
   font-size:35px;
   margin-bottom:20px;
@@ -1020,6 +1025,43 @@
   letter-spacing:1px;
   word-spacing:5px;
   line-height:30px;
+}
+.external-job .apply .details .skill
+{
+  padding:5px 15px;
+  border-radius:50px;
+  margin:5px 3px;
+  letter-spacing:1px;
+  font-size:18px;
+  color:#FFFFFF;
+  vertical-align:middle;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.external-job .apply .details .skill.skill-true
+{
+  background:#2196F3;
+}
+.external-job .apply .details .skill.skill-false
+{
+  background:#E91E63;
+}
+.external-job .apply .details .skill.skill-true::before
+{
+  content:"\2714";
+  margin-right:10px;
+}
+.external-job .apply .details .skill.skill-false::before
+{
+  content:"\2716";
+  margin-right:10px;
+}
+.details p.skill-wrap
+{
+  height:auto;
+  display:flex;
+  flex-wrap:wrap;
 }
 .external-job .apply ul,
 .external-job .apply ol
@@ -1043,23 +1085,65 @@
 {
   text-decoration:underline;
 }
+.external-job .apply .details.details-inverse
+{
+  text-decoration:none!important;
+}
 .external-job .apply .apply-button
 {
   float:right;
-  background:#000000;
+  background:#212121;
   color:#FFFFFF;
   padding:10px 25px;
+  font-size:16px;
+  letter-spacing:1px;
+  font-weight:600;
+  width:auto;
+  display:inline-flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  vertical-align:middle;
+  cursor:pointer;
+  border:1px solid #000000;
+  border-radius:50px;
 }
-@media (max-width:700px)
+.external-job .apply .apply-button:focus
 {
-  .external-job .top
-  {
-    flex-direction:column;
-  }
-  .external-job .top .company
-  {
-    margin-right:0px;
-  }
+  outline:0px solid transparent;
+}
+.external-job .apply .apply-button.apply-button-failed
+{
+  background:#f44336;
+}
+.external-job .apply .applied
+{
+  float:right;
+  padding:10px 25px;
+  font-size:16px;
+  letter-spacing:1px;
+  font-weight:600;
+  width:auto;
+  display:inline-block;
+}
+.external-job .apply .apply-button:hover
+{
+  background:#000000;
+}
+.apply-button svg
+{
+  margin-left:10px;
+  animation:load 2s linear infinite normal;
+}
+.apply-button:not(.progress) svg
+{
+  display:none;
+}
+.spacer
+{
+  width:100%;
+  height:1px;
+  background:transparent;
 }
 .external-job.not-found
 {
@@ -1086,6 +1170,36 @@
   color:var(--primary8);
   margin-top:30px;
   letter-spacing:3px;
+}
+@media (max-width:700px)
+{
+  .external-job .top
+  {
+    flex-direction:column;
+  }
+  .external-job .top .company
+  {
+    margin-right:0px;
+  }
+  .external-job .title
+  {
+    margin-top:20px;
+    font-size:5vmin!important;
+  }
+  .external-job .name
+  {
+    font-size:4vmin!important;
+  }
+  .external-job .short
+  {
+    flex-direction:column!important;
+    justify-content:center!important;
+    align-items:center!important;
+  }
+  .external-job .short .type
+  {
+    margin-bottom:30px;
+  }
 }
 @media (max-width:600px)
 {
@@ -1137,7 +1251,7 @@
   min-width:100px;
   text-align:center;
   box-shadow:2px 2px 5px 0px rgba(0,0,0,0.5),
-            -2px -2px 5px 0px rgba(255,255,255,0.5);
+  -2px -2px 5px 0px rgba(255,255,255,0.5);
 }
 .skill-recommendation .no-skill
 {
@@ -1149,7 +1263,7 @@
   .skill-recommendation .skill
   {
     box-shadow:2px 2px 5px 0px rgba(0,0,0,0.5),
-              -2px -2px 5px 0px rgba(255,255,255,0.5);
+    -2px -2px 5px 0px rgba(255,255,255,0.5);
     padding:8px 15px;
     margin:8px;
   }
@@ -1160,4 +1274,14 @@
   {
     min-width:calc(100% - 25px);
   }
+}
+.thick
+{
+  font-weight:900;
+  font-size:25px;
+  text-transform:capitalize;
+}
+.errorText
+{
+  color:#f44336;
 }

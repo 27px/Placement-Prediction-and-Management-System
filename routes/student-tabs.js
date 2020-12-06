@@ -151,23 +151,134 @@ studentTabs.post("/profile/edit",(req,res)=>{
 });
 
 //View all Drives
-studentTabs.post("/drive",(req,res)=>{
-  res.render("student/dashboard-tabs/view-drives");
-});
-
-//View Specific Drive
-studentTabs.post("/drive/:drive",(req,res)=>{
-  var drive=req.params.drive;
-  res.render("student/dashboard-tabs/drive",{
-    drive
+studentTabs.post("/drive",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(async(data)=>{
+    if(data.isLoggedIn && user.hasAccessOf("student"))
+    {
+      var userData=await user.getUserData(data.user);
+      await MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      }).then(async mongo=>{
+        var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+        return await db.collection("user_data")
+        .aggregate([
+          {
+            $match:{
+              type:"recruiter",
+              "data.job":{
+                $exists:true
+              },
+              "data.job.date":{
+                $gt:(new Date()-0)
+              }
+            }
+          },
+          {
+            $project:{
+              "email":1,
+              "data.name":1,
+              "data.website":1,
+              "data.job.salary":1,
+              "data.job.vacancy":1,
+              "data.job.title":1,
+              "data.job.date":1,
+              "data.job.mhskills":1,
+              "data.job.ghskills":1,
+              "data.job.vacancy":1,
+              "data.job.round":1,
+              "data.job.description":1,
+              "data.job.type":1,
+              "data.job.applied":1
+            }
+          },
+          {
+            $addFields:{
+              rank:{
+                $add:[
+                  {
+                    $divide:[
+                      "$data.job.salary",
+                      1000
+                    ]
+                  },
+                  "$data.job.vacancy"
+                ]
+              },
+              applied:{
+                $in:[userData.result.email,"$data.job.applied"]
+              }
+            }
+          },
+          {
+            $sort:{
+              applied:1,
+              rank:-1,
+              "data.job.salary":-1
+            }
+          }
+        ]);
+      }).then(async data=>{
+        return await getResultFromCursor(data);
+      }).then(jobs=>{
+        // console.log(JSON.stringify(jobs,null,2));
+        res.render("student/dashboard-tabs/view-drives",{
+          jobs,
+          skills:userData.result.data.education.skills
+        });
+      }).catch(err=>{
+        console.log(err.message);
+        res.render("student/dashboard-tabs/view-drives",{
+          jobs:[],
+          skills:[]
+        });
+      });
+    }
   });
 });
 
 //Apply for Specific Drive
-studentTabs.post("/drive/:drive/apply",(req,res)=>{
+studentTabs.post("/drive/:drive/apply",async(req,res)=>{
   var drive=req.params.drive;
-  res.render("student/dashboard-tabs/apply-for-drive",{
-    drive
+  const user=await new User(req);
+  await user.initialize().then(async(data)=>{
+    if(data.isLoggedIn && user.hasAccessOf("student"))
+    {
+      var userData=await user.getUserData(data.user);
+      await MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      }).then(async mongo=>{
+        var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+        return await db.collection("user_data")
+        .updateOne({
+          "email":drive
+        },{
+          $push:{
+            "data.job.applied":userData.result.email
+          }
+        });
+      }).then(r=>{
+        if(r.result.n>0)
+        {
+          res.json({
+            success:true
+          });
+        }
+        else
+        {
+          res.json({
+            success:false,
+            message:"DB Error"
+          });
+        }
+      }).catch(err=>{
+        console.log(err.message);
+        res.json({
+          success:false,
+          message:err.message
+        });
+      });
+    }
   });
 });
 

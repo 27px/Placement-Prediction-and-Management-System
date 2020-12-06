@@ -201,13 +201,14 @@ function createJobPost(event)
     body:JSON.stringify({
       title:_("#job-title").value,
       type:type.options[type.selectedIndex].value,
-      date:_("#job-closing-date").value,
+      date:(new Date(_("#job-closing-date").value)-0),
       salary:parseInt(_("#job-salary").value),
       mhskills:_("#must-have-skills").value.split(";"),
-      ghskilss:_("#good-to-have-skills").value.split(";"),
+      ghskills:_("#good-to-have-skills").value.split(";"),
       description:_("#job-description").value,
       vacancy:parseInt(_("#job-vacancy").value),
-      rounds:parseInt(_("#job-rounds").value)
+      rounds:parseInt(_("#job-rounds").value),
+      applied:[]
     })
   }).then(resp=>{
     if(resp.status==200)
