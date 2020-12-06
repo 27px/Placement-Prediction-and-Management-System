@@ -272,8 +272,24 @@ route.get("/reset/password",(req,res)=>{
 });
 
 //About
-route.get("/about",(req,res)=>{
-  res.render("about");
+route.get("/about",async(req,res)=>{
+  var type="guest";
+  var isLoggedIn=false;
+  const user=await new User(req);
+  await user.initialize()
+  .then(data=>{
+    console.log(data);
+    type=data.type;
+    isLoggedIn=data.isLoggedIn;
+  }).catch(err=>{
+    type="guest";
+    isLoggedIn=false;
+  }).finally(()=>{
+    res.render("about",{
+      type,
+      isLoggedIn
+    });
+  })
 });
 
 //help / contact / feedback / bug report

@@ -10,6 +10,8 @@ const purifyDescription=require("../functions/purifyDescription.js");
 const mostRepeated=require("../functions/mostRepeated.js");
 const notInEnglishWords=require("../functions/notInEnglishWords.js");
 const getResultFromCursor=require("../functions/getResultFromCursor.js");
+const path=require("path");
+const fs=require("fs");
 const chalk=require("chalk");
 
 //Main Home tab in Dashboard of Student
@@ -138,11 +140,6 @@ studentTabs.post("/main",async(req,res)=>{
     res.status(500);
     res.end("");
   });
-});
-
-//Student Settings
-studentTabs.post("/settings",(req,res)=>{
-  res.render("student/dashboard-tabs/settings");
 });
 
 //Edit Profile
@@ -292,11 +289,6 @@ studentTabs.post("/drive/:drive/round/:round",(req,res)=>{
   });
 });
 
-//skill tracking
-studentTabs.post("/skills/tracking",(req,res)=>{
-  res.render("student/dashboard-tabs/skill-tracker");
-});
-
 //external jobs via api
 studentTabs.post("/external",(req,res)=>{
   res.render("student/dashboard-tabs/external-jobs");
@@ -324,6 +316,31 @@ studentTabs.post("/external/fetch",async(req,res)=>{
 //recommendation layout
 studentTabs.post("/recommendation",(req,res)=>{
   res.render("student/dashboard-tabs/recommendation");
+});
+
+//recommendation layout
+studentTabs.post("/training-resources",async(req,res)=>{
+  const dir=path.join(__dirname,"../data/resource");//////
+  var isLoggedIn,type;
+  const user=await new User(req);
+  await user.initialize().then(data=>{
+    isLoggedIn=data.isLoggedIn;
+    type=data.type;
+  }).catch(error=>{
+    console.log(error.message);
+    isLoggedIn=false;
+    type="guest";
+  }).finally(()=>{
+    fs.readdir(dir,(err,files)=>{
+      if(err)
+      {
+        files=[];
+      }
+      res.render("student/dashboard-tabs/resources",{
+        files
+      });
+    });
+  });
 });
 
 //recommendation search
@@ -409,7 +426,6 @@ studentTabs.post("/prediction",async(req,res)=>{
     console.log(input);
 
     // [0,0.823,0.784,0,1,0,1,1,0]
-
 
     var percent=NeuralNetwork(input);//predict
     var placement=percent<0.75?false:true;

@@ -120,47 +120,8 @@ data.get("/sitemap",async(req,res)=>{
         ]
       },
       {
-        key:"settings",
-        url:"/student/dashboard?tab=settings",
-        access:[
-          data.userCode("student"),
-          data.userCode("coordinator")
-        ]
-      },
-      {
-        key:"placement drive",
-        url:"/student/dashboard?tab=drive",
-        access:[
-          data.userCode("student"),
-          data.userCode("coordinator")
-        ]
-      },
-      {
-        key:"skill tracker",
-        url:"/student/dashboard?tab=skill-tracker",
-        access:[
-          data.userCode("student"),
-          data.userCode("coordinator")
-        ]
-      },
-      {
-        key:"external jobs",
-        url:"/student/dashboard?tab=external-jobs",
-        access:[
-          data.userCode("student"),
-          data.userCode("coordinator")
-        ]
-      },
-      {
         key:"dashboard",
         url:"/recruiter/dashboard",
-        access:[
-          data.userCode("recruiter")
-        ]
-      },
-      {
-        key:"details",
-        url:"/recruiter/details",
         access:[
           data.userCode("recruiter")
         ]

@@ -865,6 +865,65 @@
   overflow:hidden;
   background-image: linear-gradient(41deg, rgba(107, 107, 107, 0.04) 0%, rgba(107, 107, 107, 0.04) 8%,rgba(31, 31, 31, 0.04) 8%, rgba(31, 31, 31, 0.04) 100%),linear-gradient(9deg, rgba(228, 228, 228, 0.04) 0%, rgba(228, 228, 228, 0.04) 62%,rgba(54, 54, 54, 0.04) 62%, rgba(54, 54, 54, 0.04) 100%),linear-gradient(124deg, rgba(18, 18, 18, 0.04) 0%, rgba(18, 18, 18, 0.04) 37%,rgba(233, 233, 233, 0.04) 37%, rgba(233, 233, 233, 0.04) 100%),linear-gradient(253deg, rgba(201, 201, 201, 0.04) 0%, rgba(201, 201, 201, 0.04) 55%,rgba(47, 47, 47, 0.04) 55%, rgba(47, 47, 47, 0.04) 100%),linear-gradient(270deg, rgba(172, 172, 172, 0.04) 0%, rgba(172, 172, 172, 0.04) 33%,rgba(26, 26, 26, 0.04) 33%, rgba(26, 26, 26, 0.04) 100%),linear-gradient(64deg, rgba(11, 11, 11, 0.04) 0%, rgba(11, 11, 11, 0.04) 38%,rgba(87, 87, 87, 0.04) 38%, rgba(87, 87, 87, 0.04) 100%),linear-gradient(347deg, rgba(199, 199, 199, 0.04) 0%, rgba(199, 199, 199, 0.04) 69%,rgba(4, 4, 4, 0.04) 69%, rgba(4, 4, 4, 0.04) 100%),linear-gradient(313deg, rgba(36, 36, 36, 0.04) 0%, rgba(36, 36, 36, 0.04) 20%,rgba(91, 91, 91, 0.04) 20%, rgba(91, 91, 91, 0.04) 100%),linear-gradient(180deg,rgb(13,71,161),rgb(33,150,243));
 }
+.folder
+{
+  width:100%;
+  height:max-content;
+  padding:10px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+.file-icon
+{
+  width:150px;
+  height:150px;
+}
+.external.no-bg
+{
+  background:#FFFFFF;
+  overflow:auto;
+  display:flex!important;
+  flex-direction:row!important;
+}
+.external.no-bg .file
+{
+  width:auto;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center;
+  align-items:center;
+  margin-right:10px;
+  margin-bottom:10px;
+  border:3px solid #FFFFFF;
+  transition:outline 0.3s;
+  padding:10px;
+  box-sizing:border-box;
+  border-radius:10px;
+  color:#000000;
+  text-decoration:none;
+}
+.external.no-bg .file:hover
+{
+  border:3px solid #000000;
+}
+.external.no-bg .file.file-fill
+{
+  width:100%;
+  flex:1;
+  font-size:30px;
+  font-weight:900;
+  margin:40px 0px;
+}
+.external.no-bg .file .title
+{
+  width:auto!important;
+  display:inline-block!important;
+  overflow:hidden;
+  max-width:150px;
+  white-space:nowrap;
+}
 .external .external-job-search
 {
   width:100%;
