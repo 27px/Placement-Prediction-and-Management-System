@@ -32,13 +32,13 @@
   <head>
     <meta charset="utf-8">
     <title>Profile</title>
-    <link rel="stylesheet" href="../../static/style/student/resume.css">
-    <link rel="stylesheet" href="../../static/style/default-values.css">
-    <script src="../../static/script/student/resume.js"></script>
+    <link rel="stylesheet" href="<%-path%>../../static/style/student/resume.css">
+    <link rel="stylesheet" href="<%-path%>../../static/style/default-values.css">
+    <script src="<%-path%>../../static/script/student/resume.js"></script>
   </head>
   <body class="<%-theme[Math.floor(Math.random()*theme.length)];%>">
     <div class="block hvcenter">
-      <img class="pic" src="../../data/profilepic/<%=data.email%>.<%-data.pic_ext%>">
+      <img class="pic" src="<%-path%>../../data/profilepic/<%=data.email%>.<%-data.pic_ext%>">
     </div>
     <div class="block flex-block">
       <div class="row huge"><%-data.data.name%></div>
@@ -53,7 +53,7 @@
       <div class="row">Sem : <%-data.data.admission.semester%></div>
     </div>
     <div class="block flex-block">
-      <div class="certificate" link="../../data/idcard/<%=data.email%>.pdf"></div>
+      <div class="certificate" link="<%-path%>../../data/idcard/<%=data.email%>.pdf"></div>
       <div class="row"><%-data.data.admission.number%></div>
       <div class="row"><%-data.data.admission.engineering==1?"Engineering":"Non Engineering"%></div>
       <div class="row">Arrears : <%-data.data.admission.arrears%></div>
@@ -63,7 +63,7 @@
       [["sslc","SSLC"],["plustwo","Plus Two"]].forEach(school=>{
         %>
           <div class="block flex-block">
-            <div class="certificate" link="../../data/certificate/<%=data.email%>-<%-school[0]%>.pdf"></div>
+            <div class="certificate" link="<%-path%>../../data/certificate/<%=data.email%>-<%-school[0]%>.pdf"></div>
             <div class="row medium"><%-school[1]%></div>
             <div class="row upper"><%-data.data.education[school[0]].board%></div>
             <div class="row institute"><%-data.data.education[school[0]].school%></div>
@@ -78,7 +78,7 @@
       data.data.education.course.forEach((course,i)=>{
         %>
           <div class="block flex-block">
-            <div class="certificate" link="../../data/certificate/<%=data.email%>-course-<%-i+1%>.pdf"></div>
+            <div class="certificate" link="<%-path%>../../data/certificate/<%=data.email%>-course-<%-i+1%>.pdf"></div>
             <div class="row medium upper"><%-course.type%></div>
             <div class="row normal"><%-course.name%></div>
             <div class="row institute"><%-course.college%></div>
@@ -94,7 +94,7 @@
         data.data.education[extras].forEach((exp,i)=>{
           %>
             <div class="block flex-block">
-              <div class="certificate" link="../../data/certificate/<%=data.email%>-<%-extras%>-<%-i+1%>.pdf"></div>
+              <div class="certificate" link="<%-path%>../../data/certificate/<%=data.email%>-<%-extras%>-<%-i+1%>.pdf"></div>
               <div class="row medium upper"><%-exp.type%></div>
               <div class="row normal"><%-exp.title%></div>
               <div class="row"><%-exp.description%></div>

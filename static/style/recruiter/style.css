@@ -106,21 +106,25 @@ body,.main
   overflow-y:hidden;
   overflow-x:auto;
 }
-.nav::-webkit-scrollbar
+.nav::-webkit-scrollbar,
+.small-container.scrollable::-webkit-scrollbar
 {
   width:8px;
   height:8px;
   background-color:var(--primary2);
 }
-.nav::-webkit-scrollbar:hover
+.nav::-webkit-scrollbar:hover,
+.small-container.scrollable::-webkit-scrollbar:hover
 {
   background-color:var(--primary3);
 }
-.nav::-webkit-scrollbar-thumb
+.nav::-webkit-scrollbar-thumb,
+.small-container.scrollable::-webkit-scrollbar-thumb
 {
   background-color:var(--primary5);
 }
-.nav::-webkit-scrollbar-thumb:hover
+.nav::-webkit-scrollbar-thumb:hover,
+.small-container.scrollable::-webkit-scrollbar-thumb:hover
 {
   background-color:var(--primary9);
 }
@@ -257,6 +261,16 @@ body,.main
   display:flex;
   flex-direction:column;
   justify-content:space-evenly;
+}
+.dashboard .wide.wide-frame
+{
+  padding:0px;
+}
+.dashboard .wide.wide-frame iframe
+{
+  width:100%;
+  height:100%;
+  min-height:60vh;
 }
 .dashboard .small-container
 {
@@ -1036,11 +1050,21 @@ body,.main
   margin-left:15px;
   animation:roller 2.5s linear infinite normal;
 }
+.buttonset button svg
+{
+  margin-left:10px;
+  animation:roller 2.5s linear infinite normal;
+}
 .full-wrap .row button.progress
 {
   padding:10px 20px 10px 25px;
 }
-.full-wrap .row button:not(.progress) svg
+.buttonset button.progress
+{
+  padding:10px 10px 10px 15px;
+}
+.full-wrap .row button:not(.progress) svg,
+.buttonset button:not(.progress) svg
 {
   display:none;
 }
@@ -1049,7 +1073,8 @@ body,.main
   background-position:right center;
   color:#fff;
 }
-.full-wrap .row button:focus
+.full-wrap .row button:focus,
+.buttonset button:focus
 {
   outline:0px solid transparent;
 }
@@ -1463,4 +1488,116 @@ body,.main
   background-position:center;
   background-repeat:no-repeat;
   background-size:cover;
+}
+.dashboard .wide.g-bg
+{
+  background-image:url("../../images/recruiter/park.jpg");
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  opacity:0.6;
+}
+.dashboard .small-container .student
+{
+  width:calc(100% - 20px);
+  background:rgba(0,0,0,0.1);
+  margin:10px;
+  padding:10px;
+  box-sizing:border-box;
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  font-family:var(--font-sub-title);
+}
+.dashboard .small-container .student .wrap
+{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+}
+.dashboard .small-container .student .skillset
+{
+  margin-top:20px;
+}
+.dashboard .small-container .student .skillwrap
+{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  margin:10px 0px;
+}
+.dashboard .small-container .student .skillset .skill
+{
+  padding:8px 15px;
+  margin:5px;
+  border-radius:50px;
+  display:inline-block;
+  min-width:20px;
+  text-align:center;
+}
+.buttonset
+{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  text-align:center;
+  align-items:center;
+  justify-content:center;
+  margin-top:30px;
+}
+.buttonset button
+{
+  padding:10px 15px;
+  min-height:45px;
+  margin:10px;
+  font-size:16px;
+  letter-spacing:1px;
+  border-radius:5px;
+  border:1px solid #00000080;
+  display:flex;
+  align-items:center;
+  flex-direction:row;
+  cursor:pointer;
+}
+.dashboard .small-container .student .skillset .skill-true
+{
+  background:#8BC34A;
+}
+.dashboard .small-container .student .skillset .skill-false
+{
+  background:#E91E63;
+}
+.dashboard .small-container .student img
+{
+  width:100px;
+  height:100px;
+  object-fit:contain;
+  object-position:center;
+  border-radius:50%;
+}
+.dashboard .small-container .student .desc
+{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-left:10px;
+  box-sizing:border-box;
+}
+.dashboard .small-container .student .desc .title
+{
+  font-size:30px;
+}
+.dashboard .small-container .student .desc .department
+{
+  font-size:20px;
+}
+.small-container.scrollable
+{
+  overflow-y:auto;
+}
+.info-selected
+{
+  padding:10px;
 }

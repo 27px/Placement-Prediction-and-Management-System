@@ -208,7 +208,13 @@ function createJobPost(event)
       description:_("#job-description").value,
       vacancy:parseInt(_("#job-vacancy").value),
       rounds:parseInt(_("#job-rounds").value),
-      applied:[]
+      applied:[],
+      selected:[],
+      schedule:{
+        recruiteraccepted:false,
+        adminaccepted:false,
+        date:""
+      }
     })
   }).then(resp=>{
     if(resp.status==200)
@@ -228,4 +234,83 @@ function createJobPost(event)
     _(".submit").classList.remove("progress");
   });
   return false;
+}
+function scheduleJobPost(event)
+{
+  event.preventDefault();
+  var message=_("#schedule-message");
+  var date=_("#job-schedule-date").value;
+  if(date=="")
+  {
+    message.innerHTML="Select Date";
+    return;
+  }
+  message.innerHTML="";
+  _(".submit").classList.add("progress");
+  fetch("./schedule/request",{
+    method:"POST",
+    cache:"no-store",
+    headers:{
+      "Content-Type":"application/json",
+    },
+    body:JSON.stringify({
+      scheduleDate:date
+    })
+  }).then(resp=>{
+    if(resp.status==200)
+    {
+      return resp.json();
+    }
+    throw new Error("Status error");
+  }).then(data=>{
+    console.log(data)
+    if(data.success)
+    {
+      window.location.reload();
+    }
+  }).catch(err=>{
+    console.log(err.message);
+    message.innerHTML=err.message
+  }).finally(()=>{
+    _(".submit").classList.remove("progress");
+  });
+  return false;
+}
+function showStudentProfile(email)
+{
+  var iframe=_("#show-profile-frame");
+  iframe.src=`/data/profile/${email}/view`;
+  console.log(email);
+}
+function recruitStudent(event,email)
+{
+  var button=event.currentTarget;
+  button.classList.add("progress");
+  fetch(`./recruitments/${email}/recruit`)
+  .then(resp=>{
+    if(resp.status!==200)
+    {
+      throw new Error("Status Error");
+    }
+    else
+    {
+      return resp.json();
+    }
+  }).then(data=>{
+    if(!data.success)
+    {
+      console.log(data.message);
+      throw new Error("Unknown Error");
+    }
+    else
+    {
+      var info=document.createElement("div");
+      info.classList.add("info-selected");
+      info.innerHTML="Selected";
+      button.replaceWith(info);
+    }
+  }).catch(err=>{
+    console.log(err);
+    button.classList.remove("progress");
+  });
 }

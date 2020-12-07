@@ -316,7 +316,9 @@ student.get("/profile/view",async(req,res)=>{
       throw new Error("Data fetch error");
     }
     res.render("student/resume",{
-      data:userData.result
+      data:userData.result,
+      showNavBar:true,
+      path:""
     });
   }).catch(error=>{
     console.log(error.message);

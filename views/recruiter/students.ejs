@@ -3,11 +3,97 @@
   {
     %>
       <div class="dashboard second-dashboard inverse">
-        <div class="small-container full-wrap fit-full-wrap">
-
+        <div class="small-container scrollable">
+          <%
+            appliedStudents.forEach(student=>{
+              %>
+                <div class="student">
+                  <div class="wrap">
+                    <img src="../../data/profilepic/<%-student.email%>.<%-student.pic_ext%>" alt="">
+                    <div class="desc">
+                      <div class="title"><%-student.name%></div>
+                      <div class="department"><%-student.department%></div>
+                    </div>
+                  </div>
+                  <div class="skillset">
+                    <%
+                      if(mhskills.length>0)
+                      {
+                        %>
+                          <div class="p">Mandatory Skills</div>
+                          <div class="skillwrap">
+                            <%
+                              mhskills.forEach(mskill=>{
+                                if(student.skills.includes(mskill))
+                                {
+                                  %>
+                                    <div class="skill skill-true"><%-mskill%></div>
+                                  <%
+                                }
+                                else
+                                {
+                                  %>
+                                    <div class="skill skill-false"><%-mskill%></div>
+                                  <%
+                                }
+                              });
+                            %>
+                          </div>
+                        <%
+                      }
+                      if(ghskills.length>0)
+                      {
+                        %>
+                          <div class="p">Optional Skills</div>
+                          <div class="skillwrap">
+                            <%
+                              ghskills.forEach(gskill=>{
+                                if(student.skills.includes(gskill))
+                                {
+                                  %>
+                                    <div class="skill skill-true"><%-gskill%></div>
+                                  <%
+                                }
+                                else
+                                {
+                                  %>
+                                    <div class="skill skill-false"><%-gskill%></div>
+                                  <%
+                                }
+                              });
+                            %>
+                          </div>
+                        <%
+                      }
+                    %>
+                    <div class="buttonset">
+                      <button type="button" class="b-blue" onclick="showStudentProfile('<%-student.email%>');">View Profile</button>
+                      <%
+                        if(!selectedStudents.includes(student.email))
+                        {
+                          %>
+                            <button type="button" class="b-green" onclick="recruitStudent(event,'<%-student.email%>');">
+                              <span>Recruit</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+                            </button>
+                          <%
+                        }
+                        else
+                        {
+                          %>
+                            <div class="info-selected">Selected</div>
+                          <%
+                        }
+                      %>
+                    </div>
+                  </div>
+                </div>
+              <%
+            })
+          %>
         </div>
-        <div class="wide">
-
+        <div class="wide wide-frame">
+          <iframe src="data:text/html,<h2 style='text-align:center;padding-top:45vh;font-family:monospace;font-size:20px;letter-spacing:1px;'>Select a Profile</h2>" frameborder="0" id="show-profile-frame"></iframe>
         </div>
       </div>
     <%

@@ -151,4 +151,30 @@ data.get("/sitemap",async(req,res)=>{
   });
 });
 
+//Get Student Data
+data.get("/profile/:user/view",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(async data=>{
+    if(!data.isLoggedIn)
+    {
+      throw new Error("Not logged in");
+    }
+    var userData=await user.getUserData(req.params.user);
+    if(!userData.success)
+    {
+      throw new Error("Data fetch error");
+    }
+    res.render("student/resume",{
+      data:userData.result,
+      showNavBar:false,
+      path:"../"
+    });
+  }).catch(error=>{
+    res.render("/404");
+  });
+});
+
+
+
+
 module.exports=data;
