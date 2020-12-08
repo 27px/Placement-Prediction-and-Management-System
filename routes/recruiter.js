@@ -1,6 +1,7 @@
 const express=require("express");
 const recruiter=express.Router();
 const User=require("../functions/user.js");
+const getResultFromCursor=require("../functions/getResultFromCursor.js");
 const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
 const config=require("../config/config.json");
@@ -168,19 +169,32 @@ recruiter.post("/dashboard/students",async(req,res)=>{
       if(jobPosted)
       {
         selectedStudents=userData.result.data.job.selected;
-        appliedStudents=userData.result.data.job.applied.map(student=>user.getUserData(student));
-        appliedStudents=await Promise.all(appliedStudents);
-        appliedStudents=appliedStudents.map(student=>{
-          return {
-            name:student.result.data.name,
-            email:student.result.email,
-            department:student.result.data.admission.course,
-            pic_ext:student.result.pic_ext,
-            skills:student.result.data.education.skills
-          };
-        });
         mhskills=userData.result.data.job.mhskills;
         ghskills=userData.result.data.job.ghskills;
+        var appliedStudents=userData.result.data.job.applied.map(x=>{return {email:x}});
+        await MongoClient.connect(DB_CONNECTION_URL,{
+          useUnifiedTopology:true
+        }).then(async mongo=>{
+          const db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+          var cursor=await db.collection("user_data")
+          .aggregate([
+            {
+              $match:{
+                $or:appliedStudents
+              }
+            },
+            {
+              $project:{
+                name:"$data.name",
+                email:"$email",
+                department:"$data.admission.course",
+                pic_ext:"$pic_ext",
+                skills:"$data.education.skills"
+              }
+            }
+          ]);
+          appliedStudents=await getResultFromCursor(cursor);
+        });
       }
       else
       {
