@@ -226,7 +226,7 @@ recruiter.get("/recruitments/:student/recruit",async(req,res)=>{
             $push:{
               "messages":{
                 title:"Placement",
-                message:`Congrats, You are Selected by <b>${userData.result.data.name}<b>`
+                message:`Congrats, You are Selected by <b>${userData.result.data.name}</b>`
               }
             }
           })

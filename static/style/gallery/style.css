@@ -108,39 +108,22 @@ body
   box-sizing:border-box;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-end;
   align-items:center;
   font-size:20px;
+  line-height:60px;
   letter-spacing:1px;
-  background:rgba(0,0,0,0.7);
+  background:linear-gradient(0deg,rgba(0,0,0,1),rgba(0,0,0,0));
   color:#FFFFFF;
   font-family:var(--font-sub-title);
   text-align:center;
   transition:transform 0.3s;
 }
-.image:nth-child(4n+1)::after
+.image::after
 {
   bottom:0;
   left:0;
   transform:translateY(100%);
-}
-.image:nth-child(4n+2)::after
-{
-  bottom:0;
-  left:0;
-  transform:translateX(-100%);
-}
-.image:nth-child(4n+3)::after
-{
-  top:0;
-  left:0;
-  transform:translateY(-100%);
-}
-.image:nth-child(4n+4)::after
-{
-  bottom:0;
-  left:0;
-  transform:translateX(100%);
 }
 .image:hover::after
 {

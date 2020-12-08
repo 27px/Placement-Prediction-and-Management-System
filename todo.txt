@@ -14,7 +14,8 @@
     "set custom config values ?"
   ],
   "complete-profile":[
-    "otp - time hard code to actual time string"
+    "otp - time hard code to actual time string",
+    "select atleast one ug !important"
   ],
   "login":[
     "show profile pic when email enters ? "

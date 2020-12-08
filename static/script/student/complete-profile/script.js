@@ -1140,7 +1140,7 @@ function isEighthPageValid()
 {
   var msg="#message-box-8";
   var n=$(".multiple-course").length;
-  var success;
+  var success,haveUG=false;
   for(let i=0;i<n;i++)
   {
     var x=isMultiFormCourseValid(i+1);
@@ -1149,6 +1149,17 @@ function isEighthPageValid()
       setMessage(msg,x.message,x.type);
       return false;
     }
+    let coursetype=_(`#coursetype-${i+1}`);
+    coursetype=coursetype.options[coursetype.selectedIndex].value;
+    if(coursetype=="ug")
+    {
+      haveUG=true;
+    }
+  }
+  if(!haveUG)
+  {
+    setMessage(msg,"Add atleast one UG","error");
+    return false;
   }
   return true;
 }
