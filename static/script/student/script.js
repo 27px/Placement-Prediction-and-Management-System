@@ -159,10 +159,16 @@ function loadCharts()
     });
   });
   var blueColorSet=[
-    "rgb(100,181,246)",
-    "rgb(33,150,243)",
+    "rgb(13,71,161)",
+    "rgb(21,101,192)",
     "rgb(25,118,210)",
-    "rgb(13,71,161)"
+    "rgb(30,136,229)",
+    "rgb(33,150,243)",
+    "rgb(66,165,245)",
+    "rgb(100,181,246)",
+    "rgb(144,202,249)",
+    "rgb(187,222,251)",
+    "rgb(227,242,253)"
   ];
   var graphData=_("#graphData").innerHTML;
   graphData=JSON.parse(graphData);

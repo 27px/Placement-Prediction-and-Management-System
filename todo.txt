@@ -2,6 +2,16 @@
   "important":[
     "user_config is not tracked and must not get deleted from local repo"
   ],
+  "main":[
+    "Admin : Accept Recruiter Schedule",
+    "Event Scheduling",
+    "MCQ",
+    "Add Department Course Data",
+    "Select Coordinators",
+    "Training Resources",
+    "Data Dumping",
+    "Report Generation"
+  ],
   "recruiter/dashboard":[
     "content",
     change theme color(primary) for admin or recruiter

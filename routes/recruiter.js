@@ -37,8 +37,68 @@ recruiter.get("/dashboard",async(req,res)=>{
   });
 });
 
-//Dashboard Tabs
-recruiter.post("/dashboard/:tab",async(req,res)=>{
+//Main Dashboard Tab
+recruiter.post("/dashboard/main",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(async data=>{
+    if(!data.isLoggedIn)
+    {
+      throw new Error("Authentication Failed");
+    }
+    var userData=await user.getUserData(data.user);
+    if(!userData.success)
+    {
+      throw new Error("Authentication Failed . . .");
+    }
+    if(!user.hasAccessOf("recruiter"))
+    {
+      throw new Error("Access Denied");
+    }
+    res.render(`recruiter/main`,{
+      notifications:userData.result.messages
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    res.status(500);
+    res.end();
+  });
+});
+
+
+//Job tab
+recruiter.post("/dashboard/job",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(async data=>{
+    if(!data.isLoggedIn)
+    {
+      throw new Error("Authentication Failed");
+    }
+    var userData=await user.getUserData(data.user);
+    if(!userData.success)
+    {
+      throw new Error("Authentication Failed . . .");
+    }
+    if(!user.hasAccessOf("recruiter"))
+    {
+      throw new Error("Access Denied");
+    }
+    var jobPosted=false;
+    if(userData.result.data!=undefined)
+    {
+      jobPosted=userData.result.data.job!=undefined;
+    }
+    res.render(`recruiter/job`,{
+      jobPosted
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    res.status(500);
+    res.end();
+  });
+});
+
+//Schedule
+recruiter.post("/dashboard/schedule",async(req,res)=>{
   const user=await new User(req);
   await user.initialize().then(async data=>{
     if(!data.isLoggedIn)
@@ -63,6 +123,50 @@ recruiter.post("/dashboard/:tab",async(req,res)=>{
         recruiteraccepted=userData.result.data.job.schedule.recruiteraccepted;
         adminaccepted=userData.result.data.job.schedule.adminaccepted;
         scheduleDate=userData.result.data.job.schedule.date;
+      }
+      else
+      {
+        recruiteraccepted=false;
+        adminaccepted=false;
+        scheduleDate="";
+      }
+    }
+    res.render(`recruiter/schedule`,{
+      jobPosted,
+      recruiteraccepted,
+      adminaccepted,
+      scheduleDate,
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    res.status(500);
+    res.end();
+  });
+});
+
+//Student Tabs
+recruiter.post("/dashboard/students",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(async data=>{
+    if(!data.isLoggedIn)
+    {
+      throw new Error("Authentication Failed");
+    }
+    var userData=await user.getUserData(data.user);
+    if(!userData.success)
+    {
+      throw new Error("Authentication Failed . . .");
+    }
+    if(!user.hasAccessOf("recruiter"))
+    {
+      throw new Error("Access Denied");
+    }
+    var jobPosted=false;
+    if(userData.result.data!=undefined)
+    {
+      jobPosted=userData.result.data.job!=undefined;
+      if(jobPosted)
+      {
         selectedStudents=userData.result.data.job.selected;
         appliedStudents=userData.result.data.job.applied.map(student=>user.getUserData(student));
         appliedStudents=await Promise.all(appliedStudents);
@@ -80,25 +184,18 @@ recruiter.post("/dashboard/:tab",async(req,res)=>{
       }
       else
       {
-        recruiteraccepted=false;
-        adminaccepted=false;
-        scheduleDate="";
         appliedStudents=[];
         mhskills=[];
         ghskills=[];
         selectedStudents=[];
       }
     }
-    res.render(`recruiter/${req.params.tab}`,{
+    res.render(`recruiter/students`,{
       jobPosted,
-      notifications:userData.result.messages,
-      recruiteraccepted,
-      adminaccepted,
-      scheduleDate,
       appliedStudents,
-      selectedStudents,
       mhskills,
-      ghskills
+      ghskills,
+      selectedStudents
     });
   }).catch(error=>{
     console.log(error.message);
