@@ -210,6 +210,7 @@ body,.main
 .bottom .loader
 {
   animation:roll 7s linear infinite normal;
+  background-image:url("../../images/loading.svg");
 }
 @keyframes roll
 {
@@ -225,6 +226,7 @@ body,.main
 .bottom .loadererror
 {
   animation:error 0.5s linear infinite alternate;
+  background-image:url("../../images/warning.svg");
 }
 @keyframes error
 {

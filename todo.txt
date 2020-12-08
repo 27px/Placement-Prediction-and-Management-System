@@ -17,7 +17,13 @@
   ],
   "recruiter/dashboard":[
     "content",
-    "tabs: add loading animation"
+    "tabs: add loading animation",
+    "allow recruit only after closing date",
+    "confirm before selecting beyond vacancy limit",
+    "send email on recruit",
+    "ask confirmation on recruit",
+    "mcq",
+    "profile"
   ],
   "coordinator":[
     "add course details",

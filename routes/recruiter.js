@@ -56,7 +56,11 @@ recruiter.post("/dashboard/main",async(req,res)=>{
       throw new Error("Access Denied");
     }
     res.render(`recruiter/main`,{
-      notifications:userData.result.messages
+      usertype:"",
+      notifications:userData.result.messages,
+      recruiteraccepted:userData.result.data.job.schedule.recruiteraccepted,
+      adminaccepted:userData.result.data.job.schedule.adminaccepted,
+      selectPending:userData.result.data.job.applied.length-userData.result.data.job.selected.length
     });
   }).catch(error=>{
     console.log(error.message);
