@@ -371,7 +371,6 @@ body,.main
 .gradcontainer .desc
 {
   width:auto;
-  white-space:nowrap;
   font-family:var(--font-sub-title);
   font-size:18px;
   letter-spacing:1px;
@@ -445,6 +444,7 @@ body,.main
   text-align:justify;
   letter-spacing:1px;
   line-height:25px;
+  word-break:break-all;
 }
 .notification .from,
 .notification .time
@@ -969,12 +969,22 @@ body,.main
   padding:10px 0px;
   display:flex;
   flex-direction:column;
+  justify-content:center;
 }
 .full-wrap .row .title
 {
   font-size:35px;
   font-family:var(--font-title);
   text-align:center;
+}
+.row .small-title
+{
+  font-size:20px;
+  font-family:var(--font-sub-title);
+  text-align:center;
+  letter-spacing:1px;
+  word-spacing:5px;
+  color:#1565C0;
 }
 .full-wrap .row select
 {
@@ -1171,14 +1181,13 @@ body,.main
 {
   .second-dashboard
   {
-    grid-template-rows:repeat(2,minmax(min-content,100%))!important;
+    grid-template-rows:repeat(2,minmax(min-content,1fr))!important;
   }
   .full-wrap.fit-full-wrap form
   {
     max-width:100%;
     display:grid;
     grid-template-columns:1fr 1fr;
-    grid-auto-rows:1fr;
     height:auto;
     grid-gap:20px;
   }
@@ -1500,7 +1509,7 @@ body,.main
 .dashboard .small-container .student
 {
   width:calc(100% - 20px);
-  background:rgba(0,0,0,0.1);
+  background:#E0E0E0;
   margin:10px;
   padding:10px;
   box-sizing:border-box;
@@ -1600,4 +1609,19 @@ body,.main
 .info-selected
 {
   padding:10px;
+}
+.fixed-top-desc
+{
+  position:sticky;
+  top:10px;
+  left:0;
+  padding-left:20px!important;
+  background:#313131!important;
+  color:#FFFFFF;
+  box-shadow:0px 0px 0px 10px #ffffff;
+}
+.fixed-top-desc .opt
+{
+  margin:5px 0px;
+  font-size:20px;
 }

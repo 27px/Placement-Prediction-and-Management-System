@@ -69,11 +69,7 @@ class setUpStudentProfileData
       course:courses,
       experience,
       achievement:achievements,
-      skills,
-      applied_jobs:[],
-      skill_recommendation:[],
-      placement_prediction:{},
-      custom_resume:{}
+      skills
     };
   }
 }

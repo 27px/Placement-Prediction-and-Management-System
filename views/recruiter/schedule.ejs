@@ -1,4 +1,6 @@
 <%
+  var d=new Date(closingDate);
+  var mindate=`${d.getFullYear().toString().padStart(4,0)}-${(d.getMonth()+1).toString().padStart(2,0)}-${d.getDate().toString().padStart(2,0)}`;
   if(jobPosted)
   {
     %>
@@ -18,13 +20,21 @@
               {
                 var title=recruiteraccepted?"Reschedule":"Schedule";
                 <!-- var requestType=(adminaccepted && (!recruiteraccepted))?"accept":"request"; -->
+                if(scheduleDate!="")
+                {
+                  %>
+                    <div class="row">
+                      <div class="small-title">Requested for <%-new Date(scheduleDate).toString().split(" ").splice(0,4).join(" ")%></div>
+                    </div>
+                  <%
+                }
                 %>
                   <div class="row">
                     <div class="title"><%-title%></div>
                   </div>
                   <div class="row">
                     <label for="job-schedule-date"><%-title%> Date</label>
-                    <input type="date" name="job-schedule-date" id="job-schedule-date" required>
+                    <input type="date" name="job-schedule-date" id="job-schedule-date" min="<%=mindate%>" required>
                   </div>
                   <div class="row">
                     <div class="message" id="schedule-message"></div>

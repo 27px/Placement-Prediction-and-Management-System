@@ -239,10 +239,16 @@ function scheduleJobPost(event)
 {
   event.preventDefault();
   var message=_("#schedule-message");
-  var date=_("#job-schedule-date").value;
+  var dc=_("#job-schedule-date");
+  var date=dc.value;
   if(date=="")
   {
     message.innerHTML="Select Date";
+    return;
+  }
+  if((new Date(date)-0)<(new Date(dc.min)-0))
+  {
+    message.innerHTML=`Select Date after ${new Date(dc.min).toString().split(" ").splice(1,3).join(" ")}`;
     return;
   }
   message.innerHTML="";
@@ -263,7 +269,6 @@ function scheduleJobPost(event)
     }
     throw new Error("Status error");
   }).then(data=>{
-    console.log(data)
     if(data.success)
     {
       window.location.reload();
@@ -280,7 +285,6 @@ function showStudentProfile(email)
 {
   var iframe=_("#show-profile-frame");
   iframe.src=`/data/profile/${email}/view`;
-  console.log(email);
 }
 function recruitStudent(event,email)
 {
@@ -299,7 +303,6 @@ function recruitStudent(event,email)
   }).then(data=>{
     if(!data.success)
     {
-      console.log(data.message);
       throw new Error("Unknown Error");
     }
     else
@@ -308,6 +311,10 @@ function recruitStudent(event,email)
       info.classList.add("info-selected");
       info.innerHTML="Selected";
       button.replaceWith(info);
+      var selectedStat=_("#total-stat-selected");
+      var remainingStat=_("#total-stat-remaining");
+      selectedStat.innerHTML=parseInt(selectedStat.innerHTML)+1;
+      remainingStat.innerHTML=parseInt(remainingStat.innerHTML)-1;
     }
   }).catch(err=>{
     console.log(err);

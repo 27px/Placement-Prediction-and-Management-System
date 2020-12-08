@@ -251,7 +251,13 @@ studentTabs.post("/drive/:drive/apply",async(req,res)=>{
           "email":drive
         },{
           $push:{
-            "data.job.applied":userData.result.email
+            "data.job.applied":userData.result.email,
+            "messages":{
+              title:"Student Applied",
+              message:`${userData.result.data.name} had applied for your Job Post`,
+              from:data.user,
+              date:new Date()
+            }
           }
         });
       }).then(r=>{

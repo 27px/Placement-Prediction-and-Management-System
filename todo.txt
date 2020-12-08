@@ -1,6 +1,8 @@
 {
   "important":[
-    "user_config is not tracked and must not get deleted from local repo"
+    "user_config is not tracked and must not get deleted from local repo",
+    "close database connections",
+    "database backup and start fresh"
   ],
   "main":[
     "Admin : Accept Recruiter Schedule",
@@ -10,11 +12,12 @@
     "Select Coordinators",
     "Training Resources",
     "Data Dumping",
-    "Report Generation"
+    "Report Generation",
+    "change theme color(primary) for admin or recruiter && student || coordinator"
   ],
   "recruiter/dashboard":[
     "content",
-    change theme color(primary) for admin or recruiter
+    "tabs: add loading animation"
   ],
   "coordinator":[
     "add course details",

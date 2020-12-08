@@ -1,9 +1,22 @@
 <%
   if(jobPosted)
   {
+    var selectedCount=0;
+    appliedStudents.forEach(std=>{
+      if(selectedStudents.includes(std.email))
+      {
+        selectedCount++;
+      }
+    })
     %>
       <div class="dashboard second-dashboard inverse">
         <div class="small-container scrollable">
+          <div class="student fixed-top-desc">
+            <div class="opt"><b><%-appliedStudents.length%></b>&nbsp;&nbsp;Students applied</div>
+            <div class="opt"><b id='total-stat-selected'><%-selectedCount%></b>&nbsp;&nbsp;Students selected</div>
+            <div class="opt"><b><%-vacancy%></b>&nbsp;&nbsp;Vacancies</div>
+            <div class="opt"><b id='total-stat-remaining'><%-vacancy-selectedCount%></b>&nbsp;&nbsp;Remaining recruitments</div>
+          </div>
           <%
             appliedStudents.forEach(student=>{
               %>
@@ -93,7 +106,7 @@
           %>
         </div>
         <div class="wide wide-frame">
-          <iframe src="data:text/html,<h2 style='text-align:center;padding-top:45vh;font-family:monospace;font-size:20px;letter-spacing:1px;'>Select a Profile</h2>" frameborder="0" id="show-profile-frame"></iframe>
+          <iframe src="data:text/html,<h2 style='text-align:center;padding-top:45vh;font-family:monospace;font-size:20px;letter-spacing:1px;'><%-appliedStudents.length>0?'Select a Profile':'No Students have Applied'%></h2>" frameborder="0" id="show-profile-frame"></iframe>
         </div>
       </div>
     <%

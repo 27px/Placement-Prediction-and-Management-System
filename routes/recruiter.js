@@ -124,6 +124,7 @@ recruiter.post("/dashboard/schedule",async(req,res)=>{
         recruiteraccepted=userData.result.data.job.schedule.recruiteraccepted;
         adminaccepted=userData.result.data.job.schedule.adminaccepted;
         scheduleDate=userData.result.data.job.schedule.date;
+        closingDate=userData.result.data.job.date;
       }
       else
       {
@@ -137,6 +138,7 @@ recruiter.post("/dashboard/schedule",async(req,res)=>{
       recruiteraccepted,
       adminaccepted,
       scheduleDate,
+      closingDate
     });
   }).catch(error=>{
     console.log(error.message);
@@ -171,30 +173,34 @@ recruiter.post("/dashboard/students",async(req,res)=>{
         selectedStudents=userData.result.data.job.selected;
         mhskills=userData.result.data.job.mhskills;
         ghskills=userData.result.data.job.ghskills;
+        vacancy=userData.result.data.job.vacancy;
         var appliedStudents=userData.result.data.job.applied.map(x=>{return {email:x}});
-        await MongoClient.connect(DB_CONNECTION_URL,{
-          useUnifiedTopology:true
-        }).then(async mongo=>{
-          const db=await mongo.db(config.DB_SERVER.DB_DATABASE);
-          var cursor=await db.collection("user_data")
-          .aggregate([
-            {
-              $match:{
-                $or:appliedStudents
+        if(appliedStudents.length>0)
+        {
+          await MongoClient.connect(DB_CONNECTION_URL,{
+            useUnifiedTopology:true
+          }).then(async mongo=>{
+            const db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+            var cursor=await db.collection("user_data")
+            .aggregate([
+              {
+                $match:{
+                  $or:appliedStudents
+                }
+              },
+              {
+                $project:{
+                  name:"$data.name",
+                  email:"$email",
+                  department:"$data.admission.course",
+                  pic_ext:"$pic_ext",
+                  skills:"$data.education.skills"
+                }
               }
-            },
-            {
-              $project:{
-                name:"$data.name",
-                email:"$email",
-                department:"$data.admission.course",
-                pic_ext:"$pic_ext",
-                skills:"$data.education.skills"
-              }
-            }
-          ]);
-          appliedStudents=await getResultFromCursor(cursor);
-        });
+            ]);
+            appliedStudents=await getResultFromCursor(cursor);
+          });
+        }
       }
       else
       {
@@ -202,6 +208,7 @@ recruiter.post("/dashboard/students",async(req,res)=>{
         mhskills=[];
         ghskills=[];
         selectedStudents=[];
+        vacancy:0;
       }
     }
     res.render(`recruiter/students`,{
@@ -209,7 +216,8 @@ recruiter.post("/dashboard/students",async(req,res)=>{
       appliedStudents,
       mhskills,
       ghskills,
-      selectedStudents
+      selectedStudents,
+      vacancy
     });
   }).catch(error=>{
     console.log(error.message);
