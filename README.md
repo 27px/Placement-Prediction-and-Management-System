@@ -15,7 +15,7 @@ Predicts whether a Student gets Placed in Campus Placement using Python,
 
 > Create User Configuration file `user_config.json` file inside `user_config` folder.
 
-`
+```
 {
   "OTP":{
     "TIMEOUT":10
@@ -32,7 +32,7 @@ Predicts whether a Student gets Placed in Campus Placement using Python,
     "RECRUITER":"path/to/online/hosted/image/welcome-image"
   }
 }
-`
+```
 
 #### 🏃 Starting 🏃
 
