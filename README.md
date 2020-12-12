@@ -7,11 +7,11 @@ Predicts whether a Student gets Placed in Campus Placement using Python,
 
 #### 📥 Installing App 📥
 
-> one time installation
+> One time installation
 
 `npm run initialize`
 
-> installs app (installs packages, creates data folders required)
+Installs app (installs packages, creates data folders required)
 
 > Create User Configuration file `user_config.json` file inside `user_config` folder.
 
