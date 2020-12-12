@@ -3,7 +3,8 @@
     "user_config is not tracked and must not get deleted from local repo",
     "close database connections",
     "database backup and start fresh",
-    "optimize asynchronous code"
+    "optimize asynchronous code",
+    "compress images"
   ],
   "main":[
     "Admin : Accept Recruiter Schedule",
