@@ -8,9 +8,9 @@ const MongoClient=require('mongodb').MongoClient;
 const config=require("../config/config.json");
 const user_config=require("../user_config/user_config.json");
 const mail_credentials=require("../config/mail.js");
+const nodemailer=require('nodemailer');
 const setMailOTP=require("../functions/mail_otp.js");
 const setUpStudentProfileData=require("../functions/setUpStudentProfileData.js");
-const nodemailer=require('nodemailer');
 const chalk=require("chalk");
 
 //Route Student

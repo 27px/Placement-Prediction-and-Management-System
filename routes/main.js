@@ -10,10 +10,13 @@ const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
 const config=require("../config/config.json");
 const User=require("../functions/user.js");
+const nodemailer=require('nodemailer');
+const mail_credentials=require("../config/mail.js");
 const getResultFromCursor=require("../functions/getResultFromCursor.js");
+const mailResetPasswordOtp=require("../functions/mail_reset_password_otp.js");
+const generatePassword=require("../functions/generatePassword.js");
 const fs=require("fs");//for gallery
 const path=require("path");
-const chalk=require("chalk");
 
 route.use(cookieParser());
 
@@ -104,8 +107,8 @@ route.post("/login",(req,res)=>{
     password=Buffer.from(password).toString("base64");
     MongoClient.connect(DB_CONNECTION_URL,{
       useUnifiedTopology:true
-    }).then(mongo=>{
-      const db=mongo.db(config.DB_SERVER.DB_DATABASE);
+    }).then(async mongo=>{
+      const db=await mongo.db(config.DB_SERVER.DB_DATABASE);
       db.collection("user_data")
       .findOne({
         email,
@@ -198,8 +201,8 @@ route.post("/register",(req,res)=>{
     password=Buffer.from(password).toString("base64");
     MongoClient.connect(DB_CONNECTION_URL,{
       useUnifiedTopology:true
-    }).then(mongo=>{
-      const db=mongo.db(config.DB_SERVER.DB_DATABASE);
+    }).then(async mongo=>{
+      const db=await mongo.db(config.DB_SERVER.DB_DATABASE);
       //Checks if user already exists
       db.collection("user_data")
       .findOne({
@@ -266,9 +269,138 @@ route.get("/logout",(req,res)=>{
   res.redirect(redirect);
 });
 
+//Reset Password UI
+route.get("/reset/password",async(req,res)=>{
+  var type="guest";
+  var isLoggedIn=false;
+  const user=await new User(req);
+  await user.initialize()
+  .then(data=>{
+    type=data.type;
+    isLoggedIn=data.isLoggedIn;
+  }).catch(err=>{
+    type="guest";
+    isLoggedIn=false;
+  }).finally(()=>{
+    res.render("reset-password",{
+      type,
+      isLoggedIn
+    });
+  });
+});
+
+//Reset Password OTP
+route.post("/reset/password/otp",async(req,res)=>{
+  const user=await new User(req);
+  user.getUserData(req.body.email)
+  .then(async(data)=>{
+    if(!data.success)
+    {
+      var e=new Error();
+      e.name="customError";
+      e.message="Email not Registered";
+      throw e;
+    }
+    else
+    {
+      return Promise.all([
+        nodemailer.createTransport(mail_credentials),
+        MongoClient.connect(DB_CONNECTION_URL,{useUnifiedTopology:true})
+      ]);
+    }
+  }).then(async([transporter,mongo])=>{
+    const otp=generatePassword();//key to reset password
+    const db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+    return Promise.all([
+      transporter.sendMail({
+        from:"Placement Manager",
+        to:req.body.email,
+        subject:'Reset Password',
+        html:mailResetPasswordOtp(otp)
+      }),
+      db.collection("user_data")
+      .updateOne({
+        email:req.body.email
+      },{
+        $set:{
+          resetPassword:{
+            otp,
+            generated:Date.now()
+          }
+        }
+      })
+    ]);
+  }).then(async([sent,updated])=>{
+    if(sent.accepted.length<1)
+    {
+      var e=new Error();
+      e.name="customError";
+      e.message="Email sent Error";
+      throw e;
+    }
+    else if(updated.result.n<1)
+    {
+      var e=new Error();
+      e.name="customError";
+      e.message="OTP save Error";
+      throw e;
+    }
+    else
+    {
+      res.json({
+        success:true
+      });
+    }
+  }).catch(err=>{
+    console.log(err.message);
+    res.json({
+      success:false,
+      message:err.name=="customError"?err.message:"Unknown Error"
+    });
+  });
+});
+
 //Reset Password
-route.get("/reset/password",(req,res)=>{
-  res.render("reset-password");
+route.post("/reset/password",async(req,res)=>{
+  var {email,otp,password}=req.body;
+  MongoClient.connect(DB_CONNECTION_URL,{
+    useUnifiedTopology:true
+  }).then(async mongo=>{
+    const db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+    return db.collection("user_data")
+    .updateOne({
+      email,
+      "resetPassword.otp":otp,
+      "resetPassword.generated":{
+        $gt:(new Date()-(10*60*1000))
+      }
+    },
+    {
+      $set:{
+        password:Buffer.from(password).toString("base64")
+      },
+      $unset:{
+        resetPassword:""
+      }
+    });
+  }).then(result=>{
+    if(result.matchedCount<1)
+    {
+      throw new Error("Invalid data");
+    }
+    else
+    {
+      res.json({
+        success:true
+      });
+    }
+  }).catch(err=>{
+    console.log(err.message);
+    res.json({
+      success:false,
+      message:err.message
+    });
+  });
 });
 
 //About
@@ -278,7 +410,6 @@ route.get("/about",async(req,res)=>{
   const user=await new User(req);
   await user.initialize()
   .then(data=>{
-    console.log(data);
     type=data.type;
     isLoggedIn=data.isLoggedIn;
   }).catch(err=>{
@@ -289,7 +420,7 @@ route.get("/about",async(req,res)=>{
       type,
       isLoggedIn
     });
-  })
+  });
 });
 
 //help / contact / feedback / bug report

@@ -16,7 +16,7 @@
   position:absolute;
   top:var(--nav-height);
   left:0;
-  padding:30px 30px 30px 30px;
+  padding:30px;
   box-sizing:border-box;
   padding-bottom:30px;
   overflow:auto;
@@ -36,6 +36,20 @@
   .container .wrap
   {
     grid-template-columns:repeat(3,minmax(250px,1fr));
+  }
+}
+@media (min-width:1150px)
+{
+  nav .nav-item
+  {
+    border-radius:100px;
+    transition:transform 0.3s,text-shadow 0.3s;
+    text-shadow:3px 3px 1px rgba(0,0,0,0.3);
+  }
+  nav .nav-item:hover
+  {
+    transform:scale(1.2);
+    text-shadow:6px 6px 3px rgba(0,0,0,0.3);
   }
 }
 @media (max-width:920px)
@@ -85,4 +99,15 @@
 .container .wrap .card .title
 {
   font-weight:900;
+}
+@media (max-width:320px)
+{
+  .container
+  {
+    padding:10px;
+  }
+  .container .wrap
+  {
+    grid-gap:10px;
+  }
 }

@@ -2,7 +2,8 @@
   "important":[
     "user_config is not tracked and must not get deleted from local repo",
     "close database connections",
-    "database backup and start fresh"
+    "database backup and start fresh",
+    "optimize asynchronous code"
   ],
   "main":[
     "Admin : Accept Recruiter Schedule",
@@ -61,11 +62,8 @@
   ],
   "ui":{
     "designs-to-add":[
-      "https://jobs.github.com/api",
       "https://codepen.io/rudyt7/pen/ExjVwya",
       "https://codepen.io/dazulu/pen/VVZrQv",
-      "http://localhost/Root/Workarea/My%20Collection/Card/",
-      "http://localhost/Root/Workarea/My%20Collection/Circular%20Progress/circular_progress.html",
       "http://localhost/Root/Workarea/My%20Collection/Dashboard-Design/",
       "http://localhost/Root/Workarea/My%20Collection/Loader/2.html",
       "http://localhost/Root/Workarea/My%20Collection/timeline/index.html",
@@ -81,62 +79,6 @@
       "geo-location"
     ]
   }
-}
-
-
-
-/////Insert Dummy form for complete-profile page
-function insertDummyForm()
-{
-  Array.from(document.forms).forEach(form=>{
-    Array.from(form.elements).forEach(input=>{
-      var type=input.type;
-      if(["checkbox","radio"].includes(type))
-      {
-        input.checked=true;
-      }
-      else if(type=="select-one")
-      {
-        input.selectedIndex=1;
-      }
-      else if(["text","name","textarea"].includes(type))
-      {
-        var v="inserted dumy value for testing";
-        if(input.name=="admnumber")
-        {
-          v="dummyvalue";
-        }
-        input.value=v;
-      }
-      else if(type=="tel")
-      {
-        input.value="0000000000"
-      }
-      else if(type=="number")
-      {
-        if(input.name=="admyear")
-        {
-          input.value="2020";
-        }
-        else
-        {
-          input.value="5";
-        }
-      }
-      else if(type=="date")
-      {
-        input.value="2020-12-31";
-      }
-      else if(type=="month")
-      {
-        input.value="2020-01";
-      }
-      else if(type=="file")
-      {
-        input.click();
-      }
-    });
-  });
 }
 
 

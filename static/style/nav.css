@@ -138,11 +138,12 @@ a.menu svg
   nav a .icon svg
   {
     stroke:#FFFFFF;
-    /* stroke-width:1; */
+    stroke-width:1;
   }
   nav a .text
   {
     color:#FFFFFF;
+    text-align:center;
   }
   nav:not(.nav-bar-active) a
   {
@@ -155,7 +156,7 @@ a.menu svg
     max-width:70px;
     max-height:70px;
     padding:0px 0px !important;
-    margin:0px 0px 20px 0px !important;
+    margin:0px 0px 10px 0px !important;
     transition:stroke 0.3s;
   }
   nav a:hover
@@ -168,7 +169,6 @@ a.menu svg
   nav a:hover .icon svg
   {
     stroke:#000000;
-    /* stroke-width:1; */
   }
   nav a:hover .text
   {
@@ -199,7 +199,12 @@ a.menu svg
   }
   nav a .icon
   {
-    margin: 0px 0px 10px 0px !important;
+    margin: 0px 0px 1px 0px !important;
+  }
+  nav a .icon
+  {
+    max-width:50px;
+    max-height:50px;
   }
 }
 @media (max-width:350px)
