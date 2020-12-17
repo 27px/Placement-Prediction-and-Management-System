@@ -9,6 +9,7 @@ window.onload=()=>{
 
   //Unnecessary delay for loading animation
   var delay=3000;//seconds
+  delay=0;
   setTimeout(()=>{
     Array.from($(".splash")).forEach(splash=>{
       splash.parentNode.removeChild(splash);
@@ -59,12 +60,15 @@ window.onload=()=>{
   //Initial scroll position
   scrolled();
 };
-window.onscroll=function(){
+function setScroll()
+{
   if(body!=undefined || body!=null)
   {
     scrolled();
   }
-};
+}
+window.onscroll=setScroll;
+window.onresize=setScroll;
 function scrolled()
 {
   const H=body.clientHeight;
