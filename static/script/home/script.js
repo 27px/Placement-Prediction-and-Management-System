@@ -9,7 +9,6 @@ window.onload=()=>{
 
   //Unnecessary delay for loading animation
   var delay=3000;//seconds
-  delay=0;
   setTimeout(()=>{
     Array.from($(".splash")).forEach(splash=>{
       splash.parentNode.removeChild(splash);
