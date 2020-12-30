@@ -78,6 +78,10 @@ body
   background-position:center;
   background-size:100%;
 }
+.uploader
+{
+  cursor:pointer;
+}
 .uploader .icon,.empty .icon
 {
   width:50%;

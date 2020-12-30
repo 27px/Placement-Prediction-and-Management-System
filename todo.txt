@@ -4,7 +4,7 @@
     "Admin/coordinator : Accept Recruiter Schedule",
     "Select Coordinators",
     "Data Dumping",
-    "Training Resources upload",
+    "coordinator : Training Resources upload",
     "admin : Send Notification"
   ],
   "important":[

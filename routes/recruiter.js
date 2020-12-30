@@ -230,15 +230,10 @@ recruiter.post("/dashboard/students",async(req,res)=>{
   });
 });
 
-//View company details
-recruiter.get("/details",(req,res)=>{
-  res.render("recruiter/details");
-});
-
-//Edit company details
-recruiter.get("/details/update",(req,res)=>{
-  res.render("recruiter/edit-details");
-});
+// //Edit company details
+// recruiter.get("/details/update",(req,res)=>{
+//   res.render("recruiter/edit-details");
+// });
 
 //Add Jobs/Internships
 recruiter.post("/recruitments/add",async(req,res)=>{
@@ -312,13 +307,13 @@ recruiter.post("/recruitments/add",async(req,res)=>{
   });
 });
 
-//Add MCQ for jobs/internships
-recruiter.get("/recruitments/:job/add/mcq",(req,res)=>{
-  var job=req.params.job;
-  res.render("recruiter/add-mcq",{
-    job
-  });
-});
+// //Add MCQ for jobs/internships
+// recruiter.get("/recruitments/:job/add/mcq",(req,res)=>{
+//   var job=req.params.job;
+//   res.render("recruiter/add-mcq",{
+//     job
+//   });
+// });
 
 // Recruit a Student
 recruiter.get("/recruitments/:student/recruit",async(req,res)=>{

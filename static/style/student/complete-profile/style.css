@@ -42,7 +42,7 @@ nav #nav-profile:hover,
 nav #nav-dashboard:hover::before,
 nav #nav-profile:hover::before
 {
-  cursor:no-drop;
+  cursor:not-allowed;
   background:#f44336!important;
   opacity:0.5;
 }
@@ -921,7 +921,7 @@ textarea:focus,
 }
 .mf-move-disabled:hover
 {
-  cursor:no-drop!important;
+  cursor:not-allowed!important;
   --mf-move-border-color:rgba(0,0,0,0.15)!important;
 }
 .mf-move-left
@@ -1000,7 +1000,7 @@ textarea:focus,
   align-content:flex-start;
   overflow-x:hidden;
   overflow-y:auto;
-  cursor:no-drop;
+  cursor:not-allowed;
   position:relative;
 }
 .skill-view:empty::after

@@ -1325,7 +1325,7 @@ body,.main
   overflow-y:auto;
   margin:20px 0px;
   position:relative;
-  cursor:no-drop;
+  cursor:not-allowed;
 }
 .skill-view:empty::after
 {
@@ -1816,7 +1816,7 @@ body,.main
 .timeline .container.inactive
 {
   filter:grayscale(1);
-  cursor:no-drop;
+  cursor:not-allowed;
   z-index:5!important;
 }
 .timeline .container.inactive .button

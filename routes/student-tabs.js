@@ -142,11 +142,6 @@ studentTabs.post("/main",async(req,res)=>{
   });
 });
 
-//Edit Profile
-studentTabs.post("/profile/edit",(req,res)=>{
-  res.render("student/dashboard-tabs/edit-profile");
-});
-
 //View all Drives
 studentTabs.post("/drive",async(req,res)=>{
   const user=await new User(req);
@@ -286,14 +281,14 @@ studentTabs.post("/drive/:drive/apply",async(req,res)=>{
 });
 
 //participate in drive
-studentTabs.post("/drive/:drive/round/:round",(req,res)=>{
-  var drive=req.params.drive;
-  var round=req.params.round;
-  res.render("student/dashboard-tabs/participate-in-drive",{
-    drive,
-    round
-  });
-});
+// studentTabs.post("/drive/:drive/round/:round",(req,res)=>{
+//   var drive=req.params.drive;
+//   var round=req.params.round;
+//   res.render("student/dashboard-tabs/participate-in-drive",{
+//     drive,
+//     round
+//   });
+// });
 
 //external jobs via api
 studentTabs.post("/external",(req,res)=>{
@@ -429,10 +424,6 @@ studentTabs.post("/prediction",async(req,res)=>{
     input.push(ach);//extras
     var arrears=(Math.min(1,parseInt(userData.result.data.admission.arrears)/2)*100)/100;
     input.push(arrears);
-    console.log(input);
-
-    // [0,0.823,0.784,0,1,0,1,1,0]
-
     var percent=NeuralNetwork(input);//predict
     var placement=percent<0.75?false:true;
     percent=parseInt(percent*10000)/100;

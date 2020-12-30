@@ -134,29 +134,29 @@ admin.post("/dashboard/:tab",async(req,res)=>{
 });
 
 
-//Manage Students
-admin.get("/students/modify",(req,res)=>{
-  res.render("admin/manage-students");
-});
+// //Manage Students
+// admin.get("/students/modify",(req,res)=>{
+//   res.render("admin/manage-students");
+// });
 
-//Alumni data
-admin.get("/alumni",(req,res)=>{
-  res.render("alumni");
-});
+// //Alumni data
+// admin.get("/alumni",(req,res)=>{
+//   res.render("alumni");
+// });
 
-//configurations
-admin.get("/configurations",(req,res)=>{
-  res.render("admin/configurations");
-});
+// //configurations
+// admin.get("/configurations",(req,res)=>{
+//   res.render("admin/configurations");
+// });
 
 //Dump data
 admin.get("/dump/data",(req,res)=>{
   res.render("admin/dump-data");
 });
 
-//Manage Coordinators
-admin.get("/coordinators/modify",(req,res)=>{
-  res.render("admin/manage-coordinators");
+//select Coordinators from students
+admin.get("/select-coordinators/",(req,res)=>{
+  res.render("admin/select-coordinators");
 });
 
 //Create Company Account
@@ -165,8 +165,8 @@ admin.get("/add-company",(req,res)=>{
 });
 
 //Report Generation
-admin.get("/report/generate",(req,res)=>{
-  res.render("admin/generate-report");
-});
+// admin.get("/report/generate",(req,res)=>{
+//   res.render("admin/generate-report");
+// });
 
 module.exports=admin;

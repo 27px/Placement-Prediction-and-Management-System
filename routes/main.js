@@ -574,11 +574,6 @@ route.post("/gallery/upload",async(req,res)=>{
   res.json(result);
 });
 
-//Resources
-route.get("/resources",(req,res)=>{
-  res.render("resources");
-});
-
 //view statistics
 route.get("/statistics",async(req,res)=>{
   var isLoggedIn=false;

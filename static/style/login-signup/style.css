@@ -398,7 +398,7 @@ input::selection
 {
   background:#000;
   padding:8px 0px 8px 20px;
-  cursor:no-drop!important;
+  cursor:not-allowed!important;
 }
 .login .login-form .row button.progress svg,
 .register .register-form .row button.progress svg
