@@ -15,9 +15,7 @@
     "compress images"
   ],
   "other":[
-    "Event Scheduling",
-    "Report Generation",
-    "change theme color(primary) for admin or recruiter && student || coordinator"
+    "Report Generation"
   ],
   "recruiter/dashboard":[
     "content",
