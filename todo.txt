@@ -1,4 +1,12 @@
 {
+  "main":[
+    "add course details : course, department are dummy hard coded data",
+    "Admin/coordinator : Accept Recruiter Schedule",
+    "Select Coordinators",
+    "Data Dumping",
+    "Training Resources upload",
+    "admin : Send Notification"
+  ],
   "important":[
     "user_config is not tracked and must not get deleted from local repo",
     "close database connections",
@@ -6,50 +14,35 @@
     "optimize asynchronous code",
     "compress images"
   ],
-  "main":[
-    "Admin : Accept Recruiter Schedule",
+  "other":[
     "Event Scheduling",
-    "MCQ",
-    "Add Department Course Data",
-    "Select Coordinators",
-    "Training Resources",
-    "Data Dumping",
     "Report Generation",
     "change theme color(primary) for admin or recruiter && student || coordinator"
   ],
   "recruiter/dashboard":[
     "content",
-    "tabs: add loading animation",
-    "allow recruit only after closing date",
     "confirm before selecting beyond vacancy limit",
     "send email on recruit",
     "ask confirmation on recruit",
-    "mcq",
     "profile"
-  ],
-  "coordinator":[
-    "add course details",
-    "course, department are dummy hard coded data"
   ],
   "initialize.js":[
     "set custom config values ?"
   ],
   "complete-profile":[
-    "otp - time hard code to actual time string",
-    "select atleast one ug !important"
+    "otp - time hard code to actual time string"
   ],
   "login":[
     "show profile pic when email enters ? "
   ],
   "db":[
     "export data for backup",
-    "Use Indexing in search (index $text $search)",
-    "course, department are dummy hard coded data"
+    "Use Indexing in search (index $text $search)"
   ],
   "student/dashboard":{
     "redirect":"redirect to complete-profile if profile not complete or otp not verified",
-    "searchresultcontainer":"add data and link",//in the data.js file,
-    "sidebar":"set titles, icons and url, add logout, and other nav links".
+    "searchresultcontainer":"add data and link in the data.js file",
+    "sidebar":"set titles, icons and url, add logout, and other nav links",
     "notification":"no notification messsage"
   },
   "before-production":[
@@ -60,44 +53,5 @@
     "prefetch all static files",
     "set theme color for chrome in android (meta theme)",
     "remove unused css in default-values.css"
-  ],
-  "ui":{
-    "designs-to-add":[
-      "https://codepen.io/rudyt7/pen/ExjVwya",
-      "https://codepen.io/dazulu/pen/VVZrQv",
-      "http://localhost/Root/Workarea/My%20Collection/Dashboard-Design/",
-      "http://localhost/Root/Workarea/My%20Collection/Loader/2.html",
-      "http://localhost/Root/Workarea/My%20Collection/timeline/index.html",
-      "http://localhost/Root/Workarea/My%20Collection/Video%20Background/index.html",
-      "http://localhost/Root/Workarea/My%20Collection/Layout/index.html",
-      "https://www.w3schools.com/howto/howto_css_flip_box.asp",
-      "https://www.w3schools.com/howto/howto_js_scrolldrawing.asp",
-      "https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable"
-    ],
-    "builtin-api":[
-      "intersection-observer",
-      "speech-synthesis",
-      "geo-location"
-    ]
-  }
+  ]
 }
-
-
-/////Try to use this clip path somewhere
-<svg>
-  <defs>
-    <clipPath id="svg-ld_masked_image_5fbb028da6094">
-      <path
-        fill="black"
-        d="M131,40 C84.135,83.534 96.819,148.446 63.283,217.394 C31.508,282.723 -3.621,324.812 1.461,394.323 C3.451,421.533 12.117,449.828 29.796,480.002 C87.412,578.34 -15.301,663.448 94.611,833.387 C156.302,928.77 316.559,918.015 435.971,936.052 C572.741,956.711 653.384,1003.601 753.566,971.715 C877.689,932.209 924.99262,809.932822 972.63862,707.700822 C1063.84662,512.000822 1038.71071,197.732895 884.476705,67.2268952 C788.919705,-13.6291048 714.704,70.008 529,43 C339.693,15.468 212.609,-35.808 131,40 Z"
-        pathdata:id="
-        M175.270836,26.7977911 C128.405836,70.3317911 129.938279,144.739124 96.4022789,213.687124 C64.6272789,279.016124 41.242383,286.071679 46.324383,355.582679 C48.314383,382.792679 79.5246278,459.251586 88.7738696,492.334164 C116.497714,591.496483 -75.3047466,680.552915 34.6072534,850.491915 C96.2982534,945.874915 281.559,906.015 400.971,924.052 C537.741,944.711 678.161685,902.348368 778.343685,870.462368 C902.466685,830.956368 927.354,806.232 975,704 C1066.208,508.3 1058.68971,185.848951 904.455709,55.3429506 C808.898709,-25.5130494 786.027661,117.60054 600.323661,90.5925401 C411.016661,63.0605401 256.879836,-49.0102089 175.270836,26.7977911 Z;
-        M200.391256,6 C138.06059,22.7990703 77.9622177,42.6445401 44.4262177,111.59254 C12.6512177,176.92154 -4.1051307,212.01786 0.976869296,281.52886 C2.9668693,308.73886 99.0297526,534.545109 108.278994,567.627688 C136.002839,666.790006 -29.1381304,721.523368 80.7738696,891.462368 C142.46487,986.845368 331.636556,840.153183 451.048556,858.190183 C587.818556,878.849183 705.371102,948.496676 805.553102,916.610676 C929.676102,877.104676 941.497784,689.3436 989.143784,587.1116 C1080.35178,391.4116 1050.68971,206.848951 896.455709,76.3429506 C800.898709,-4.5130494 778.027661,138.60054 592.323661,111.59254 C403.016661,84.0605401 312.765712,-24.2866392 200.391256,6 Z"
-      />
-    </clipPath>
-  </defs>
-</svg>
-<!--
-css clip path
-M0.128,0.041 C0.082,0.085,0.094,0.151,0.062,0.221 C0.031,0.288,-0.004,0.331,0.001,0.401 C0.003,0.429,0.012,0.458,0.029,0.489 C0.085,0.589,-0.015,0.675,0.092,0.849 C0.153,0.946,0.309,0.935,0.426,0.953 C0.559,0.974,0.638,1,0.736,0.989 C0.857,0.949,0.903,0.825,0.949,0.721 C1,0.521,1,0.201,0.863,0.068 C0.77,-0.014,0.698,0.071,0.516,0.044 C0.332,0.016,0.208,-0.036,0.128,0.041
--->

@@ -22,8 +22,8 @@ window.onload=()=>{
     "Placement Prediction",
     "External Jobs",
     "Previous year Placement Statistics",
-    "Video Resources, E-Books, Tutorials",
-    "Practice MCQ Questions"
+    "Apply for Jobs",
+    "Video Resources, E-Books, Tutorials"
   ];
   const l=new TypeIt("#lines",{loop:true});
   for(const line of lines)
