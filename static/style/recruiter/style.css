@@ -1831,3 +1831,8 @@ body,.main
 {
   display:none;
 }
+.center
+{
+  text-align:center;
+  margin-bottom:20px;
+}

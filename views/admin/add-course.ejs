@@ -1,33 +1,54 @@
 <div class="full-wrap min-full">
   <div class="image course-image"></div>
   <form action="" method="POST">
-    <div class="row">
-      <div class="title">Add Course</div>
-    </div>
-    <div class="row">
-      <select name="department">
-        <option value selected disabled>-- Select Department --</option>
-        <%
-          department.forEach(name=>{
-            %>
-              <option value="<%=name%>"><%=name%></option>
-            <%
-          });
+    <%
+      if(department.length>0)
+      {
         %>
-      </select>
-    </div>
-    <div class="row">
-      <label for="name">Course Name</label>
-      <input type="name" name="name" id="name" placeholder="Course Name" required>
-    </div>
-    <div class="row">
-      <div class="message" id="add-course-message"></div>
-    </div>
-    <div class="row">
-      <button type="button" onclick="addCourse(event);" id="add-course-button">
-        <span>Add</span>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
-      </button>
-    </div>
+          <div class="row">
+            <div class="title">Add Course</div>
+          </div>
+          <div class="row">
+            <label for="department">Select Department</label>
+            <select name="department" id="department">
+              <option value selected disabled>-- Select Department --</option>
+              <%
+                department.forEach(name=>{
+                  %>
+                    <option value="<%=name%>"><%=name%></option>
+                  <%
+                });
+              %>
+            </select>
+          </div>
+          <div class="row">
+            <label for="name">Course Name</label>
+            <input type="name" name="name" id="name" placeholder="Course Name" required>
+          </div>
+          <div class="row">
+            <label for="num">Number of Semesters</label>
+            <input type="number" name="num" id="num" placeholder="Number of Semesters" required>
+          </div>
+          <div class="row">
+            <div class="message" id="add-course-message"></div>
+          </div>
+          <div class="row">
+            <button type="button" onclick="addCourse(event);">
+              <span>Add</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+            </button>
+          </div>
+        <%
+      }
+      else
+      {
+        %>
+          <div class="row">
+            <label for="" class="center">Add Department first</label>
+            <button type="button" onclick="_('#add-department').click();">Goto Add Department</button>
+          </div>
+        <%
+      }
+    %>
   </form>
 </div>

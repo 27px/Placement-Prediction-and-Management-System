@@ -131,33 +131,38 @@ admin.get("/dump/data",(req,res)=>{
 //Add course
 admin.post("/dashboard/add-course",async(req,res)=>{
   const user=await new User(req);
-  await user.initialize().then(data=>{
+  await user.initialize()
+  .then(data=>{
     if(data.isLoggedIn && user.hasAccessOf("admin"))
     {
       return MongoClient.connect(DB_CONNECTION_URL,{
         useUnifiedTopology:true
-      })
+      });
     }
     else
     {
       throw new Error("Access Denied");
     }
-  }).then(async mongo=>{
-    var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
-    var data_collection=await db.collection("department");
-    return getResultFromCursor(await data_collection.aggregate([
+  }).then(mongo=>{
+    return mongo.db(config.DB_SERVER.DB_DATABASE);
+  }).then(db=>{
+    return db.collection("department");
+  }).then(data_collection=>{
+    return data_collection.aggregate([
       {
         "$project":{
           _id:0,
           name:1
         }
       }
-    ]));
+    ]);
+  }).then(cursor=>{
+    return getResultFromCursor(cursor);
   }).then(result=>{
-      var department=result!=null?result.map(x=>x.name):[];
-      res.render("admin/add-course",{
-        department
-      });
+    var department=result!=null?result.map(x=>x.name):[];
+    res.render("admin/add-course",{
+      department
+    });
   }).catch(err=>{
     console.log(err.message);
     res.status(500);
@@ -165,9 +170,173 @@ admin.post("/dashboard/add-course",async(req,res)=>{
   });
 });
 
-//Add Department
+//Add Course form handling
+admin.post("/add-course/add",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize()
+  .then(data=>{
+    if(data.isLoggedIn && user.hasAccessOf("admin"))
+    {
+      return MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      });
+    }
+    else
+    {
+      throw new Error("Access Denied");
+    }
+  }).then(mongo=>{
+    return mongo.db(config.DB_SERVER.DB_DATABASE);
+  }).then(db=>{
+    return db.collection("department");
+  }).then(department=>{
+    return department.findOne({
+      name:new RegExp(`^${req.body.department}$`,"i"),
+      courses:{
+        $elemMatch:{
+          name:req.body.course
+        }
+      }
+    });
+  }).then(department=>{
+    if(department===null)
+    {
+      return MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      });
+    }
+    else
+    {
+      res.json({
+        success:false,
+        message:"Course already exists"
+      });
+    }
+  }).then(mongo=>{
+    if(mongo!=undefined)
+    {
+      return mongo.db(config.DB_SERVER.DB_DATABASE);
+    }
+  }).then(db=>{
+    if(db!=undefined)
+    {
+      return db.collection("department");
+    }
+  }).then(department=>{
+    if(department!=null)
+    {
+      return department.updateOne({
+        name:req.body.department
+      },{
+        "$push":{
+          courses:{
+            name:req.body.course,
+            num_of_sem:req.body.num
+          }
+        }
+      });
+    }
+  }).then(resp=>{
+    if(resp!=undefined)
+    {
+      if(resp.modifiedCount!=1)
+      {
+        throw new Error("Update Error");
+      }
+      else
+      {
+        res.json({
+          success:true
+        });
+      }
+    }
+  }).catch(err=>{
+    console.log(err.message);
+    res.status(500);
+    res.end();
+  });
+});
+
+//Add Department ui
 admin.post("/add-department",(req,res)=>{
   res.render("admin/add-department");
+});
+
+//add department form handling
+admin.post("/add-department/add",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize()
+  .then(data=>{
+    if(data.isLoggedIn && user.hasAccessOf("admin"))
+    {
+      return MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      });
+    }
+    else
+    {
+      throw new Error("Access Denied");
+    }
+  }).then(mongo=>{
+    return mongo.db(config.DB_SERVER.DB_DATABASE);
+  }).then(db=>{
+    return db.collection("department");
+  }).then(department=>{
+    return department.findOne({
+      name:new RegExp(`^${req.body.department}$`,"i")
+    });
+  }).then(department=>{
+    if(department===null)
+    {
+      return MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      });
+    }
+    else
+    {
+      res.json({
+        success:false,
+        message:"Department already exists"
+      });
+    }
+  }).then(mongo=>{
+    if(mongo!=undefined)
+    {
+      return mongo.db(config.DB_SERVER.DB_DATABASE);
+    }
+  }).then(db=>{
+    if(db!=undefined)
+    {
+      return db.collection("department");
+    }
+  }).then(department=>{
+    if(department!=null)
+    {
+      return department.insertOne({
+        name:req.body.department,
+        courses:[],
+        engineering:req.body.type
+      });
+    }
+  }).then(resp=>{
+    if(resp!=undefined)
+    {
+      if(resp.insertedCount!=1)
+      {
+        throw new Error("Insert Error");
+      }
+      else
+      {
+        res.json({
+          success:true
+        });
+      }
+    }
+  }).catch(err=>{
+    console.log(err.message);
+    res.status(500);
+    res.end();
+  });
 });
 
 //select Coordinators from students

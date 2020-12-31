@@ -1,6 +1,5 @@
 {
   "main":[
-    "add course details : course, department are dummy hard coded data",
     "Admin/coordinator : Accept Recruiter Schedule",
     "Select Coordinators",
     "Data Dumping",

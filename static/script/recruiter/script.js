@@ -321,3 +321,137 @@ function recruitStudent(event,email)
     button.classList.remove("progress");
   });
 }
+function addDepartment(event)
+{
+  var department=_("#department").value;
+  var button=event.currentTarget;
+  var message=_("#add-department-message");
+  var type=_("#department-type").selectedIndex;// just need type as index
+  if(department=="")
+  {
+    message.innerHTML="Enter department name";
+    return;
+  }
+  if(department.length<2)// eg: CS is valid but only has length 2, so minimum length is 2
+  {
+    message.innerHTML="Invalid department name";
+    return;
+  }
+  if(/[^a-zA-Z ]/.test(department))
+  {
+    message.innerHTML="Invalid department name";
+    return;
+  }
+  message.innerHTML="";
+  button.classList.add("progress");
+  fetch("./add-department/add",{
+    method:"POST",
+    cache:"no-store",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      department,
+      type
+    })
+  }).then(resp=>{
+    if(resp.status===200)
+    {
+      return resp.json();
+    }
+    throw new Error(`Status Error ${resp.status}`);
+  }).then(data=>{
+    if(data.success)
+    {
+      window.location.reload();
+    }
+    else
+    {
+      message.innerHTML=data.message;
+    }
+  }).catch(err=>{
+    message.innerHTML="An error occured";
+    console.log(err.message);
+  }).finally(()=>{
+    button.classList.remove("progress");
+  });
+}
+
+
+
+
+
+
+function addCourse(event)
+{
+  var department=_("#department");
+  var button=event.currentTarget;
+  var message=_("#add-course-message");
+  var course=_("#name").value;
+  var num=_("#num").value;
+  if(department.selectedIndex==0)
+  {
+    message.innerHTML="Select department";
+    return;
+  }
+  if(course=="")
+  {
+    message.innerHTML="Enter course name";
+    return;
+  }
+  if(course.length<2)
+  {
+    message.innerHTML="Invalid course name";
+    return;
+  }
+  if(/[^a-zA-Z ]/.test(course))
+  {
+    message.innerHTML="Invalid course name";
+    return;
+  }
+  num=parseInt(num);
+  if(isNaN(num))
+  {
+    message.innerHTML="Invalid number of Semesters";
+    return;
+  }
+  if(num<1 || num>15)
+  {
+    message.innerHTML="Semester should be between 1 and 15";
+    return;
+  }
+  message.innerHTML="";
+  button.classList.add("progress");
+  fetch("./add-course/add",{
+    method:"POST",
+    cache:"no-store",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      department:department.options[department.selectedIndex].value,
+      course,
+      num
+    })
+  }).then(resp=>{
+    if(resp.status===200)
+    {
+      return resp.json();
+    }
+    throw new Error(`Status Error ${resp.status}`);
+  }).then(data=>{
+    if(data.success)
+    {
+      window.location.reload();
+    }
+    else
+    {
+      message.innerHTML=data.message;
+    }
+  }).catch(err=>{
+    message.innerHTML="An error occured";
+    console.log(err.message);
+  }).finally(()=>{
+    button.classList.remove("progress");
+  });
+}
