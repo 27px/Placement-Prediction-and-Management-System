@@ -6,6 +6,7 @@ const config=require("../config/config.json");
 const User=require("../functions/user.js");
 const generatePassword=require("../functions/generatePassword.js");
 const setMailWelcomeRecruiter=require("../functions/mail_recruiter_welome.js");
+const getResultFromCursor=require("../functions/getResultFromCursor.js");
 const nodemailer=require("nodemailer");
 const mail_credentials=require("../config/mail.js");
 
@@ -107,7 +108,84 @@ admin.post("/dashboard/add-company-data",async(req,res)=>{
   });
 });
 
+// //Manage Students
+// admin.get("/students/modify",(req,res)=>{
+//   res.render("admin/manage-students");
+// });
 
+// //Alumni data
+// admin.get("/alumni",(req,res)=>{
+//   res.render("alumni");
+// });
+
+// //configurations
+// admin.get("/configurations",(req,res)=>{
+//   res.render("admin/configurations");
+// });
+
+//Dump data
+admin.get("/dump/data",(req,res)=>{
+  res.render("admin/dump-data");
+});
+
+//Add course
+admin.post("/dashboard/add-course",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(data=>{
+    if(data.isLoggedIn && user.hasAccessOf("admin"))
+    {
+      return MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      })
+    }
+    else
+    {
+      throw new Error("Access Denied");
+    }
+  }).then(async mongo=>{
+    var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+    var data_collection=await db.collection("department");
+    return getResultFromCursor(await data_collection.aggregate([
+      {
+        "$project":{
+          _id:0,
+          name:1
+        }
+      }
+    ]));
+  }).then(result=>{
+      var department=result!=null?result.map(x=>x.name):[];
+      res.render("admin/add-course",{
+        department
+      });
+  }).catch(err=>{
+    console.log(err.message);
+    res.status(500);
+    res.end();
+  });
+});
+
+//Add Department
+admin.post("/add-department",(req,res)=>{
+  res.render("admin/add-department");
+});
+
+//select Coordinators from students
+admin.get("/select-coordinators/",(req,res)=>{
+  res.render("admin/select-coordinators");
+});
+
+//Create Company Account
+admin.get("/add-company",(req,res)=>{
+  res.render("admin/add-company");
+});
+
+//Report Generation
+// admin.get("/report/generate",(req,res)=>{
+//   res.render("admin/generate-report");
+// });
+
+//Other tabs
 admin.post("/dashboard/:tab",async(req,res)=>{
   const user=await new User(req);
   await user.initialize().then(async data=>{
@@ -133,40 +211,5 @@ admin.post("/dashboard/:tab",async(req,res)=>{
   });
 });
 
-
-// //Manage Students
-// admin.get("/students/modify",(req,res)=>{
-//   res.render("admin/manage-students");
-// });
-
-// //Alumni data
-// admin.get("/alumni",(req,res)=>{
-//   res.render("alumni");
-// });
-
-// //configurations
-// admin.get("/configurations",(req,res)=>{
-//   res.render("admin/configurations");
-// });
-
-//Dump data
-admin.get("/dump/data",(req,res)=>{
-  res.render("admin/dump-data");
-});
-
-//select Coordinators from students
-admin.get("/select-coordinators/",(req,res)=>{
-  res.render("admin/select-coordinators");
-});
-
-//Create Company Account
-admin.get("/add-company",(req,res)=>{
-  res.render("admin/add-company");
-});
-
-//Report Generation
-// admin.get("/report/generate",(req,res)=>{
-//   res.render("admin/generate-report");
-// });
 
 module.exports=admin;
