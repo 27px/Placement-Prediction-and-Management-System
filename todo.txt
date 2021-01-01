@@ -1,8 +1,8 @@
 {
   "main":[
-    "Admin/coordinator : Accept Recruiter Schedule",
     "Select Coordinators",
     "Data Dumping",
+    
     "coordinator : Training Resources upload",
     "admin : Send Notification"
   ],

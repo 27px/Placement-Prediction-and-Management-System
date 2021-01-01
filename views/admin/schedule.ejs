@@ -1,0 +1,30 @@
+<div class="full-wrap min-full">
+  <div class="image schedule-image"></div>
+  <div class="scheduler">
+    <%
+      if(companies.length>0)
+      {
+        companies.forEach(company=>{
+          %>
+            <div class="schedule">
+              <div class="company"><%=company.data.name%></div>
+              <div class="job"><%=company.data.job.title%></div>
+              <div class="salary">Salary : <%=company.data.job.salary%></div>
+              <div class="vacancy">Vacancy : <%=company.data.job.vacancy%></div>
+              <div class="date"><%=company.data.job.schedule.date%></div>
+              <div class="right">
+                <button data-email="<%=company.email%>" onclick="acceptSchedule();">Accept</button>
+              </div>
+            </div>
+          <%
+        })
+      }
+      else
+      {
+        %>
+          <div class="schedule">Nothing pending</div>
+        <%
+      }
+    %>
+  </div>
+</div>

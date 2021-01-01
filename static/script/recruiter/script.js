@@ -13,7 +13,10 @@ window.onload=(event)=>{
 function openTab(event)
 {
   var target=event.currentTarget.getAttribute("data-target");
-  _(`#${target}`).click();
+  if(target!=null)
+  {
+    _(`#${target}`).click();
+  }
 }
 function selectThisOption(event)
 {
@@ -453,5 +456,32 @@ function addCourse(event)
     console.log(err.message);
   }).finally(()=>{
     button.classList.remove("progress");
+  });
+}
+function acceptSchedule()
+{
+  fetch(`./dashboard/schedule/${event.currentTarget.getAttribute("data-email")}/approve`,{
+    method:"POST",
+    cache:"no-store"
+  }).then(resp=>{
+    if(resp.status===200)
+    {
+      return resp.json();
+    }
+    else
+    {
+      throw new Error(`Status error ${resp.status}`);
+    }
+  }).then(data=>{
+    if(data.success)
+    {
+      _("#schedule").click();
+    }
+    else
+    {
+      throw new Error(`An error occured`);
+    }
+  }).catch(err=>{
+    console.log(err.message);
   });
 }

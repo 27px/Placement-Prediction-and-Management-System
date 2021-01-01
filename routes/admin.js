@@ -354,6 +354,115 @@ admin.get("/add-company",(req,res)=>{
 //   res.render("admin/generate-report");
 // });
 
+admin.post("/dashboard/schedule",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(async data=>{
+    if(!data.isLoggedIn)
+    {
+      throw new Error("Authentication Failed");
+    }
+    if(!user.hasAccessOf("admin"))
+    {
+      throw new Error("Access Denied");
+    }
+    return MongoClient.connect(DB_CONNECTION_URL,{
+      useUnifiedTopology:true
+    });
+  }).then(mongo=>{
+    return mongo.db(config.DB_SERVER.DB_DATABASE);
+  }).then(db=>{
+    return db.collection("user_data");
+  }).then(user_data=>{
+    return user_data.aggregate([
+      {
+        "$match":{
+          type:"recruiter",
+          "data.job.schedule.recruiteraccepted":true,
+          "data.job.schedule.adminaccepted":false
+        }
+      },
+      {
+        "$project":{
+          _id:0,
+          email:1,
+          "data.name":1,
+          "data.job.title":1,
+          "data.job.salary":1,
+          "data.job.vacancy":1,
+          "data.job.schedule.date":1
+        }
+      }
+    ]);
+  }).then(resp=>{
+    return getResultFromCursor(resp);
+  }).then(companies=>{
+    companies=companies.length>0?companies:[];
+    res.render(`admin/schedule`,{
+      companies
+    });
+  }).catch(error=>{
+    console.log(error.message);
+    res.end("");
+  });
+});
+
+admin.post("/dashboard/schedule/:company/approve",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(async data=>{
+    if(!data.isLoggedIn)
+    {
+      throw new Error("Authentication Failed");
+    }
+    if(!user.hasAccessOf("admin"))
+    {
+      throw new Error("Access Denied");
+    }
+    return MongoClient.connect(DB_CONNECTION_URL,{
+      useUnifiedTopology:true
+    });
+  }).then(mongo=>{
+    return mongo.db(config.DB_SERVER.DB_DATABASE);
+  }).then(db=>{
+    return db.collection("user_data");
+  }).then(user_data=>{
+    return user_data.updateOne({
+      email:req.params.company
+    },{
+      "$set":{
+        "data.job.schedule.adminaccepted":true
+      },
+      "$push":{
+        "messages":{
+          from:req.session.user,
+          name:"Admin",
+          message:"Your schedule request has been accepted to conduct on the requested date. Go to Schedule Section to see details.",
+          type:"general",
+          date:new Date()
+        }
+      }
+    });
+  }).then(resp=>{
+    if(resp.modifiedCount==1)
+    {
+      res.json({
+        success:true
+      });
+    }
+    else
+    {
+      res.json({
+        success:false,
+        message:"Something went wrong"
+      });
+    }
+  }).catch(error=>{
+    console.log(error.message);
+    res.json({
+      success:false
+    });
+  });
+});
+
 //Other tabs
 admin.post("/dashboard/:tab",async(req,res)=>{
   const user=await new User(req);

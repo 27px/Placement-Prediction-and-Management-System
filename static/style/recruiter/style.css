@@ -964,6 +964,10 @@ body,.main
 {
   background-image:url("../../images/admin/course.jpg");
 }
+.full-wrap .image.schedule-image
+{
+  background-image:url("../../images/admin/schedule.jpg");
+}
 .full-wrap form
 {
   width:100%;
@@ -1835,4 +1839,72 @@ body,.main
 {
   text-align:center;
   margin-bottom:20px;
+}
+.scheduler
+{
+  width:100%;
+  height:100%;
+  max-width:400px;
+  padding:25px;
+  box-sizing:border-box;
+  overflow-y:auto;
+  font-family:var(--font-sub-title);
+}
+.scheduler .schedule
+{
+  background:linear-gradient(45deg,#64B5F6,#1565C0);
+  margin:20px 0px;
+  padding:20px;
+  box-sizing:border-box;
+  border-radius:10px;
+  box-shadow:0px 0px 10px 0px rgba(0,0,0,0.5);
+}
+.scheduler .schedule .company
+{
+  font-size:23px;
+  font-weight:900;
+  margin-bottom:20px;
+}
+.scheduler .schedule .job
+{
+  font-size:19px;
+  margin-bottom:5px;
+}
+.scheduler .schedule .salary,
+.scheduler .schedule .vacancy
+{
+  font-size:16px;
+  margin-bottom:5px;
+  color:rgba(0,0,0,0.7);
+}
+.scheduler .schedule .date
+{
+  font-size:16px;
+  margin-bottom:5px;
+  font-style:italic;
+  text-align:right;
+}
+.scheduler .schedule button
+{
+  background:#2196F3;
+  padding:8px 25px;
+  border:1px solid #0D47A1;
+  letter-spacing:1px;
+  transition:background-color 0.3s;
+  position:relative;
+  top:0;
+  right:0;
+  color:#FFFFFF;
+  border-radius:50px;
+  cursor:pointer;
+}
+.scheduler .schedule button:hover
+{
+  background:#1976D2;
+}
+.right
+{
+  width:100%;
+  text-align:right;
+  padding-top:20px;
 }
