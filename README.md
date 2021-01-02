@@ -17,6 +17,7 @@ Installs app (installs packages, creates data folders required)
 
 ```
 // config/user_config.json
+
 {
   "OTP":{
     "TIMEOUT":10
