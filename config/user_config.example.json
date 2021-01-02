@@ -1,0 +1,16 @@
+{
+  "OTP":{
+    "TIMEOUT":10
+  },
+  "MAIL":{
+    "SERVICE":"gmail",
+    "MAIL":"your_email_id",
+    "PASSWORD":"yur_password",
+    "PORT":465,
+    "SECURE":true
+  },
+  "NETIMAGES":{
+    "OTP":"https://www.prosec-networks.com/wp-content/uploads/2019/06/web_app_testing.jpg",
+    "RECRUITER":"https://cdn.shopify.com/s/files/1/0435/5417/7181/files/95562890_136803041290288_2080570527134515200_n.jpg?height=628&pad_color=ffffff&v=1594867979&width=1500"
+  }
+}

@@ -1,4 +1,4 @@
 node_modules
 data
-user_config/*
+config/user_config.json
 desktop.ini

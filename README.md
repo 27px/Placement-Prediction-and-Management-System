@@ -13,7 +13,12 @@ Predicts whether a Student gets Placed in Campus Placement using Python,
 
 Installs app (installs packages, creates data folders required)
 
-> Create User Configuration file `user_config.json` file inside `user_config` folder.
+> Create User Configuration file `user_config.json` file inside `config` folder.
+> An example file is given in the folder `config` named `user_config.example.json`
+> Note that you have to set your email id and password in the `user_config.json` to send emails.
+> Keep the file secure, make sure to add in `.gitignore`
+> NETIMAGES are images from the internet (direct link), to show in mail
+> If you have a hosted server, you can use it. (Note: `localhost` won't work)
 
 ```
 {
@@ -22,8 +27,8 @@ Installs app (installs packages, creates data folders required)
   },
   "MAIL":{
     "SERVICE":"gmail",
-    "MAIL":"examplemail@gmail.com",
-    "PASSWORD":"examplepassword",
+    "MAIL":"your_email_id_here",
+    "PASSWORD":"your_password_here",
     "PORT":465,
     "SECURE":true
   },

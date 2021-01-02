@@ -1,5 +1,5 @@
 const config=require("../config/config.json");
-const user_config=require("../user_config/user_config.json");
+const user_config=require("../config/user_config.json");
 function setMailWelcomeRecruiter(password)
 {
   return `
