@@ -2,7 +2,8 @@
   "main":[
     "Select Coordinators",
     "Data Dumping",
-    
+
+    "create coordinator email:rahulr0047@gmail.com"
     "coordinator : Training Resources upload",
     "admin : Send Notification"
   ],
