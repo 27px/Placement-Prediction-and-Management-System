@@ -16,6 +16,7 @@ Installs app (installs packages, creates data folders required)
 > Create User Configuration file `user_config.json` file inside `config` folder. An example file is given in the folder `config` named `user_config.example.json`. Note that you have to set your email id and password in the `user_config.json` to send emails. Keep the file secure, make sure to add in `.gitignore`. NETIMAGES are images from the internet (direct link), to show in mail. If you have a hosted server, you can use it. (Note: `localhost` won't work)
 
 ```
+// config/user_config.json
 {
   "OTP":{
     "TIMEOUT":10
