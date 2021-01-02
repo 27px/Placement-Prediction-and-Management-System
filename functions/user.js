@@ -20,6 +20,7 @@
 const MongoClient=require("mongodb").MongoClient;
 const DB_CONNECTION_URL=require("../config/db.js");
 const config=require("../config/config.json");
+const getResultFromCursor=require("./getResultFromCursor.js");
 const userDefaultCodes={
   "guest":0,
   "student":1,
@@ -126,36 +127,43 @@ class User
     });
     return data;
   }
-  async getUserData(email)
+  async getUserData(email,project=null)
   {
-    var data={};
+    var data={},query=[
+      {
+        "$match":{
+          email
+        }
+      }
+    ];
+    if(project!==null && typeof(project)===typeof({}))
+    {
+      query.push({
+        "$project":project
+      });
+    }
     await MongoClient.connect(DB_CONNECTION_URL,{
       useUnifiedTopology:true
-    }).then(async mongo=>{
-      const db=mongo.db(config.DB_SERVER.DB_DATABASE);
-      await db.collection("user_data")
-      .findOne({
-        email
-      })
-      .then(result=>{
-        if(result!==null)
-        {
-          data.success=true;
-          data.result=result;
-          delete data.result.password;
-        }
-        else
-        {
-          data.success=false;
-          data.message="not Found";
-        }
-      }).catch(err=>{
-        console.log(err.message);
+    }).then(mongo=>{
+      return mongo.db(config.DB_SERVER.DB_DATABASE);
+    }).then(db=>{
+      return db.collection("user_data");
+    }).then(user_data_table=>{
+      return user_data_table.aggregate(query);
+    }).then(cursor=>{
+      return getResultFromCursor(cursor);
+    }).then(result=>{
+      if(result!==null && result.length!==0)
+      {
+        data.success=true;
+        data.result=result[0]===undefined?{}:result[0];//this function is intended to get data of one record(row) and should return first element
+        delete data.result.password;
+      }
+      else
+      {
         data.success=false;
-        data.message=err.message;
-      }).finally(()=>{
-        mongo.close();
-      });
+        data.message="not Found";
+      }
     }).catch(error=>{
       console.log(error.message);
       data.success=false;

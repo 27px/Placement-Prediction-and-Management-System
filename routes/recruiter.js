@@ -19,7 +19,11 @@ recruiter.get("/dashboard",async(req,res)=>{
     {
       throw new Error("Authentication Failed");
     }
-    var userData=await user.getUserData(data.user);
+    var userData=await user.getUserData(data.user,{
+      "_id":0,
+      type:1,
+      email:1
+    });
     if(!userData.success)
     {
       throw new Error("Authentication Failed . . .");
@@ -46,7 +50,12 @@ recruiter.post("/dashboard/main",async(req,res)=>{
     {
       throw new Error("Authentication Failed");
     }
-    var userData=await user.getUserData(data.user);
+    var userData=await user.getUserData(data.user,{
+      "_id":0,
+      messages:1,
+      "data.job.schedule.recruiteraccepted":1,
+      "data.job.schedule.adminaccepted":1
+    });
     if(!userData.success)
     {
       throw new Error("Authentication Failed . . .");
@@ -56,11 +65,9 @@ recruiter.post("/dashboard/main",async(req,res)=>{
       throw new Error("Access Denied");
     }
     res.render(`recruiter/main`,{
-      usertype:"",
       notifications:userData.result.messages,
       recruiteraccepted:userData.result.data.job.schedule.recruiteraccepted,
-      adminaccepted:userData.result.data.job.schedule.adminaccepted,
-      selectPending:userData.result.data.job.applied.length-userData.result.data.job.selected.length
+      adminaccepted:userData.result.data.job.schedule.adminaccepted
     });
   }).catch(error=>{
     console.log(error.message);
@@ -78,7 +85,10 @@ recruiter.post("/dashboard/job",async(req,res)=>{
     {
       throw new Error("Authentication Failed");
     }
-    var userData=await user.getUserData(data.user);
+    var userData=await user.getUserData(data.user,{
+      "_id":0,
+      "data.job":1
+    });
     if(!userData.success)
     {
       throw new Error("Authentication Failed . . .");
@@ -110,7 +120,11 @@ recruiter.post("/dashboard/schedule",async(req,res)=>{
     {
       throw new Error("Authentication Failed");
     }
-    var userData=await user.getUserData(data.user);
+    var userData=await user.getUserData(data.user,{
+      "_id":0,
+      "data.job.schedule":1,
+      "data.job.date":1
+    });
     if(!userData.success)
     {
       throw new Error("Authentication Failed . . .");
@@ -159,7 +173,14 @@ recruiter.post("/dashboard/students",async(req,res)=>{
     {
       throw new Error("Authentication Failed");
     }
-    var userData=await user.getUserData(data.user);
+    var userData=await user.getUserData(data.user,{
+      "_id":0,
+      "data.job.selected":1,
+      "data.job.mhskills":1,
+      "data.job.ghskills":1,
+      "data.job.vacancy":1,
+      "data.job.applied":1
+    });
     if(!userData.success)
     {
       throw new Error("Authentication Failed . . .");
@@ -241,54 +262,42 @@ recruiter.post("/recruitments/add",async(req,res)=>{
   await user.initialize().then(async data=>{
     if(data.isLoggedIn)
     {
-      var userData=await user.getUserData(user.user);
-      if(userData.success)
-      {
-        await MongoClient.connect(DB_CONNECTION_URL,{
-          useUnifiedTopology:true
-        }).then(async mongo=>{
-          var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
-          await db.collection("user_data")
-          .updateOne({
-            email:user.user,
-            // job:{
-            //   $exists:false
-            // }
-          },{
-            $set:{
-              "data.job":req.body
-            }
-          })
-          .then(d=>{
-            // console.log(d);
-            res.json({
-              success:true
-            });
-          }).catch(e=>{
-            console.log(e.message);
-            res.json({
-              success:false,
-              message:"Database Error",
-              devlog:e.message
-            });
-          })
-        }).catch(err=>{
-          console.log(err.message);
+      await MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      }).then(async mongo=>{
+        var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+        await db.collection("user_data")
+        .updateOne({
+          email:user.user,
+          // job:{
+          //   $exists:false
+          // }
+        },{
+          $set:{
+            "data.job":req.body
+          }
+        })
+        .then(d=>{
+          // console.log(d);
+          res.json({
+            success:true
+          });
+        }).catch(e=>{
+          console.log(e.message);
           res.json({
             success:false,
             message:"Database Error",
-            devlog:err.message
+            devlog:e.message
           });
-        });
-      }
-      else
-      {
+        })
+      }).catch(err=>{
+        console.log(err.message);
         res.json({
           success:false,
-          message:"Authentication failed",
-          devlog:userData.message
+          message:"Database Error",
+          devlog:err.message
         });
-      }
+      });
     }
     else
     {
@@ -320,55 +329,49 @@ recruiter.get("/recruitments/:student/recruit",async(req,res)=>{
   var student=req.params.student;
   const user=await new User(req);
   await user.initialize().then(async data=>{
-    var userData=await user.getUserData(user.user);
+    var userData=await user.getUserData(user.user,{
+      "_id":0,
+      "data.name":1
+    });
     if(data.isLoggedIn)
     {
-      await MongoClient.connect(DB_CONNECTION_URL,{
+      return MongoClient.connect(DB_CONNECTION_URL,{
         useUnifiedTopology:true
-      }).then(async mongo=>{
-        var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
-        var userTable=await db.collection("user_data");
-        Promise.all([
-          userTable
-          .updateOne({
-            email:user.user
-          },{
-            $push:{
-              "data.job.selected":student
-            }
-          }),
-          userTable
-          .updateOne({
-            email:student
-          },{
-            $push:{
-              "messages":{
-                title:"Placement",
-                message:`Congrats, You are Selected by <b>${userData.result.data.name}</b>`
-              }
-            }
-          })
-        ]).then(d=>{
-          // console.log(d);
-          res.json({
-            success:true
-          });
-        })
-      }).catch(err=>{
-        console.log(err.message);
-        res.json({
-          success:false,
-          message:err.message
-        });
       });
     }
     else
     {
-      res.json({
-        success:false,
-        message:"Not Loggedin"
-      });
+      throw new Error("Not Loggedin");
     }
+  }).then(async mongo=>{
+    var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+    var userTable=await db.collection("user_data");
+    return Promise.all([
+      userTable
+      .updateOne({
+        email:user.user
+      },{
+        $push:{
+          "data.job.selected":student
+        }
+      }),
+      userTable
+      .updateOne({
+        email:student
+      },{
+        $push:{
+          "messages":{
+            title:"Placement",
+            message:`Congrats, You are Selected by <b>${userData.result.data.name}</b>`
+          }
+        }
+      })
+    ]);
+  }).then(d=>{
+    // console.log(d);
+    res.json({
+      success:true
+    });
   }).catch(error=>{
     console.log(error.message);
     res.json({
@@ -385,54 +388,42 @@ recruiter.post("/schedule/request",async(req,res)=>{
   await user.initialize().then(async data=>{
     if(data.isLoggedIn)
     {
-      var userData=await user.getUserData(user.user);
-      if(userData.success)
-      {
-        await MongoClient.connect(DB_CONNECTION_URL,{
-          useUnifiedTopology:true
-        }).then(async mongo=>{
-          var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
-          console.log(date);
-          await db.collection("user_data")
-          .updateOne({
-            email:user.user
-          },{
-            $set:{
-              "data.job.schedule.adminaccepted":false,
-              "data.job.schedule.recruiteraccepted":true,
-              "data.job.schedule.date":date
-            }
-          })
-          .then(d=>{
-            // console.log(d);
-            res.json({
-              success:true
-            });
-          }).catch(e=>{
-            console.log(e.message);
-            res.json({
-              success:false,
-              message:"Database Error",
-              devlog:e.message
-            });
-          })
-        }).catch(err=>{
-          console.log(err.message);
+      await MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      }).then(async mongo=>{
+        var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
+        console.log(date);
+        await db.collection("user_data")
+        .updateOne({
+          email:user.user
+        },{
+          $set:{
+            "data.job.schedule.adminaccepted":false,
+            "data.job.schedule.recruiteraccepted":true,
+            "data.job.schedule.date":date
+          }
+        })
+        .then(d=>{
+          // console.log(d);
+          res.json({
+            success:true
+          });
+        }).catch(e=>{
+          console.log(e.message);
           res.json({
             success:false,
             message:"Database Error",
-            devlog:err.message
+            devlog:e.message
           });
-        });
-      }
-      else
-      {
+        })
+      }).catch(err=>{
+        console.log(err.message);
         res.json({
           success:false,
-          message:"Authentication failed",
-          devlog:userData.message
+          message:"Database Error",
+          devlog:err.message
         });
-      }
+      });
     }
     else
     {

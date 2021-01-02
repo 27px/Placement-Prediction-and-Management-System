@@ -159,7 +159,10 @@ data.get("/profile/:user/view",async(req,res)=>{
     {
       throw new Error("Not logged in");
     }
-    var userData=await user.getUserData(req.params.user);
+    var userData=await user.getUserData(req.params.user,{
+      messages:0
+    });
+    console.log(JSON.stringify(userData,null,2));
     if(!userData.success)
     {
       throw new Error("Data fetch error");

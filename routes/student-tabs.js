@@ -20,7 +20,16 @@ studentTabs.post("/main",async(req,res)=>{
   await user.initialize().then(async(data)=>{
     if(data.isLoggedIn && user.hasAccessOf("student"))
     {
-      var userData=await user.getUserData(data.user);
+      var userData=await user.getUserData(data.user,{
+        "_id":0,
+        email:1,
+        pic_ext:1,
+        "data.name":1,
+        "data.admission.course":1,
+        "data.phone":1,
+        about:1,
+        messages:1
+      });
       await MongoClient.connect(DB_CONNECTION_URL,{
         useUnifiedTopology:true
       }).then(async mongo=>{
@@ -148,7 +157,11 @@ studentTabs.post("/drive",async(req,res)=>{
   await user.initialize().then(async(data)=>{
     if(data.isLoggedIn && user.hasAccessOf("student"))
     {
-      var userData=await user.getUserData(data.user);
+      var userData=await user.getUserData(data.user,{
+        "_id":0,
+        "email":1,
+        "data.education.skills":1
+      });
       await MongoClient.connect(DB_CONNECTION_URL,{
         useUnifiedTopology:true
       }).then(async mongo=>{
@@ -236,7 +249,11 @@ studentTabs.post("/drive/:drive/apply",async(req,res)=>{
   await user.initialize().then(async(data)=>{
     if(data.isLoggedIn && user.hasAccessOf("student"))
     {
-      var userData=await user.getUserData(data.user);
+      var userData=await user.getUserData(data.user,{
+        "_id":0,
+        "email":1,
+        "data.name":1
+      });
       await MongoClient.connect(DB_CONNECTION_URL,{
         useUnifiedTopology:true
       }).then(async mongo=>{
@@ -380,7 +397,16 @@ studentTabs.post("/prediction",async(req,res)=>{
   const NeuralNetwork=require("../neural_network/trained-model.js");
   const user=await new User(req);
   await user.initialize().then(async data=>{
-    var userData=await user.getUserData(data.user);
+    var userData=await user.getUserData(data.user,{
+      "_id":0,
+      "data.admission.engineering":1,
+      "data.admission.arrears":1,
+      "data.education.sslc.mark":1,
+      "data.education.plustwo.mark":1,
+      "data.education.course":1,
+      "data.education.experience":1,
+      "data.education.achievement":1
+    });
     var input=[
       userData.result.data.admission.engineering,//engineering
       userData.result.data.education.sslc.mark/100,//sslc
@@ -389,7 +415,7 @@ studentTabs.post("/prediction",async(req,res)=>{
     //Atleast one course will be there
     var ug=0,pg=0;// ug uses cgpa and pg is binary status of yes or no
     userData.result.data.education.course.forEach(course=>{
-      console.log(course.type,course.cgpa);
+      // console.log(course.type,course.cgpa);
       if(course.type=="ug")
       {
         if(course.cgpa>ug)

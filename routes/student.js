@@ -29,14 +29,22 @@ student.get("/dashboard",async(req,res)=>{
     console.log(error.message);
     isLoggedIn=false;
     type="guest";
-  }).finally(()=>{
+  }).finally(async()=>{
     if(isLoggedIn===true && user.hasAccessOf("student"))//student or coordinator
     {
-      res.render("student/dashboard",{
-        tab:req.query.tab,
-        version,
-        usertype:type
-      });
+      var user_data=await user.getUserData(user.user);
+      if(user_data.result.data!=undefined)
+      {
+        res.render("student/dashboard",{
+          tab:req.query.tab,
+          version,
+          usertype:type
+        });
+      }
+      else// profile incomplete
+      {
+        res.redirect("profile/new");
+      }
     }
     else if(isLoggedIn===true)//other users
     {
@@ -243,7 +251,11 @@ student.post("/profile/new/verify-otp",async(req,res)=>{
   await user.initialize().then(async(data)=>{
     isLoggedIn=data.isLoggedIn;//from session
     type=data.type;//from session
-    var userData=await user.getUserData(data.user);
+    var userData=await user.getUserData(data.user,{
+      "_id":0,
+      otp:1,
+      email:1
+    });
     isLoggedIn=userData.success;
     type=userData.type;
     if(!userData.success)

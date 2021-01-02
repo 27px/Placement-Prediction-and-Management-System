@@ -23,7 +23,11 @@ admin.get("/dashboard",async(req,res)=>{
     {
       throw new Error("Authentication Failed");
     }
-    var userData=await user.getUserData(data.user);
+    var userData=await user.getUserData(data.user,{
+      "type":1,
+      "email":1,
+      "messages":1
+    });
     if(!userData.success)
     {
       throw new Error("Authentication Failed . . .");
@@ -471,18 +475,25 @@ admin.post("/dashboard/:tab",async(req,res)=>{
     {
       throw new Error("Authentication Failed");
     }
-    var userData=await user.getUserData(data.user);
-    if(!userData.success)
-    {
-      throw new Error("Authentication Failed . . .");
-    }
     if(!user.hasAccessOf("admin"))
     {
       throw new Error("Access Denied");
     }
+    var notifications=[];
+    if(req.params.tab=="main")//notifications are only used in main page
+    {
+      var userData=await user.getUserData(data.user,{
+        "messages":1
+      });
+      if(!userData.success)
+      {
+        throw new Error("Authentication Failed . . .");
+      }
+      notifications=userData.result.messages;
+    }
     res.render(`admin/${req.params.tab}`,{
-      notifications:userData.result.messages
-    });// same for recruiter and admin
+      notifications
+    });
   }).catch(error=>{
     console.log(error.message);
     res.end("");

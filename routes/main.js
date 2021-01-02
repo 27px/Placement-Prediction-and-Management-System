@@ -292,14 +292,16 @@ route.get("/reset/password",async(req,res)=>{
 //Reset Password OTP
 route.post("/reset/password/otp",async(req,res)=>{
   const user=await new User(req);
-  user.getUserData(req.body.email)
-  .then(async(data)=>{
+  //only need to check if user exists, no data is needed
+  user.getUserData(req.body.email,{
+    "_id":1
+  }).then(async(data)=>{
     if(!data.success)
     {
-      var e=new Error();
-      e.name="customError";
-      e.message="Email not Registered";
-      throw e;
+      throw {
+        name:"customError",
+        message:"Email not registered"
+      };
     }
     else
     {
@@ -333,17 +335,17 @@ route.post("/reset/password/otp",async(req,res)=>{
   }).then(async([sent,updated])=>{
     if(sent.accepted.length<1)
     {
-      var e=new Error();
-      e.name="customError";
-      e.message="Email sent Error";
-      throw e;
+      throw {
+        name:"customError",
+        message:"Email sent Error"
+      };
     }
     else if(updated.result.n<1)
     {
-      var e=new Error();
-      e.name="customError";
-      e.message="OTP save Error";
-      throw e;
+      throw {
+        name:"customError",
+        message:"OTP save Error"
+      };
     }
     else
     {

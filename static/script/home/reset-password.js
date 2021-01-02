@@ -106,6 +106,7 @@ function resetPassword()
   .then(data=>{
     if(!data.success)
     {
+      console.warn(err.message);
       throw new Error(data.message);
     }
     else
@@ -158,7 +159,10 @@ window.onload=()=>{
     }).then(data=>{
       if(!data.success)
       {
-        throw new Error("failed");
+        throw {
+          name:"customError",
+          message:data.message || "failed to load"
+        };
       }
       else
       {
@@ -166,8 +170,8 @@ window.onload=()=>{
         container.appendChild(newForm(email));
       }
     }).catch(err=>{
-      console.error(err);
-      showPopUp("error","Something went wrong");
+      console.error(err.message);
+      showPopUp("error",err.name=="customError"?err.message:"Something went wrong");
       setTimeout(function(){
         window.location.reload();
       },1000);
