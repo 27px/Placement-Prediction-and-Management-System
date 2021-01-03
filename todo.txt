@@ -1,28 +1,22 @@
 {
   "main":[
-    "Select Coordinators",
+    "database backup and start fresh",
+    "create coordinator email:rahulr0047@gmail.com"
+
     "Data Dumping",
 
-    "create coordinator email:rahulr0047@gmail.com"
     "coordinator : Training Resources upload",
     "admin : Send Notification"
   ],
   "important":[
-    "user_config is not tracked and must not get deleted from local repo",
     "close database connections",
-    "database backup and start fresh",
     "optimize asynchronous code",
     "compress images"
   ],
-  "other":[
-    "Report Generation"
-  ],
   "recruiter/dashboard":[
-    "content",
     "confirm before selecting beyond vacancy limit",
     "send email on recruit",
-    "ask confirmation on recruit",
-    "profile"
+    "ask confirmation on recruit"
   ],
   "initialize.js":[
     "set custom config values ?"

@@ -64,10 +64,20 @@ recruiter.post("/dashboard/main",async(req,res)=>{
     {
       throw new Error("Access Denied");
     }
+    var recruiteraccepted=false;
+    var adminaccepted=false;
+    if(userData.result.data.job!=undefined)
+    {
+      if(userData.result.data.job.schedule!=undefined)
+      {
+        recruiteraccepted=userData.result.data.job.schedule.recruiteraccepted;
+        adminaccepted=userData.result.data.job.schedule.adminaccepted;
+      }
+    }
     res.render(`recruiter/main`,{
       notifications:userData.result.messages,
-      recruiteraccepted:userData.result.data.job.schedule.recruiteraccepted,
-      adminaccepted:userData.result.data.job.schedule.adminaccepted
+      recruiteraccepted,
+      adminaccepted
     });
   }).catch(error=>{
     console.log(error.message);
@@ -149,6 +159,7 @@ recruiter.post("/dashboard/schedule",async(req,res)=>{
         recruiteraccepted=false;
         adminaccepted=false;
         scheduleDate="";
+        closingDate=new Date();//dummy
       }
     }
     res.render(`recruiter/schedule`,{
@@ -233,7 +244,7 @@ recruiter.post("/dashboard/students",async(req,res)=>{
         mhskills=[];
         ghskills=[];
         selectedStudents=[];
-        vacancy:0;
+        vacancy=0;
       }
     }
     res.render(`recruiter/students`,{
@@ -335,15 +346,15 @@ recruiter.get("/recruitments/:student/recruit",async(req,res)=>{
     });
     if(data.isLoggedIn)
     {
-      return MongoClient.connect(DB_CONNECTION_URL,{
+      return [await MongoClient.connect(DB_CONNECTION_URL,{
         useUnifiedTopology:true
-      });
+      }),userData];
     }
     else
     {
       throw new Error("Not Loggedin");
     }
-  }).then(async mongo=>{
+  }).then(async ([mongo,userData])=>{
     var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
     var userTable=await db.collection("user_data");
     return Promise.all([
@@ -392,7 +403,7 @@ recruiter.post("/schedule/request",async(req,res)=>{
         useUnifiedTopology:true
       }).then(async mongo=>{
         var db=await mongo.db(config.DB_SERVER.DB_DATABASE);
-        console.log(date);
+        // console.log(date);
         await db.collection("user_data")
         .updateOne({
           email:user.user

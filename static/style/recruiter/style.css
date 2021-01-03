@@ -109,24 +109,28 @@ body,.main
   overflow-x:auto;
 }
 .nav::-webkit-scrollbar,
-.small-container.scrollable::-webkit-scrollbar
+.small-container.scrollable::-webkit-scrollbar,
+.scheduler::-webkit-scrollbar
 {
   width:8px;
   height:8px;
   background-color:var(--primary2);
 }
 .nav::-webkit-scrollbar:hover,
-.small-container.scrollable::-webkit-scrollbar:hover
+.small-container.scrollable::-webkit-scrollbar:hover,
+.scheduler::-webkit-scrollbar:hover
 {
   background-color:var(--primary3);
 }
 .nav::-webkit-scrollbar-thumb,
-.small-container.scrollable::-webkit-scrollbar-thumb
+.small-container.scrollable::-webkit-scrollbar-thumb,
+.scheduler::-webkit-scrollbar-thumb
 {
   background-color:var(--primary5);
 }
 .nav::-webkit-scrollbar-thumb:hover,
-.small-container.scrollable::-webkit-scrollbar-thumb:hover
+.small-container.scrollable::-webkit-scrollbar-thumb:hover,
+.scheduler::-webkit-scrollbar-thumb:hover
 {
   background-color:var(--primary9);
 }
@@ -968,6 +972,10 @@ body,.main
 {
   background-image:url("../../images/admin/schedule.jpg");
 }
+.full-wrap .image.coordinator-image
+{
+  background-image:url("../../images/admin/coordinator-selection.jpg");
+}
 .full-wrap form
 {
   width:100%;
@@ -1081,6 +1089,10 @@ body,.main
   margin-left:10px;
   animation:roller 2.5s linear infinite normal;
 }
+button svg
+{
+  stroke:#FFFFFF;
+}
 .full-wrap .row button.progress
 {
   padding:10px 20px 10px 25px;
@@ -1089,8 +1101,7 @@ body,.main
 {
   padding:10px 10px 10px 15px;
 }
-.full-wrap .row button:not(.progress) svg,
-.buttonset button:not(.progress) svg
+button:not(.progress) svg
 {
   display:none;
 }
@@ -1907,4 +1918,10 @@ body,.main
   width:100%;
   text-align:right;
   padding-top:20px;
+}
+.row .text.note
+{
+  font-family:var(--font-sub-title);
+  font-style:italic;
+  color:rgba(0,0,0,0.5);
 }

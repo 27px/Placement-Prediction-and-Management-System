@@ -90,7 +90,6 @@ admin.post("/dashboard/add-company-data",async(req,res)=>{
               }).then(async sent=>{
                 console.log(sent);
                 ret.success=true;
-                ret.redirect=`./dashboard`;
                 delete ret.message;
               });
             });
@@ -112,10 +111,65 @@ admin.post("/dashboard/add-company-data",async(req,res)=>{
   });
 });
 
-// //Manage Students
-// admin.get("/students/modify",(req,res)=>{
-//   res.render("admin/manage-students");
-// });
+//Manage Students
+admin.post("/student/add/:email/coordinator",async(req,res)=>{
+  var email=req.params.email;
+
+  const user=await new User(req);
+  var ret={};
+  user.initialize().then(async data=>{
+    if(data.isLoggedIn && user.hasAccessOf("admin"))
+    {
+      return user.getUserData(email,{"type":1});
+    }
+    else
+    {
+      throw new Error("Not Authorized");
+    }
+  }).then(studentInfo=>{
+    if(!studentInfo.success)
+    {
+      throw new Error("User does not exist");
+    }
+    if(studentInfo.result.type!="student")
+    {
+      throw new Error("User is not a student");
+    }
+    else
+    {
+      return MongoClient.connect(DB_CONNECTION_URL,{
+        useUnifiedTopology:true
+      });
+    }
+  }).then(mongo=>{
+    return mongo.db(config.DB_SERVER.DB_DATABASE);
+  }).then(db=>{
+    return db.collection("user_data");
+  }).then(data_collection=>{
+    return data_collection.updateOne({
+      email
+    },{
+      $set:{
+        type:"coordinator"
+      }
+    })
+  }).then(result=>{
+    if(result.modifiedCount!=1)
+    {
+      throw new Error("Something went wrong");
+    }
+    else
+    {
+      ret.success=true;
+    }
+  }).catch(error=>{
+    console.log(error.message);
+    ret.success=false;
+    ret.message=error.message;
+  }).finally(()=>{
+    res.json(ret);
+  });
+});
 
 // //Alumni data
 // admin.get("/alumni",(req,res)=>{

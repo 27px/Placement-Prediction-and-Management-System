@@ -103,7 +103,7 @@ function createRecruiterAccount(event)
     }
     if(data.success)
     {
-      window.location=data.redirect;
+      showPopUp("success","Added Successfully");
     }
   }).catch(error=>{
     console.error(error.message);
@@ -228,11 +228,14 @@ function createJobPost(event)
   }).then(data=>{
     if(data.success)
     {
-      window.location.reload();
+      showPopUp("success","Posted Job Successfully",()=>{
+        _("#job").click();
+      });
     }
   }).catch(err=>{
     console.log(err.message);
-    message.innerHTML=err.message
+    message.innerHTML=err.message;
+    showPopUp("error","Something went wrong");
   }).finally(()=>{
     _(".submit").classList.remove("progress");
   });
@@ -274,11 +277,14 @@ function scheduleJobPost(event)
   }).then(data=>{
     if(data.success)
     {
-      window.location.reload();
+      showPopUp("success","Requested Successfully",()=>{
+        _("#schedule").click();
+      });
     }
   }).catch(err=>{
     console.log(err.message);
     message.innerHTML=err.message
+    showPopUp("error","Something went wrong");
   }).finally(()=>{
     _(".submit").classList.remove("progress");
   });
@@ -292,6 +298,10 @@ function showStudentProfile(email)
 function recruitStudent(event,email)
 {
   var button=event.currentTarget;
+  if(button.classList.contains("progress"))
+  {
+    return;
+  }
   button.classList.add("progress");
   fetch(`./recruitments/${email}/recruit`)
   .then(resp=>{
@@ -318,10 +328,12 @@ function recruitStudent(event,email)
       var remainingStat=_("#total-stat-remaining");
       selectedStat.innerHTML=parseInt(selectedStat.innerHTML)+1;
       remainingStat.innerHTML=parseInt(remainingStat.innerHTML)-1;
+      showPopUp("success","Recruited");
     }
   }).catch(err=>{
     console.log(err);
     button.classList.remove("progress");
+    showPopUp("error","Something went wrong");
   });
 }
 function addDepartment(event)
@@ -366,7 +378,7 @@ function addDepartment(event)
   }).then(data=>{
     if(data.success)
     {
-      window.location.reload();
+      showPopUp("success","Department added Successfully");
     }
     else
     {
@@ -379,12 +391,6 @@ function addDepartment(event)
     button.classList.remove("progress");
   });
 }
-
-
-
-
-
-
 function addCourse(event)
 {
   var department=_("#department");
@@ -407,7 +413,7 @@ function addCourse(event)
     message.innerHTML="Invalid course name";
     return;
   }
-  if(/[^a-zA-Z ]/.test(course))
+  if(/[^a-zA-Z \.]/.test(course))
   {
     message.innerHTML="Invalid course name";
     return;
@@ -445,7 +451,7 @@ function addCourse(event)
   }).then(data=>{
     if(data.success)
     {
-      window.location.reload();
+      showPopUp("success","Course added successfully");
     }
     else
     {
@@ -458,8 +464,11 @@ function addCourse(event)
     button.classList.remove("progress");
   });
 }
-function acceptSchedule()
+function acceptSchedule(event)
 {
+  var button=event.currentTarget;
+  var card=button.parentNode.parentNode;
+  button.classList.add("progress");
   fetch(`./dashboard/schedule/${event.currentTarget.getAttribute("data-email")}/approve`,{
     method:"POST",
     cache:"no-store"
@@ -475,7 +484,12 @@ function acceptSchedule()
   }).then(data=>{
     if(data.success)
     {
-      _("#schedule").click();
+      card.parentNode.removeChild(card);
+      if(_(".schedule")==null)
+      {
+        _(".scheduler").innerHTML=`<div class="schedule">Nothing pending</div>`;
+      }
+      showPopUp("success","Approved successfully");
     }
     else
     {
@@ -483,5 +497,53 @@ function acceptSchedule()
     }
   }).catch(err=>{
     console.log(err.message);
+    showPopUp("error","Something went wrong");
+  }).finally(()=>{
+    button.classList.remove("progress");
+  });
+}
+function selectCoordinator(event)
+{
+  var email=_("#email").value;
+  var message=_("#select-coordinator-message");
+  var button=event.currentTarget;
+  if(email=="")
+  {
+    message.innerHTML="Enter E-Mail id";
+    return;
+  }
+  if(!/^\S+@\S+\.\S+$/.test(email))
+  {
+    message.innerHTML="Invalid E-Mail id";
+    return;
+  }
+  message.innerHTML="";
+  button.classList.add("progress");
+  fetch(`./student/add/${email}/coordinator`,{
+    method:"POST",
+    cache:"no-store"
+  }).then(resp=>{
+    if(resp.status===200)
+    {
+      return resp.json();
+    }
+    else
+    {
+      throw new Error(`Status error ${resp.status}`);
+    }
+  }).then(data=>{
+    if(data.success)
+    {
+      showPopUp("success","Selected successfully");
+    }
+    else
+    {
+      showPopUp("error",data.message);
+    }
+  }).catch(err=>{
+    console.log(err.message);
+    showPopUp("error","An error occured");
+  }).finally(()=>{
+    button.classList.remove("progress");
   });
 }

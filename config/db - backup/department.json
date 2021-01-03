@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "5fb80822e3d7b30f5246b021"
+  },
+  "name": "Computer Science",
+  "courses": [
+    {
+      "name": "B.Sc CS",
+      "num_of_sem": 6
+    },
+    {
+      "name": "M.Sc CS",
+      "num_of_sem": 4
+    }
+  ],
+  "engineering": 0
+},{
+  "_id": {
+    "$oid": "5fb80822e3d7b30f5246b022"
+  },
+  "name": "Computer Application",
+  "courses": [
+    {
+      "name": "BCA",
+      "num_of_sem": 6
+    },
+    {
+      "name": "MCA",
+      "num_of_sem": 6
+    }
+  ],
+  "engineering": 0
+},{
+  "_id": {
+    "$oid": "5fb80822e3d7b30f5246b023"
+  },
+  "name": "CSE",
+  "courses": [
+    {
+      "name": "B.Tech",
+      "num_of_sem": 8
+    },
+    {
+      "name": "M.Tech",
+      "num_of_sem": 4
+    }
+  ],
+  "engineering": 1
+}]

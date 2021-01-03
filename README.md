@@ -1,9 +1,9 @@
 # ⚠ ⚠ ⚠ In Development !!! ⚠ ⚠ ⚠
 
 ## 🏫 Campus Placement Prediction &amp; Management System 🏫
-Predicts whether a Student gets Placed in Campus Placement using Python,
+Predicts whether a Student gets Placed in Campus Placement using Brain.JS,
 
-> Uses Node.js, MongoDB, Python
+> Uses Node.js, MongoDB
 
 #### 📥 Installing App 📥
 

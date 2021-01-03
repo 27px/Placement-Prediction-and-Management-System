@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "5fcbbf70329b7d73b8c88802"
+  },
+  "year": 2016,
+  "departments": {
+    "MCA": 12
+  }
+},{
+  "_id": {
+    "$oid": "5fcbbf70329b7d73b8c88803"
+  },
+  "year": 2017,
+  "departments": {
+    "MCA": 2
+  }
+},{
+  "_id": {
+    "$oid": "5fcbbf70329b7d73b8c88804"
+  },
+  "year": 2018,
+  "departments": {
+    "MCA": 21
+  }
+},{
+  "_id": {
+    "$oid": "5fcbbf70329b7d73b8c88805"
+  },
+  "year": 2019,
+  "departments": {
+    "MCA": 1
+  }
+},{
+  "_id": {
+    "$oid": "5fcbbf70329b7d73b8c88806"
+  },
+  "year": 2020,
+  "departments": {
+    "MCA": 15
+  }
+}]

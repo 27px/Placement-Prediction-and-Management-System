@@ -25,7 +25,7 @@ app.use(session({
 }));
 
 app.use("/static",express.static(path.join(__dirname,"static")));
-app.use("/pictures",express.static(path.join(__dirname,"data/gallery")));
+app.use("/pictures",express.static(path.join(__dirname,"data","gallery")));
 app.use("/data",express.static(path.join(__dirname,"data")));
 app.use("/favicon.ico",express.static(path.join(__dirname,"static","images","favicon.ico")));
 
