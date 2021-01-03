@@ -413,7 +413,7 @@ function addCourse(event)
     message.innerHTML="Invalid course name";
     return;
   }
-  if(/[^a-zA-Z \.]/.test(course))
+  if(/[^a-zA-Z ]/.test(course))
   {
     message.innerHTML="Invalid course name";
     return;

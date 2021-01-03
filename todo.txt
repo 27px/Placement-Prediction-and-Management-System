@@ -1,10 +1,9 @@
 {
   "main":[
     "database backup and start fresh",
-    "create coordinator email:rahulr0047@gmail.com"
+    "create coordinator email:rahulr0047@gmail.com",
 
     "Data Dumping",
-
     "coordinator : Training Resources upload",
     "admin : Send Notification"
   ],

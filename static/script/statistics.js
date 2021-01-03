@@ -40,32 +40,72 @@ function applyEffect(){
 };
 window.onload=()=>{
   var data=JSON.parse(_("#data").innerHTML);
-  var blueColorSet=[
-    "rgb(20,20,20)",
-    "rgb(60,60,60)",
-    "rgb(100,100,100)"
+  var materialColorSet=[
+    "rgb(244,67,54)",
+    "rgb(156,39,176)",
+    "rgb(63,81,181)",
+    "rgb(3,169,244)",
+    "rgb(0,150,136)",
+    "rgb(139,195,74)",
+    "rgb(255,235,59)",
+    "rgb(255,152,0)",
+    "rgb(255,87,34)",
+    "rgb(233,30,99)",
+    "rgb(103,58,183)",
+    "rgb(33,150,243)",
+    "rgb(0,188,212)",
+    "rgb(76,175,80)",
+    "rgb(205,220,57)",
+    "rgb(255,193,7)"
   ];
 
-  console.log(data);
+  var materialColorSetSemiTransparent=[
+    "rgba(244,67,54,0.8)",
+    "rgba(103,58,183,0.8)",
+    "rgba(33,150,243,0.8)",
+    "rgba(0,188,212,0.8)",
+    "rgba(76,175,80,0.8)",
+    "rgba(205,220,57,0.8)",
+    "rgba(255,193,7,0.8)",
+    "rgba(255,87,34,0.8)",
+    "rgba(233,30,99,0.8)",
+    "rgba(156,39,176,0.8)",
+    "rgba(63,81,181,0.8)",
+    "rgba(3,169,244,0.8)",
+    "rgba(0,150,136,0.8)",
+    "rgba(139,195,74,0.8)",
+    "rgba(255,235,59,0.8)",
+    "rgba(255,152,0,0.8)"
+  ];
+
   var gdata=[],g2data=[];
-  Object.keys(data[0].departments).forEach((dep,i)=>{
+
+  var deplabel=new Set();
+  data.forEach(depdatas=>{
+    Object.keys(depdatas.departments).forEach(dlabel=>{
+      deplabel.add(dlabel);
+    });
+  });
+
+  Array.from(deplabel).forEach((dep,i)=>{
     var sdata=[];
     data.forEach(stat=>{
-      sdata.push(stat.departments[dep]);
+      sdata.push(stat.departments[dep]!=undefined?stat.departments[dep]:0);
     });
     gdata.push({
       label:dep,
-      backgroundColor:"rgba(0,0,0,0.2)",
-      borderColor:"rgb(0,0,0)",
+      // backgroundColor:"rgba(0,0,0,1)",
+      borderColor:materialColorSet[i%materialColorSet.length],
       data:sdata,
-      fill:true,
+      pointBackgroundColor:materialColorSet[i%materialColorSet.length],
+      fill:false
     });
     g2data.push({
       label:dep,
-      backgroundColor:blueColorSet[i%3],
+      backgroundColor:materialColorSetSemiTransparent[i%materialColorSetSemiTransparent.length],
       borderColor:"rgb(0,0,0)",
       data:sdata,
-      fill:true,
+      fill:true
     });
   })
   var glabel=[];

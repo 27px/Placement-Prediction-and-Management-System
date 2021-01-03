@@ -208,10 +208,18 @@ function loadCharts()
   };
   var statistical_data=JSON.parse(_("#graphData2").innerHTML);
   var gdata=[],g2data=[];
-  Object.keys(statistical_data[0].departments).forEach((dep,i)=>{
+
+  var deplabel=new Set();
+  statistical_data.forEach(depdatas=>{
+    Object.keys(depdatas.departments).forEach(dlabel=>{
+      deplabel.add(dlabel);
+    });
+  });
+
+  Array.from(deplabel).forEach((dep,i)=>{
     var sdata=[];
     statistical_data.forEach(stat=>{
-      sdata.push(stat.departments[dep]);
+      sdata.push(stat.departments[dep]!=undefined?stat.departments[dep]:0);
     });
     gdata.push({
       label:dep,
@@ -227,7 +235,8 @@ function loadCharts()
       data:sdata,
       fill:true,
     });
-  })
+  });
+
   var glabel=[];
   statistical_data.forEach(stat=>{
     glabel.push(stat.year);
