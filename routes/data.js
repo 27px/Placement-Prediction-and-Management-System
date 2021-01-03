@@ -49,89 +49,122 @@ data.get("/sitemap",async(req,res)=>{
       {
         key:"home",
         url:"/home",
-        access:[
-          data.userCode("guest"),
-          data.userCode("student"),
-          data.userCode("coordinator"),
-          data.userCode("recruiter"),
-          data.userCode("admin")
-        ]
+        newTab:false,
+        inlineTab:false
       },
       {
         key:"statistics",
         url:"/statistics",
-        access:[
-          data.userCode("guest"),
-          data.userCode("student"),
-          data.userCode("coordinator"),
-          data.userCode("admin")
-        ]
-      },
-      {
-        key:"about",
-        url:"/about",
-        access:[
-          data.userCode("guest"),
-          data.userCode("student"),
-          data.userCode("coordinator"),
-          data.userCode("recruiter"),
-          data.userCode("admin")
-        ]
-      },
-      {
-        key:"help",
-        url:"/contact",
-        access:[
-          data.userCode("guest"),
-          data.userCode("student"),
-          data.userCode("coordinator"),
-          data.userCode("recruiter"),
-          data.userCode("admin")
-        ]
+        newTab:true,
+        inlineTab:false
       },
       {
         key:"gallery",
         url:"/gallery",
-        access:[
-          data.userCode("guest"),
-          data.userCode("student"),
-          data.userCode("coordinator"),
-          data.userCode("recruiter"),
-          data.userCode("admin")
-        ]
+        newTab:true,
+        inlineTab:false
       },
       {
         key:"team",
         url:"/team",
-        access:[
-          data.userCode("guest"),
-          data.userCode("student"),
-          data.userCode("coordinator"),
-          data.userCode("recruiter"),
-          data.userCode("admin")
-        ]
+        newTab:true,
+        inlineTab:false
+      },
+      {
+        key:"about",
+        url:"/about",
+        newTab:true,
+        inlineTab:false
+      },
+      {
+        key:"help",
+        url:"/contact",
+        newTab:true,
+        inlineTab:false
+      },
+      {
+        key:"contact",
+        url:"/contact",
+        newTab:true,
+        inlineTab:false
+      },
+      {
+        key:"feedback",
+        url:"/contact",
+        newTab:true,
+        inlineTab:false
+      },
+      {
+        key:"suggestion",
+        url:"/contact",
+        newTab:true,
+        inlineTab:false
       },
       {
         key:"dashboard",
         url:"/student/dashboard",
-        access:[
-          data.userCode("student"),
-          data.userCode("coordinator")
-        ]
+        newTab:false,
+        inlineTab:false
       },
       {
-        key:"dashboard",
-        url:"/recruiter/dashboard",
-        access:[
-          data.userCode("recruiter")
-        ]
+        key:"profile",
+        url:"/student/profile/view",
+        newTab:true,
+        inlineTab:false
       },
       {
-        key:"post jobs",
-        url:"/recruiter/recruitments",
-        access:[
-          data.userCode("recruiter")
-        ]
+        key:"logout",
+        url:"/logout",
+        newTab:false,
+        inlineTab:false
+      },
+      {
+        key:"prediction",
+        url:"prediction",
+        newTab:false,
+        inlineTab:true
+      },
+      {
+        key:"placement prediction",
+        url:"prediction",
+        newTab:false,
+        inlineTab:true
+      },
+      {
+        key:"skill recommendation",
+        url:"recommendation",
+        newTab:false,
+        inlineTab:true
+      },
+      {
+        key:"recommendation",
+        url:"skill",
+        newTab:false,
+        inlineTab:true
+      },
+      {
+        key:"drive",
+        url:"drive",
+        newTab:false,
+        inlineTab:true
+      },
+      {
+        key:"campus placement",
+        url:"drive",
+        newTab:false,
+        inlineTab:true
+      },
+      {
+        key:"external job",
+        url:"external",
+        newTab:false,
+        inlineTab:true
+      },
+      {
+        key:"training resources",
+        url:"training-resources",
+        newTab:false,
+        inlineTab:true
       }
     ];
   }).catch(error=>{
@@ -139,14 +172,6 @@ data.get("/sitemap",async(req,res)=>{
     siteMap=[];
     code=0;
   }).finally(()=>{
-    siteMap=siteMap.filter(page=>{
-      return page.access.includes(code);
-    }).map(page=>{
-      return {
-        key:page.key,
-        url:page.url
-      }
-    });
     res.json(siteMap);
   });
 });

@@ -419,17 +419,14 @@ async function runSearch(rx,res,v,high,callback)
 {
   const userType=_("#searchcontainer").getAttribute("usertype");
   var count=0,s;
-  // type attribute is used to refresh cache
-  // it has no effect on results returned
-  // user type is validated from session storage
-  await fetch(`/data/sitemap?type=${userType}`,{
-    // cache:"no-store"
-    cache:"force-cache"
+  await fetch(`/data/sitemap`,{
+    cache:"no-store"
+    // cache:"force-cache"
   }).then(response=>{
     response.json().then(searchItems=>{
       res.innerHTML="";
       searchItems.forEach(page=>{
-        let k=page["key"].toLowerCase();
+        let k=page.key.toLowerCase();
         if(high==1)
         {
           k=k.replace(v,"<span class='high'>"+v+"</span>");
@@ -437,7 +434,12 @@ async function runSearch(rx,res,v,high,callback)
         if(rx.test(k))
         {
           let it=ce("a","item","",k);
-          it.setAttribute("href",page["url"]);
+          it.setAttribute("href",page.url);
+          it.setAttribute("target",page.newTab?"_blank":"_self");
+          if(page.inlineTab)
+          {
+            it.addEventListener("click",openSearchedItemInTab.bind(event,it,page.url));
+          }
           res.appendChild(it);
           count++;
         }
@@ -452,6 +454,18 @@ async function runSearch(rx,res,v,high,callback)
     count=0;
   });
   return count;
+}
+function openSearchedItemInTab(a,url,event)
+{
+  event.preventDefault();
+  openTab({
+    currentTarget:{
+      getAttribute:()=>{
+        return url;
+      }
+    }
+  });
+  resetSearch();
 }
 function resetSearch(delay=400)
 {
