@@ -9,6 +9,7 @@ const setMailWelcomeRecruiter=require("../functions/mail_recruiter_welome.js");
 const getResultFromCursor=require("../functions/getResultFromCursor.js");
 const nodemailer=require("nodemailer");
 const mail_credentials=require("../config/mail.js");
+const dumpData=require("./dump-data");
 
 //Route admin
 admin.get("/",(req,res)=>{
@@ -553,6 +554,10 @@ admin.post("/dashboard/:tab",async(req,res)=>{
     res.end("");
   });
 });
+
+
+//Get non html data for displaying
+admin.use("/dump-data",dumpData);
 
 
 module.exports=admin;

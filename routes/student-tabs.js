@@ -10,6 +10,7 @@ const purifyDescription=require("../functions/purifyDescription.js");
 const mostRepeated=require("../functions/mostRepeated.js");
 const notInEnglishWords=require("../functions/notInEnglishWords.js");
 const getResultFromCursor=require("../functions/getResultFromCursor.js");
+const purifyDataSet=require("../functions/purifyDataSet.js");
 const path=require("path");
 const fs=require("fs");
 const chalk=require("chalk");
@@ -407,49 +408,51 @@ studentTabs.post("/prediction",async(req,res)=>{
       "data.education.experience":1,
       "data.education.achievement":1
     });
-    var input=[
-      userData.result.data.admission.engineering,//engineering
-      userData.result.data.education.sslc.mark/100,//sslc
-      userData.result.data.education.plustwo.mark/100//plustwo
-    ];
-    //Atleast one course will be there
-    var ug=0,pg=0;// ug uses cgpa and pg is binary status of yes or no
-    userData.result.data.education.course.forEach(course=>{
-      // console.log(course.type,course.cgpa);
-      if(course.type=="ug")
-      {
-        if(course.cgpa>ug)
-        {
-          ug=course.cgpa;
-        }
-      }
-      else if(course.type=="pg")
-      {
-        pg=1;//not increment, just one
-      }
-    });
-    ug/=10;//cgpa
-    input.push(ug);
-    input.push(pg);
-    var project=0,intern=0;
-    userData.result.data.education.experience.forEach(exp=>{
-      if(exp.type=="project")
-      {
-        project++;
-      }
-      else // job or internship
-      {
-        intern++;
-      }
-    });
-    project=Math.min(1,project/6); // range 0 to 1
-    intern=Math.min(1,intern); // one or zero
-    input.push(project);
-    input.push(intern);
-    var ach=Math.min(1,userData.result.data.education.achievement.length);
-    input.push(ach);//extras
-    var arrears=(Math.min(1,parseInt(userData.result.data.admission.arrears)/2)*100)/100;
-    input.push(arrears);
+    // var input=[
+    //   userData.result.data.admission.engineering,//engineering
+    //   userData.result.data.education.sslc.mark/100,//sslc
+    //   userData.result.data.education.plustwo.mark/100//plustwo
+    // ];
+    // //Atleast one course will be there
+    // var ug=0,pg=0;// ug uses cgpa and pg is binary status of yes or no
+    // userData.result.data.education.course.forEach(course=>{
+    //   // console.log(course.type,course.cgpa);
+    //   if(course.type=="ug")
+    //   {
+    //     if(course.cgpa>ug)
+    //     {
+    //       ug=course.cgpa;
+    //     }
+    //   }
+    //   else if(course.type=="pg")
+    //   {
+    //     pg=1;//not increment, just one
+    //   }
+    // });
+    // ug/=10;//cgpa
+    // input.push(ug);
+    // input.push(pg);
+    // var project=0,intern=0;
+    // userData.result.data.education.experience.forEach(exp=>{
+    //   if(exp.type=="project")
+    //   {
+    //     project++;
+    //   }
+    //   else // job or internship
+    //   {
+    //     intern++;
+    //   }
+    // });
+    // project=Math.min(1,project/6); // range 0 to 1
+    // intern=Math.min(1,intern); // one or zero
+    // input.push(project);
+    // input.push(intern);
+    // var ach=Math.min(1,userData.result.data.education.achievement.length);
+    // input.push(ach);//extras
+    // var arrears=(Math.min(1,parseInt(userData.result.data.admission.arrears)/2)*100)/100;
+    // input.push(arrears);
+
+    var input=purifyDataSet(userData.result);
     var percent=NeuralNetwork(input);//predict
     var placement=percent<0.75?false:true;
     percent=parseInt(percent*10000)/100;

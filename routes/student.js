@@ -166,7 +166,7 @@ student.post("/profile/new",async(req,res)=>{
         if(profile!=undefined)
         {
           // this will not likely happen due to redirect
-          console.log("Already Inserted datas ??? Update Not Implemented");
+          // console.log("Already Inserted datas ??? Update Not Implemented");
           /////Update if already Exists ??? Possible ?
           //profile already complete
           isLoggedIn=false;

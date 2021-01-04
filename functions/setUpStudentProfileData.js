@@ -11,10 +11,10 @@ class setUpStudentProfileData
       ["type","name","college","cgpa","passdate"].forEach(details=>{
         coursedata[details]=form[`course${details}-${i}`];
       });
+      coursedata.cgpa=parseFloat(coursedata.cgpa);
       courses.push(coursedata);
-      /////Also set Files
     }
-    console.log(courses);
+    // console.log(courses);
     let experience=[];
     for(let i=1;form[`experiencetype-${i}`]!=""&&form[`experiencetype-${i}`]!=undefined;i++)
     {
@@ -23,7 +23,6 @@ class setUpStudentProfileData
         experiencedata[details]=form[`experience${details}-${i}`];
       });
       experience.push(experiencedata);
-      /////Also set Files
     }
     let achievements=[];
     for(let i=1;form[`achievementtype-${i}`]!=""&&form[`achievementtype-${i}`]!=undefined;i++)
@@ -33,7 +32,6 @@ class setUpStudentProfileData
         achievementdata[details]=form[`achievement${details}-${i}`];
       });
       achievements.push(achievementdata);
-      /////Also set Files
     }
     let skills=form.skills.split(";");
     this.data={};
@@ -49,21 +47,22 @@ class setUpStudentProfileData
       department,
       course,
       semester:form.semester,
-      arrears:form.arrears,
+      arrears:parseInt(form.arrears),
       engineering,
-      passdate:form.passout
+      passdate:form.passout,
+      placed:false
     };
     this.data.education={
       sslc:{
         board:form.sslcboard,
         school:form.sslcschool,
-        mark:form.sslcpercent,
+        mark:parseFloat(form.sslcpercent),
         passdate:form.sslcpassdate
       },
       plustwo:{
         board:form.plustwoboard,
         school:form.plustwoschool,
-        mark:form.plustwopercent,
+        mark:parseFloat(form.plustwopercent),
         passdate:form.plustwopassdate
       },
       course:courses,

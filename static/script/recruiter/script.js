@@ -547,3 +547,45 @@ function selectCoordinator(event)
     button.classList.remove("progress");
   });
 }
+function dumpData(url,event,code=null)
+{
+  var button=event.currentTarget;
+  var div=button.parentNode.parentNode;
+  if(button.classList.contains("progress") || div.classList.contains("completed"))
+  {
+    return;
+  }
+  button.classList.add("progress");
+  if(code==1)
+  {
+    showPopUp("warning","This is going to take a moment");
+  }
+  url=`dump-data/${url}`;
+  fetch(url,{
+    method:"POST",
+    cache:"no-store"
+  }).then(resp=>{
+    if(resp.status===200)
+    {
+      return resp.json();
+    }
+    else
+    {
+      throw new Error(`Status Error ${resp.status}`);
+    }
+  }).then(data=>{
+    if(data.success)
+    {
+      div.classList.add("completed");
+    }
+    else
+    {
+      throw new Error(data.message);
+    }
+  }).catch(err=>{
+    console.log(err.message);
+    showPopUp("error","Something went wrong");
+  }).finally(()=>{
+    button.classList.remove("progress");
+  });
+}

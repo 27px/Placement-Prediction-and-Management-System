@@ -370,6 +370,9 @@ recruiter.get("/recruitments/:student/recruit",async(req,res)=>{
       .updateOne({
         email:student
       },{
+        $set:{
+          "data.admission.placed":true
+        },
         $push:{
           "messages":{
             title:"Placement",

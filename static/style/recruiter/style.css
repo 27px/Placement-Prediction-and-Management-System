@@ -1057,6 +1057,17 @@ body,.main
   font-family:var(--font-monospace);
   font-size:20px;
 }
+.timeline button
+{
+  font-weight:400!important;
+  display:flex;
+  flex-direction:row;
+  vertical-align:middle;
+  text-align:center;
+  align-items:center;
+  justify-content:center;
+  letter-spacing:1px;
+}
 .full-wrap .row button
 {
   min-width:25%;
@@ -1079,7 +1090,8 @@ body,.main
   cursor:pointer;
   box-shadow:0 15px 20px -12px rgba(0,111,255,0.73);
 }
-.full-wrap .row button svg
+.full-wrap .row button svg,
+.timeline button svg
 {
   margin-left:15px;
   animation:roller 2.5s linear infinite normal;
@@ -1093,7 +1105,12 @@ button svg
 {
   stroke:#FFFFFF;
 }
-.full-wrap .row button.progress
+.timeline button svg
+{
+  stroke:#000000;
+}
+.full-wrap .row button.progress,
+.timeline button.progress
 {
   padding:10px 20px 10px 25px;
 }
@@ -1698,7 +1715,7 @@ button:not(.progress) svg
   right:-17px;
   background-color:var(--light);
   border:4px solid var(--dark);
-  top:15px;
+  top:45px;
   border-radius:50%;
   z-index:1;
 }
@@ -1715,7 +1732,7 @@ button:not(.progress) svg
   content:" ";
   height:0;
   position:absolute;
-  top:22px;
+  top:52px;
   width:0;
   z-index:1;
   right:30px;
@@ -1728,13 +1745,13 @@ button:not(.progress) svg
   content:" ";
   height:0;
   position:absolute;
-  top:22px;
+  top:52px;
   width:0;
   z-index:1;
   left:30px;
-  border:medium solid #BBDEFB;
+  border:medium solid #a4d1f8;
   border-width:10px 10px 10px 0;
-  border-color:transparent #BBDEFB transparent transparent;
+  border-color:transparent #a4d1f8 transparent transparent;
 }
 .timeline .container:nth-child(even)::after
 {
@@ -1745,7 +1762,31 @@ button:not(.progress) svg
   padding:20px;
   background:linear-gradient(180deg,#BBDEFB,#1E88E5);
   position:relative;
-  border-radius:8px;
+  border-radius:20px;
+  overflow:hidden;
+}
+.timeline .content::after
+{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#a4d1f8 url("../../images/tick.svg");
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:80px 80px;
+  clip-path:circle(0% at 50% 50%);
+  transition:clip-path 5s;
+}
+.timeline .content.completed::after
+{
+  clip-path:circle(100% at 50% 50%);
+}
+.timeline .content.completed
+{
+  cursor:not-allowed;
 }
 .timeline .content .icon
 {
@@ -1823,9 +1864,9 @@ button:not(.progress) svg
   .timeline .container::before
   {
     left:60px!important;
-    border:medium solid #BBDEFB!important;
+    border:medium solid #a2d0f8!important;
     border-width:10px 10px 10px 0!important;
-    border-color:transparent #BBDEFB transparent transparent!important;
+    border-color:transparent #a2d0f8 transparent transparent!important;
   }
   .timeline .container:nth-child(odd)::after, .timeline .container:nth-child(even)::after
   {
@@ -1845,6 +1886,35 @@ button:not(.progress) svg
 .timeline .container.inactive .button
 {
   display:none;
+}
+@media (max-width:350px)
+{
+  .timeline,.timeline .container
+  {
+    padding:0;
+    margin:0;
+    position:relative;
+    top:0;
+    left:0;
+    height:100%;
+  }
+  .timeline::before,
+  .timeline::after,
+  .timeline .container::before,
+  .timeline .container::after
+  {
+    content:unset;
+    display:none;
+  }
+  .timeline
+  {
+    padding:10px;
+    box-sizing:border-box;
+    display:grid;
+    grid-template-columns:1fr;
+    grid-auto-rows:1fr;
+    grid-gap:10px;
+  }
 }
 .center
 {
