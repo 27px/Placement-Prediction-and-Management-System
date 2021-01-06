@@ -1,11 +1,9 @@
-# ⚠ ⚠ ⚠ In Development !!! ⚠ ⚠ ⚠
-
-## 🏫 Campus Placement Prediction &amp; Management System 🏫
+# 🏫 Campus Placement Prediction &amp; Management System 🏫
 Predicts whether a Student gets Placed in Campus Placement using Brain.JS,
 
-> Uses Node.js, MongoDB
+> Uses Node.js <img align="left" src="https://img.shields.io/badge/Node.JS-12.16.3-brightgreen">, MongoDB <img align="left" src="https://img.shields.io/badge/MongoDB-4.4.1-brightgreen">
 
-#### 📥 Installing App 📥
+#### 📥 Installing Web App 📥
 
 > One time installation
 
@@ -15,7 +13,7 @@ Installs app (installs packages, creates data folders required)
 
 > Create User Configuration file `user_config.json` file inside `config` folder. An example file is given in the folder `config` named `user_config.example.json`. Note that you have to set your email id and password in the `user_config.json` to send emails. Keep the file secure, make sure to add in `.gitignore`. NETIMAGES are images from the internet (direct link), to show in mail. If you have a hosted server, you can use it. (Note: `localhost` won't work)
 
-```
+```json
 // config/user_config.json
 
 {
@@ -43,7 +41,7 @@ Installs app (installs packages, creates data folders required)
 
 > Example admin user (add manually in database)
 
-```
+```json
 {
   "email": "email_id",
   "password": "base64_encoded_password",
@@ -62,4 +60,4 @@ Installs app (installs packages, creates data folders required)
 
 ### LICENSE
 
-Licensed under agpl-3.0
+Licensed under `agpl-3.0`
