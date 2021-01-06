@@ -67,6 +67,13 @@
           <div class="file file-fill">No files found</div>
         <%
       }
+      if(type=="coordinator")
+      {
+        %>
+          <input type="file" name="file" id="file" class="hidden" onchange="uploadFile(this);">
+          <a class="upload" onclick="showUpload();">Upload</a>
+        <%
+      }
     %>
   </div>
 </div>

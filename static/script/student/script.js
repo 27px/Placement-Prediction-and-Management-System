@@ -637,3 +637,47 @@ function recommendSkills()
     container.innerHTML="<div class='error'></div>";
   });
 }
+function showUpload()
+{
+  _("#file").click();
+}
+function uploadFile(e)
+{
+  var file=_("#file").files[0];
+  if(Array.from($("a.file")).some(f=>f.children[1].innerHTML==file.name))
+  {
+    showPopUp("error",`Same filename exists for another file`);
+    return;
+  }
+  var up=new FormData();
+  up.append('file',file);
+  fetch("./dashboard/resource/upload",{
+    method:"POST",
+    body:up
+  }).then(resp=>{
+    return resp.json()
+  })
+  .then(data=>{
+    if(data.success)
+    {
+      showPopUp("success","Uploaded",()=>{
+        openTab({
+          currentTarget:{
+            getAttribute:()=>'training-resources'
+          }
+        });
+      });
+    }
+    else
+    {
+      if(data.devlog!=undefined)
+      {
+        console.error(data.devlog);
+      }
+      showPopUp("error",data.message);
+    }
+  })
+  .catch(err=>{
+    console.log(err.message);
+  });
+}

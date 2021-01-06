@@ -651,3 +651,23 @@ body
     --title-size:16px;
   }
 }
+.upload
+{
+  width:100%;
+  min-width:150px;
+  min-height:180px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.1);
+  font-size:24px;
+  border-radius:10px;
+  transition:background-color 0.3s;
+  cursor:pointer;
+}
+.upload:hover
+{
+  background:rgba(0,0,0,0.2);
+}
