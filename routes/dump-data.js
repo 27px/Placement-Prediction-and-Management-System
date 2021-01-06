@@ -222,4 +222,65 @@ dumpData.post("/move-data",(req,res)=>{
   });
 });
 
+dumpData.post("/dump-user/:user",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(data=>{
+    if(!(data.isLoggedIn && user.hasAccessOf("admin")))
+    {
+      throw new Error("Access Denied");
+    }
+    console.log(req.params.user);
+    if(!(req.params.user=="student" || req.params.user=="recruiter" || req.params.user=="coordinator"))
+    {
+      throw new Error("Invalid User");
+    }
+    return MongoClient.connect(DB_CONNECTION_URL,{
+      useUnifiedTopology:true
+    });
+  }).then(mongo=>{
+    return mongo.db(config.DB_SERVER.DB_DATABASE);
+  }).then(db=>{
+    return db.collection("user_data");
+  }).then(data_collection=>{
+    let delOption;
+    if(req.params.user=="recruiter")
+    {
+      delOption={
+        type:"recruiter"
+      }
+    }
+    else
+    {
+      delOption={
+        $or:[
+          {
+            type:"student"
+          },
+          {
+            type:"coordinator"
+          }
+        ]
+      }
+    }
+    return data_collection.remove(delOption);
+  }).then(result=>{
+    if(result.result.ok==1)
+    {
+      res.json({
+        success:true
+      });
+    }
+    else
+    {
+      throw new Error("Unknown Error");
+    }
+  }).catch(error=>{
+    console.log(error.message);
+    res.json({
+      success:false,
+      message:error.message
+    });
+  });
+});
+
 module.exports=dumpData;

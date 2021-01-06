@@ -36,6 +36,22 @@ Installs app (installs packages, creates data folders required)
 }
 ```
 
+> Databases
+
+`department` ,  `statistical_data` &amp; `user_data`
+
+
+> Example admin user (add manually in database)
+
+```
+{
+  "email": "email_id",
+  "password": "base64_encoded_password",
+  "type": "admin",
+  "messages": []
+}
+```
+
 #### 🏃 Starting 🏃
 
 `npm run start`
