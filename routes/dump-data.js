@@ -229,7 +229,6 @@ dumpData.post("/dump-user/:user",async(req,res)=>{
     {
       throw new Error("Access Denied");
     }
-    console.log(req.params.user);
     if(!(req.params.user=="student" || req.params.user=="recruiter" || req.params.user=="coordinator"))
     {
       throw new Error("Invalid User");
@@ -274,6 +273,34 @@ dumpData.post("/dump-user/:user",async(req,res)=>{
     {
       throw new Error("Unknown Error");
     }
+  }).catch(error=>{
+    console.log(error.message);
+    res.json({
+      success:false,
+      message:error.message
+    });
+  });
+});
+
+
+dumpData.post("/delete/:folder",async(req,res)=>{
+  const user=await new User(req);
+  await user.initialize().then(data=>{
+    if(!(data.isLoggedIn && user.hasAccessOf("admin")))
+    {
+      throw new Error("Access Denied");
+    }
+    if(!["certificate","gallery","idcard","profilepic","resource"].includes(req.params.folder))
+    {
+      throw new Error("Invalid Folder");
+    }
+    return fs.readdir(path.join(__dirname,"..","data",req.params.folder));
+  }).then(dir=>{
+    return Promise.all(dir.map(file=>fs.unlink(path.join(__dirname,"..","data",req.params.folder,file))));
+  }).then(r=>{
+    res.json({
+      success:true
+    });
   }).catch(error=>{
     console.log(error.message);
     res.json({
