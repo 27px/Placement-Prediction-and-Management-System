@@ -1,7 +1,9 @@
-# 🏫 Campus Placement Prediction &amp; Management System 🏫
+# 🏫 Campus Placement Prediction &amp; Management System
 Predicts whether a Student gets Placed in Campus Placement using Brain.JS,
 
-> Uses Node.js <img align="left" src="https://img.shields.io/badge/Node.JS-12.16.3-brightgreen">, MongoDB <img align="left" src="https://img.shields.io/badge/MongoDB-4.4.1-brightgreen">
+> Uses Node.JS and MongoDB
+
+<img align="left" src="https://img.shields.io/badge/Node.JS-12.16.3-brightgreen"> <img align="left" src="https://img.shields.io/badge/MongoDB-4.4.1-brightgreen">
 
 #### 📥 Installing Web App 📥
 
