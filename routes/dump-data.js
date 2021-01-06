@@ -282,7 +282,6 @@ dumpData.post("/dump-user/:user",async(req,res)=>{
   });
 });
 
-
 dumpData.post("/delete/:folder",async(req,res)=>{
   const user=await new User(req);
   await user.initialize().then(data=>{

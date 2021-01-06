@@ -11,7 +11,6 @@ const mail_credentials=require("../config/mail.js");
 const nodemailer=require('nodemailer');
 const setMailOTP=require("../functions/mail_otp.js");
 const setUpStudentProfileData=require("../functions/setUpStudentProfileData.js");
-const chalk=require("chalk");
 
 //Route Student
 student.get("/",(req,res)=>{

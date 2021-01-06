@@ -1,48 +1,5 @@
 {
-  "main":[
-    "database backup and start fresh",
-    "create coordinator email:rahulr0047@gmail.com",
-
-    "Data Dumping",
-    "coordinator : Training Resources upload",
-    "admin : Send Notification"
-  ],
-  "important":[
-    "close database connections",
-    "optimize asynchronous code",
-    "compress images"
-  ],
-  "recruiter/dashboard":[
-    "confirm before selecting beyond vacancy limit",
-    "send email on recruit",
-    "ask confirmation on recruit"
-  ],
-  "initialize.js":[
-    "set custom config values ?"
-  ],
-  "complete-profile":[
-    "otp - time hard code to actual time string"
-  ],
-  "login":[
-    "show profile pic when email enters ? "
-  ],
-  "db":[
-    "export data for backup",
-    "Use Indexing in search (index $text $search)"
-  ],
-  "student/dashboard":{
-    "redirect":"redirect to complete-profile if profile not complete or otp not verified",
-    "searchresultcontainer":"add data and link in the data.js file",
-    "sidebar":"set titles, icons and url, add logout, and other nav links",
-    "notification":"no notification messsage"
-  },
-  "before-production":[
-    "check if all pages have title",
-    "remove chalk/unused imports (not uninstall)",
-    "uninstall unused packages (if any)",
-    "minify all client-side css and js and svg",
-    "prefetch all static files",
-    "set theme color for chrome in android (meta theme)",
-    "remove unused css in default-values.css"
-  ]
+  "database" : "add data",
+  "Data Dumping" : "resource",
+  "coordinator" : "Training Resources upload"
 }

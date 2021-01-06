@@ -89,7 +89,7 @@ admin.post("/dashboard/add-company-data",async(req,res)=>{
                 subject:'Recruiter Account Created',
                 html:setMailWelcomeRecruiter(password)
               }).then(async sent=>{
-                console.log(sent);
+                // console.log(sent);
                 ret.success=true;
                 delete ret.message;
               });

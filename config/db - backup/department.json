@@ -1,29 +1,9 @@
 [{
   "_id": {
-    "$oid": "5fb80822e3d7b30f5246b021"
-  },
-  "name": "Computer Science",
-  "courses": [
-    {
-      "name": "B.Sc CS",
-      "num_of_sem": 6
-    },
-    {
-      "name": "M.Sc CS",
-      "num_of_sem": 4
-    }
-  ],
-  "engineering": 0
-},{
-  "_id": {
-    "$oid": "5fb80822e3d7b30f5246b022"
+    "$oid": "5ff1b4f24c643624a4732dae"
   },
   "name": "Computer Application",
   "courses": [
-    {
-      "name": "BCA",
-      "num_of_sem": 6
-    },
     {
       "name": "MCA",
       "num_of_sem": 6
@@ -32,18 +12,34 @@
   "engineering": 0
 },{
   "_id": {
-    "$oid": "5fb80822e3d7b30f5246b023"
+    "$oid": "5ff1b50b4c643624a4732daf"
   },
   "name": "CSE",
   "courses": [
     {
-      "name": "B.Tech",
+      "name": "MTech",
+      "num_of_sem": 4
+    },
+    {
+      "name": "BTech CE",
       "num_of_sem": 8
     },
     {
-      "name": "M.Tech",
-      "num_of_sem": 4
+      "name": "BTech CSE",
+      "num_of_sem": 8
+    },
+    {
+      "name": "BTech ECE",
+      "num_of_sem": 8
+    },
+    {
+      "name": "BTech EEE",
+      "num_of_sem": 8
+    },
+    {
+      "name": "BTech ME",
+      "num_of_sem": 8
     }
   ],
-  "engineering": 1
+  "engineering": 0
 }]

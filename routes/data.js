@@ -187,7 +187,7 @@ data.get("/profile/:user/view",async(req,res)=>{
     var userData=await user.getUserData(req.params.user,{
       messages:0
     });
-    console.log(JSON.stringify(userData,null,2));
+    // console.log(JSON.stringify(userData,null,2));
     if(!userData.success)
     {
       throw new Error("Data fetch error");

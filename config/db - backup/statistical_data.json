@@ -1,41 +1,71 @@
 [{
   "_id": {
-    "$oid": "5fcbbf70329b7d73b8c88802"
+    "$oid": "5ff1b98963e947064833fc6d"
   },
   "year": 2016,
   "departments": {
-    "MCA": 12
+    "MCA": 12,
+    "MTech": 18,
+    "BTech CE": 7,
+    "BTech CSE": 52,
+    "BTech ECE": 43,
+    "BTech EEE": 28,
+    "BTech ME": 31
   }
 },{
   "_id": {
-    "$oid": "5fcbbf70329b7d73b8c88803"
+    "$oid": "5ff1b98963e947064833fc6e"
   },
   "year": 2017,
   "departments": {
-    "MCA": 2
+    "MCA": 2,
+    "MTech": 11,
+    "BTech CE": 4,
+    "BTech CSE": 46,
+    "BTech ECE": 29,
+    "BTech EEE": 18,
+    "BTech ME": 19
   }
 },{
   "_id": {
-    "$oid": "5fcbbf70329b7d73b8c88804"
+    "$oid": "5ff1b98963e947064833fc6f"
   },
   "year": 2018,
   "departments": {
-    "MCA": 21
+    "MCA": 0,
+    "MTech": 21,
+    "BTech CE": 5,
+    "BTech CSE": 62,
+    "BTech ECE": 35,
+    "BTech EEE": 24,
+    "BTech ME": 37
   }
 },{
   "_id": {
-    "$oid": "5fcbbf70329b7d73b8c88805"
+    "$oid": "5ff1b98963e947064833fc70"
   },
   "year": 2019,
   "departments": {
-    "MCA": 1
+    "MCA": 1,
+    "MTech": 16,
+    "BTech CE": 4,
+    "BTech CSE": 53,
+    "BTech ECE": 26,
+    "BTech EEE": 17,
+    "BTech ME": 8
   }
 },{
   "_id": {
-    "$oid": "5fcbbf70329b7d73b8c88806"
+    "$oid": "5ff1b98963e947064833fc71"
   },
   "year": 2020,
   "departments": {
-    "MCA": 15
+    "MCA": 15,
+    "MTech": 16,
+    "BTech CE": 1,
+    "BTech CSE": 75,
+    "BTech ECE": 49,
+    "BTech EEE": 23,
+    "BTech ME": 17
   }
 }]

@@ -17,16 +17,27 @@
     <div class="container">
       <div class="wrap">
         <%
-        coordinators.forEach(coordinator=>{
-          %>
-            <div class="card">
-              <img src="../../data/profilepic/<%-coordinator.email%>.<%-coordinator.pic_ext%>" alt="">
-              <div class="name"><%-coordinator.data.name%></div>
-              <div class="type"><%-coordinator.data.about%></div>
-              <div class="title"><%-coordinator.data.admission.course%></div>
-            </div>
-          <%
-        });
+          if(coordinators.length>0)
+          {
+            coordinators.forEach(coordinator=>{
+              %>
+                <div class="card">
+                  <img src="../../data/profilepic/<%-coordinator.email%>.<%-coordinator.pic_ext%>" alt="">
+                  <div class="name"><%-coordinator.data.name%></div>
+                  <div class="type"><%-coordinator.data.about%></div>
+                  <div class="title"><%-coordinator.data.admission.course%></div>
+                </div>
+              <%
+            });
+          }
+          else
+          {
+            %>
+              <div class="card">
+                <div class="name">No Coordinators</div>
+              </div>
+            <%
+          }
         %>
       </div>
     </div>

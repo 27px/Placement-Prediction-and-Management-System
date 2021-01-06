@@ -72,17 +72,29 @@
       "applied": [
         "rahulr0047@gmail.com"
       ],
-      "selected": [],
+      "selected": [
+        "rahulr0047@gmail.com"
+      ],
       "schedule": {
         "recruiteraccepted": true,
-        "adminaccepted": true,
+        "adminaccepted": false,
         "date": "2020-11-12"
       }
     }
   },
   "type": "recruiter",
   "password": "RVZxMmVtVXc4UQ==",
-  "messages": []
+  "messages": [
+    {
+      "from": "virtualappstore@gmail.com",
+      "name": "Admin",
+      "message": "Your schedule request has been accepted to conduct on the requested date. Go to Schedule Section to see details.",
+      "type": "general",
+      "date": {
+        "$date": "2021-01-03T10:11:39.155Z"
+      }
+    }
+  ]
 },{
   "_id": {
     "$oid": "5fcb3f7b7e8d5d22b0d1a3d3"
@@ -157,7 +169,35 @@
   },
   "type": "recruiter",
   "password": "N0hYVHUzeURXVw==",
-  "messages": []
+  "messages": [
+    {
+      "from": "virtualappstore@gmail.com",
+      "name": "Admin",
+      "message": "Your schedule request has been accepted to conduct on the requested date. Go to Schedule Section to see details.",
+      "type": "general",
+      "date": {
+        "$date": "2021-01-03T09:48:53.614Z"
+      }
+    },
+    {
+      "from": "virtualappstore@gmail.com",
+      "name": "Admin",
+      "message": "Your schedule request has been accepted to conduct on the requested date. Go to Schedule Section to see details.",
+      "type": "general",
+      "date": {
+        "$date": "2021-01-03T10:06:08.881Z"
+      }
+    },
+    {
+      "from": "virtualappstore@gmail.com",
+      "name": "Admin",
+      "message": "Your schedule request has been accepted to conduct on the requested date. Go to Schedule Section to see details.",
+      "type": "general",
+      "date": {
+        "$date": "2021-01-03T10:11:41.541Z"
+      }
+    }
+  ]
 },{
   "_id": {
     "$oid": "5fcb4a80d9c02432406b9ae2"
@@ -207,6 +247,7 @@
   "password": "MTIzNDU2Nzg5MA==",
   "type": "coordinator",
   "messages": [],
+  "otp": "verified",
   "data": {
     "name": "Anisha Mary Francis",
     "about": "Final Year MCA Student",
@@ -267,6 +308,7 @@
   "password": "MTIzNDU2Nzg5MA==",
   "type": "coordinator",
   "messages": [],
+  "otp": "verified",
   "data": {
     "name": "Glorina A M",
     "about": "3rd Year MCA Student",
@@ -331,12 +373,9 @@
     {
       "title": "Placement",
       "message": "Congrats, You are Selected by <b>Xillegence</b>"
-    },
-    {
-      "title": "Placement",
-      "message": "Congrats, You are Selected by <b>Xillegence</b>"
     }
   ],
+  "otp": "verified",
   "data": {
     "name": "Ronin",
     "about": "Designer, Developer",
@@ -396,7 +435,8 @@
   "email": "aahkghessnnibyffaz@mhzayt.online",
   "password": "MTIzNDU2Nzg5MA==",
   "type": "student",
-  "messages": []
+  "messages": [],
+  "otp": "verified"
 },{
   "_id": {
     "$oid": "5fccdfadd7153a1d101d3929"
@@ -405,6 +445,7 @@
   "password": "MTIzNDU2Nzg5MA==",
   "type": "coordinator",
   "messages": [],
+  "otp": "verified",
   "data": {
     "name": "Rahul R",
     "about": "Programmer, Designer",
@@ -465,30 +506,32 @@
     "name": "Xillegence",
     "website": "27px.github.io",
     "job": {
-      "title": "IOT",
-      "type": "job",
-      "date": 1619913600000,
-      "salary": 50000,
+      "title": "UI/UX Designer",
+      "type": "trainee",
+      "date": 1620172800000,
+      "salary": 45000,
       "mhskills": [
-        "Arduino",
-        "Raspberi Pi"
+        "Photoshop",
+        "Adobe Illustrator",
+        "Adobe XD"
       ],
       "ghskills": [
-        "C",
-        "C++"
+        "Figma",
+        "CSS"
       ],
-      "description": "Students interested in Hardware can apply",
-      "vacancy": 5,
-      "rounds": 2,
+      "description": "Students interested in Designing/ Drawing/ UI Design can Apply",
+      "vacancy": 2,
+      "rounds": 1,
       "applied": [
-        "rahulr0047@gmail.com",
         "19mp1395@rit.ac.in"
       ],
-      "selected": [],
+      "selected": [
+        "19mp1395@rit.ac.in"
+      ],
       "schedule": {
         "recruiteraccepted": true,
-        "adminaccepted": true,
-        "date": "2021-05-08"
+        "adminaccepted": false,
+        "date": "2021-06-01"
       }
     }
   },
@@ -511,6 +554,14 @@
       "date": {
         "$date": "2021-01-02T06:43:11.588Z"
       }
+    },
+    {
+      "title": "Student Applied",
+      "message": "Rahul R had applied for your Job Post",
+      "from": "19mp1395@rit.ac.in",
+      "date": {
+        "$date": "2021-01-03T11:01:53.623Z"
+      }
     }
   ]
 },{
@@ -524,8 +575,25 @@
     {
       "title": "Placement",
       "message": "Congrats, You are Selected by <b>27px</b>"
+    },
+    {
+      "title": "Placement",
+      "message": "Congrats, You are Selected by <b>Xillegence</b>"
+    },
+    {
+      "title": "Placement",
+      "message": "Congrats, You are Selected by <b>Xillegence</b>"
+    },
+    {
+      "title": "Placement",
+      "message": "Congrats, You are Selected by <b>Xillegence</b>"
+    },
+    {
+      "title": "Placement",
+      "message": "Congrats, You are Selected by <b>Xillegence</b>"
     }
   ],
+  "otp": "verified",
   "data": {
     "name": "Rahul R",
     "about": "Developer, Programmer",
@@ -611,14 +679,24 @@
       ],
       "schedule": {
         "recruiteraccepted": true,
-        "adminaccepted": false,
+        "adminaccepted": true,
         "date": "2021-06-02"
       }
     }
   },
   "type": "recruiter",
   "password": "MTIzNDU2Nzg5MA==",
-  "messages": [],
+  "messages": [
+    {
+      "from": "virtualappstore@gmail.com",
+      "name": "Admin",
+      "message": "Your schedule request has been accepted to conduct on the requested date. Go to Schedule Section to see details.",
+      "type": "general",
+      "date": {
+        "$date": "2021-01-03T10:06:13.340Z"
+      }
+    }
+  ],
   "resetPassword": {
     "otp": "SuM3XkpSWD",
     "generated": 1609565350372
@@ -630,17 +708,118 @@
   "email": "epokzwtrpxvutatfwl@kiabws.com",
   "password": "MTIzNDU2Nzg5MA==",
   "type": "student",
-  "messages": []
+  "messages": [],
+  "otp": "verified"
 },{
   "_id": {
-    "$oid": "5ff018a8e931352948cd4f8d"
+    "$oid": "5ff2a19ef2fc4e33301a5871"
   },
   "email": "rahulr0047@gmail.com",
   "password": "MTIzNDU2Nzg5MA==",
   "type": "student",
-  "messages": [],
-  "otp": {
-    "generated": 1609572615856,
-    "code": "358552"
-  }
+  "messages": [
+    {
+      "title": "Placement",
+      "message": "Congrats, You are Selected by <b>ABC Enterprises</b>"
+    }
+  ],
+  "otp": "verified",
+  "data": {
+    "name": "Rahul R",
+    "about": "kjsbksjbksdbfkbsdfbsdf",
+    "phone": "9895951554",
+    "gender": "male",
+    "dob": "1999-03-11",
+    "admission": {
+      "number": "18mp1215",
+      "type": "lateral",
+      "year": "2019",
+      "department": "5ff1b4f24c643624a4732dae",
+      "course": "MCA",
+      "semester": "5",
+      "arrears": "3",
+      "engineering": 0,
+      "passdate": "2021-12",
+      "placed": true
+    },
+    "education": {
+      "sslc": {
+        "board": "cbse",
+        "school": "fsghdfjdkfjg",
+        "mark": "26",
+        "passdate": "2021-12"
+      },
+      "plustwo": {
+        "board": "cbse",
+        "school": "fsghdfjdkfjg",
+        "mark": "56",
+        "passdate": "2021-11"
+      },
+      "course": [
+        {
+          "type": "ug",
+          "name": "fsghdfjdkfjg",
+          "college": "fsghdfjdkfjg",
+          "cgpa": "5.6",
+          "passdate": "2020-12"
+        }
+      ],
+      "experience": [
+        {
+          "type": "project",
+          "title": "fsghdfjdkfjg",
+          "description": "fsghdfjdkfjg",
+          "from": "2021-12",
+          "to": "2022-01"
+        }
+      ],
+      "achievement": [
+        {
+          "type": "achievement",
+          "title": "fsghdfjdkfjg",
+          "description": "fsghdfjdkfjg",
+          "from": "2021-12",
+          "to": "2022-02"
+        }
+      ],
+      "skills": [
+        "Java",
+        "Spring Boot",
+        "Swift",
+        "Android",
+        "MySQL"
+      ]
+    }
+  },
+  "pic_ext": "jpg"
+},{
+  "_id": {
+    "$oid": "5ff36412d8792816d4b464a2"
+  },
+  "year": 2021
+},{
+  "_id": {
+    "$oid": "5ff3641ca6b94333344becb4"
+  },
+  "year": 2021
+},{
+  "_id": {
+    "$oid": "5ff36422a6b94333344becb5"
+  },
+  "year": 2021
+},{
+  "_id": {
+    "$oid": "5ff364306fda452f24ac7a44"
+  },
+  "year": 2021
+},{
+  "_id": {
+    "$oid": "5ff364366fda452f24ac7a45"
+  },
+  "year": 2021
+},{
+  "_id": {
+    "$oid": "5ff36448344d3736f4874175"
+  },
+  "year": 2021
 }]

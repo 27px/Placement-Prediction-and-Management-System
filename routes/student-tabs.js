@@ -13,7 +13,6 @@ const getResultFromCursor=require("../functions/getResultFromCursor.js");
 const purifyDataSet=require("../functions/purifyDataSet.js");
 const path=require("path");
 const fs=require("fs");
-const chalk=require("chalk");
 
 //Main Home tab in Dashboard of Student
 studentTabs.post("/main",async(req,res)=>{
@@ -266,9 +265,10 @@ studentTabs.post("/drive/:drive/apply",async(req,res)=>{
           $push:{
             "data.job.applied":userData.result.email,
             "messages":{
-              title:"Student Applied",
-              message:`${userData.result.data.name} had applied for your Job Post`,
               from:data.user,
+              name:userData.result.data.name,
+              message:`${userData.result.data.name} had applied for your Job Post`,
+              type:"help",
               date:new Date()
             }
           }

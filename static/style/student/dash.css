@@ -44,8 +44,9 @@ body
 }
 .profile .picwrapper:hover .overlay
 {
-  opacity:1;
-  transform:translateY(0%);
+  /* Disabled because edit not implemented */
+  /* opacity:1;
+  transform:translateY(0%); */
 }
 .profile .picwrapper .overlay::before
 {
@@ -164,8 +165,8 @@ body
 }
 .profile:hover .edit
 {
-  width:120px;
-  height:120px;
+  /* width:120px;
+  height:120px; */
 }
 .layout .item .fullwrapper
 {
