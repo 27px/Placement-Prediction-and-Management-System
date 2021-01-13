@@ -455,7 +455,7 @@ studentTabs.post("/prediction",async(req,res)=>{
 
     var input=purifyDataSet(userData.result);
     var percent=NeuralNetwork(input);//predict
-    var placement=percent<0.75?false:true;
+    var placement=percent<0.5?false:true;
     percent=parseInt(percent*10000)/100;
     // console.log(percent,placement);
     res.render("student/dashboard-tabs/prediction",{
