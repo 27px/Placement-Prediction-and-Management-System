@@ -191,7 +191,7 @@ studentTabs.post("/drive",async(req,res)=>{
               "data.job.mhskills":1,
               "data.job.ghskills":1,
               "data.job.vacancy":1,
-              "data.job.round":1,
+              "data.job.rounds":1,
               "data.job.description":1,
               "data.job.type":1,
               "data.job.applied":1
@@ -366,8 +366,8 @@ studentTabs.post("/training-resources",async(req,res)=>{
 //recommendation search
 studentTabs.post("/recommendation/search",(req,res)=>{
   Promise.all([
+    fetch(req.body.url),
     fetch(`${req.body.url}&location=india`),
-    fetch(`${req.body.url}&location=usa`),
     fetch(`${req.body.url}&location=asia`)
   ])
   .then((resp)=>Promise.all(resp.map(re=>re.json())))

@@ -23,8 +23,8 @@
     "Job",
     "Internship"
   ],
-  "author": "G-12",
-  "license": "ISC",
+  "author": "27px",
+  "license": "AGPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/27px/placement-prediction-and-management-system/issues"
   },

@@ -501,10 +501,6 @@ function searchExternalJob()
   {
     search.push(`location=${place}`);
   }
-  else
-  {
-    search.push(`location=asia`);
-  }
   search=encodeURI(search.join("&").replaceAll(" ","+"));
   if(search!="")
   {

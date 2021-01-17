@@ -1,5 +1,0 @@
-{
-  "database" : "add data",
-  "Data Dumping" : "resource",
-  "coordinator" : "Training Resources upload"
-}
