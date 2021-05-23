@@ -4906,5 +4906,53 @@
     "intern": 0,
     "extras": 1,
     "arrears": 0
+  },
+  {
+    "placed": 1,
+    "engineering": 0,
+    "sslc": 0.823,
+    "plustwo": 0.784,
+    "ug": 0.7,
+    "pg": 1,
+    "project": 0.16,
+    "intern": 0,
+    "extras": 1,
+    "arrears": 0
+  },
+  {
+    "placed": 0,
+    "engineering": 0,
+    "sslc": 0.823,
+    "plustwo": 0.784,
+    "ug": 0.7,
+    "pg": 1,
+    "project": 0.16,
+    "intern": 0,
+    "extras": 1,
+    "arrears": 0
+  },
+  {
+    "placed": 0,
+    "engineering": 1,
+    "sslc": 0.8,
+    "plustwo": 0.8,
+    "ug": 0.8,
+    "pg": 1,
+    "project": 0,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 0
+  },
+  {
+    "placed": 0,
+    "engineering": 1,
+    "sslc": 0.8,
+    "plustwo": 0.8,
+    "ug": 0.8,
+    "pg": 1,
+    "project": 0,
+    "intern": 0,
+    "extras": 0,
+    "arrears": 1
   }
 ]

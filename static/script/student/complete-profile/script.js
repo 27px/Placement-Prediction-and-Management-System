@@ -10,6 +10,7 @@ function scrollToNav(n)
 {
   var offset=!exactScroll?scrollnumber:-1;
   n=Math.min(n+offset,tabs);
+  //this delay is required and must not be removed
   setTimeout(function(){
     _(".pro").children[n].scrollIntoView();
   },scrollDelay);
@@ -585,6 +586,7 @@ function setMessage(selector,message,type)
 {
   var m=_(selector);
   resetMessage(selector);
+  //tnis delay is necessary
   setTimeout(function(){
     m.innerHTML=message;
     m.classList.add("m-"+type);
@@ -1352,6 +1354,7 @@ function finalSubmit(event)
       setMessage(msg,`Complete details in page : ${i}`,"warning");
       exactScroll=true;
       window.location.hash=`#box-${i}`;
+      //this delay is necessary
       setTimeout(function(){
         exactScroll=false;
       },scrollDelay*2)

@@ -6,15 +6,9 @@ var $=key=>document.querySelectorAll(key);
 
 window.onload=()=>{
   body=document.body;
-
-  //Unnecessary delay for loading animation
-  var delay=0;//seconds
-  setTimeout(()=>{
-    Array.from($(".splash")).forEach(splash=>{
-      splash.parentNode.removeChild(splash);
-    });
-  },delay);
-
+  Array.from($(".splash")).forEach(splash=>{
+    splash.parentNode.removeChild(splash);
+  });
   // typeit: subtitle
   var lines=[
     "Campus Placement Management System",

@@ -97,6 +97,8 @@ function resetPassword()
     })
   })
   .then(resp=>{
+    throw new Error("Test Error");
+
     if(resp.status!==200)
     {
       throw new Error(`Status Error ${resp.status}`);
@@ -116,10 +118,9 @@ function resetPassword()
   })
   .catch(err=>{
     console.error(err.message);
-    showPopUp("error",err.message || "Something went wrong");
-    setTimeout(function(){
+    showPopUp("error",err.message || "Something went wrong",()=>{
       window.location.reload();
-    },1000);
+    });
   });
 }
 window.onload=()=>{
@@ -171,10 +172,9 @@ window.onload=()=>{
       }
     }).catch(err=>{
       console.error(err.message);
-      showPopUp("error",err.name=="customError"?err.message:"Something went wrong");
-      setTimeout(function(){
+      showPopUp("error",err.name=="customError"?err.message:"Something went wrong",()=>{
         window.location.reload();
-      },1000);
+      });
     });
   });
 };
