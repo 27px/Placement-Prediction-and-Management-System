@@ -1,84 +1,162 @@
-<%
-  if(login=="visible")
-  {
-    title="Login";
-  }
-  else
-  {
-    title="Register";
-  }
-%>
+<% if(login=="visible") { title="Login"; } else { title="Register"; } %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title><%=title%></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preload" href="../static/style/nav.css" as="style">
-    <link rel="stylesheet" href="../static/style/nav.css">
+    <link rel="preload" href="../static/style/nav.css" as="style" />
+    <link rel="stylesheet" href="../static/style/nav.css" />
 
-    <link rel="preload" href="../static/style/login-signup/style.css" as="style">
-    <link rel="stylesheet" href="../static/style/login-signup/style.css">
+    <link
+      rel="preload"
+      href="../static/style/login-signup/style.css"
+      as="style"
+    />
+    <link rel="stylesheet" href="../static/style/login-signup/style.css" />
 
-    <link rel="preload" href="../static/style/default-values.css" as="style">
-    <link rel="stylesheet" href="../static/style/default-values.css">
+    <link rel="preload" href="../static/style/default-values.css" as="style" />
+    <link rel="stylesheet" href="../static/style/default-values.css" />
 
-    <link rel="preload" href="../static/script/login-signup/script.js" as="script">
-    <script type="text/javascript" src="../static/script/login-signup/script.js"></script>
-
+    <link
+      rel="preload"
+      href="../static/script/login-signup/script.js"
+      as="script"
+    />
+    <script
+      type="text/javascript"
+      src="../static/script/login-signup/script.js"
+    ></script>
   </head>
   <body>
-    <%- include("partials/nav.ejs",{
-      isLoggedIn,
-      type
-    }); %>
+    <%- include("partials/nav.ejs",{ isLoggedIn, type }); %>
     <div class="bg"></div>
     <div class="container">
-
       <div class="wrapper login-wrapper <%=login%>" id="login">
         <div class="login">
           <div class="image">
-              <div class="title-wrapper">
-                <div class="icon">
-                  <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
-                <div class="title">Welcome Back</div>
+            <div class="title-wrapper">
+              <div class="icon">
+                <svg
+                  width="44"
+                  height="44"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
               </div>
+              <div class="title">Welcome Back</div>
+            </div>
             <div class="title-wrapper">
               <div class="sub-title">Don't have an account ?</div>
-              <div class="other-button" tabindex=0 onclick="animateNext(event,'login-to-next',`login-wrapper`,`register-wrapper`);" id="next-register-button">Register</div>
+              <div
+                class="other-button"
+                tabindex="0"
+                onclick="animateNext(event,'login-to-next',`login-wrapper`,`register-wrapper`);"
+                id="next-register-button"
+              >
+                Register
+              </div>
             </div>
           </div>
           <form action="/login" method="post" class="login-form">
             <div class="title">Login</div>
             <div class="row">
               <label class="label" for="login-email">User ID</label>
-              <input type="text" id="login-email" name="login-email" placeholder="E-Mail" autocomplete="email" spellcheck="false">
+              <input
+                type="text"
+                id="login-email"
+                name="login-email"
+                placeholder="E-Mail"
+                autocomplete="email"
+                spellcheck="false"
+              />
               <div class="message" id="login-email-message"></div>
             </div>
             <div class="row">
               <label class="label" for="login-password">Password</label>
               <div class="password">
-                <input type="password" id="login-password" name="login-password" placeholder="Password" autocomplete="current-password" spellcheck="false">
-                <div class="togglePassword" toggleTarget="login-password" tabindex=0 id="login-eye">
-                  <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <input
+                  type="password"
+                  id="login-password"
+                  name="login-password"
+                  placeholder="Password"
+                  autocomplete="current-password"
+                  spellcheck="false"
+                />
+                <div
+                  class="togglePassword"
+                  toggleTarget="login-password"
+                  tabindex="0"
+                  id="login-eye"
+                >
+                  <svg
+                    width="44"
+                    height="44"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#000000"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
                 </div>
               </div>
               <div class="message" id="login-password-message"></div>
             </div>
             <div class="row row-flex">
               <div class="row-wrapper">
-                <input type="checkbox" id="login-remember" name="login-remember">
+                <input
+                  type="checkbox"
+                  id="login-remember"
+                  name="login-remember"
+                />
                 <label class="label" for="login-remember">Remember Me</label>
               </div>
               <a href="/reset/password">Forgot Password</a>
             </div>
             <div class="row button-center">
-              <button type="reset" class="clear" resetTarget="login-password" buttonTarget="login-eye">Clear</button>
+              <button
+                type="reset"
+                class="clear"
+                resetTarget="login-password"
+                buttonTarget="login-eye"
+              >
+                Clear
+              </button>
               <button type="button" name="login" id="login-button">
                 <span>Login</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="12" y1="2" x2="12" y2="6"></line>
+                  <line x1="12" y1="18" x2="12" y2="22"></line>
+                  <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                  <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                  <line x1="2" y1="12" x2="6" y2="12"></line>
+                  <line x1="18" y1="12" x2="22" y2="12"></line>
+                  <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                  <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                </svg>
               </button>
             </div>
           </form>
@@ -91,75 +169,172 @@
           <div class="image">
             <div class="title-wrapper">
               <div class="icon">
-                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <svg
+                  width="44"
+                  height="44"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
               </div>
               <div class="title">Welcome</div>
             </div>
             <div class="title-wrapper">
               <div class="sub-title">Already have an account ?</div>
-              <div class="other-button" tabindex=0 onclick="animateNext(event,'register-to-next',`register-wrapper`,`login-wrapper`);" id="next-login-button">Login</div>
+              <div
+                class="other-button"
+                tabindex="0"
+                onclick="animateNext(event,'register-to-next',`register-wrapper`,`login-wrapper`);"
+                id="next-login-button"
+              >
+                Login
+              </div>
             </div>
           </div>
           <form action="/register" method="post" class="register-form">
             <div class="title">Sign Up</div>
             <div class="row">
               <label class="label" for="register-email">User ID</label>
-              <input type="text" id="register-email" name="register-email" placeholder="E-Mail" autocomplete="email" spellcheck="false">
+              <input
+                type="text"
+                id="register-email"
+                name="register-email"
+                placeholder="E-Mail"
+                autocomplete="email"
+                spellcheck="false"
+              />
               <div class="message" id="register-email-message"></div>
             </div>
             <div class="row">
               <label class="label" for="register-password">Password</label>
               <div class="password">
-                <input type="password" id="register-password" name="register-password" placeholder="Password" autocomplete="new-password" spellcheck="false">
-                <div class="togglePassword" toggleTarget="register-password" tabindex=0 id="register-eye">
-                  <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <input
+                  type="password"
+                  id="register-password"
+                  name="register-password"
+                  placeholder="Password"
+                  autocomplete="new-password"
+                  spellcheck="false"
+                />
+                <div
+                  class="togglePassword"
+                  toggleTarget="register-password"
+                  tabindex="0"
+                  id="register-eye"
+                >
+                  <svg
+                    width="44"
+                    height="44"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#000000"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
                 </div>
               </div>
               <div class="message" id="register-password-message"></div>
             </div>
             <div class="row">
-              <label class="label" for="register-confirm-password">Confirm Password</label>
+              <label class="label" for="register-confirm-password"
+                >Confirm Password</label
+              >
               <div class="password">
-                <input type="password" id="register-confirm-password" name="register-confirm-password" placeholder="Password" autocomplete="new-password" spellcheck="false">
-                <div class="togglePassword" toggleTarget="register-confirm-password" tabindex=0 id="register-confirm-eye">
-                  <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <input
+                  type="password"
+                  id="register-confirm-password"
+                  name="register-confirm-password"
+                  placeholder="Password"
+                  autocomplete="new-password"
+                  spellcheck="false"
+                />
+                <div
+                  class="togglePassword"
+                  toggleTarget="register-confirm-password"
+                  tabindex="0"
+                  id="register-confirm-eye"
+                >
+                  <svg
+                    width="44"
+                    height="44"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#000000"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
                 </div>
               </div>
               <div class="message" id="register-confirm-password-message"></div>
             </div>
             <div class="row button-center">
-              <button type="reset" class="clear" resetTarget="register-password;register-confirm-password" buttonTarget="register-eye;register-confirm-eye">Clear</button>
+              <button
+                type="reset"
+                class="clear"
+                resetTarget="register-password;register-confirm-password"
+                buttonTarget="register-eye;register-confirm-eye"
+              >
+                Clear
+              </button>
               <button type="button" name="register" id="register-button">
                 <span>Sign Up</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="12" y1="2" x2="12" y2="6"></line>
+                  <line x1="12" y1="18" x2="12" y2="22"></line>
+                  <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                  <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                  <line x1="2" y1="12" x2="6" y2="12"></line>
+                  <line x1="18" y1="12" x2="22" y2="12"></line>
+                  <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                  <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                </svg>
               </button>
             </div>
           </form>
           <div class="to-next register-to-next"></div>
         </div>
       </div>
-
     </div>
-    <%
-      if(isLoggedIn==true)
-      {
-        var redirect=type;
-        if(type=="coordinator")
-        {
-          redirect="student";
-        }
-        %>
-          <div class="overlay popup"></div>
-          <div class="alreadyLoggedIn popup">
-            <div class="pop-message">Already Logged in</div>
-            <div class="buttons">
-              <a href="/<%=redirect%>/dashboard" class="dashboard">Dashboard</a>
-              <a href="javascript:void(0);" class="coninue" onclick="closePopup();">Continue</a>
-              <a href="/logout?to=<%=title.toLowerCase();%>" class="logout">Logout</a>
-            </div>
-          </div>
-        <%
-      }
-    %>
+    <% if(isLoggedIn==true) { var redirect=type; if(type=="coordinator") {
+    redirect="student"; } %>
+    <div class="overlay popup"></div>
+    <div class="alreadyLoggedIn popup">
+      <div class="pop-message">Already Logged in</div>
+      <div class="buttons">
+        <a href="/<%=redirect%>/dashboard" class="dashboard">Dashboard</a>
+        <a href="javascript:void(0);" class="coninue" onclick="closePopup();"
+          >Continue</a
+        >
+        <a href="/logout?to=<%=title.toLowerCase();%>" class="logout">Logout</a>
+      </div>
+    </div>
+    <% } %>
   </body>
 </html>

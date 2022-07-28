@@ -1,57 +1,49 @@
 @import url("default-values.css");
-:root
-{
-  --font-size:calc(12vmin + 12vmax);
-  --sub-size:calc(2.8vmin + 2.8vmax);
+:root {
+    --font-size: calc(12vmin + 12vmax);
+    --sub-size: calc(2.8vmin + 2.8vmax);
 }
-*
-{
-  padding:0;
-  margin:0;
-  user-select:none;
+* {
+    padding: 0;
+    margin: 0;
+    user-select: none;
 }
-body
-{
-  height:100vh;
-  font-family:"consolas";
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  background:#FFFFFF url("../images/404.jpg");
-  background-size:auto 100%;
-  background-repeat:repeat-x;
-  background-position:center;
+body {
+    height: 100vh;
+    font-family: "consolas";
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff url("../images/404.jpg");
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    background-position: center;
 }
-.title
-{
-  font-size:var(--font-size);
-  font-weight:900;
-  line-height:calc((var(--font-size) * 5) / 6);
+.title {
+    font-size: var(--font-size);
+    font-weight: 900;
+    line-height: calc((var(--font-size) * 5) / 6);
 }
-.sub-title
-{
-  font-size:var(--sub-size);
-  font-weight:400;
+.sub-title {
+    font-size: var(--sub-size);
+    font-weight: 400;
 }
-.link
-{
-  margin-top:10px;
+.link {
+    margin-top: 10px;
 }
-a
-{
-  display:inline-block;
-  color:#000;
-  text-decoration:none;
-  border:2px solid #000;
-  padding:8px 25px;
-  box-sizing:border-box;
-  font-size:20px;
-  background:#FFF;
-  transition:background-color 0.3s;
-  margin:0px 5px 10px 5px;
+a {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    border: 2px solid #000;
+    padding: 8px 25px;
+    box-sizing: border-box;
+    font-size: 20px;
+    background: #fff;
+    transition: background-color 0.3s;
+    margin: 0px 5px 10px 5px;
 }
-a:hover
-{
-  background:var(--teal);
+a:hover {
+    background: var(--teal);
 }

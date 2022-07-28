@@ -1,47 +1,47 @@
 {
-  "name": "ppms",
-  "version": "2.0.0",
-  "description": "Campus Placement Prediction & Management System",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "initialize": "node initialize.js",
-    "git-stats": "git shortlog -snec"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/27px/placement-prediction-and-management-system.git"
-  },
-  "keywords": [
-    "Campus",
-    "Placement",
-    "Prediction",
-    "Management",
-    "System",
-    "Recruitment",
-    "Job",
-    "Internship"
-  ],
-  "author": "27px",
-  "license": "AGPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/27px/placement-prediction-and-management-system/issues"
-  },
-  "homepage": "https://github.com/27px/placement-prediction-and-management-system#readme",
-  "dependencies": {
-    "brain.js": "^2.0.0-beta.2",
-    "cookie-parser": "^1.4.5",
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "express-fileupload": "^1.2.0",
-    "express-session": "^1.17.1",
-    "mongodb": "^3.6.2",
-    "node-fetch": "^2.6.1",
-    "nodemailer": "^6.4.16",
-    "string-strip-html": "^7.0.3"
-  },
-  "optionalDependencies": {
-    "chalk": "^4.1.0"
-  }
+    "name": "ppms",
+    "version": "2.0.0",
+    "description": "Campus Placement Prediction & Management System",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "initialize": "node initialize.js",
+        "git-stats": "git shortlog -snec"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/27px/placement-prediction-and-management-system.git"
+    },
+    "keywords": [
+        "Campus",
+        "Placement",
+        "Prediction",
+        "Management",
+        "System",
+        "Recruitment",
+        "Job",
+        "Internship"
+    ],
+    "author": "27px",
+    "license": "AGPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/27px/placement-prediction-and-management-system/issues"
+    },
+    "homepage": "https://github.com/27px/placement-prediction-and-management-system#readme",
+    "dependencies": {
+        "brain.js": "^2.0.0-beta.2",
+        "cookie-parser": "^1.4.5",
+        "ejs": "^3.1.5",
+        "express": "^4.17.1",
+        "express-fileupload": "^1.2.0",
+        "express-session": "^1.17.1",
+        "mongodb": "^3.6.2",
+        "node-fetch": "^2.6.1",
+        "nodemailer": "^6.4.16",
+        "string-strip-html": "^7.0.3"
+    },
+    "optionalDependencies": {
+        "chalk": "^4.1.0"
+    }
 }

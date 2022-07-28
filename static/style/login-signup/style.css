@@ -1,822 +1,790 @@
 @import "../default-values.css";
-*
-{
-  padding:0;
-  margin:0;
+* {
+    padding: 0;
+    margin: 0;
 }
-:root
-{
-  --wrapper-width:90%;
-  --wrapper-max-width:1000px;
-  --form-width:400px;
-  --form-height:500px;
+:root {
+    --wrapper-width: 90%;
+    --wrapper-max-width: 1000px;
+    --form-width: 400px;
+    --form-height: 500px;
 }
-:root,body
-{
-  user-select:none;
-  width:100%;
-  height:100%;
-  font-family:var(--font-sub-title);
+:root,
+body {
+    user-select: none;
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-sub-title);
 }
-.hidden
-{
-  display:none;
+.hidden {
+    display: none;
 }
-.visible
-{
-  animation:shift 0.8s linear 1 forwards;
+.visible {
+    animation: shift 0.8s linear 1 forwards;
 }
-@keyframes shift
-{
-  0%
-  {
-    opacity:0;
-  }
-  100%
-  {
-    opacity:1;
-  }
+@keyframes shift {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
-body
-{
-  background:#212121;
-  background-image: repeating-linear-gradient(135deg, rgba(244, 244, 244, 0.06) 0px, rgba(244, 244, 244, 0.06) 46px,rgba(92, 92, 92, 0.06) 46px, rgba(92, 92, 92, 0.06) 79px,rgba(208, 208, 208, 0.06) 79px, rgba(208, 208, 208, 0.06) 119px,rgba(87, 87, 87, 0.06) 119px, rgba(87, 87, 87, 0.06) 162px,rgba(8, 8, 8, 0.06) 162px, rgba(8, 8, 8, 0.06) 187px,rgba(206, 206, 206, 0.06) 187px, rgba(206, 206, 206, 0.06) 211px,rgba(183, 183, 183, 0.06) 211px, rgba(183, 183, 183, 0.06) 247px,rgba(21, 21, 21, 0.06) 247px, rgba(21, 21, 21, 0.06) 288px),repeating-linear-gradient(135deg, rgba(148, 148, 148, 0.06) 0px, rgba(148, 148, 148, 0.06) 28px,rgba(104, 104, 104, 0.06) 28px, rgba(104, 104, 104, 0.06) 58px,rgba(236, 236, 236, 0.06) 58px, rgba(236, 236, 236, 0.06) 101px,rgba(245, 245, 245, 0.06) 101px, rgba(245, 245, 245, 0.06) 128px,rgba(104, 104, 104, 0.06) 128px, rgba(104, 104, 104, 0.06) 167px,rgba(90, 90, 90, 0.06) 167px, rgba(90, 90, 90, 0.06) 216px,rgba(31, 31, 31, 0.06) 216px, rgba(31, 31, 31, 0.06) 260px,rgba(25, 25, 25, 0.06) 260px, rgba(25, 25, 25, 0.06) 305px),repeating-linear-gradient(135deg, rgba(221, 221, 221, 0.06) 0px, rgba(221, 221, 221, 0.06) 20px,rgba(154, 154, 154, 0.06) 20px, rgba(154, 154, 154, 0.06) 66px,rgba(60, 60, 60, 0.06) 66px, rgba(60, 60, 60, 0.06) 88px,rgba(170, 170, 170, 0.06) 88px, rgba(170, 170, 170, 0.06) 115px,rgba(241, 241, 241, 0.06) 115px, rgba(241, 241, 241, 0.06) 131px,rgba(99, 99, 99, 0.06) 131px, rgba(99, 99, 99, 0.06) 147px,rgba(203, 203, 203, 0.06) 147px, rgba(203, 203, 203, 0.06) 193px,rgba(83, 83, 83, 0.06) 193px, rgba(83, 83, 83, 0.06) 204px),linear-gradient(90deg, rgb(248, 8, 31),rgb(88, 39, 62));
+body {
+    background: #212121;
+    background-image: repeating-linear-gradient(
+            135deg,
+            rgba(244, 244, 244, 0.06) 0px,
+            rgba(244, 244, 244, 0.06) 46px,
+            rgba(92, 92, 92, 0.06) 46px,
+            rgba(92, 92, 92, 0.06) 79px,
+            rgba(208, 208, 208, 0.06) 79px,
+            rgba(208, 208, 208, 0.06) 119px,
+            rgba(87, 87, 87, 0.06) 119px,
+            rgba(87, 87, 87, 0.06) 162px,
+            rgba(8, 8, 8, 0.06) 162px,
+            rgba(8, 8, 8, 0.06) 187px,
+            rgba(206, 206, 206, 0.06) 187px,
+            rgba(206, 206, 206, 0.06) 211px,
+            rgba(183, 183, 183, 0.06) 211px,
+            rgba(183, 183, 183, 0.06) 247px,
+            rgba(21, 21, 21, 0.06) 247px,
+            rgba(21, 21, 21, 0.06) 288px
+        ),
+        repeating-linear-gradient(
+            135deg,
+            rgba(148, 148, 148, 0.06) 0px,
+            rgba(148, 148, 148, 0.06) 28px,
+            rgba(104, 104, 104, 0.06) 28px,
+            rgba(104, 104, 104, 0.06) 58px,
+            rgba(236, 236, 236, 0.06) 58px,
+            rgba(236, 236, 236, 0.06) 101px,
+            rgba(245, 245, 245, 0.06) 101px,
+            rgba(245, 245, 245, 0.06) 128px,
+            rgba(104, 104, 104, 0.06) 128px,
+            rgba(104, 104, 104, 0.06) 167px,
+            rgba(90, 90, 90, 0.06) 167px,
+            rgba(90, 90, 90, 0.06) 216px,
+            rgba(31, 31, 31, 0.06) 216px,
+            rgba(31, 31, 31, 0.06) 260px,
+            rgba(25, 25, 25, 0.06) 260px,
+            rgba(25, 25, 25, 0.06) 305px
+        ),
+        repeating-linear-gradient(
+            135deg,
+            rgba(221, 221, 221, 0.06) 0px,
+            rgba(221, 221, 221, 0.06) 20px,
+            rgba(154, 154, 154, 0.06) 20px,
+            rgba(154, 154, 154, 0.06) 66px,
+            rgba(60, 60, 60, 0.06) 66px,
+            rgba(60, 60, 60, 0.06) 88px,
+            rgba(170, 170, 170, 0.06) 88px,
+            rgba(170, 170, 170, 0.06) 115px,
+            rgba(241, 241, 241, 0.06) 115px,
+            rgba(241, 241, 241, 0.06) 131px,
+            rgba(99, 99, 99, 0.06) 131px,
+            rgba(99, 99, 99, 0.06) 147px,
+            rgba(203, 203, 203, 0.06) 147px,
+            rgba(203, 203, 203, 0.06) 193px,
+            rgba(83, 83, 83, 0.06) 193px,
+            rgba(83, 83, 83, 0.06) 204px
+        ),
+        linear-gradient(90deg, rgb(248, 8, 31), rgb(88, 39, 62));
 }
-.bg
-{
-  width:100%;
-  height:100%;
-  position:fixed;
-  top:0;
-  left:0;
-  background:url("../../images/login/classroom.jpg");
-  background-position:center;
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-attachment:fixed;
+.bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: url("../../images/login/classroom.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
-.container
-{
-  width:100%;
-  height:calc(100% - var(--nav-height));
-  position:absolute;
-  top:var(--nav-height);
-  left:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+.container {
+    width: 100%;
+    height: calc(100% - var(--nav-height));
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.wrapper
-{
-  width:var(--wrapper-width);
-  height:var(--form-height);
-  max-width:var(--wrapper-max-width);
-  position:absolute;
-  border-radius:25px;
-  overflow:hidden;
-  box-shadow:0px 0px 15px 0px rgba(0,0,0,0.5),
-             0px 0px 5px 1px rgba(0,0,0,0.5);
+.wrapper {
+    width: var(--wrapper-width);
+    height: var(--form-height);
+    max-width: var(--wrapper-max-width);
+    position: absolute;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5),
+        0px 0px 5px 1px rgba(0, 0, 0, 0.5);
 }
-.login
-{
-  display:flex;
-  flex-direction:row;
+.login {
+    display: flex;
+    flex-direction: row;
 }
-.register
-{
-  display:flex;
-  flex-direction:row-reverse;
+.register {
+    display: flex;
+    flex-direction: row-reverse;
 }
 .login::-webkit-scrollbar,
 .register::-webkit-scrollbar,
-.wrapper::-webkit-scrollbar
-{
-  width:0px;
+.wrapper::-webkit-scrollbar {
+    width: 0px;
 }
 .login,
-.register
-{
-  width:100%;
-  height:100%;
+.register {
+    width: 100%;
+    height: 100%;
 }
 .login .image,
-.register .image
-{
-  width:calc(100% - var(--form-width));
-  height:100%;
-  background:transparent;
-  z-index:10;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-evenly;
-  text-align:center;
-  padding:15px;
-  box-sizing:border-box;
-  font-family:var(--font-sub-title);
-  color:#FFFFFF;
-  overflow:visible!important;
+.register .image {
+    width: calc(100% - var(--form-width));
+    height: 100%;
+    background: transparent;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    font-family: var(--font-sub-title);
+    color: #ffffff;
+    overflow: visible !important;
 }
 .login .image::before,
-.register .image::before
-{
-  content:"";
-  width:100%;
-  height:100%;
-  position:absolute;
-  top:0;
-  left:0;
-  background:url("../../images/login/classroom.jpg");
-  background-position:center;
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-attachment:fixed;
-  filter:blur(8px);
-  z-index:-1;
+.register .image::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../../images/login/classroom.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: blur(8px);
+    z-index: -1;
 }
 .login .login-form,
-.register .register-form
-{
-  width:var(--form-width);
-  height:100%;
-  box-shadow:0px 0px 10px 1px #000000;
-  background:#FFFFFF;
-  padding:15px 35px;
-  box-sizing:border-box;
-  z-index:15;
+.register .register-form {
+    width: var(--form-width);
+    height: 100%;
+    box-shadow: 0px 0px 10px 1px #000000;
+    background: #ffffff;
+    padding: 15px 35px;
+    box-sizing: border-box;
+    z-index: 15;
 }
-.image .icon
-{
-  width:60px;
-  height:60px;
-  border:3px solid #000;
-  border-radius:100px;
-  margin:0px auto;
-  margin-bottom:25px;
-  padding:10px;
-  position:relative;
+.image .icon {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #000;
+    border-radius: 100px;
+    margin: 0px auto;
+    margin-bottom: 25px;
+    padding: 10px;
+    position: relative;
 }
-.image .icon svg
-{
-  width:60px;
-  height:60px;
-  stroke:#000000;
+.image .icon svg {
+    width: 60px;
+    height: 60px;
+    stroke: #000000;
 }
 .image .icon::before,
-.image .icon::after
-{
-  content:"";
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  border-radius:100px;
+.image .icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100px;
 }
-.image .icon::before
-{
-  width:calc(100% + 20px);
-  height:calc(100% + 20px);
-  border-top:3px solid #000000;
-  border-bottom:3px solid #000000;
-  border-left:3px solid transparent;
-  border-right:3px solid transparent;
-  animation:roll 8s linear infinite normal;
+.image .icon::before {
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    animation: roll 8s linear infinite normal;
 }
-.image .icon::after
-{
-  width:calc(100% + 40px);
-  height:calc(100% + 40px);
-  border-top:3px solid transparent;
-  border-bottom:3px solid transparent;
-  border-left:3px solid #000000;
-  border-right:3px solid #000000;
-  animation:roll 15s linear infinite normal;
+.image .icon::after {
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-left: 3px solid #000000;
+    border-right: 3px solid #000000;
+    animation: roll 15s linear infinite normal;
 }
-@keyframes roll
-{
-  0%
-  {
-    transform:translate(-50%,-50%) rotate(0deg);
-  }
-  100%
-  {
-    transform:translate(-50%,-50%) rotate(360deg);
-  }
+@keyframes roll {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 .visible .login-form,
-.visible .register-form
-{
-  animation:move 0.5s linear 1 forwards;
+.visible .register-form {
+    animation: move 0.5s linear 1 forwards;
 }
-@keyframes move
-{
-  0%
-  {
-    transform:translateY(-100%);
-  }
-  100%
-  {
-    transform:translateY(0%);
-  }
+@keyframes move {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 .login .login-form .title,
-.register .register-form .title
-{
-  text-align:center;
-  font-size:30px;
-  font-weight:900;
-  letter-spacing:1px;
-  color:#000000;
-  font-family:var(--font-sub-title);
-  margin-top:calc(var(--form-height)/40);
-  margin-bottom:calc(var(--form-height)/30);
+.register .register-form .title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #000000;
+    font-family: var(--font-sub-title);
+    margin-top: calc(var(--form-height) / 40);
+    margin-bottom: calc(var(--form-height) / 30);
 }
 .login .login-form .row,
-.register .register-form .row
-{
-  width:100%;
-  box-sizing:border-box;
-  font-size:20px;
-  color:#000000;
-  font-family:var(--font-monospace);
+.register .register-form .row {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: #000000;
+    font-family: var(--font-monospace);
 }
-.login .login-form .row
-{
-  padding:calc(var(--form-height)/40) 10px;
+.login .login-form .row {
+    padding: calc(var(--form-height) / 40) 10px;
 }
-.register .register-form .row
-{
-  padding:calc(var(--form-height)/50) 10px;
+.register .register-form .row {
+    padding: calc(var(--form-height) / 50) 10px;
 }
-.message
-{
-  min-height:25px;
-  font-size:16px;
-  text-align:right;
+.message {
+    min-height: 25px;
+    font-size: 16px;
+    text-align: right;
 }
-.error
-{
-  color:#f44336;
+.error {
+    color: #f44336;
 }
-.warning
-{
-  color:#FFC107;
+.warning {
+    color: #ffc107;
 }
-.info
-{
-  color:#03A9F4;
+.info {
+    color: #03a9f4;
 }
-.success
-{
-  color:#4CAF50;
+.success {
+    color: #4caf50;
 }
-input[type="checkbox"]
-{
-  filter:grayscale(1) contrast(2);
+input[type="checkbox"] {
+    filter: grayscale(1) contrast(2);
 }
 .login .login-form .row input,
-.register .register-form .row input
-{
-  width:100%;
-  margin:5px 0px;
-  padding:4px 8px;
-  box-sizing:border-box;
-  border:none;
-  border-bottom:3px solid #C0C0C0;
-  font-size:18px;
-  font-family:var(--font-monospace);
+.register .register-form .row input {
+    width: 100%;
+    margin: 5px 0px;
+    padding: 4px 8px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 3px solid #c0c0c0;
+    font-size: 18px;
+    font-family: var(--font-monospace);
 }
 input[type="password"],
-input[type="text"]
-{
-  box-shadow:0px 0px 0px 1000px #FFFFFF inset;
+input[type="text"] {
+    box-shadow: 0px 0px 0px 1000px #ffffff inset;
 }
-input::selection
-{
-  background:#212121;
-  color:#FFFFFF;
+input::selection {
+    background: #212121;
+    color: #ffffff;
 }
 .login .login-form .row input:focus,
-.register .register-form .row input:focus
-{
-  outline:none;
-  border-bottom-color:#000000;
+.register .register-form .row input:focus {
+    outline: none;
+    border-bottom-color: #000000;
 }
 .login .login-form .row-flex,
-.register .register-form .row-flex
-{
-  display:flex;
-  flex-direction:row;
-  vertical-align:middle;
-  align-items:center;
-  justify-content:space-between;
-  padding-top:calc(var(--form-height)/50);
-  padding-bottom:calc(var(--form-height)/15);
-  font-family:var(--font-sub-title);
+.register .register-form .row-flex {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: calc(var(--form-height) / 50);
+    padding-bottom: calc(var(--form-height) / 15);
+    font-family: var(--font-sub-title);
 }
 .login .login-form .row-flex .row-wrapper,
-.register .register-form .row-flex .row-wrapper
-{
-  display:flex;
-  flex-direction:row;
-  vertical-align:middle;
-  align-items:center;
-  justify-content:flex-start;
+.register .register-form .row-flex .row-wrapper {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: flex-start;
 }
 .login .login-form .row-flex input,
-.register .register-form .row-flex input
-{
-  display:inline-block;
-  width:20px;
-  height:20px;
-  padding-left:0;
-  padding-right:0;
+.register .register-form .row-flex input {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding-left: 0;
+    padding-right: 0;
 }
 .login .login-form .row-flex label,
-.register .register-form .row-flex label
-{
-  display:inline-block;
-  width:auto;
-  text-align:left;
-  margin-left:5px;
-  color:#000000;
-  font-size:20px;
+.register .register-form .row-flex label {
+    display: inline-block;
+    width: auto;
+    text-align: left;
+    margin-left: 5px;
+    color: #000000;
+    font-size: 20px;
 }
 .login .login-form .row-flex label,
 .login .login-form .row-flex a,
 .register .register-form .row-flex label,
-.register .register-form .row-flex a
-{
-  font-size:16px;
-  color:#000000;
-  text-decoration:none;
-  vertical-align:middle;
+.register .register-form .row-flex a {
+    font-size: 16px;
+    color: #000000;
+    text-decoration: none;
+    vertical-align: middle;
 }
 .login .login-form .row-flex label,
-.register .register-form .row-flex label
-{
-  text-align:left;
+.register .register-form .row-flex label {
+    text-align: left;
 }
 .login .login-form .row-flex a,
-.register .register-form .row-flex a
-{
-  text-align:right;
+.register .register-form .row-flex a {
+    text-align: right;
 }
 .login .login-form .row-flex a:hover,
 .login .login-form .row-flex a:focus,
 .register .register-form .row-flex a:hover,
-.register .register-form .row-flex a:focus
-{
-  outline:none;
-  text-decoration:underline;
+.register .register-form .row-flex a:focus {
+    outline: none;
+    text-decoration: underline;
 }
 .login .login-form .row button,
-.register .register-form .row button
-{
-  font-size:18px;
-  padding:8px 20px;
-  width:130px;
-  min-height:45px;
-  margin:0px auto;
-  border-radius:50px;
-  letter-spacing:1px;
-  display:flex;
-  flex-direction:row;
-  justify-content:center;
-  align-items:center;
-  vertical-align:middle;
-  text-align:center;
-  cursor:pointer;
+.register .register-form .row button {
+    font-size: 18px;
+    padding: 8px 20px;
+    width: 130px;
+    min-height: 45px;
+    margin: 0px auto;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
 }
 .login .login-form .row button:not(.progress) svg,
-.register .register-form .row button:not(.progress) svg
-{
-  display:none;
+.register .register-form .row button:not(.progress) svg {
+    display: none;
 }
 .login .login-form .row button.progress,
-.register .register-form .row button.progress
-{
-  background:#000;
-  padding:8px 0px 8px 20px;
-  cursor:not-allowed!important;
+.register .register-form .row button.progress {
+    background: #000;
+    padding: 8px 0px 8px 20px;
+    cursor: not-allowed !important;
 }
 .login .login-form .row button.progress svg,
-.register .register-form .row button.progress svg
-{
-  animation:roller 2.5s linear infinite normal;
-  transform:rotate(0deg);
+.register .register-form .row button.progress svg {
+    animation: roller 2.5s linear infinite normal;
+    transform: rotate(0deg);
 }
-.login .login-form .row button.progress svg
-{
-  margin-left:10px;
+.login .login-form .row button.progress svg {
+    margin-left: 10px;
 }
-.register .register-form .row button.progress svg
-{
-  margin:0px 5px;
+.register .register-form .row button.progress svg {
+    margin: 0px 5px;
 }
-@keyframes roller
-{
-  0%
-  {
-    transform:rotate(0deg);
-  }
-  100%
-  {
-    transform:rotate(360deg);
-  }
+@keyframes roller {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
-.register .register-form .row:last-child
-{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content:center;
+.register .register-form .row:last-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
-button[type="button"]
-{
-  background:#404040;
-  border:2px solid #000000;
-  color:#FFFFFF;
-  transition:background-color 0.3s;
-  font-weight:400;
-  position:relative;
+button[type="button"] {
+    background: #404040;
+    border: 2px solid #000000;
+    color: #ffffff;
+    transition: background-color 0.3s;
+    font-weight: 400;
+    position: relative;
 }
-button[type="reset"]
-{
-  border:2px solid #000000;
-  background:transparent;
-  color:#000000;
-  transition:background-color 0.3s, color 0.3s, border-color 0.3s;
+button[type="reset"] {
+    border: 2px solid #000000;
+    background: transparent;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
-button[type="button"]:hover
-{
-  color:#FFFFFF;
-  background:#000000;
+button[type="button"]:hover {
+    color: #ffffff;
+    background: #000000;
 }
-button[type="reset"]:hover
-{
-  background:#C0C0C0;
+button[type="reset"]:hover {
+    background: #c0c0c0;
 }
-button:focus
-{
-  outline:none;
-  border-color:#000000;
+button:focus {
+    outline: none;
+    border-color: #000000;
 }
-@media (min-width:1150px)
-{
-  nav *
-  {
-    color:#FFFFFF;
-  }
-  nav a
-  {
-    padding:10px 15px !important;
-    background-color:rgba(0,0,0,0.4);
-    border-radius:5px;
-    transition:background-color 0.3s, color 0.3s, stroke 0.3s;
-  }
-  nav svg
-  {
-    stroke:#FFFFFF;
-  }
-  nav a:hover
-  {
-    background:#FFFFFF;
-  }
-  nav a:hover *
-  {
-    color:#000000;
-  }
-  nav a:hover svg
-  {
-    stroke:#000000;
-  }
+@media (min-width: 1150px) {
+    nav * {
+        color: #ffffff;
+    }
+    nav a {
+        padding: 10px 15px !important;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s, stroke 0.3s;
+    }
+    nav svg {
+        stroke: #ffffff;
+    }
+    nav a:hover {
+        background: #ffffff;
+    }
+    nav a:hover * {
+        color: #000000;
+    }
+    nav a:hover svg {
+        stroke: #000000;
+    }
 }
-label:hover,input[type=checkbox]:hover
-{
-  cursor:pointer;
+label:hover,
+input[type="checkbox"]:hover {
+    cursor: pointer;
 }
-.image .title
-{
-  font-size:50px;
-  font-weight:900;
-  letter-spacing:2px;
-  color:#000;
+.image .title {
+    font-size: 50px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #000;
 }
-.image .sub-title
-{
-  font-size:25px;
-  letter-spacing:1px;
-  color:#FFFFFF;
-  text-shadow:0px 0px 3px #000000,0px 0px 2px #000000,0px 0px 1px #000000;
+.image .sub-title {
+    font-size: 25px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-shadow: 0px 0px 3px #000000, 0px 0px 2px #000000, 0px 0px 1px #000000;
 }
-.image .other-button
-{
-  font-size:20px;
-  margin-top:30px;
-  background:rgba(255,255,255,0.9);
-  transition:background-color 0.3s;
-  color:#000000;
-  display:inline-block;
-  padding:8px 25px;
-  font-weight:900;
-  letter-spacing:2px;
-  text-shadow:none;
-  border-radius:50px;
-  box-shadow:0px 0px 10px 0px #000000;
+.image .other-button {
+    font-size: 20px;
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s;
+    color: #000000;
+    display: inline-block;
+    padding: 8px 25px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: none;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px 0px #000000;
 }
-.image .other-button:hover,.image .other-button:focus
-{
-  outline:none;
-  background:rgba(255,255,255,1);
+.image .other-button:hover,
+.image .other-button:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 1);
 }
-.password
-{
-  position:relative;
+.password {
+    position: relative;
 }
-.togglePassword
-{
-  position:absolute;
-  top:50%;
-  right:5px;
-  width:25px;
-  height:25px;
-  transform:translateY(-50%);
+.togglePassword {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    transform: translateY(-50%);
 }
-.togglePassword svg
-{
-  width:25px;
-  height:25px;
-  stroke:#808080;
+.togglePassword svg {
+    width: 25px;
+    height: 25px;
+    stroke: #808080;
 }
-.togglePassword:hover
-{
-  cursor:pointer;
+.togglePassword:hover {
+    cursor: pointer;
 }
-.togglePassword:focus
-{
-  outline:none;
+.togglePassword:focus {
+    outline: none;
 }
 .togglePassword:hover svg,
-.togglePassword:focus svg
-{
-  stroke:#000000;
+.togglePassword:focus svg {
+    stroke: #000000;
 }
-.to-next
-{
-  width:100%;
-  height:100%;
-  position:absolute;
-  top:0;
-  left:0;
-  background:#FFFFFF;
-  z-index:20;
-  clip-path:circle(0% at calc(50% - 200px) 100%);
-  background-color:#2196F3;
-  background-image:url("../../images/login/classroom.jpg");
-  background-position:center;
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-attachment:fixed;
+.to-next {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    z-index: 20;
+    clip-path: circle(0% at calc(50% - 200px) 100%);
+    background-color: #2196f3;
+    background-image: url("../../images/login/classroom.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
-.button-center
-{
-  display:flex;
-  flex-direction:row;
-  justify-content:space-around;
-  align-self:center;
+.button-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-self: center;
 }
-.password input,input[type="password"]
-{
-  padding-right:35px !important;
+.password input,
+input[type="password"] {
+    padding-right: 35px !important;
 }
-@media (max-width:800px)
-{
-  .image .title
-  {
-    font-size:5vmin;
-  }
-  .sub-title
-  {
-    font-size:20px!important;
-  }
+@media (max-width: 800px) {
+    .image .title {
+        font-size: 5vmin;
+    }
+    .sub-title {
+        font-size: 20px !important;
+    }
 }
-@media (max-width:700px)
-{
-  :root
-  {
-    --form-width:300px;
-  }
-  .login .login-form,.register .register-form
-  {
-    padding:15px 10px;
-  }
-  .wrapper
-  {
-    border-radius:15px;
-  }
+@media (max-width: 700px) {
+    :root {
+        --form-width: 300px;
+    }
+    .login .login-form,
+    .register .register-form {
+        padding: 15px 10px;
+    }
+    .wrapper {
+        border-radius: 15px;
+    }
 }
-@media (max-width:550px)
-{
-  :root
-  {
-    --form-width:100%;
-    --wrapper-width:350px;
-  }
-  .image
-  {
-    width:100% !important;
-  }
-  .login,.register
-  {
-    flex-direction:column;
-    overflow-y:auto;
-  }
-  .image .title
-  {
-    font-size:30px;
-    margin-top:40px;
-    margin-bottom:40px;
-  }
-  .image .sub-title
-  {
-    color:#000000;
-    text-shadow:none;
-  }
-  .image .icon
-  {
-    margin-top:30px;
-  }
-  .other-button
-  {
-    margin-bottom:40px;
-  }
+@media (max-width: 550px) {
+    :root {
+        --form-width: 100%;
+        --wrapper-width: 350px;
+    }
+    .image {
+        width: 100% !important;
+    }
+    .login,
+    .register {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .image .title {
+        font-size: 30px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .image .sub-title {
+        color: #000000;
+        text-shadow: none;
+    }
+    .image .icon {
+        margin-top: 30px;
+    }
+    .other-button {
+        margin-bottom: 40px;
+    }
 }
-@media (max-width:400px)
-{
-  :root
-  {
-    --form-width:100%;
-    --wrapper-width:300px;
-  }
-  .wrapper .row button
-  {
-    padding:8px 15px!important;
-  }
-  .login .login-form .row button,
-  .register .register-form .row button
-  {
-    width:110px;
-  }
+@media (max-width: 400px) {
+    :root {
+        --form-width: 100%;
+        --wrapper-width: 300px;
+    }
+    .wrapper .row button {
+        padding: 8px 15px !important;
+    }
+    .login .login-form .row button,
+    .register .register-form .row button {
+        width: 110px;
+    }
 }
-@media (max-width:320px)
-{
-  :root
-  {
-    --wrapper-width:250px;
-  }
-  .login .login-form .row button,
-  .register .register-form .row button
-  {
-    width:90px;
-  }
+@media (max-width: 320px) {
+    :root {
+        --wrapper-width: 250px;
+    }
+    .login .login-form .row button,
+    .register .register-form .row button {
+        width: 90px;
+    }
 }
-@media (max-width:280px)
-{
-  .login,.register
-  {
-    overflow-x:auto;
-  }
+@media (max-width: 280px) {
+    .login,
+    .register {
+        overflow-x: auto;
+    }
 }
-@media (max-height:600px) and (orientation:landscape)
-{
-  .container
-  {
-    overflow-y:auto;
-    justify-content:space-around;
-  }
-  .wrapper, .login, .register, .image, .form
-  {
-    overflow-y:auto;
-    position:relative;
-    height:500px;
-  }
+@media (max-height: 600px) and (orientation: landscape) {
+    .container {
+        overflow-y: auto;
+        justify-content: space-around;
+    }
+    .wrapper,
+    .login,
+    .register,
+    .image,
+    .form {
+        overflow-y: auto;
+        position: relative;
+        height: 500px;
+    }
 }
-@media (max-width:600px),(max-height:450px)
-{
-  .wrapper
-  {
-    border-radius:0px !important;
-  }
+@media (max-width: 600px), (max-height: 450px) {
+    .wrapper {
+        border-radius: 0px !important;
+    }
 }
-.overlay
-{
-  position:fixed;
-  top:0;
-  left:0;
-  background:rgba(255,255,255,0.8);
-  width:100%;
-  height:100%;
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    height: 100%;
 }
-.alreadyLoggedIn
-{
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  min-width:80vmin;
-  min-height:25vmin;
-  background-color:#212121;
-  background-image:linear-gradient(66deg, transparent 0%, transparent 24%,rgba(195, 195, 195,0.04) 24%, rgba(195, 195, 195,0.04) 80%,transparent 80%, transparent 100%),linear-gradient(153deg, transparent 0%, transparent 29%,rgba(195, 195, 195,0.04) 29%, rgba(195, 195, 195,0.04) 45%,transparent 45%, transparent 100%),linear-gradient(199deg, transparent 0%, transparent 32%,rgba(195, 195, 195,0.04) 32%, rgba(195, 195, 195,0.04) 59%,transparent 59%, transparent 100%),linear-gradient(277deg, transparent 0%, transparent 56%,rgba(195, 195, 195,0.04) 56%, rgba(195, 195, 195,0.04) 57%,transparent 57%, transparent 100%),linear-gradient(90deg, rgb(33,33,33),rgb(33,33,33));
-  border-radius:20px;
-  box-shadow:0px 0px 15px 5px #00000040,0px 0px 10px 5px #00000040;
-  box-sizing:border-box;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-evenly;
+.alreadyLoggedIn {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 80vmin;
+    min-height: 25vmin;
+    background-color: #212121;
+    background-image: linear-gradient(
+            66deg,
+            transparent 0%,
+            transparent 24%,
+            rgba(195, 195, 195, 0.04) 24%,
+            rgba(195, 195, 195, 0.04) 80%,
+            transparent 80%,
+            transparent 100%
+        ),
+        linear-gradient(
+            153deg,
+            transparent 0%,
+            transparent 29%,
+            rgba(195, 195, 195, 0.04) 29%,
+            rgba(195, 195, 195, 0.04) 45%,
+            transparent 45%,
+            transparent 100%
+        ),
+        linear-gradient(
+            199deg,
+            transparent 0%,
+            transparent 32%,
+            rgba(195, 195, 195, 0.04) 32%,
+            rgba(195, 195, 195, 0.04) 59%,
+            transparent 59%,
+            transparent 100%
+        ),
+        linear-gradient(
+            277deg,
+            transparent 0%,
+            transparent 56%,
+            rgba(195, 195, 195, 0.04) 56%,
+            rgba(195, 195, 195, 0.04) 57%,
+            transparent 57%,
+            transparent 100%
+        ),
+        linear-gradient(90deg, rgb(33, 33, 33), rgb(33, 33, 33));
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px 5px #00000040, 0px 0px 10px 5px #00000040;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .alreadyLoggedIn .pop-message,
-.alreadyLoggedIn a
-{
-  color:#FFFFFF;
-  font-family:var(--font-sub-title);
-  letter-spacing:1px;
+.alreadyLoggedIn a {
+    color: #ffffff;
+    font-family: var(--font-sub-title);
+    letter-spacing: 1px;
 }
-.alreadyLoggedIn .buttons
-{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content:space-evenly;
+.alreadyLoggedIn .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 }
-.alreadyLoggedIn .pop-message
-{
-  text-align:center;
-  font-size:30px;
+.alreadyLoggedIn .pop-message {
+    text-align: center;
+    font-size: 30px;
 }
-.alreadyLoggedIn a
-{
-  text-decoration:none;
-  padding:10px 15px;
-  border:2px solid #FFFFFF;
-  background:transparent;
-  transition:background-color 0.3s,color 0.3s;
-  border-radius:5px;
-  width:100px;
-  text-align:center;
+.alreadyLoggedIn a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 2px solid #ffffff;
+    background: transparent;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
 }
-.alreadyLoggedIn a:hover
-{
-  background-color:#FFFFFF;
-  color:#000000;
-  border-color:#000000;
+.alreadyLoggedIn a:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #000000;
 }
-@media (max-width:600px)
-{
-  .alreadyLoggedIn .pop-message
-  {
-    font-size:20px;
-  }
-  .alreadyLoggedIn a
-  {
-    width:80px;
-  }
+@media (max-width: 600px) {
+    .alreadyLoggedIn .pop-message {
+        font-size: 20px;
+    }
+    .alreadyLoggedIn a {
+        width: 80px;
+    }
 }
-@media (max-width:500px)
-{
-  .alreadyLoggedIn
-  {
-    min-height:70vmin;
-    justify-content:space-between;
-    padding:20px;
-  }
-  .alreadyLoggedIn .pop-message
-  {
-    font-size:20px;
-    margin-bottom:20px;
-  }
-  .alreadyLoggedIn .buttons
-  {
-    flex-direction:column;
-    align-items:center;
-    justify-content:space-evenly;
-  }
-  .alreadyLoggedIn .buttons *
-  {
-    margin:10px 0px;
-    min-width:55%;
-  }
+@media (max-width: 500px) {
+    .alreadyLoggedIn {
+        min-height: 70vmin;
+        justify-content: space-between;
+        padding: 20px;
+    }
+    .alreadyLoggedIn .pop-message {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .alreadyLoggedIn .buttons {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .alreadyLoggedIn .buttons * {
+        margin: 10px 0px;
+        min-width: 55%;
+    }
 }
-@media (max-width:300px)
-{
-  .alreadyLoggedIn
-  {
-    min-width:100%;
-    min-height:100vmin;
-    border-radius:0px;
-  }
-  .alreadyLoggedIn .buttons *
-  {
-    margin:15px 0px;
-  }
+@media (max-width: 300px) {
+    .alreadyLoggedIn {
+        min-width: 100%;
+        min-height: 100vmin;
+        border-radius: 0px;
+    }
+    .alreadyLoggedIn .buttons * {
+        margin: 15px 0px;
+    }
 }

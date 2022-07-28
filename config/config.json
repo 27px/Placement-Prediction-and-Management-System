@@ -1,19 +1,19 @@
 {
-  "SERVER":{
-    "HOST":"localhost",
-    "PORT":3000
-  },
-  "DB_SERVER":{
-    "DB_HOST":"127.0.0.1",
-    "DB_PORT":"27017",
-    "DB_USER":"",
-    "DB_PASSWORD":"",
-    "DB_DATABASE":"placement"
-  },
-  "SESSION":{
-    "SECRET":"N0D3~D@3M0N"
-  },
-  "COOKIE":{
-    "KEY":"dXNlci1jcmVkZW50aWFscw"
-  }
+    "SERVER": {
+        "HOST": "localhost",
+        "PORT": 3000
+    },
+    "DB_SERVER": {
+        "DB_HOST": "127.0.0.1",
+        "DB_PORT": "27017",
+        "DB_USER": "",
+        "DB_PASSWORD": "",
+        "DB_DATABASE": "placement"
+    },
+    "SESSION": {
+        "SECRET": "N0D3~D@3M0N"
+    },
+    "COOKIE": {
+        "KEY": "dXNlci1jcmVkZW50aWFscw"
+    }
 }

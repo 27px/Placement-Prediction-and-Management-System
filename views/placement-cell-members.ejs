@@ -1,44 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style/nav.css">
-    <link rel="stylesheet" href="../static/style/home/team.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/style/nav.css" />
+    <link rel="stylesheet" href="../static/style/home/team.css" />
     <title>Coordinators</title>
   </head>
   <body>
     <!--Navigation Bar Start-->
-      <%- include("partials/nav.ejs",{
-        isLoggedIn,
-        type
-      }); %>
+    <%- include("partials/nav.ejs",{ isLoggedIn, type }); %>
     <!--Navigation Bar End-->
     <div class="container">
       <div class="wrap">
-        <%
-          if(coordinators.length>0)
-          {
-            coordinators.forEach(coordinator=>{
-              %>
-                <div class="card">
-                  <img src="../../data/profilepic/<%-coordinator.email%>.<%-coordinator.pic_ext%>" alt="">
-                  <div class="name"><%-coordinator.data.name%></div>
-                  <div class="type"><%-coordinator.data.about%></div>
-                  <div class="title"><%-coordinator.data.admission.course%></div>
-                </div>
-              <%
-            });
-          }
-          else
-          {
-            %>
-              <div class="card">
-                <div class="name">No Coordinators</div>
-              </div>
-            <%
-          }
-        %>
+        <% if(coordinators.length>0) { coordinators.forEach(coordinator=>{ %>
+        <div class="card">
+          <img
+            src="../../data/profilepic/<%-coordinator.email%>.<%-coordinator.pic_ext%>"
+            alt=""
+          />
+          <div class="name"><%-coordinator.data.name%></div>
+          <div class="type"><%-coordinator.data.about%></div>
+          <div class="title"><%-coordinator.data.admission.course%></div>
+        </div>
+        <% }); } else { %>
+        <div class="card">
+          <div class="name">No Coordinators</div>
+        </div>
+        <% } %>
       </div>
     </div>
   </body>

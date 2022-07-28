@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="main">
   <head>
-
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Home</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Campus Placement Management System, with placement prediction, resourse sharing, external jobs etc.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Campus Placement Management System, with placement prediction, resourse sharing, external jobs etc."
+    />
 
-    <link rel="prefetch" href="../static/style/home/splash.css" as="style">
-    <link rel="stylesheet" href="../static/style/home/splash.css">
+    <link rel="prefetch" href="../static/style/home/splash.css" as="style" />
+    <link rel="stylesheet" href="../static/style/home/splash.css" />
 
-    <link rel="prefetch" href="../static/style/default-values.css" as="style">
-    <link rel="stylesheet" href="../static/style/default-values.css">
+    <link rel="prefetch" href="../static/style/default-values.css" as="style" />
+    <link rel="stylesheet" href="../static/style/default-values.css" />
 
-    <link rel="prefetch" href="../static/style/nav.css" as="style">
-    <link rel="stylesheet" href="../static/style/nav.css">
+    <link rel="prefetch" href="../static/style/nav.css" as="style" />
+    <link rel="stylesheet" href="../static/style/nav.css" />
 
-    <link rel="prefetch" href="../static/style/home/style.css" as="style">
-    <link rel="stylesheet" href="../static/style/home/style.css">
+    <link rel="prefetch" href="../static/style/home/style.css" as="style" />
+    <link rel="stylesheet" href="../static/style/home/style.css" />
 
-    <link rel="prefetch" href="../static/script/home/script.js" as="script">
+    <link rel="prefetch" href="../static/script/home/script.js" as="script" />
     <script type="module" src="../static/script/home/script.js"></script>
-
   </head>
   <body class="main">
     <div class="hero">
       <!--Navigation Bar Start-->
-        <%- include("partials/nav.ejs",{
-          isLoggedIn,
-          type
-        }); %>
+      <%- include("partials/nav.ejs",{ isLoggedIn, type }); %>
       <!--Navigation Bar End-->
-      <object class="background" data="../static/images/home/hero.svg" type="image/svg+xml"></object>
+      <object
+        class="background"
+        data="../static/images/home/hero.svg"
+        type="image/svg+xml"
+      ></object>
       <div class="description">
         <div class="icon"></div>
         <div class="title">Placement Prediction & Management System</div>
@@ -48,41 +50,85 @@
         <div class="image animated animated-box"></div>
         <div class="desc">
           <div class="title type-title">Placement Prediction</div>
-          <div class="sub-title">This feature allows a Student to find out whether he / she will get placed in the campus placement. The prediction made by the machine Learning Algorithm will be based on the previous recruitment statistics, and will also consider student data like academic details including all marks of every course done by the student. Prediction result can only be seen by the user itself and won't be shared to any recruiter. If the prediction is negative for a student, he / she can improve themselves by working more in the skills suggested by the recommendations.</div>
+          <div class="sub-title">
+            This feature allows a Student to find out whether he / she will get
+            placed in the campus placement. The prediction made by the machine
+            Learning Algorithm will be based on the previous recruitment
+            statistics, and will also consider student data like academic
+            details including all marks of every course done by the student.
+            Prediction result can only be seen by the user itself and won't be
+            shared to any recruiter. If the prediction is negative for a
+            student, he / she can improve themselves by working more in the
+            skills suggested by the recommendations.
+          </div>
         </div>
       </div>
       <div class="flex-item">
         <div class="image animated animated-box"></div>
         <div class="desc">
           <div class="title type-title">Resource Sharing</div>
-          <div class="sub-title">Finding out the right information from the vast internet can be difficult. Resource Sharing allows Coordinators to add resources, into a Storage System, which can be accessed by Students. The resources could be Video Tutorials, E-Books, and other resources. The Resources are stored in an Encrypted Storage System. There is no restrictions like department, semester etc. in data accessing. Once uploaded, it is publicly accessible by logged in students of any department or of any semester.</div>
+          <div class="sub-title">
+            Finding out the right information from the vast internet can be
+            difficult. Resource Sharing allows Coordinators to add resources,
+            into a Storage System, which can be accessed by Students. The
+            resources could be Video Tutorials, E-Books, and other resources.
+            The Resources are stored in an Encrypted Storage System. There is no
+            restrictions like department, semester etc. in data accessing. Once
+            uploaded, it is publicly accessible by logged in students of any
+            department or of any semester.
+          </div>
         </div>
       </div>
       <div class="flex-item">
         <div class="image animated animated-box"></div>
         <div class="desc">
           <div class="title type-title">Placement Statistics</div>
-          <div class="sub-title">Placement Statistics will be visible to everyone, which doesn't need to be logged in. This feature allows people to view the previous placement statistics like number of companies providing job opportunities, number of students placed, top salary offering companies, top recruiting companies etc. Since these data are public, it will be useful for students who are willing to join the college to know more about the placement details.</div>
+          <div class="sub-title">
+            Placement Statistics will be visible to everyone, which doesn't need
+            to be logged in. This feature allows people to view the previous
+            placement statistics like number of companies providing job
+            opportunities, number of students placed, top salary offering
+            companies, top recruiting companies etc. Since these data are
+            public, it will be useful for students who are willing to join the
+            college to know more about the placement details.
+          </div>
         </div>
       </div>
       <div class="flex-item">
         <div class="image animated animated-box"></div>
         <div class="desc">
           <div class="title type-title">Campus Placement</div>
-          <div class="sub-title">Campus Placement Management feature allows recruiters to post jobs / internships with a detailed description like salary, requirements / qualification, selection process rounds, MCQ questions for rounds etc. Students can apply for the post they like and if they are eligible, they will be considered for the further recruitment process. Most likely the first round will be an MCQ round, and if a student passes the criteria set by the recruiter, the student can go to next level.</div>
+          <div class="sub-title">
+            Campus Placement Management feature allows recruiters to post jobs /
+            internships with a detailed description like salary, requirements /
+            qualification, selection process rounds, MCQ questions for rounds
+            etc. Students can apply for the post they like and if they are
+            eligible, they will be considered for the further recruitment
+            process. Most likely the first round will be an MCQ round, and if a
+            student passes the criteria set by the recruiter, the student can go
+            to next level.
+          </div>
         </div>
       </div>
       <div class="flex-item">
         <div class="image animated animated-box"></div>
         <div class="desc">
           <div class="title type-title">Explore more Oportunities</div>
-          <div class="sub-title">Sometimes for some students, it may feel like there is not enough Campus Placements available. Using some third party APIs we provide information about external jobs posted by companies and students can attend them according to the criteria set by the recruiter who posted the job. Verification of legitimacy of those posts won't be the responsibility of any user / member in this Placement Management System.</div>
+          <div class="sub-title">
+            Sometimes for some students, it may feel like there is not enough
+            Campus Placements available. Using some third party APIs we provide
+            information about external jobs posted by companies and students can
+            attend them according to the criteria set by the recruiter who
+            posted the job. Verification of legitimacy of those posts won't be
+            the responsibility of any user / member in this Placement Management
+            System.
+          </div>
         </div>
       </div>
     </div>
     <div class="box video-bg">
       <video muted autoplay loop poster="../static/videos/home-box.png">
-        <source src="../static/videos/home-box.mp4" type="video/mp4">
+        <source src="../static/videos/home-box.mp4" type="video/mp4" />
       </video>
       <div class="video-overlay"></div>
       <div class="video-desc">
@@ -97,39 +143,90 @@
       <div class="features">
         <a href="/statistics" class="feature">
           <div class="icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#000000"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
           </div>
           <div class="title">Statistics</div>
           <div class="sub-title">View previous Placement Statistics.</div>
         </a>
         <a href="/gallery" class="feature">
           <div class="icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#000000"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
           </div>
           <div class="title">Gallery</div>
           <div class="sub-title">View Pictures of previous events.</div>
         </a>
         <a href="/team" class="feature">
           <div class="icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#000000"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
           </div>
           <div class="title">Team</div>
           <div class="sub-title">View Campus Placment Members</div>
         </a>
         <a href="/about" class="feature">
           <div class="icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#000000"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
           </div>
           <div class="title">Developers</div>
           <div class="sub-title">View site Developers</div>
         </a>
       </div>
     </div>
-    <div class="footer top-priority">Developed by Group-12 ( Anisha, Glorina, Rahul )</div>
+    <div class="footer top-priority">
+      Developed by Group-12 ( Anisha, Glorina, Rahul )
+    </div>
     <div class="splash">
-      <div class="icon">
-
-      </div>
+      <div class="icon"></div>
       <div class="loading"></div>
     </div>
   </body>

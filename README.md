@@ -1,4 +1,5 @@
 # 🏫 Campus Placement Prediction &amp; Management System
+
 Predicts whether a Student gets Placed in Campus Placement using Brain.JS,
 
 > Uses Node.JS and MongoDB
@@ -20,27 +21,26 @@ Installs app (installs packages, creates data folders required)
 // config/user_config.json
 
 {
-  "OTP":{
-    "TIMEOUT":10
+  "OTP": {
+    "TIMEOUT": 10
   },
-  "MAIL":{
-    "SERVICE":"gmail",
-    "MAIL":"your_email_id_here",
-    "PASSWORD":"your_password_here",
-    "PORT":465,
-    "SECURE":true
+  "MAIL": {
+    "SERVICE": "gmail",
+    "MAIL": "your_email_id_here",
+    "PASSWORD": "your_password_here",
+    "PORT": 465,
+    "SECURE": true
   },
-  "NETIMAGES":{
-    "OTP":"path/to/online/hosted/image/background-image",
-    "RECRUITER":"path/to/online/hosted/image/welcome-image"
+  "NETIMAGES": {
+    "OTP": "path/to/online/hosted/image/background-image",
+    "RECRUITER": "path/to/online/hosted/image/welcome-image"
   }
 }
 ```
 
 > Databases
 
-`department` ,  `statistical_data` &amp; `user_data`
-
+`department` , `statistical_data` &amp; `user_data`
 
 > Example admin user (add manually in database)
 

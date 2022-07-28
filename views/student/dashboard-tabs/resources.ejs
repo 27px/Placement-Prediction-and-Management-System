@@ -1,79 +1,84 @@
-<%
-  function fileIcon(ext)
-  {
-    ext=ext==""?"?":ext;
-    var x="0%";
-    if(ext.length==1)
-    {
-      x="55%";
+<% function fileIcon(ext) { ext=ext==""?"?":ext; var x="0%"; if(ext.length==1) {
+x="55%"; } else if(ext.length==2) { x="50%"; } else if(ext.length==3) { x="45%";
+} else if(ext.length==4) { x="39%"; } else if(ext.length>=5) { ext="?"; x="55%";
+} var ch=ext[0].toUpperCase(); return `
+<svg
+  class="file-icon"
+  version="1.1"
+  viewBox="0 0 512 512"
+  xml:space="preserve"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <style type="text/css">
+    .paper {
+      fill: #e0e0e0;
+      stroke: #000000;
+      stroke-width: 6px;
     }
-    else if(ext.length==2)
-    {
-      x="50%";
+    .fold,
+    .shadow {
+      fill: #b0b0b0;
     }
-    else if(ext.length==3)
-    {
-      x="45%";
+    .ext {
+      fill: #ffffff;
+      user-select: none;
     }
-    else if(ext.length==4)
-    {
-      x="39%";
-    }
-    else if(ext.length>=5)
-    {
-      ext="?";
-      x="55%";
-    }
-    var ch=ext[0].toUpperCase();
-    return `
-      <svg class="file-icon" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <style type="text/css">
-          .paper{fill:#E0E0E0;stroke:#000000;stroke-width:6px;}
-          .fold,.shadow{fill:#B0B0B0;}
-          .ext{fill:#FFFFFF;user-select:none;}
-        </style>
-        <g>
-          <path class="paper" d="M363.8,103.7v304.6c0,14.8-12,26.9-26.9,26.9l0,0H140.5c-14.8,0-26.9-12-26.9-26.9l0,0V163.9l87.2-87.1h136.1 C351.8,76.8,363.8,88.8,363.8,103.7z"/>
-          <path class="fold" d="M113.7,163.9l87.1-87.1v60.4c0,14.8-12,26.8-26.8,26.8L113.7,163.9z"/>
-          <polygon class="shadow" points="363.8,309.1 363.8,400.4 196.6,400.4 140.2,385.5 113.7,385.5 113.7,324.1 140.2,324.1 140.2,324 196.6,309.1"/>
-          <path class="light" d="M196.6,298.3h194.1c11.9,0,21.6,9.7,21.6,21.6l0,0V368c0,11.9-9.7,21.6-21.6,21.6l0,0H196.6l0,0V298.3 L196.6,298.3z"/>
-          <polygon class="dark" points="196.6,389.6 140.2,374.6 140.2,313.2 196.6,298.3"/>
-          <rect class="light" height="61.4" width="40.6" x="99.7" y="313.3"/>
-          <polygon class="dark" points="99.7,313.3 113.7,305 113.7,313.3"/>
-          <polygon class="dark" points="99.7,374.6 113.7,383 113.7,374.6"/>
-          <text class="ext" x="${x}" y="71%" fill="#FFFFFF" font-size="65" font-family="arial black">${ext}</text>
-        </g>
-      </svg>
-    `;
-  }
-%>
+  </style>
+  <g>
+    <path
+      class="paper"
+      d="M363.8,103.7v304.6c0,14.8-12,26.9-26.9,26.9l0,0H140.5c-14.8,0-26.9-12-26.9-26.9l0,0V163.9l87.2-87.1h136.1 C351.8,76.8,363.8,88.8,363.8,103.7z"
+    />
+    <path
+      class="fold"
+      d="M113.7,163.9l87.1-87.1v60.4c0,14.8-12,26.8-26.8,26.8L113.7,163.9z"
+    />
+    <polygon
+      class="shadow"
+      points="363.8,309.1 363.8,400.4 196.6,400.4 140.2,385.5 113.7,385.5 113.7,324.1 140.2,324.1 140.2,324 196.6,309.1"
+    />
+    <path
+      class="light"
+      d="M196.6,298.3h194.1c11.9,0,21.6,9.7,21.6,21.6l0,0V368c0,11.9-9.7,21.6-21.6,21.6l0,0H196.6l0,0V298.3 L196.6,298.3z"
+    />
+    <polygon
+      class="dark"
+      points="196.6,389.6 140.2,374.6 140.2,313.2 196.6,298.3"
+    />
+    <rect class="light" height="61.4" width="40.6" x="99.7" y="313.3" />
+    <polygon class="dark" points="99.7,313.3 113.7,305 113.7,313.3" />
+    <polygon class="dark" points="99.7,374.6 113.7,383 113.7,374.6" />
+    <text
+      class="ext"
+      x="${x}"
+      y="71%"
+      fill="#FFFFFF"
+      font-size="65"
+      font-family="arial black"
+    >
+      ${ext}
+    </text>
+  </g>
+</svg>
+`; } %>
 <div class="external no-bg">
   <div class="folder">
-    <%
-      if(files.length>0)
-      {
-        files.forEach(file=>{
-          %>
-            <a href="../data/resource/<%-file%>" target="_blank" class="file">
-              <%-fileIcon(file.split(".").pop());%>
-              <div class="title"><%-file%></div>
-            </a>
-          <%
-        });
-      }
-      else
-      {
-        %>
-          <div class="file file-fill">No files found</div>
-        <%
-      }
-      if(type=="coordinator")
-      {
-        %>
-          <input type="file" name="file" id="file" class="hidden" onchange="uploadFile(this);">
-          <a class="upload" onclick="showUpload();">Upload</a>
-        <%
-      }
-    %>
+    <% if(files.length>0) { files.forEach(file=>{ %>
+    <a href="../data/resource/<%-file%>" target="_blank" class="file">
+      <%-fileIcon(file.split(".").pop());%>
+      <div class="title"><%-file%></div>
+    </a>
+    <% }); } else { %>
+    <div class="file file-fill">No files found</div>
+    <% } if(type=="coordinator") { %>
+    <input
+      type="file"
+      name="file"
+      id="file"
+      class="hidden"
+      onchange="uploadFile(this);"
+    />
+    <a class="upload" onclick="showUpload();">Upload</a>
+    <% } %>
   </div>
 </div>

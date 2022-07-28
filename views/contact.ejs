@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feedback</title>
-    <link rel="stylesheet" href="../static/style/home/contact.css">
-    <link rel="stylesheet" href="../static/style/nav.css">
+    <link rel="stylesheet" href="../static/style/home/contact.css" />
+    <link rel="stylesheet" href="../static/style/nav.css" />
   </head>
   <body>
-    <%- include("partials/nav.ejs",{
-      type,
-      isLoggedIn
-    }); %>
+    <%- include("partials/nav.ejs",{ type, isLoggedIn }); %>
     <div class="container">
       <div class="form">
         <div class="contact-form">
@@ -21,11 +18,24 @@
             <span class="circle two"></span>
             <div class="input-container focus">
               <label for="name">Your Name</label>
-              <input type="text" name="name" id="name" placeholder="Name" required>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                required
+              />
             </div>
             <div class="input-container focus">
               <label for="email">Your Email</label>
-              <input type="email" name="email" id="email" placeholder="E-Mail" <%if(email!=""){%>readonly="true" value="<%-email%>"<%}%> required>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="E-Mail"
+                <%if(email!=""
+                ){%
+              />readonly="true" value="<%-email%>"<%}%> required>
             </div>
             <div class="input-container focus">
               <label for="type">Type</label>
@@ -39,16 +49,17 @@
             </div>
             <div class="input-container textarea focus">
               <label for="message">Your Message</label>
-              <textarea name="message" id="message" class="input" placeholder="Message" required></textarea>
+              <textarea
+                name="message"
+                id="message"
+                class="input"
+                placeholder="Message"
+                required
+              ></textarea>
             </div>
-            <%
-              if(error!="")
-              {
-                %>
-                  <div class="err"><%-error%></div>
-                <%
-              }
-            %>
+            <% if(error!="") { %>
+            <div class="err"><%-error%></div>
+            <% } %>
             <div class="button-wrapper">
               <button class="button">Send</button>
             </div>
@@ -57,7 +68,9 @@
         <div class="contact-info">
           <div class="head">Drop Us a Feedback</div>
           <div class="quote">
-            <div class="text">The pursuit of perfection often impedes improvement</div>
+            <div class="text">
+              The pursuit of perfection often impedes improvement
+            </div>
             <div class="author">George Will</div>
           </div>
         </div>

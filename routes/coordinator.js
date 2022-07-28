@@ -1,16 +1,16 @@
-const express=require("express");
-const coordinator=express.Router();
+const express = require("express");
+const coordinator = express.Router();
 
 //Route Coordinator
-coordinator.get("/",(req,res)=>{
-  res.redirect("student/dashboard");//Coordinator Home is Student Dashboard
+coordinator.get("/", (req, res) => {
+    res.redirect("student/dashboard"); //Coordinator Home is Student Dashboard
 });
 
 /*
  * All these modules below are mostly unnecessary for a Machine Learning Project
  * And due to limitation of time, not developing right now....
  * Rahul,  30/12/2020
-*/
+ */
 
 //Coordinator Home is Student Dashboard
 // coordinator.get("/dashboard",(req,res)=>{
@@ -76,5 +76,4 @@ coordinator.get("/",(req,res)=>{
 //   res.render("coordinator/messages");
 // });
 
-
-module.exports=coordinator;
+module.exports = coordinator;

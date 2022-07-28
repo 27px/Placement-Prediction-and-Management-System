@@ -1,24 +1,19 @@
-<%
-  // default app version
-  var version=version==undefined?"1.0.0":version;
-  // default open tab
-  var tab=tab==undefined?"main":tab;
-  // default user type
-  var usertype=usertype==undefined?"guest":usertype;
-%>
+<% // default app version var version=version==undefined?"1.0.0":version; //
+default open tab var tab=tab==undefined?"main":tab; // default user type var
+usertype=usertype==undefined?"guest":usertype; %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="theme-color" content="#2196F3">
-    <link rel="preload" href="../static/style/student/style.css" as="style">
-    <link rel="preload" href="../static/style/student/dash.css" as="style">
-    <link rel="preload" href="../static/script/student/script.js" as="script">
-    <link rel="stylesheet" href="../static/style/default-values.css">
-    <link rel="stylesheet" href="../static/style/student/style.css">
-    <link rel="stylesheet" href="../static/style/student/dash.css">
-    <link rel="stylesheet" href="../static/style/popup.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="theme-color" content="#2196F3" />
+    <link rel="preload" href="../static/style/student/style.css" as="style" />
+    <link rel="preload" href="../static/style/student/dash.css" as="style" />
+    <link rel="preload" href="../static/script/student/script.js" as="script" />
+    <link rel="stylesheet" href="../static/style/default-values.css" />
+    <link rel="stylesheet" href="../static/style/student/style.css" />
+    <link rel="stylesheet" href="../static/style/student/dash.css" />
+    <link rel="stylesheet" href="../static/style/popup.css" />
     <script src="../static/script/student/script.js"></script>
     <script src="../static/script/popup.js"></script>
     <script src="../static/plugins/chart.js/Chart.min.js"></script>
@@ -34,8 +29,18 @@
           <div class="box"></div>
         </div>
       </div>
-      <div class="searchcontainer" id="searchcontainer" usertype="<%=usertype%>">
-        <input class="search" placeholder="Search" spellcheck="false" oninput="searchItem(event,this);" onclick="searchItem(null,this);"><!--There's another one in the side bar-->
+      <div
+        class="searchcontainer"
+        id="searchcontainer"
+        usertype="<%=usertype%>"
+      >
+        <input
+          class="search"
+          placeholder="Search"
+          spellcheck="false"
+          oninput="searchItem(event,this);"
+          onclick="searchItem(null,this);"
+        /><!--There's another one in the side bar-->
       </div>
       <div class="app" onclick="window.location='/home';">
         <div class="icon"></div>
@@ -44,7 +49,9 @@
             <div class="name">PPMS</div>
             <div class="version"><%=version%></div>
           </div>
-          <div class="subtitle">Campus Placement Prediction &amp; Management System</div>
+          <div class="subtitle">
+            Campus Placement Prediction &amp; Management System
+          </div>
         </div>
       </div>
     </div>
@@ -56,14 +63,37 @@
           <div class="loading"></div>
           <!-- Contents will be dynamically loaded -->
         </div>
-        <div class="seperator" id="seperator" onclick="hideMenu();" style="display: none;"></div>
+        <div
+          class="seperator"
+          id="seperator"
+          onclick="hideMenu();"
+          style="display: none"
+        ></div>
         <div class="side" id="side">
           <div class="searchcontainer" id="searchcontainermin">
-            <input class="search" placeholder="Search" spellcheck="false" oninput="searchItem(event,this);" onclick="searchItem(null,this);"><!--There's another one in the nav bar-->
+            <input
+              class="search"
+              placeholder="Search"
+              spellcheck="false"
+              oninput="searchItem(event,this);"
+              onclick="searchItem(null,this);"
+            /><!--There's another one in the nav bar-->
           </div>
           <div class="option" onclick="goHome();">
             <div class="icon">
-              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              <svg
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
             </div>
             <div class="wrapper">
               <div class="title">Home</div>
@@ -72,7 +102,21 @@
           </div>
           <div class="option" loadtab="main">
             <div class="icon">
-              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <svg
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
             </div>
             <div class="wrapper">
               <div class="title">Dashboard</div>
@@ -81,7 +125,19 @@
           </div>
           <div class="option" onclick="openInNewTab('./profile/view');">
             <div class="icon">
-              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <svg
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
             </div>
             <div class="wrapper">
               <div class="title">Profile</div>
@@ -90,7 +146,23 @@
           </div>
           <div class="option" loadtab="prediction">
             <div class="icon">
-              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              <svg
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                ></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
             </div>
             <div class="wrapper">
               <div class="title">Prediction</div>
@@ -99,7 +171,25 @@
           </div>
           <div class="option" loadtab="recommendation">
             <div class="icon">
-              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline><polyline points="7.5 19.79 7.5 14.6 3 12"></polyline><polyline points="21 12 16.5 14.6 16.5 19.79"></polyline><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              <svg
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                ></path>
+                <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+                <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+                <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
             </div>
             <div class="wrapper">
               <div class="title">Recommendation</div>
@@ -108,7 +198,20 @@
           </div>
           <div class="option" onclick="window.location='/statistics';">
             <div class="icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#FFFFFF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
             </div>
             <div class="wrapper">
               <div class="title">Statistics</div>
@@ -117,7 +220,19 @@
           </div>
           <div class="option" loadtab="drive">
             <div class="icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#FFFFFF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
             </div>
             <div class="wrapper">
               <div class="title">View Jobs</div>
@@ -135,7 +250,19 @@
           </div> -->
           <div class="option" loadtab="external">
             <div class="icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#FFFFFF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
             </div>
             <div class="wrapper">
               <div class="title">External Jobs</div>
@@ -144,18 +271,31 @@
           </div>
           <div class="option" loadtab="training-resources">
             <div class="icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="12" x2="2" y2="12"></line><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path><line x1="6" y1="16" x2="6.01" y2="16"></line><line x1="10" y1="16" x2="10.01" y2="16"></line></svg>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#FFFFFF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="22" y1="12" x2="2" y2="12"></line>
+                <path
+                  d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+                ></path>
+                <line x1="6" y1="16" x2="6.01" y2="16"></line>
+                <line x1="10" y1="16" x2="10.01" y2="16"></line>
+              </svg>
             </div>
             <div class="wrapper">
               <div class="title">Resources</div>
               <div class="subtitle">Training resources</div>
             </div>
           </div>
-          <%
-            if(usertype=="coordinator")
-            {
-              %>
-                <!-- <div class="option" loadtab="">
+          <% if(usertype=="coordinator") { %>
+          <!-- <div class="option" loadtab="">
                   <div class="icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                   </div>
@@ -164,12 +304,23 @@
                     <div class="subtitle">Schedule an Event</div>
                   </div>
                 </div> -->
-              <%
-            }
-          %>
+          <% } %>
           <div class="option" onclick="logout(event);">
             <div class="icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#FFFFFF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
             </div>
             <div class="wrapper">
               <div class="title">Logout</div>
